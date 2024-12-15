@@ -2460,7 +2460,7 @@
 		(uuid "2a6be1ca-aa40-4390-abae-fd5734476d4e")
 	)
 	(junction
-		(at 200.66 102.87)
+		(at 237.49 102.87)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2d4e791a-9791-4f02-a369-09508fb12963")
@@ -2502,7 +2502,7 @@
 		(uuid "98b1311d-aa2d-47ed-8470-7f440ff83156")
 	)
 	(junction
-		(at 200.66 69.85)
+		(at 237.49 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9cfac467-b808-482a-b20e-b1f502f64a5b")
@@ -2514,7 +2514,7 @@
 		(uuid "c25e2111-87dd-4c3e-a98d-6a4f5c94df0e")
 	)
 	(junction
-		(at 189.23 90.17)
+		(at 226.06 90.17)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c910e4a1-0746-4550-88f3-67d1b5e99186")
@@ -2563,7 +2563,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 128.27) (xy 200.66 102.87)
+			(xy 237.49 128.27) (xy 237.49 102.87)
 		)
 		(stroke
 			(width 0)
@@ -2593,7 +2593,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 48.26) (xy 186.69 59.69)
+			(xy 223.52 48.26) (xy 223.52 59.69)
 		)
 		(stroke
 			(width 0)
@@ -2613,7 +2613,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 123.19) (xy 186.69 123.19)
+			(xy 97.79 123.19) (xy 223.52 123.19)
 		)
 		(stroke
 			(width 0)
@@ -2623,7 +2623,7 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 92.71) (xy 189.23 92.71)
+			(xy 227.33 92.71) (xy 226.06 92.71)
 		)
 		(stroke
 			(width 0)
@@ -2653,7 +2653,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 62.23) (xy 179.07 62.23)
+			(xy 223.52 62.23) (xy 215.9 62.23)
 		)
 		(stroke
 			(width 0)
@@ -2663,7 +2663,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 90.17) (xy 189.23 92.71)
+			(xy 226.06 90.17) (xy 226.06 92.71)
 		)
 		(stroke
 			(width 0)
@@ -2673,7 +2673,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 48.26) (xy 186.69 48.26)
+			(xy 100.33 48.26) (xy 223.52 48.26)
 		)
 		(stroke
 			(width 0)
@@ -2683,7 +2683,7 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 90.17) (xy 189.23 90.17)
+			(xy 227.33 90.17) (xy 226.06 90.17)
 		)
 		(stroke
 			(width 0)
@@ -2693,7 +2693,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 59.69) (xy 179.07 59.69)
+			(xy 223.52 59.69) (xy 215.9 59.69)
 		)
 		(stroke
 			(width 0)
@@ -2753,7 +2753,7 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 85.09) (xy 181.61 80.01)
+			(xy 218.44 85.09) (xy 218.44 80.01)
 		)
 		(stroke
 			(width 0)
@@ -2773,7 +2773,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 132.08) (xy 223.52 132.08)
+			(xy 118.11 132.08) (xy 260.35 132.08)
 		)
 		(stroke
 			(width 0)
@@ -2783,7 +2783,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 102.87) (xy 200.66 100.33)
+			(xy 237.49 102.87) (xy 237.49 100.33)
 		)
 		(stroke
 			(width 0)
@@ -2813,7 +2813,7 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 113.03) (xy 128.27 113.03)
+			(xy 111.76 113.03) (xy 165.1 113.03)
 		)
 		(stroke
 			(width 0)
@@ -2843,7 +2843,7 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 128.27) (xy 200.66 128.27)
+			(xy 111.76 128.27) (xy 237.49 128.27)
 		)
 		(stroke
 			(width 0)
@@ -2853,7 +2853,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 102.87) (xy 200.66 102.87)
+			(xy 224.79 102.87) (xy 237.49 102.87)
 		)
 		(stroke
 			(width 0)
@@ -2863,7 +2863,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 123.19) (xy 186.69 62.23)
+			(xy 223.52 123.19) (xy 223.52 62.23)
 		)
 		(stroke
 			(width 0)
@@ -2883,7 +2883,7 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 87.63) (xy 179.07 87.63)
+			(xy 227.33 87.63) (xy 215.9 87.63)
 		)
 		(stroke
 			(width 0)
@@ -2933,7 +2933,7 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 60.96) (xy 200.66 60.96)
+			(xy 260.35 60.96) (xy 237.49 60.96)
 		)
 		(stroke
 			(width 0)
@@ -2943,7 +2943,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 90.17) (xy 124.46 90.17)
+			(xy 165.1 90.17) (xy 152.4 90.17)
 		)
 		(stroke
 			(width 0)
@@ -2953,7 +2953,7 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 137.16) (xy 41.91 137.16)
+			(xy 152.4 137.16) (xy 41.91 137.16)
 		)
 		(stroke
 			(width 0)
@@ -2963,7 +2963,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 105.41) (xy 128.27 105.41)
+			(xy 101.6 105.41) (xy 165.1 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2983,7 +2983,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 60.96) (xy 200.66 69.85)
+			(xy 237.49 60.96) (xy 237.49 69.85)
 		)
 		(stroke
 			(width 0)
@@ -3033,7 +3033,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 82.55) (xy 190.5 82.55)
+			(xy 215.9 82.55) (xy 227.33 82.55)
 		)
 		(stroke
 			(width 0)
@@ -3053,7 +3053,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 110.49) (xy 118.11 110.49)
+			(xy 165.1 110.49) (xy 118.11 110.49)
 		)
 		(stroke
 			(width 0)
@@ -3063,7 +3063,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 107.95) (xy 128.27 107.95)
+			(xy 114.3 107.95) (xy 165.1 107.95)
 		)
 		(stroke
 			(width 0)
@@ -3113,7 +3113,7 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 85.09) (xy 181.61 85.09)
+			(xy 227.33 85.09) (xy 218.44 85.09)
 		)
 		(stroke
 			(width 0)
@@ -3163,7 +3163,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 80.01) (xy 187.96 102.87)
+			(xy 224.79 80.01) (xy 224.79 102.87)
 		)
 		(stroke
 			(width 0)
@@ -3173,7 +3173,7 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 80.01) (xy 187.96 80.01)
+			(xy 227.33 80.01) (xy 224.79 80.01)
 		)
 		(stroke
 			(width 0)
@@ -3193,7 +3193,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 69.85) (xy 200.66 74.93)
+			(xy 237.49 69.85) (xy 237.49 74.93)
 		)
 		(stroke
 			(width 0)
@@ -3213,7 +3213,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 69.85) (xy 200.66 69.85)
+			(xy 226.06 69.85) (xy 237.49 69.85)
 		)
 		(stroke
 			(width 0)
@@ -3283,7 +3283,7 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 80.01) (xy 179.07 80.01)
+			(xy 218.44 80.01) (xy 215.9 80.01)
 		)
 		(stroke
 			(width 0)
@@ -3293,7 +3293,7 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 60.96) (xy 223.52 132.08)
+			(xy 260.35 60.96) (xy 260.35 132.08)
 		)
 		(stroke
 			(width 0)
@@ -3353,7 +3353,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 90.17) (xy 189.23 69.85)
+			(xy 226.06 90.17) (xy 226.06 69.85)
 		)
 		(stroke
 			(width 0)
@@ -3403,7 +3403,7 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 90.17) (xy 124.46 137.16)
+			(xy 152.4 90.17) (xy 152.4 137.16)
 		)
 		(stroke
 			(width 0)
@@ -3423,7 +3423,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 87.63) (xy 179.07 85.09)
+			(xy 215.9 87.63) (xy 215.9 85.09)
 		)
 		(stroke
 			(width 0)
@@ -3509,7 +3509,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "095c77e1-4f99-4bcb-84a7-7cfc12bf63a1")
 		(property "Reference" "R1"
 			(at 120.65 71.1199 0)
@@ -3712,7 +3711,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0.1uF 6.3V 0603"
+		(property "MPN" "0.1uF 0603 4V"
 			(at 114.3 100.33 90)
 			(effects
 				(font
@@ -3819,7 +3818,7 @@
 	)
 	(symbol
 		(lib_id "Memory_Flash:W25Q32JVSS")
-		(at 200.66 87.63 0)
+		(at 237.49 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3828,7 +3827,7 @@
 		(fields_autoplaced yes)
 		(uuid "2de7663d-1507-41dd-9530-c5a1dadca34d")
 		(property "Reference" "U3"
-			(at 209.55 86.3599 0)
+			(at 246.38 86.3599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3837,7 +3836,7 @@
 			)
 		)
 		(property "Value" "W25Q32JVSS"
-			(at 209.55 88.8999 0)
+			(at 246.38 88.8999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3846,7 +3845,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm"
-			(at 200.66 87.63 0)
+			(at 237.49 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3855,7 +3854,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.winbond.com/resource-files/w25q32jv%20revg%2003272018%20plus.pdf"
-			(at 200.66 87.63 0)
+			(at 237.49 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3864,7 +3863,7 @@
 			)
 		)
 		(property "Description" "32Mb Serial Flash Memory, Standard/Dual/Quad SPI, SOIC-8"
-			(at 200.66 87.63 0)
+			(at 237.49 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3873,7 +3872,7 @@
 			)
 		)
 		(property "MPN" "W25Q32JVSSIQ TR"
-			(at 200.66 87.63 0)
+			(at 237.49 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4044,7 +4043,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0.1uF 16V 0603"
+		(property "MPN" "0.1uF 0603 16V"
 			(at 52.07 116.84 90)
 			(effects
 				(font
@@ -4121,7 +4120,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0.1uF 6.3V 0603"
+		(property "MPN" "0.1uF 0603 6V"
 			(at 110.49 93.98 90)
 			(effects
 				(font
@@ -4718,7 +4717,7 @@
 	)
 	(symbol
 		(lib_id "PCM_arduino-library:Arduino_MKR_NB_1500_Socket")
-		(at 153.67 86.36 0)
+		(at 190.5 86.36 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4727,7 +4726,7 @@
 		(fields_autoplaced yes)
 		(uuid "dde48448-2fa5-44df-9323-bbd12d4df491")
 		(property "Reference" "A1"
-			(at 153.67 50.8 0)
+			(at 190.5 50.8 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -4735,7 +4734,7 @@
 			)
 		)
 		(property "Value" "Arduino_MKR_NB_1500_Socket"
-			(at 153.67 53.34 0)
+			(at 190.5 53.34 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -4743,7 +4742,7 @@
 			)
 		)
 		(property "Footprint" "PCM_arduino-library:Arduino_MKR_FOX_1200_Socket"
-			(at 153.67 124.46 0)
+			(at 190.5 124.46 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -4752,7 +4751,7 @@
 			)
 		)
 		(property "Datasheet" "https://docs.arduino.cc/hardware/mkr-nb-1500"
-			(at 153.67 120.65 0)
+			(at 190.5 120.65 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -4761,7 +4760,7 @@
 			)
 		)
 		(property "Description" "Socket for Arduino MKR NB 1500"
-			(at 153.67 86.36 0)
+			(at 190.5 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
