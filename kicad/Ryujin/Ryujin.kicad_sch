@@ -3481,6 +3481,16 @@
 		)
 		(uuid "fd0067ea-ec38-4405-a2d1-9581374f9af5")
 	)
+	(text "2024-12-15"
+		(exclude_from_sim no)
+		(at 213.868 193.548 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "2838ea47-b394-4a1d-b770-b58a77c8abde")
+	)
 	(text "Ryujin"
 		(exclude_from_sim no)
 		(at 189.992 189.738 0)
@@ -3702,7 +3712,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0.1uF 0603"
+		(property "MPN" "0.1uF 6.3V 0603"
 			(at 114.3 100.33 90)
 			(effects
 				(font
@@ -4034,7 +4044,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0.1uF 0603"
+		(property "MPN" "0.1uF 16V 0603"
 			(at 52.07 116.84 90)
 			(effects
 				(font
@@ -4111,7 +4121,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0.1uF 0603"
+		(property "MPN" "0.1uF 6.3V 0603"
 			(at 110.49 93.98 90)
 			(effects
 				(font
