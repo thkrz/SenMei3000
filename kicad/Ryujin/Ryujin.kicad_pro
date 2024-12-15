@@ -431,7 +431,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "hoori.kicad_pro",
+    "filename": "Ryujin.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -577,7 +577,7 @@
   "sheets": [
     [
       "a03941d3-2006-4bae-a82d-663063c77238",
-      "Root"
+      "Stammblatt"
     ]
   ],
   "text_variables": {}
