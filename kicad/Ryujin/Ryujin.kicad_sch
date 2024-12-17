@@ -2121,6 +2121,175 @@
 				)
 			)
 		)
+		(symbol "Sensor_Humidity:SHTC3"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -3.81 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SHTC3"
+				(at -2.54 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Sensor_Humidity:Sensirion_DFN-4-1EP_2x2mm_P1mm_EP0.7x1.6mm"
+				(at 5.08 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/0_Datasheets/Humidity/Sensirion_Humidity_Sensors_SHTC3_Datasheet.pdf"
+				(at -7.62 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Humidity and Temperature Sensor, ±2%RH, ±0.2°C, I2C, 1.62-3.6V, DFN-4"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Sensirion environment environmental measurement digital"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Sensirion*DFN*1EP*2x2mm*P1mm*EP0.7x1.6mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SHTC3_1_1"
+				(rectangle
+					(start -5.08 5.08)
+					(end 5.08 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin power_in line
+					(at 2.54 7.62 270)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 2.54 -7.62 90)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 5.08 0 180)
+					(length 2.54) hide
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Transistor_FET:IRLML6244"
 			(pin_names hide)
 			(exclude_from_sim no)
@@ -2430,6 +2599,12 @@
 		(uuid "4e3860a4-5ac5-44c2-b098-309527ed131a")
 	)
 	(junction
+		(at 44.45 151.13)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "51414378-ddcc-4644-a90b-c24f291e505c")
+	)
+	(junction
 		(at 109.22 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2478,6 +2653,18 @@
 		(uuid "c2798640-8499-487a-99ef-e2a7602ce2c9")
 	)
 	(junction
+		(at 30.48 151.13)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ca3391b1-57c8-4a51-bc37-a9964f699412")
+	)
+	(junction
+		(at 62.23 151.13)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cb93e0d7-728f-47e0-987f-b64c93a27fc0")
+	)
+	(junction
 		(at 133.35 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2488,6 +2675,24 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d420365a-ccfa-4e46-9363-7231f6653266")
+	)
+	(junction
+		(at 44.45 158.75)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e83ef480-8fa8-4cf8-a2cc-2efc701323a8")
+	)
+	(junction
+		(at 62.23 168.91)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e92be1d0-682a-478c-89c0-296877fb1c9a")
+	)
+	(junction
+		(at 30.48 163.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f8c73cae-b3d1-4fba-9c44-b5f177790ae4")
 	)
 	(junction
 		(at 109.22 41.91)
@@ -2557,6 +2762,16 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 77.47) (xy 185.42 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d052aea-4151-4a39-b7f2-08f8742927d7")
+	)
+	(wire
+		(pts
 			(xy 139.7 34.29) (xy 151.13 34.29)
 		)
 		(stroke
@@ -2597,6 +2812,16 @@
 	)
 	(wire
 		(pts
+			(xy 25.4 151.13) (xy 30.48 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19957884-1a9d-4d71-9e68-62181f953df1")
+	)
+	(wire
+		(pts
 			(xy 181.61 120.65) (xy 185.42 120.65)
 		)
 		(stroke
@@ -2604,6 +2829,16 @@
 			(type default)
 		)
 		(uuid "1c142cfc-64da-4839-96d0-9b19e46063ae")
+	)
+	(wire
+		(pts
+			(xy 77.47 157.48) (xy 77.47 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "200626d2-9be2-41c2-81a6-513d5efd856b")
 	)
 	(wire
 		(pts
@@ -2617,6 +2852,16 @@
 	)
 	(wire
 		(pts
+			(xy 62.23 168.91) (xy 77.47 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2776ebc6-3401-4532-a2d7-3ce84a3ff294")
+	)
+	(wire
+		(pts
 			(xy 247.65 97.79) (xy 243.84 97.79)
 		)
 		(stroke
@@ -2624,6 +2869,16 @@
 			(type default)
 		)
 		(uuid "2fb16fc1-c017-4298-a703-be63d15e6ab5")
+	)
+	(wire
+		(pts
+			(xy 62.23 168.91) (xy 25.4 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "310edf01-6a60-46e6-84e6-46175a0d80f2")
 	)
 	(wire
 		(pts
@@ -2807,6 +3062,16 @@
 	)
 	(wire
 		(pts
+			(xy 77.47 151.13) (xy 62.23 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d0a7dbb-9bf2-4bab-9374-464c6ce9b6c5")
+	)
+	(wire
+		(pts
 			(xy 247.65 95.25) (xy 236.22 95.25)
 		)
 		(stroke
@@ -2814,6 +3079,16 @@
 			(type default)
 		)
 		(uuid "6d6f8a0d-f919-4f7a-a194-80e31b233f8d")
+	)
+	(wire
+		(pts
+			(xy 30.48 161.29) (xy 30.48 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7720f336-4ee7-4ddc-8d11-39583e608d2b")
 	)
 	(wire
 		(pts
@@ -2844,6 +3119,16 @@
 			(type default)
 		)
 		(uuid "7c7486a7-e5fa-4355-8dcd-89fc512004b8")
+	)
+	(wire
+		(pts
+			(xy 30.48 163.83) (xy 52.07 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c9eb583-76c5-42c7-9039-00fd7c859ebe")
 	)
 	(wire
 		(pts
@@ -2887,6 +3172,16 @@
 	)
 	(wire
 		(pts
+			(xy 25.4 163.83) (xy 30.48 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c18f4a6-b388-4986-bfd1-304fa618dd2d")
+	)
+	(wire
+		(pts
 			(xy 119.38 135.89) (xy 119.38 134.62)
 		)
 		(stroke
@@ -2927,6 +3222,16 @@
 	)
 	(wire
 		(pts
+			(xy 77.47 165.1) (xy 77.47 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a53ced1c-26d4-4a46-8eed-7c46e0f2e0bd")
+	)
+	(wire
+		(pts
 			(xy 22.86 22.86) (xy 33.02 22.86)
 		)
 		(stroke
@@ -2947,6 +3252,16 @@
 	)
 	(wire
 		(pts
+			(xy 44.45 151.13) (xy 62.23 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b41fb338-2af6-4895-b748-67ff8e87b8f1")
+	)
+	(wire
+		(pts
 			(xy 147.32 91.44) (xy 147.32 96.52)
 		)
 		(stroke
@@ -2954,6 +3269,16 @@
 			(type default)
 		)
 		(uuid "b7145ffe-17de-43d8-a815-1062e8d1ead1")
+	)
+	(wire
+		(pts
+			(xy 44.45 158.75) (xy 52.07 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b802a51b-8a55-4081-959c-530d30be7ba1")
 	)
 	(wire
 		(pts
@@ -2974,6 +3299,16 @@
 			(type default)
 		)
 		(uuid "c029a780-81d3-40e1-ab5a-df40f31f9ab1")
+	)
+	(wire
+		(pts
+			(xy 30.48 151.13) (xy 30.48 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c930e56d-a9e1-4c24-86d0-357e79bb53db")
 	)
 	(wire
 		(pts
@@ -3007,6 +3342,16 @@
 	)
 	(wire
 		(pts
+			(xy 62.23 151.13) (xy 62.23 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d42104d9-6a00-4a26-a365-ead31f538762")
+	)
+	(wire
+		(pts
 			(xy 127 41.91) (xy 139.7 41.91)
 		)
 		(stroke
@@ -3024,6 +3369,26 @@
 			(type default)
 		)
 		(uuid "d6a5f19a-609c-4e33-a888-d63a322258a6")
+	)
+	(wire
+		(pts
+			(xy 38.1 158.75) (xy 44.45 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d86663c2-de78-416a-9128-c209ac67c4b2")
+	)
+	(wire
+		(pts
+			(xy 181.61 74.93) (xy 185.42 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dfa975c7-e635-46b5-a878-63f808627038")
 	)
 	(wire
 		(pts
@@ -3107,6 +3472,16 @@
 	)
 	(wire
 		(pts
+			(xy 30.48 151.13) (xy 44.45 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb520e85-8ae9-4cd6-82ba-862e6751bd25")
+	)
+	(wire
+		(pts
 			(xy 102.87 96.52) (xy 133.35 96.52)
 		)
 		(stroke
@@ -3114,6 +3489,17 @@
 			(type default)
 		)
 		(uuid "fb780f5c-b09e-4b1b-8ffa-b7b542e9e82a")
+	)
+	(text "HUMIDITY/TEMPERATURE"
+		(exclude_from_sim no)
+		(at 33.528 142.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "17a27097-f125-42a2-aa0e-dc009474d7b4")
 	)
 	(text "2024-12-15"
 		(exclude_from_sim no)
@@ -3125,6 +3511,28 @@
 		)
 		(uuid "2838ea47-b394-4a1d-b770-b58a77c8abde")
 	)
+	(text "VOLTAGE LEVEL-TRANSLATOR"
+		(exclude_from_sim no)
+		(at 114.046 60.452 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "46337468-5952-40cd-86fb-0f9ebe31dc08")
+	)
+	(text "VOLTAGE DIVIDER 15V3 -> 3V3"
+		(exclude_from_sim no)
+		(at 29.972 72.898 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "48c44e68-7171-4150-9de9-862370ec4b89")
+	)
 	(text "Ryujin"
 		(exclude_from_sim no)
 		(at 189.992 189.738 0)
@@ -3134,6 +3542,39 @@
 			)
 		)
 		(uuid "49ab090e-0b71-4525-8ac4-aa17bb46e8a9")
+	)
+	(text "SPI MEMORY"
+		(exclude_from_sim no)
+		(at 252.984 73.406 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5c300e42-1971-4630-b49c-0c7e2b5d0b2a")
+	)
+	(text "DC DC CONVERTER 5V 3W"
+		(exclude_from_sim no)
+		(at 113.792 22.352 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a05a2d95-2096-49d1-96c3-b21dc82e4a13")
+	)
+	(text "MOSFET"
+		(exclude_from_sim no)
+		(at 121.158 109.474 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "cd9a7865-a5ae-41fc-9fa3-a4dc31766163")
 	)
 	(label "5V"
 		(at 181.61 115.57 0)
@@ -3188,6 +3629,17 @@
 				(justify left)
 			)
 		)
+	)
+	(label "GND"
+		(at 25.4 168.91 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1c79fb6d-c294-4995-ae98-a7ba47fb5f69")
 	)
 	(label "3V3"
 		(at 181.61 118.11 0)
@@ -3255,6 +3707,17 @@
 		)
 		(uuid "37258b04-d264-4ade-94ec-aeb6ed1186eb")
 	)
+	(label "SCL"
+		(at 38.1 158.75 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "37ec7404-a12c-4ea7-981b-2b3f06304f40")
+	)
 	(label "BAT+"
 		(at 97.79 34.29 0)
 		(fields_autoplaced yes)
@@ -3267,6 +3730,27 @@
 		(uuid "3ba71f53-6416-4a62-8f24-d6dd1101bdfb")
 		(property "Netclass" "12V"
 			(at 97.79 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+			)
+		)
+	)
+	(label "SDI+"
+		(at 129.54 135.89 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "46ddd3dc-cd4e-478e-8709-de74bb7cbe23")
+		(property "Netclass" "12V"
+			(at 129.54 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3320,6 +3804,17 @@
 		)
 		(uuid "6705f97f-aa85-483c-8b1c-81456208783f")
 	)
+	(label "3V3"
+		(at 25.4 151.13 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "69640998-9550-4e2a-b266-6b8123af5b04")
+	)
 	(label "GND"
 		(at 33.02 35.56 0)
 		(fields_autoplaced yes)
@@ -3331,8 +3826,8 @@
 		)
 		(uuid "69c12357-dca6-4957-bbae-e634fe21bbc4")
 	)
-	(label "BAT+"
-		(at 129.54 135.89 0)
+	(label "SCL"
+		(at 181.61 74.93 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3340,17 +3835,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "6be0d87d-a366-4466-8148-2dd7caf6e940")
-		(property "Netclass" "12V"
-			(at 129.54 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-			)
-		)
+		(uuid "708ccb01-bac1-454e-bc84-ca5263a697ed")
 	)
 	(label "VIN"
 		(at 181.61 113.03 0)
@@ -3374,6 +3859,27 @@
 		)
 		(uuid "92b3d987-c091-4228-b048-f02825ae4ee6")
 	)
+	(label "BAT+"
+		(at 129.54 115.57 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "956eec5a-e6c3-4898-b13d-7cf7429ed03a")
+		(property "Netclass" "12V"
+			(at 129.54 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+			)
+		)
+	)
 	(label "GND"
 		(at 114.3 135.89 0)
 		(fields_autoplaced yes)
@@ -3385,6 +3891,17 @@
 		)
 		(uuid "9da163d6-4548-4344-b2e9-1c01f3974332")
 	)
+	(label "SDA"
+		(at 181.61 77.47 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a05178bf-b8c0-4951-a17d-7488388c99b8")
+	)
 	(label "5V"
 		(at 139.7 83.82 0)
 		(fields_autoplaced yes)
@@ -3395,6 +3912,17 @@
 			(justify left bottom)
 		)
 		(uuid "b25b5f76-bccb-4209-966d-9bd3f86d784c")
+	)
+	(label "SDA"
+		(at 25.4 163.83 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b4b34e13-8984-4b72-970b-b612f512cebd")
 	)
 	(label "GND"
 		(at 97.79 41.91 0)
@@ -3482,27 +4010,6 @@
 			(justify left bottom)
 		)
 		(uuid "f00f3a58-e461-4c7f-8b7c-b99f62bb3af6")
-	)
-	(label "SDI+"
-		(at 129.54 115.57 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f050729e-30d1-43b8-9323-756b2a8a5b1e")
-		(property "Netclass" "12V"
-			(at 129.54 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-			)
-		)
 	)
 	(label "BUS"
 		(at 33.02 25.4 0)
@@ -3794,6 +4301,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 44.45 154.94 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3024c612-1ab6-4982-ab3f-90d2f86d5860")
+		(property "Reference" "R6"
+			(at 46.99 153.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at 46.99 156.2099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 46.228 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 44.45 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 44.45 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10k 0603"
+			(at 44.45 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e51bfdb7-0a8a-4aab-955c-d40fa168598b")
+		)
+		(pin "1"
+			(uuid "011cb5bf-3c83-4d47-8aef-bdcf2c16ce0b")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 133.35 90.17 180)
 		(unit 1)
@@ -4031,6 +4617,94 @@
 		)
 	)
 	(symbol
+		(lib_id "Sensor_Humidity:SHTC3")
+		(at 59.69 161.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8cb0e407-91c4-4d5a-be2e-4d3cf86a0acf")
+		(property "Reference" "U4"
+			(at 66.04 160.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SHTC3"
+			(at 66.04 162.5599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Sensor_Humidity:Sensirion_DFN-4-1EP_2x2mm_P1mm_EP0.7x1.6mm"
+			(at 64.77 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/0_Datasheets/Humidity/Sensirion_Humidity_Sensors_SHTC3_Datasheet.pdf"
+			(at 52.07 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Humidity and Temperature Sensor, ±2%RH, ±0.2°C, I2C, 1.62-3.6V, DFN-4"
+			(at 59.69 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SHTC3"
+			(at 59.69 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9056a2c3-870b-4cad-8a75-4bb158789d71")
+		)
+		(pin "1"
+			(uuid "e7c8364e-14e4-4d59-95f0-e7cd448f47bc")
+		)
+		(pin "5"
+			(uuid "d85c3249-e82c-4f16-833f-29deeeba3e8a")
+		)
+		(pin "4"
+			(uuid "333d0858-5a7b-4983-a59e-69123bd6a064")
+		)
+		(pin "3"
+			(uuid "55522c96-6f94-4407-b7d2-987c6de96cd6")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Regulator_Switching:R-78E5.0-0.5")
 		(at 127 34.29 0)
 		(unit 1)
@@ -4107,6 +4781,85 @@
 			(project ""
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 30.48 157.48 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9d384e39-bae3-4656-9b18-3c378f5c52ee")
+		(property "Reference" "R7"
+			(at 33.02 156.2099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at 33.02 158.7499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 32.258 157.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 30.48 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 30.48 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10k 0603"
+			(at 30.48 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "80e00329-e1de-4b88-9eea-d208e6d85c72")
+		)
+		(pin "1"
+			(uuid "cd3ffc2a-cbfa-4a13-97ab-e6aff8410c02")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -4245,7 +4998,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0.1uF 16V 0603"
+		(property "MPN" "0.1uF 6.3V 0603"
 			(at 57.15 87.63 0)
 			(effects
 				(font
@@ -4744,6 +5497,85 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 77.47 161.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dad0068e-0ee2-4ea1-8015-0eee81b74b2b")
+		(property "Reference" "C6"
+			(at 81.28 160.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 81.28 162.5599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 78.4352 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 77.47 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 77.47 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0.1uF 6.3V 0603"
+			(at 77.47 161.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "314efd0e-7423-44ba-867c-1e61d11f92ca")
+		)
+		(pin "2"
+			(uuid "2133fd69-77d8-458d-8169-ff15b23b2c6b")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "C6")
 					(unit 1)
 				)
 			)
