@@ -1,8 +1,9 @@
 #include <MKRNB.h>
 #include <RTCZero.h>
 #include <SDI12.h>
-#include <SHTSensor.h>
+#include <SHTC3.h>
 #include <SPI.h>
+#include <SPIMemory.h>
 #include <Wire.h>
 
 #include "config.h"
@@ -13,19 +14,13 @@ NBClient client;
 NB nbAccess;
 RTCZero rtc;
 SDI12 socket(1);
-SHTSensor sht;
+SPIFlash flash;
 char sid[63];
+uint32_t addr = 0;
 
 float battery() {
   int p = analogRead(A1);
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
-}
-
-void blink() {
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(1000);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(1000);
 }
 
 void connect() {
@@ -40,10 +35,24 @@ void connect() {
   }
 }
 
+void die() {
+  for(;;) {
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(1000);
+  }
+}
+
 void disable() {
   socket.end();
   digitalWrite(0, LOW);
   digitalWrite(LED_BUILTIN, LOW);
+}
+
+void dump(String s) {
+  flash.writeStr(addr, s);
+  addr += s.length() + 1;
 }
 
 void enable() {
@@ -114,7 +123,7 @@ void scan() {
 }
 
 bool post(String s) {
-  bool success = false;
+  bool ok = false;
   if (client.connect(HOST, PORT)) {
     client.println("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1");
     client.println("Host: "HOST);
@@ -126,12 +135,12 @@ bool post(String s) {
     client.print(s);
 
     String r = "";
-    while (!success && client.available()) {
+    while (!ok && client.available()) {
       r += (char)client.read();
-      success = r == "HTTP/1.1 201";
+      ok = r == "HTTP/1.1 201";
     }
   }
-  return success;
+  return ok;
 }
 
 void schedule() {
@@ -168,11 +177,10 @@ void setup() {
   disable();
 
   if (sid[0] == '\0')
-    for (;;)
-      blink();
+    die();
 
   Wire.begin();
-  sht.init();
+  SHTC3.begin();
 
   connect();
 
@@ -206,7 +214,8 @@ void loop() {
   disable();
 
   verify();
-  bool success = post(s);
+  if (!post(s))
+    dump(s);
 
   schedule();
   rtc.standbyMode();
