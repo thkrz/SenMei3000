@@ -1,7 +1,9 @@
 #include <MKRNB.h>
 #include <RTCZero.h>
 #include <SDI12.h>
+#include <SHTSensor.h>
 #include <SPI.h>
+#include <Wire.h>
 
 #include "config.h"
 #include "global.h"
@@ -11,6 +13,7 @@ NBClient client;
 NB nbAccess;
 RTCZero rtc;
 SDI12 socket(1);
+SHTSensor sht;
 char sid[63];
 
 float battery() {
@@ -167,6 +170,9 @@ void setup() {
   if (sid[0] == '\0')
     for (;;)
       blink();
+
+  Wire.begin();
+  sht.init();
 
   connect();
 
