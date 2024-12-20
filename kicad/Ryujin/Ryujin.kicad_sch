@@ -5021,7 +5021,7 @@
 	)
 	(text "HUMIDITY/TEMPERATURE"
 		(exclude_from_sim no)
-		(at 33.528 142.24 0)
+		(at 41.148 145.288 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5053,7 +5053,7 @@
 	)
 	(text "VOLTAGE DIVIDER 15V3 -> 3V3"
 		(exclude_from_sim no)
-		(at 29.972 72.898 0)
+		(at 28.956 74.422 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5106,7 +5106,7 @@
 	)
 	(text "MOSFET"
 		(exclude_from_sim no)
-		(at 121.158 109.474 0)
+		(at 118.872 114.554 0)
 		(effects
 			(font
 				(size 1.27 1.27)

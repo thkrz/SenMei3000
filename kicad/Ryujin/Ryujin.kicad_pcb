@@ -10821,12 +10821,6 @@
 		(uuid "eb0d95c9-7553-401d-8a89-0104e8df429b")
 	)
 	(group ""
-		(uuid "120b6ab5-1560-434d-b1e6-f728d8426514")
-		(members "0d368509-f095-4ca3-bf74-390e52eaa1ed" "6553e83b-f98e-42bc-8ba2-a50cc56c9d34"
-			"78c84fc2-7f4e-4ed8-969c-2bcf0fe545fa" "c13dd73a-3ad5-46ea-a405-200188283e03"
-		)
-	)
-	(group ""
 		(uuid "2df47194-e7c3-4ba4-a4d4-4c7cc2c00a3c")
 		(members "29d598f1-a49e-4ade-92dc-8887a62d3f5b" "6862ec99-5884-4c58-8923-d6f35ad0c4be"
 			"9ad17837-bdff-4304-9f43-78d89672fe1e" "d3f8bfcf-c1c5-4d40-ad6a-319aca4865fa"
