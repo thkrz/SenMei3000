@@ -461,6 +461,7 @@
     "netclass_assignments": {
       "/BAT+": "12V",
       "/SDI+": "12V",
+      "/VBUS": "5V",
       "/VIN": "5V"
     },
     "netclass_patterns": []
