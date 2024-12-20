@@ -4029,6 +4029,16 @@
 	)
 	(wire
 		(pts
+			(xy 274.32 52.07) (xy 270.51 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f5e689d7-135a-46e6-9054-94a83010d1cc")
+	)
+	(wire
+		(pts
 			(xy 30.48 151.13) (xy 44.45 151.13)
 		)
 		(stroke
@@ -4058,8 +4068,8 @@
 		(uuid "ffd59344-8aae-4f72-9047-3de6a11ca010")
 	)
 	(rectangle
-		(start 246.38 19.05)
-		(end 267.97 57.15)
+		(start 247.65 20.32)
+		(end 266.7 55.88)
 		(stroke
 			(width 0)
 			(type default)
@@ -4178,7 +4188,18 @@
 		)
 		(uuid "0a462858-00be-416a-b134-8f4ce35656cb")
 	)
-	(label "GND"
+	(label "BAT+"
+		(at 33.02 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0dd66153-1fd7-4fc1-97c9-db769723fc4e")
+	)
+	(label "D7"
 		(at 181.61 81.28 0)
 		(fields_autoplaced yes)
 		(effects
@@ -4297,17 +4318,6 @@
 			(justify left bottom)
 		)
 		(uuid "362a40d2-0c34-4805-bd8e-6f2af3db3523")
-	)
-	(label "GND"
-		(at 33.02 20.32 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "37258b04-d264-4ade-94ec-aeb6ed1186eb")
 	)
 	(label "SCL"
 		(at 38.1 158.75 0)
@@ -4438,17 +4448,6 @@
 			(justify left bottom)
 		)
 		(uuid "69640998-9550-4e2a-b266-6b8123af5b04")
-	)
-	(label "GND"
-		(at 33.02 35.56 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "69c12357-dca6-4957-bbae-e634fe21bbc4")
 	)
 	(label "COPI"
 		(at 274.32 49.53 180)
@@ -4581,6 +4580,17 @@
 		)
 		(uuid "be1426fe-a50d-4ec8-877b-f96ae6d08dd0")
 	)
+	(label "GND"
+		(at 33.02 38.1 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c63b13ae-d802-40f9-b2c6-4c4c057c203e")
+	)
 	(label "5V"
 		(at 274.32 21.59 180)
 		(fields_autoplaced yes)
@@ -4625,6 +4635,28 @@
 		)
 		(uuid "da143398-9080-4e5d-93e7-39615d819717")
 	)
+	(label "BUS"
+		(at 33.02 20.32 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "da94a745-97c3-42f3-befa-6471af044241")
+	)
+	(label "GND"
+		(at 33.02 25.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "df57f474-783f-41b0-8639-39d650035247")
+	)
 	(label "BAT+"
 		(at 25.4 83.82 0)
 		(fields_autoplaced yes)
@@ -4668,17 +4700,6 @@
 		)
 		(uuid "f00f3a58-e461-4c7f-8b7c-b99f62bb3af6")
 	)
-	(label "BUS"
-		(at 33.02 25.4 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f3d89ed6-eade-4f35-a903-a25ce4353f4c")
-	)
 	(label "CIPO"
 		(at 181.61 88.9 0)
 		(fields_autoplaced yes)
@@ -4690,16 +4711,16 @@
 		)
 		(uuid "f4f48998-dc0a-45e6-b93e-7cce57b7dd59")
 	)
-	(label "BAT+"
-		(at 33.02 38.1 0)
+	(label "D7"
+		(at 274.32 52.07 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
-		(uuid "fcbce75e-ee81-4923-a1e7-600f5e72ec99")
+		(uuid "f6441807-7991-43bd-a8cf-c570b3e02112")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -4815,7 +4836,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "../../docs/1711039_07_en_03.pdf"
 			(at 17.78 22.86 0)
 			(effects
 				(font
@@ -4897,7 +4918,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.winbond.com/resource-files/w25q32jv%20revg%2003272018%20plus.pdf"
+		(property "Datasheet" "../../docs/w25q32jv revg 03272018 plus.pdf"
 			(at 195.58 88.9 0)
 			(effects
 				(font
@@ -5310,7 +5331,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/0_Datasheets/Humidity/Sensirion_Humidity_Sensors_SHTC3_Datasheet.pdf"
+		(property "Datasheet" "../../docs/Datasheet_SHTC3.pdf"
 			(at 52.07 149.86 0)
 			(effects
 				(font
@@ -5398,7 +5419,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.recom-power.com/pdf/Innoline/R-78Exx-0.5.pdf"
+		(property "Datasheet" "../../docs/R-78E-0.5.pdf"
 			(at 127 34.29 0)
 			(effects
 				(font
@@ -5558,7 +5579,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "../../docs/1711026_07_en_04.pdf"
 			(at 17.78 35.56 0)
 			(effects
 				(font
@@ -5875,7 +5896,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "../../docs/ds_1307819_ampmodu_0911.pdf"
 			(at 248.92 36.83 0)
 			(effects
 				(font
@@ -6144,7 +6165,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/txs0101.pdf"
+		(property "Datasheet" "../../docs/txs0101.pdf"
 			(at 91.44 81.28 0)
 			(effects
 				(font
@@ -6511,7 +6532,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.infineon.com/dgdl/Infineon-IRLML6244-DataSheet-v01_01-EN.pdf?fileId=5546d462533600a4015356686fed261f"
+		(property "Datasheet" "../../docs/Infineon-IRLML6244-DataSheet-v01_01-EN.pdf"
 			(at 132.08 129.54 0)
 			(effects
 				(font
