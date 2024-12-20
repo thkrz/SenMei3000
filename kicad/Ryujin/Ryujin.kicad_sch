@@ -3699,6 +3699,16 @@
 	)
 	(wire
 		(pts
+			(xy 274.32 36.83) (xy 270.51 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7eac31f0-36c7-45ca-8858-6416d8888cc9")
+	)
+	(wire
+		(pts
 			(xy 22.86 38.1) (xy 33.02 38.1)
 		)
 		(stroke
@@ -3776,6 +3786,16 @@
 			(type default)
 		)
 		(uuid "a53ced1c-26d4-4a46-8eed-7c46e0f2e0bd")
+	)
+	(wire
+		(pts
+			(xy 274.32 34.29) (xy 270.51 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5db2009-43f9-4b58-9e6c-fa74e9833ff6")
 	)
 	(wire
 		(pts
@@ -4308,6 +4328,17 @@
 		)
 		(uuid "2f72c00f-3f04-4986-b265-de81368b9c81")
 	)
+	(label "TX"
+		(at 274.32 34.29 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "34c6a2d4-3b42-4040-9fae-ed24be00a5f4")
+	)
 	(label "SDI+"
 		(at 33.02 22.86 0)
 		(fields_autoplaced yes)
@@ -4677,6 +4708,17 @@
 				(justify left)
 			)
 		)
+	)
+	(label "RX"
+		(at 274.32 36.83 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e11fa632-225b-4295-bb4b-b0db7216787b")
 	)
 	(label "A1"
 		(at 66.04 83.82 0)
@@ -6416,7 +6458,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "../../docs/ds_1307819_ampmodu_0911.pdf"
 			(at 265.43 36.83 0)
 			(effects
 				(font
