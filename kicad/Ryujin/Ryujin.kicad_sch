@@ -4,6 +4,12 @@
 	(generator_version "8.0")
 	(uuid "a03941d3-2006-4bae-a82d-663063c77238")
 	(paper "A4")
+	(title_block
+		(title "Ryujin")
+		(date "2024-12-21")
+		(rev "17")
+		(company "Julius-Maximilians-Universität Würzburg")
+	)
 	(lib_symbols
 		(symbol "Conn_01x14_Socket_1"
 			(pin_numbers hide)
@@ -4990,16 +4996,6 @@
 		)
 		(uuid "17a27097-f125-42a2-aa0e-dc009474d7b4")
 	)
-	(text "2024-12-15"
-		(exclude_from_sim no)
-		(at 213.868 193.548 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "2838ea47-b394-4a1d-b770-b58a77c8abde")
-	)
 	(text "VOLTAGE LEVEL-TRANSLATOR"
 		(exclude_from_sim no)
 		(at 114.046 60.452 0)
@@ -5021,16 +5017,6 @@
 			(justify left)
 		)
 		(uuid "48c44e68-7171-4150-9de9-862370ec4b89")
-	)
-	(text "Ryujin"
-		(exclude_from_sim no)
-		(at 189.992 189.738 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "49ab090e-0b71-4525-8ac4-aa17bb46e8a9")
 	)
 	(text "SPI MEMORY"
 		(exclude_from_sim no)
