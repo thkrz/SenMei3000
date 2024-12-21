@@ -77,6 +77,14 @@ bool handshake(char i) {
   return false;
 }
 
+String load() {
+  static String s;
+
+  s = flash.readStr(addr);
+  addr = 0;
+  return s;
+}
+
 String measure(char i) {
   static char st[4] = "aM!";
   static char rd[5] = "aD0!";
@@ -213,6 +221,8 @@ void loop() {
     s += measure(*p);
   disable();
 
+  if (addr > 0)
+    s += load();
   verify();
   if (!post(s))
     dump(s);
