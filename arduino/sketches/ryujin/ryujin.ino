@@ -216,6 +216,10 @@ void loop() {
   float bat0 = battery();
   s += String(bat0) + "\r\n";
 
+  SHTC3.readSample(low_power=true);
+  s += String(SHTC3.getTemperature()) + "\r\n";
+  s += String(SHTC3.getHumidity()) + "\r\n";
+
   enable();
   for (char *p = sid; *p; p++)
     s += measure(*p);
