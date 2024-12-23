@@ -1,16 +1,21 @@
 #include <SDI12.h>
 
+#include "addr.h"
+
 SDI12 socket(1);
-String c = "";
-String r = "";
+char addr = 'A';
+
+String ack() {
+  return "";
+}
+
+String measure() {
+}
 
 void setup() {
+  socket.begin();
 }
 
 void loop() {
-  if (socket.available()) {
-    c += (char)socket.read();
-  } else if (c.length() > 1) {
-
-  }
+  if (socket.available());
 }
