@@ -12,6 +12,7 @@
 		(date "2024-12-22")
 		(rev "1")
 		(comment 1 "TC-10860772")
+		(comment 4 "AISLER Project ID: WSSSHCKQ")
 	)
 	(layers
 		(0 "F.Cu" signal)
