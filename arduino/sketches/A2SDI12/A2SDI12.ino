@@ -4,12 +4,6 @@
 #define CMD_LEN 32
 #define NUM_SEN 6
 
-struct {
-  char addr;
-  int pin;
-  float f(int);
-} Sensor;
-
 SDI12 socket(1);
 char buf[CMD_LEN]
 int len = 0;
@@ -30,6 +24,7 @@ bool rc() {
       break;
     case 'M':
       state = true;
+      r = "0082";
       break;
     case 'D':
       break;
@@ -58,7 +53,7 @@ void loop() {
     if (c == '!') {
       socket.clearBuffer();
       socket.forceHold();
-      if(cmd())
+      if(rc())
         readSamples();
       len = 0;
       socket.forceListen();
