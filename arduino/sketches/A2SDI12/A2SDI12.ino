@@ -12,22 +12,27 @@ char tr[NUM_SEN];
 char buf[CMD_LEN]
 int len = 0;
 
+int index(char a) {
+  for (int i = 0; i < NUM_SEN; i++)
+    if (tr[i] == a)
+      return i;
+  return -1;
+}
+
 void rc() {
   char addr = buf[0];
-  bool valid = false;
-  for (int j = 0; j < NUM_SEN && !valid; j++)
-    valid = tr[j] == addr;
-  if (!valid)
+  int i = index(addr);
+  if (i < 0)
     return;
   String r = "";
-  bool m = false;
+  bool measure = false;
   if (len > 1)
     switch (buf[1]) {
     case 'I':
       r = sen[i].ident();
       break;
     case 'M':
-      m = true;
+      measure = true;
       r = sen[i].measure();
       break;
     case 'D':
@@ -35,13 +40,14 @@ void rc() {
       break;
     case 'A':
       addr = buf[2];
-      msr = addr;
+      tr[i] = addr;
+      EEPROM.write(EE_ADDR+i, addr);
       break;
     }
 
   String s = String(addr) + r + "\r\n";
   socket.sendResponse(s);
-  if (m)
+  if (measure)
     sen[i].readSample();
 }
 
