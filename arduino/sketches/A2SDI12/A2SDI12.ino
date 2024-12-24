@@ -1,4 +1,3 @@
-// https://github.com/EnviroDIY/Arduino-SDI-12/blob/master/examples/h_SDI-12_slave_implementation/h_SDI-12_slave_implementation.ino
 #include <EEPROM.h>
 #include <SDI12.h>
 
@@ -7,14 +6,14 @@
 #define NUM_SEN 6
 
 SDI12 socket(1);
-Sensor sen[NUM_SEN];
-char tr[NUM_SEN];
+Sensor sens[NUM_SEN];
+char tab[NUM_SEN];
 char buf[CMD_LEN]
 int len = 0;
 
 int index(char a) {
   for (int i = 0; i < NUM_SEN; i++)
-    if (tr[i] == a)
+    if (tab[i] == a)
       return i;
   return -1;
 }
@@ -25,37 +24,37 @@ void rc() {
   if (i < 0)
     return;
   String r = "";
-  bool measure = false;
+  bool m = false;
   if (len > 1)
     switch (buf[1]) {
     case 'I':
-      r = sen[i].ident();
+      r = sens[i].ident();
       break;
     case 'M':
-      measure = true;
-      r = sen[i].measure();
+      m = true;
+      r = sens[i].prepare();
       break;
     case 'D':
-      r = sen[i].data();
+      r = sens[i].data(buf[2]);
       break;
     case 'A':
       addr = buf[2];
-      tr[i] = addr;
+      tab[i] = addr;
       EEPROM.write(EE_ADDR+i, addr);
       break;
     }
 
   String s = String(addr) + r + "\r\n";
   socket.sendResponse(s);
-  if (measure)
-    sen[i].readSample();
+  if (m)
+    sens[i].measure();
 }
 
 void setup() {
   for (int i = 0; i < NUM_SEN; i++)
-    tr[i] = EEPROM.read(EE_ADDR+i);
+    tab[i] = EEPROM.read(EE_ADDR+i);
   socket.begin();
-  delay(500);
+  delay(100);
   socket.forceListen();
 }
 
@@ -65,8 +64,10 @@ void loop() {
     if (c == '!') {
       socket.clearBuffer();
       socket.forceHold();
-      rc();
-      len = 0;
+      if (len > 0) {
+        rc();
+        len = 0;
+      }
       socket.forceListen();
     } else if (len < CMD_LEN)
       buf[len++] = c;
