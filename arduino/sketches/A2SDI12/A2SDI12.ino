@@ -8,7 +8,7 @@
 struct Connector {
   char addr;
   bool active;
-  float odd, even;
+  float u[2];
 };
 
 Connector conn[NUM_CON];
@@ -20,27 +20,53 @@ int pin[] = {
   A6, A7, A8, A9, A10, A11
 };
 
+String data(int i) {
+  Connector *c = &conn[i];
+  float a = c->u[0] * 10.0;
+  float b = (c->u[1] - 4.0) * 10.0;
+  String s = "";
+  if (a >= 0)
+    s += "+";
+  s += String(a);
+  if (b >= 0)
+    s += "+";
+  s += String(b);
+  return s;
+}
+
 int index(char a) {
   for (int i = 0; i < NUM_SEN; i++)
-    if (conn[i].active && conn[i].addr == a)
+    if (conn[i].addr == a)
       return i;
   return -1;
 }
 
+bool isactive(int i) {
+  int j = i * 2;
+  pinMode(pin[j], INPUT_PULLUP);
+  delay(10);
+  conn[i].active = analogRead(pin[j]) > 0;
+  pinMode(pin[j], INPUT);
+  return conn[i].active;
+}
+
 void measure(int i) {
+  Connector *c = &conn[i];
   int k = i * 2;
   for (int j = 0; j < 3; j++) {
-    conn[i].even += analogRead(pin[k]);
-    conn[i].odd += analogRead(pin[k+1]);
+    c->u[0] += analogRead(pin[k]);
+    c->u[1] += analogRead(pin[k+1]);
   }
-  conn[i].even /= 3.0;
-  conn[i].odd /= 3.0;
+  c->u[0] *= 0.001629;
+  c->u[1] *= 0.001629;
 }
 
 void rc() {
   char addr = buf[0];
   int i = index(addr);
-  if (i < 0)
+  if (i < 0 ||
+    (len == 1 && !isactive(i)) ||
+    !conn[i].active)
     return;
   String r = "";
   bool m = false;
@@ -70,14 +96,8 @@ void rc() {
 }
 
 void setup() {
-  for (int i = 0; i < NUM_CON; i++) {
-    int j = i * 2;
-    pinMode(pin[j], INPUT_PULLUP);
-    conn[i].active = analogRead(pin[j]) > 0;
-    pinMode(pin[j], INPUT);
-    if (active)
-      conn[i].addr = EEPROM.read(EE_ADDR+i);
-  }
+  for (int i = 0; i < NUM_CON; i++)
+    conn[i].addr = EEPROM.read(EE_ADDR+i);
   socket.begin();
   delay(100);
   socket.forceListen();
