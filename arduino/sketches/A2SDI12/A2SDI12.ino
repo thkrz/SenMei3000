@@ -22,7 +22,15 @@ int pin[] = {
 float map[](float) = {
   smt100moist,
   smt100temp
-}; 
+};
+
+void chkactive(int i) {
+  int j = i * 2;
+  pinMode(pin[j], INPUT_PULLUP);
+  delay(10);
+  conn[i].active = analogRead(pin[j]) > 0;
+  pinMode(pin[j], INPUT);
+} 
 
 String data(int i) {
   Connector *c = &conn[i];
@@ -43,15 +51,6 @@ int index(char a) {
   return -1;
 }
 
-bool isactive(int i) {
-  int j = i * 2;
-  pinMode(pin[j], INPUT_PULLUP);
-  delay(10);
-  conn[i].active = analogRead(pin[j]) > 0;
-  pinMode(pin[j], INPUT);
-  return conn[i].active;
-}
-
 void measure(int i) {
   Connector *c = &conn[i];
   int k = i * 2;
@@ -66,9 +65,11 @@ void measure(int i) {
 void rc() {
   char addr = buf[0];
   int i = index(addr);
-  if (i < 0 ||
-    (len == 1 && !isactive(i)) ||
-    !conn[i].active)
+  if (i < 0)
+    return;
+  if (len == 1)
+    chkactive();
+  if (!conn[i].active)
     return;
   String r = "";
   bool m = false;
