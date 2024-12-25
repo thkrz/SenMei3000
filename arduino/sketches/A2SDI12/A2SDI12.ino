@@ -68,7 +68,7 @@ void rc() {
   if (i < 0)
     return;
   if (len == 1)
-    chkactive();
+    chkactive(i);
   if (!conn[i].active)
     return;
   String r = "";
