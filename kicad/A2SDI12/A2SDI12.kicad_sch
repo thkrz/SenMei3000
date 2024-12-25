@@ -2070,16 +2070,6 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 49.53) (xy 130.81 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4caf93fa-06be-4b05-9b4f-2760ba7ea29d")
-	)
-	(wire
-		(pts
 			(xy 220.98 80.01) (xy 238.76 80.01)
 		)
 		(stroke
@@ -2117,16 +2107,6 @@
 			(type default)
 		)
 		(uuid "5e40e89b-90cc-4b13-af8b-b34b0ad926fd")
-	)
-	(wire
-		(pts
-			(xy 181.61 52.07) (xy 186.69 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5ee9486b-1fc5-4cd9-976f-0c0ccfeb2ab2")
 	)
 	(wire
 		(pts
@@ -2590,16 +2570,6 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 72.39) (xy 186.69 72.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e6334ac0-4209-4cb1-8bc6-78a83787c3a9")
-	)
-	(wire
-		(pts
 			(xy 204.47 77.47) (xy 208.28 77.47)
 		)
 		(stroke
@@ -2617,6 +2587,16 @@
 			(type default)
 		)
 		(uuid "ed5e3d91-12f3-4f84-a487-cbc92934869b")
+	)
+	(wire
+		(pts
+			(xy 181.61 72.39) (xy 186.69 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eda1b18d-c061-438b-bd8b-5dacb9a6af10")
 	)
 	(wire
 		(pts
@@ -2796,9 +2776,9 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "333b8aea-9186-4023-9058-19c348284fe8")
+		(uuid "2663b68e-4101-4bef-a183-4e64596d3407")
 	)
-	(label "D0"
+	(label "D7"
 		(at 165.1 113.03 0)
 		(fields_autoplaced yes)
 		(effects
@@ -2841,17 +2821,6 @@
 			(justify left bottom)
 		)
 		(uuid "47ba6bcb-0eac-40e1-ab74-6012ea36ac86")
-	)
-	(label "D0"
-		(at 121.92 49.53 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4a3084a8-e29b-4c53-ad52-9b2fd1a8f346")
 	)
 	(label "GND"
 		(at 29.21 22.86 0)
@@ -2995,17 +2964,6 @@
 			(justify left bottom)
 		)
 		(uuid "71105d11-012e-455f-839e-31ee8dee043f")
-	)
-	(label "D5"
-		(at 186.69 52.07 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "75c5d327-4f21-4300-990f-ad9783261905")
 	)
 	(label "3V3"
 		(at 204.47 82.55 0)
@@ -4131,7 +4089,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm"
+		(property "Footprint" "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx"
 			(at 151.13 107.95 0)
 			(effects
 				(font
