@@ -19,18 +19,20 @@ int pin[] = {
   A0, A1, A2, A3, A4, A5,
   A6, A7, A8, A9, A10, A11
 };
+float map[](float) = {
+  smt100moist,
+  smt100temp
+}; 
 
 String data(int i) {
   Connector *c = &conn[i];
-  float a = c->u[0] * 10.0;
-  float b = (c->u[1] - 4.0) * 10.0;
   String s = "";
-  if (a >= 0)
-    s += "+";
-  s += String(a);
-  if (b >= 0)
-    s += "+";
-  s += String(b);
+  for (int j = 0; j < 2; j++) {
+    float a = map[j](c->u[j]);
+    if (a >= 0)
+      s += "+";
+    s += String(a);
+  }
   return s;
 }
 
