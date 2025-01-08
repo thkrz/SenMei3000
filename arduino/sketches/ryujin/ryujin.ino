@@ -153,6 +153,8 @@ bool post(String s) {
 
 void schedule() {
   uint8_t m = (rtc.getMinutes() / MIVL + 1) * MIVL;
+  if (m == 60)
+    m = 0;
   rtc.setAlarmMinutes(m);
 }
 
