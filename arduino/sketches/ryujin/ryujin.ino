@@ -52,7 +52,7 @@ void disable() {
 
 void dump(String s) {
   flash.writeStr(addr, s);
-  addr += s.length() + 1;
+  addr += s.length();
 }
 
 void enable() {
