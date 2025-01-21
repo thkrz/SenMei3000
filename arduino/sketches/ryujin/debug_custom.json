@@ -1,0 +1,11 @@
+[
+  {
+    "configId": "arduino:samd:mkrnb1500:programmer=jlink",
+    "server": "jlink",
+    "servertype": "jlink",
+    "device": "ATSAMD21G18",
+    "interface": "SWD",
+    "serverPath": "/opt/SEGGER/JLink/JLinkGDBServer",
+    "serverpath": "/opt/SEGGER/JLink/JLinkGDBServer"
+  }
+]
