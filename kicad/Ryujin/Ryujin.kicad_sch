@@ -6019,6 +6019,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "FTSH-105-01-L-D"
+			(at 218.44 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "10"
 			(uuid "d011661d-04ed-4479-9a55-4dbeb16390ad")
 		)
