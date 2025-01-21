@@ -2933,17 +2933,6 @@
 		)
 		(uuid "b30bb467-8a7a-49c4-ae7d-2249a8ae008c")
 	)
-	(label "5V"
-		(at 74.93 134.62 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b96c6af1-b43c-49d6-ad34-2d416020d617")
-	)
 	(label "VIN"
 		(at 204.47 77.47 0)
 		(fields_autoplaced yes)
