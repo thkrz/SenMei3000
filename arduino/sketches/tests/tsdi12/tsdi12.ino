@@ -1,36 +1,44 @@
 #include <SDI12.h>
 #include <SPI.h>
 
-#define DATA_PIN 3
-
-SDI12 socket(DATA_PIN);
+SDI12 socket(1);
 char sid[63];
+
+void blink(int n) {
+  for(int i = 0; i < n; i++) {
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(1000);
+  }
+}
+
+void disable() {
+  socket.end();
+  digitalWrite(0, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
+}
+
+void enable() {
+  digitalWrite(LED_BUILTIN, HIGH);
+  digitalWrite(0, HIGH);
+  socket.begin();
+  delay(500);
+}
 
 bool handshake(char i) {
   static char cmd[3] = "0!";
 
   cmd[0] = i;
-  Serial.println(cmd);
   for (int j = 0; j < 3; j++) {
     socket.sendCommand(cmd);
     socket.clearBuffer();
     delay(30);
-    if (socket.available()) {
+    if (socket.available())
       return true;
-    }
   }
   socket.clearBuffer();
   return false;
-}
-
-void info(char i) {
-  static char st[4] = "aI!";
-  socket.clearBuffer();
-  st[0] = i;
-  socket.sendCommand(st);
-  delay(380);
-  String s = socket.readStringUntil('\n');
-  Serial.println(s);
 }
 
 String measure(char i) {
@@ -39,13 +47,12 @@ String measure(char i) {
   static String s;
 
   socket.clearBuffer();
+  delay(10);
   st[0] = i;
   socket.sendCommand(st);
-  delay(380);
+  delay(30);
   s = socket.readStringUntil('\n');
-  // s.trim();
   uint8_t wait = s.substring(1, 4).toInt();
-  // int num = r.substring(4).toInt();
 
   for (int j = 0; j < wait; j++) {
     if (socket.available()) {
@@ -63,9 +70,6 @@ String measure(char i) {
 }
 
 void scan() {
-  Serial.println("Search...");
-  socket.begin();
-  delay(500);
   int n = 0;
   for (char c = '0'; c <= '9'; c++) {
     if (handshake(c))
@@ -79,33 +83,31 @@ void scan() {
     if (handshake(c))
       sid[n++] = c;
   }
-  socket.end();
   sid[n] = '\0';
-  Serial.print("Devices: ");
-  Serial.println(sid);
 }
 
 void setup() {
-  Serial.begin(9600);
-  while (!Serial)
-    ;
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(0, OUTPUT);
+  pinMode(1, INPUT);
+  for (int i = 2; i < 8; i++)
+    pinMode(i, INPUT_PULLUP);
 
-  pinMode(DATA_PIN, INPUT);
+  enable();
   scan();
+  disable();
+
+  if (sid[0] == '\0')
+    blink(1000);
 }
 
 void loop() {
-    delay(5000);
-
-    String s = "";
-
-    socket.begin();
-    delay(500);
-    for (char *p = sid; *p; p++) {
-      s += measure(*p);
-    }
-    socket.end();
-
-    Serial.print(s);
+  delay(5000);
+  String s = "";
+  enable();
+  for (char *p = sid; *p; p++)
+    s += measure(*p);
+  disable();
+  if (s.length() > 3)
+    blink(4);
 }
-
