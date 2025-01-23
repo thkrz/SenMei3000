@@ -4306,7 +4306,7 @@
 	)
 	(text "MOSFET"
 		(exclude_from_sim no)
-		(at 200.152 76.454 0)
+		(at 196.596 74.422 0)
 		(effects
 			(font
 				(size 1.27 1.27)

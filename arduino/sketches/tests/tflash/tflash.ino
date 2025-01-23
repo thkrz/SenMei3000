@@ -1,34 +1,27 @@
 #include <SPIMemory.h>
 
-SPIFlash flash;
+SPIFlash flash(SS1, &SPI1);
 uint32_t addr;
 
 void dump(String s) {
 
 }
 
-void blink(int n) {
+void blink(int n, uint32_t wait) {
   for (int i = 0; i < n; i++) {
     digitalWrite(LED_BUILTIN, HIGH);
-    delay(1000);
+    delay(wait);
     digitalWrite(LED_BUILTIN, LOW);
-    delay(1000);
+    delay(wait);
   }
 }
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-
-  blink(2);
   delay(1000);
-  flash.begin();
-  blink(4);
-  delay(1000);
+  if(!flash.begin())
+    blink(10000, 200);
 
-  addr = 0;
-  String s = "Hello World!\n";
-  if(flash.writeStr(addr, s))
-    blink(5);
 
   //addr = flash.sizeofStr(s);
   //blink(addr);
@@ -53,4 +46,5 @@ void setup() {
 }
 
 void loop() {
+  blink(1, 1000);
 }
