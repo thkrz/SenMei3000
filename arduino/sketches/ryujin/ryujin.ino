@@ -9,14 +9,23 @@
 #include "config.h"
 #include "global.h"
 
+#define CS_PIN  7
+#define DBG_PIN 5
+#define FET_PIN 0
+#define MUX_PIN 1
+#define BUS_PIN 2
+
+#define LP_MODE 11.6
+
 GPRS gprs;
 NBClient client;
 NB nbAccess;
 RTCZero rtc;
-SDI12 socket(1);
+SDI12 socket(BUS_PIN);
 SPIFlash flash;
 char sid[63];
 uint32_t addr = 0;
+bool low_power = false;
 
 float battery() {
   int p = analogRead(A1);
@@ -35,18 +44,16 @@ void connect() {
   }
 }
 
-void die() {
-  for(;;) {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(1000);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(1000);
-  }
+void debug() {
+  Serial.begin(9600);
+  while (!Serial);
+
+  Serial.println("DEBUG");
 }
 
 void disable() {
   socket.end();
-  digitalWrite(0, LOW);
+  digitalWrite(FET_PIN, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 }
 
@@ -57,7 +64,7 @@ void dump(String s) {
 
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
-  digitalWrite(0, HIGH);
+  digitalWrite(FET_PIN, HIGH);
   socket.begin();
   delay(500);
 }
@@ -77,11 +84,20 @@ bool handshake(char i) {
   return false;
 }
 
+void idle() {
+  for(;;) {
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(1000);
+  }
+}
+
 String load() {
   static String s;
 
-  s = flash.readStr(addr);
-  addr = 0;
+  if (flash.readStr(addr, s))
+    addr = 0;
   return s;
 }
 
@@ -177,17 +193,20 @@ void verify() {
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(0, OUTPUT);
-  pinMode(1, INPUT);
-  for (int i = 2; i < 8; i++)
-    pinMode(i, INPUT_PULLUP);
+  pinMode(FET_PIN, OUTPUT);
+  pinMode(MUX_PIN, OUTPUT);
+
+  if (digitalRead(DBG_PIN) == HIGH)
+    debug();
 
   enable();
   scan();
   disable();
 
   if (sid[0] == '\0')
-    die();
+    idle();
+
+  flash.begin(CS_PIN);
 
   Wire.begin();
   SHTC3.begin();
@@ -218,7 +237,9 @@ void loop() {
   float bat0 = battery();
   s += String(bat0) + "\r\n";
 
-  SHTC3.readSample(low_power=true);
+  low_power = bat0 < LP_MODE;
+
+  SHTC3.readSample();
   s += String(SHTC3.getTemperature()) + "\r\n";
   s += String(SHTC3.getHumidity()) + "\r\n";
 
