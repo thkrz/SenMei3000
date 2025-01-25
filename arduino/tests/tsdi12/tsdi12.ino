@@ -1,17 +1,8 @@
 #include <SDI12.h>
 #include <SPI.h>
 
-SDI12 socket(1);
+SDI12 socket(2);
 char sid[63];
-
-void blink(int n) {
-  for(int i = 0; i < n; i++) {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(1000);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(1000);
-  }
-}
 
 void disable() {
   socket.end();
@@ -88,26 +79,29 @@ void scan() {
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(0, OUTPUT);
-  pinMode(1, INPUT);
-  for (int i = 2; i < 8; i++)
-    pinMode(i, INPUT_PULLUP);
+  pinMode(0, OUTPUT); // MOSFET
+  pinMode(1, OUTPUT); // MUX
+  pinMode(2, INPUT);
 
   enable();
   scan();
   disable();
 
-  if (sid[0] == '\0')
-    blink(1000);
+  Serial.begin(9600);
+  while (!Serial);
+
+  Serial.print("Devices: ");
+  Serial.println(sid);
 }
 
 void loop() {
-  delay(5000);
+  delay(15000);
+
   String s = "";
   enable();
   for (char *p = sid; *p; p++)
     s += measure(*p);
   disable();
-  if (s.length() > 3)
-    blink(4);
+
+  Serial.println(s);
 }

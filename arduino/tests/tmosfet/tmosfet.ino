@@ -17,5 +17,5 @@ void loop() {
   enable();
   delay(10000);
   disable();
-  delay(5000);
+  delay(10000);
 }
