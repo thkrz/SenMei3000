@@ -7,13 +7,13 @@
 #define EE_ADDR 0
 #define NUM_CON 6
 
-struct MKDS {
+struct Term {
   char addr;
   bool active;
   float u[2];
 };
 
-MKDS mkds[NUM_CON];
+Term term[NUM_CON];
 SDI12 socket(13);
 char buf[CMD_LEN];
 int len = 0;
@@ -26,20 +26,20 @@ void chkactive(int i) {
   int j = i * 2;
   pinMode(pin[j], INPUT_PULLUP);
   delay(10);
-  mkds[i].active = analogRead(pin[j]) > 0;
-  if (mkds[i].active)
+  term[i].active = analogRead(pin[j]) > 0;
+  if (term[i].active)
     pinMode(pin[j], INPUT);
 }
 
 String data(int i) {
   static String s;
 
-  MKDS *c = &mkds[i];
+  Term *c = &term[i];
   s = "";
   for (int j = 0; j < 2; j++) {
     float a = tr[j](c->u[j]);
     if (a >= 0)
-      s += "+";
+      s += '+';
     s += String(a);
   }
   return s;
@@ -47,13 +47,13 @@ String data(int i) {
 
 int index(char a) {
   for (int i = 0; i < NUM_CON; i++)
-    if (mkds[i].addr == a)
+    if (term[i].addr == a)
       return i;
   return -1;
 }
 
 void measure(int i) {
-  MKDS *c = &mkds[i];
+  Term *c = &term[i];
   int k = i * 2;
   for (int j = 0; j < 3; j++) {
     c->u[0] += analogRead(pin[k]);
@@ -70,7 +70,7 @@ void rc() {
     return;
   if (len == 1)
     chkactive(i);
-  if (!mkds[i].active)
+  if (!term[i].active)
     return;
   String r = "";
   bool m = false;
@@ -88,7 +88,7 @@ void rc() {
       break;
     case 'A':
       addr = buf[2];
-      mkds[i].addr = addr;
+      term[i].addr = addr;
       EEPROM.write(EE_ADDR+i, addr);
       break;
     }
@@ -102,20 +102,11 @@ void rc() {
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   for (int i = 0; i < NUM_CON; i++)
-    mkds[i].addr = EEPROM.read(EE_ADDR+i);
+    term[i].addr = EEPROM.read(EE_ADDR+i);
   socket.begin();
   delay(100);
   socket.forceListen();
 }
-
-void blink(bool fast) {
-  uint32_t wait = fast ? 200 : 1000;
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(wait);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(wait);
-}
-
 
 void loop() {
   if (socket.available()) {
