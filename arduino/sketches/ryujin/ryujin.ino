@@ -15,7 +15,7 @@
 #define MUX_PIN 1
 #define BUS_PIN 2
 
-#define LP_MODE 11.6
+#define BAT_LOW 11.6
 
 GPRS gprs;
 NBClient client;
@@ -25,7 +25,6 @@ SDI12 socket(BUS_PIN);
 SPIFlash flash;
 char sid[63];
 uint32_t addr = 0;
-bool low_power = false;
 
 float battery() {
   int p = analogRead(A1);
@@ -237,9 +236,9 @@ void loop() {
   float bat0 = battery();
   s += String(bat0) + "\r\n";
 
-  low_power = bat0 < LP_MODE;
+  bool pm = bat0 < BAT_LOW;
 
-  SHTC3.readSample();
+  SHTC3.readSample(low_power=pm);
   s += String(SHTC3.getTemperature()) + "\r\n";
   s += String(SHTC3.getHumidity()) + "\r\n";
 
@@ -248,12 +247,18 @@ void loop() {
     s += measure(*p);
   disable();
 
-  if (addr > 0)
-    s += load();
-  verify();
-  if (!post(s))
+  if (pm) {
+    nbAccess.shutdown();
     dump(s);
+  } else {
+    if (addr > 0)
+      s += load();
+    verify();
+    if (!post(s))
+      dump(s);
+  }
 
-  schedule();
+  if (!pm)
+    schedule();
   rtc.standbyMode();
 }

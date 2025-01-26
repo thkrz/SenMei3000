@@ -25,13 +25,15 @@ def lex(s):
 
 def parse(s):
     tok = s.split()
-    dat = tok[0]
+    dt = tok[0].strip()
     bat = float(tok[1])
+    temp = float(tok[2])
+    rh = float(tok[3])
     rd = {}
-    for sen in tok[2:]:
+    for sen in tok[4:]:
         i, d = lex(sen)
         rd[i] = d
-    return {"date": dat, "battery": bat, "readings": rd}
+    return {"DATE": dt, "BAT": bat, "TEMP": temp, "RH": rh, "RD": rd}
 
 
 async def station(request):
