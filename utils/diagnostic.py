@@ -6,6 +6,8 @@ com = serial.Serial(port)
 
 
 def loop():
+    cmd = input("RYUJIN> ")
+    com.write(cmd.encode())
     s = com.readline()
     print(s)
 
