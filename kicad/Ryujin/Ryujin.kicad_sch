@@ -3882,6 +3882,12 @@
 		(uuid "ca3391b1-57c8-4a51-bc37-a9964f699412")
 	)
 	(junction
+		(at 21.59 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cabe71d6-88ec-4df7-960d-c4e679657c1f")
+	)
+	(junction
 		(at 201.93 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4295,7 +4301,7 @@
 	)
 	(wire
 		(pts
-			(xy 17.78 175.26) (xy 27.94 175.26)
+			(xy 17.78 175.26) (xy 21.59 175.26)
 		)
 		(stroke
 			(width 0)
@@ -4395,6 +4401,16 @@
 	)
 	(wire
 		(pts
+			(xy 21.59 170.18) (xy 21.59 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7985871a-7e2a-4a9f-b276-5d54dd76bad2")
+	)
+	(wire
+		(pts
 			(xy 201.93 66.04) (xy 204.47 66.04)
 		)
 		(stroke
@@ -4462,6 +4478,16 @@
 			(type default)
 		)
 		(uuid "90361496-2803-4975-8fdc-5b22d5ef5507")
+	)
+	(wire
+		(pts
+			(xy 21.59 175.26) (xy 27.94 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9430faca-15c7-406a-a38d-73c8aff21088")
 	)
 	(wire
 		(pts
@@ -5144,16 +5170,6 @@
 			(justify right bottom)
 		)
 		(uuid "55187cff-1586-453b-9ffa-7b7e1de97e40")
-	)
-	(label "+12V"
-		(at 21.59 170.18 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "55723fbc-d6c5-4206-b4fc-810c0260173a")
 	)
 	(label "D1"
 		(at 157.48 106.68 0)
