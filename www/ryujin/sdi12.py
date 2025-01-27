@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 
 
 def _num(s):
@@ -19,19 +20,30 @@ def _lex(s):
     return idx, n
 
 
-class Data:
-    def load(self, name):
-        with open(name) as f:
-            return self.loads(f.read())
+def load(name):
+    with open(name) as f:
+        return loads(f.read())
 
-    def loads(self, s):
-        tok = s.split()
-        dt = tok[0]
-        bat = float(tok[1])
-        temp = float(tok[2])
-        rh = float(tok[3])
+
+def loads(s):
+    tok = s.splitlines()
+    rds = []
+    eof = False
+    i = 0
+    while i < len(tok) - 4 and not eof:
+        dt = datetime.fromisoformat(tok[i])
+        bat = float(tok[i + 1])
+        temp = float(tok[i + 2])
+        rh = float(tok[i + 3])
         rd = {}
-        for sen in tok[4:]:
-            i, d = _lex(sen)
-            rd[i] = d
-        return {"DATE": dt, "BAT": bat, "TEMP": temp, "RH": rh, "MEAS": rd}
+        eof = True
+        i += 4
+        for sen in tok[i:]:
+            i += 1
+            if not sen:
+                eof = False
+                break
+            j, d = _lex(sen)
+            rd[j] = d
+        rds.append({"DATE": dt, "BAT": bat, "TEMP": temp, "RH": rh, "DATA": rd})
+    return rds

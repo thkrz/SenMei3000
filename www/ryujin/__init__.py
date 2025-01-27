@@ -11,6 +11,8 @@ async def station(request):
     if request.method == "POST":
         b = await request.body()
         o = sdi12.loads(b.decode("utf-8"))
+        print(sid)
+        print(o)
         return PlainTextResponse("data inserted\r\n", status_code=201)
     return JSONResponse({"Hello": "World!"})
 
