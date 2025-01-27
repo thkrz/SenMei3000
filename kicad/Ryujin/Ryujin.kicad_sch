@@ -2140,6 +2140,203 @@
 				)
 			)
 		)
+		(symbol "Connector_Generic:Conn_02x02_Odd_Even"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 1.27 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_02x02_Odd_Even"
+				(at 1.27 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, double row, 02x02, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_2x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_02x02_Odd_Even_1_1"
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 1.27)
+					(end 3.81 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start 3.81 -2.413)
+					(end 2.54 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 0.127)
+					(end 2.54 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -2.54 180)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:C"
 			(pin_numbers hide)
 			(pin_names
@@ -2923,179 +3120,6 @@
 						)
 					)
 					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "Switch:SW_SPDT_312"
-			(pin_names
-				(offset 1) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "SW"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SW_SPDT_312"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Switch, single pole double throw"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "changeover single-pole double-throw spdt ON-ON"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SW_SPDT_312_0_1"
-				(circle
-					(center -2.032 0)
-					(radius 0.4572)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.651 0.254) (xy 1.651 2.286)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 -2.54)
-					(radius 0.4572)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 2.54)
-					(radius 0.4572)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SW_SPDT_312_1_1"
-				(rectangle
-					(start -3.175 3.81)
-					(end 3.175 -3.81)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -2.54 180)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 2.54 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3924,6 +3948,12 @@
 		(uuid "f8c73cae-b3d1-4fba-9c44-b5f177790ae4")
 	)
 	(junction
+		(at 43.18 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fd273c22-b534-4d48-8178-415ef7288e22")
+	)
+	(junction
 		(at 173.99 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4021,6 +4051,16 @@
 	)
 	(wire
 		(pts
+			(xy 43.18 27.94) (xy 43.18 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "152a8266-7f5b-421b-8bb9-aa7d1041f1a9")
+	)
+	(wire
+		(pts
 			(xy 104.14 105.41) (xy 104.14 102.87)
 		)
 		(stroke
@@ -4041,7 +4081,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 26.67) (xy 43.18 26.67)
+			(xy 43.18 30.48) (xy 49.53 30.48)
 		)
 		(stroke
 			(width 0)
@@ -4521,7 +4561,7 @@
 	)
 	(wire
 		(pts
-			(xy 16.51 29.21) (xy 26.67 29.21)
+			(xy 20.32 30.48) (xy 30.48 30.48)
 		)
 		(stroke
 			(width 0)
@@ -4881,7 +4921,7 @@
 	)
 	(wire
 		(pts
-			(xy 16.51 24.13) (xy 26.67 24.13)
+			(xy 20.32 27.94) (xy 30.48 27.94)
 		)
 		(stroke
 			(width 0)
@@ -5221,6 +5261,16 @@
 		)
 		(uuid "69640998-9550-4e2a-b266-6b8123af5b04")
 	)
+	(label "GND"
+		(at 20.32 27.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6c2d1958-40fc-40ab-8259-4b3ae68705bd")
+	)
 	(label "COPI"
 		(at 274.32 49.53 180)
 		(effects
@@ -5372,14 +5422,14 @@
 		(uuid "b7b21dbb-7aeb-41bc-a98a-031da36a8493")
 	)
 	(label "3V3"
-		(at 16.51 24.13 0)
+		(at 20.32 30.48 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "b9149857-ab9c-43c2-bff6-ace22e842fa4")
+		(uuid "b9e31e23-e28a-46d8-b981-c941d725d007")
 	)
 	(label "GND"
 		(at 73.66 144.78 0)
@@ -5442,7 +5492,7 @@
 		(uuid "d21cfae8-1cc2-42ee-ae1d-fd249361c836")
 	)
 	(label "D5"
-		(at 43.18 26.67 0)
+		(at 49.53 30.48 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5541,44 +5591,34 @@
 		)
 		(uuid "f6441807-7991-43bd-a8cf-c570b3e02112")
 	)
-	(label "GND"
-		(at 16.51 29.21 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f93b9df6-51b3-4993-8dd2-b604175a9e87")
-	)
 	(symbol
-		(lib_id "Switch:SW_SPDT_312")
-		(at 31.75 26.67 180)
+		(lib_id "Connector_Generic:Conn_02x02_Odd_Even")
+		(at 35.56 27.94 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "2ab4528a-ca32-4bf0-bdbb-d66f081d5b1c")
-		(property "Reference" "SW1"
-			(at 31.75 17.78 0)
+		(uuid "02b5a0a0-ea23-4b16-83d8-08c641de795c")
+		(property "Reference" "J2"
+			(at 36.83 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SW_SPDT_312"
-			(at 31.75 20.32 0)
+		(property "Value" "Conn_02x02_Odd_Even"
+			(at 36.83 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:SWITCH_NK236_APM"
-			(at 31.75 16.51 0)
+		(property "Footprint" "footprints:HDRV4W85P254_2X2_508X500X970P"
+			(at 35.56 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5587,7 +5627,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 31.75 19.05 0)
+			(at 35.56 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5595,8 +5635,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Switch, single pole double throw"
-			(at 31.75 26.67 0)
+		(property "Description" "Generic connector, double row, 02x02, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 35.56 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5604,28 +5644,31 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "NK236"
-			(at 31.75 26.67 0)
+		(property "MPN" "826632-2"
+			(at 35.56 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(pin "2"
-			(uuid "34a075a9-fc21-4e44-b9a1-15670d4643a5")
 		)
 		(pin "3"
-			(uuid "44f2812d-9e5f-47f5-9925-25c9d31559a5")
+			(uuid "03464eb8-bd5f-4817-817d-74022a2f46e1")
+		)
+		(pin "4"
+			(uuid "8eacccad-71c4-415f-b455-b72ea77417fa")
 		)
 		(pin "1"
-			(uuid "142eddc5-aaeb-4a18-a252-5707fea098cd")
+			(uuid "e9d4cc45-3128-43f0-a4d1-f852dc7e1a58")
+		)
+		(pin "2"
+			(uuid "d1d16bad-ebb2-4ffc-832d-89657847e691")
 		)
 		(instances
 			(project ""
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "SW1")
+					(reference "J2")
 					(unit 1)
 				)
 			)
