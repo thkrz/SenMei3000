@@ -3,21 +3,26 @@ from starlette.applications import Starlette
 from starlette.responses import PlainTextResponse, JSONResponse
 from starlette.routing import Route
 
-from . import sdi12
+from . import db
 
 
 async def station(request):
     sid = request.path_params["sid"]
     if request.method == "POST":
         b = await request.body()
-        o = sdi12.loads(b.decode("utf-8"))
-        print(sid)
-        print(o)
+        db.insert(sid, b.decode("utf-8"))
         return PlainTextResponse("data inserted\r\n", status_code=201)
-    return JSONResponse({"Hello": "World!"})
+    return JSONResponse(db.select(sid))
 
 
-routes = [Route("/station/{sid}", station, methods=["GET", "POST"])]
+async def station_list(request):
+    return JSONResponse(db.list())
+
+
+routes = [
+    Route("/station/{sid}", station, methods=["GET", "POST"]),
+    Route("/station", station_list, methods=["GET"]),
+]
 app = Starlette(routes=routes)
 
 if __name__ == "__main__":

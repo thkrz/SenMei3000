@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <script type="text/javascript" src="js/leaflet.js"></script>
+
+    <link rel="stylesheet" href="css/dygraph.css" />
+    <script type="text/javascript" src="js/dygraph.min.js"></script>
+
+    <link rel="stylesheet" href="css/main.css" />
+    <title>RYUJIN</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="search" class="shadow">
+      <input id="station" class="searchbox" placeholder="Search stations" />
+      <span class="material-icons right">search</span>
+      <div id="search-results">Hello</div>
+    </div>
+    <div class="wnd shadow">
+      <div>
+        <h1 id="sid">Station</h1>
+        <span class="material-icons right">close</span>
+        <p>COMMENT</p>
+      </div>
+      <h2>Health</h2>
+      <div class="content">
+        <div class="grd">
+          <div id="m1"></div>
+          <div id="m2"></div>
+        </div>
+      </div>
+      <h2>Readings</h2>
+      <div class="content scroll">
+        <div>Download</div>
+        <div class="grd">
+          <div id="g1"></div>
+          <div id="g2"></div>
+          <div id="g3"></div>
+          <div id="g4"></div>
+        </div>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
