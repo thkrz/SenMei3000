@@ -3,6 +3,10 @@ from starlette.applications import Starlette
 from starlette.responses import PlainTextResponse, JSONResponse
 from starlette.routing import Route
 
+# DEBUG
+from starlette.routing import Mount
+from starlette.staticfiles import StaticFiles
+
 from . import db
 
 
@@ -22,6 +26,8 @@ async def station_list(request):
 routes = [
     Route("/station/{sid}", station, methods=["GET", "POST"]),
     Route("/station", station_list, methods=["GET"]),
+    # DEBUG
+    Mount("/", app=StaticFiles(directory="html", html=True), name="static"),
 ]
 app = Starlette(routes=routes)
 

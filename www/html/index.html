@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
@@ -20,31 +20,61 @@
     <div id="map"></div>
     <div id="search" class="shadow">
       <input id="station" class="searchbox" placeholder="Search stations" />
-      <span class="material-icons right">search</span>
-      <div id="search-results">Hello</div>
+      <span class="material-icons" style="vertical-align: middle">search</span>
+      <ul id="search-results" class="scroll"></ul>
     </div>
-    <div class="wnd shadow">
-      <div>
-        <h1 id="sid">Station</h1>
-        <span class="material-icons right">close</span>
-        <p>COMMENT</p>
-      </div>
-      <h2>Health</h2>
-      <div class="content">
-        <div class="grd">
-          <div id="m1"></div>
-          <div id="m2"></div>
-        </div>
-      </div>
-      <h2>Readings</h2>
+    <div id="dform" class="wnd shadow">
+      <div id="sid">1<span class="material-icons quit" onclick="wnd_close()">close</span></div>
       <div class="content scroll">
-        <div>Download</div>
-        <div class="grd">
-          <div id="g1"></div>
-          <div id="g2"></div>
-          <div id="g3"></div>
-          <div id="g4"></div>
-        </div>
+        <details>
+          <summary>Station</summary>
+          <form class="uc">
+            <label>Name:&nbsp;<input name="name" /></label>
+            <label>X:&nbsp;<input name="name" /></label>
+            <label>Y:&nbsp;<input name="name" /></label>
+            <label>Comment:&nbsp;<input name="name" type="textarea" /></label
+            ><br />
+            <label
+              >Sensor:&nbsp;
+              <select name="sensors">
+                <option>a</option>
+                <option>0</option>
+                <option>Z</option>
+              </select> </label
+            ><br />
+            <ol>
+              <li>
+                <label>Value:&nbsp;<input /></label>
+                <label>Unit:&nbsp;<input /></label>
+                <label>Label:&nbsp;<input /></label>
+              </li>
+              <li>
+                <label>Value:&nbsp;<input /></label>
+                <label>Unit:&nbsp;<input /></label>
+                <label>Label:&nbsp;<input /></label>
+              </li>
+            </ol>
+            <button type="submit">Submit</button>
+          </form>
+        </details>
+        <details>
+          <summary>Health</summary>
+          <div class="grd">
+            <div id="m1"></div>
+            <div id="m2"></div>
+          </div>
+        </details>
+        <details open>
+          <summary>Readings</summary>
+          <div class="scroll">
+            <div class="grd">
+              <div id="g1"></div>
+              <div id="g2"></div>
+              <div id="g3"></div>
+              <div id="g4"></div>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
     <script src="js/main.js"></script>
