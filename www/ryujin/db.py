@@ -66,7 +66,7 @@ def insert(sid, item):
         }
         schema = {}
         for k in rd[0]["data"].keys():
-            schema[k] = {"measurand": "", "unit": "", "label": ""}
+            schema[k] = {"var": "", "unit": "", "label": ""}
         o["schema"] = schema
     else:
         with open(f) as ifd:
