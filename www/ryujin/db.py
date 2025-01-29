@@ -1,5 +1,6 @@
-import json # alt. ijson
+import json  # alt. ijson
 import re
+from collections import defaultdict
 from pathlib import Path
 
 database = Path("./db/station")
@@ -29,15 +30,13 @@ def _lex(s):
 
 def _parse(s):
     ln = s.splitlines()
-    rd = []
+    t = []
+    s = defaultdict(list)
     eof = False
     i = 0
     while i < len(ln) - 4 and not eof:
-        dt = ln[i]
-        bat = float(ln[i + 1])
-        temp = float(ln[i + 2])
-        rh = float(ln[i + 3])
-        data = {}
+        t.append(ln[i])
+        s["#"].append([float(ln[i + k] for k in range(1, 4))])
         eof = True
         i += 4
         for sen in ln[i:]:
@@ -46,14 +45,13 @@ def _parse(s):
                 eof = False
                 break
             j, d = _lex(sen)
-            data[j] = d
-        rd.append({"date": dt, "bat": bat, "temp": temp, "rh": rh, "data": data})
-    return rd
+            s[j].append(d)
+    return t, s
 
 
 def insert(sid, item):
     f = database / sid
-    rd = _parse(item)
+    t, s = _parse(item)
 
     if not f.exists():
         o = {
@@ -63,18 +61,14 @@ def insert(sid, item):
             "lng": 0.0,
             "comment": "",
         }
-        schema = {}
-        ref = rd[0]["data"]
-        for k in ref.keys():
-            schema[k] = [
-                {"var": "", "unit": "", "label": ""} for _ in range(len(ref[k]))
-            ]
-        o["schema"] = schema
+        o["datetime"] = t
+        o["data"] = s
     else:
         with open(f) as ifd:
             o = json.load(ifd)
-
-    o["timeseries"] = rd
+        o["datetime"] += t
+        for k in s.keys():
+            o["data"][k] += s[k]
 
     with open(f, "w") as ofd:
         json.dump(o, ofd)

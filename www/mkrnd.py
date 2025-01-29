@@ -1,8 +1,7 @@
-import matplotlib.pyplot as plt
 import numpy as np
 
 N = 35040
-x = np.linspace(1, N, num=N)
+x = np.linspace(1, 10, num=N)
 
 
 def f(x):
@@ -24,6 +23,3 @@ for i in range(N):
         print(f"{c}+{m:.4f}+{T:.4f}", end="\r\n")
     print("\r\n", end="")
     t += dt
-
-# plt.plot(x, 12-0.5*f(x))
-# plt.show()

@@ -106,8 +106,18 @@ ul a {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02);
 }
 
-.uc {
+.curses {
   text-transform: uppercase;
+}
+.curses input {
+  border: 0;
+  outline: none;
+  background-color: #ccc;
+  padding: 0;
+  margin: 0;
+  line-height: 24px;
+  font-family: inherit;
+  width: 16em;
 }
 
 .wnd {
@@ -125,7 +135,7 @@ ul a {
   min-width: 1024px;
   width: 75%;
   font-family: monospace;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 h1,
