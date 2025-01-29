@@ -16,6 +16,7 @@
 #define BUS_PIN 2
 
 #define BAT_LOW 11.6
+#define LF "\r\n"
 
 GPRS gprs;
 NBClient client;
@@ -25,6 +26,7 @@ SDI12 socket(BUS_PIN);
 SPIFlash flash;
 char sid[63];
 uint32_t addr = 0;
+uint32_t paddr = 0;
 
 float battery() {
   int p = analogRead(A1);
@@ -47,7 +49,16 @@ void debug() {
   Serial.begin(9600);
   while (!Serial);
 
-  Serial.println("DEBUG");
+  for (;;) {
+    if (Serial.available()) {
+      char c = Serial.read();
+      if (c == '!') {
+        String s = load();
+        Serial.print(s + "#");
+      }
+    }
+    delay(100);
+  }
 }
 
 void disable() {
@@ -95,9 +106,9 @@ void idle() {
 String load() {
   static String s;
 
-  if (flash.readStr(addr, s))
-    addr = 0;
-  return s;
+  if (flash.readStr(paddr, s))
+    return s;
+  return "";
 }
 
 String measure(char i) {
@@ -126,6 +137,16 @@ String measure(char i) {
   delay(30);
   s = socket.readStringUntil('\n');
   return s;
+}
+
+void pullup() {
+  int8_t pin[12] = {
+    A0, A2, A3, A4, A5, A6,
+    3, 4, 5, 6, 13, 14
+  };
+
+  for (int i = 0; i < 12; i++)
+    pinMode(pin[i], INPUT_PULLUP);
 }
 
 void scan() {
@@ -191,12 +212,13 @@ void verify() {
 }
 
 void setup() {
+  if (digitalRead(DBG_PIN) == HIGH)
+    debug();
+    /* not reached */
+  pullup();
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET_PIN, OUTPUT);
   pinMode(MUX_PIN, OUTPUT);
-
-  if (digitalRead(DBG_PIN) == HIGH)
-    debug();
 
   enable();
   scan();
@@ -231,16 +253,16 @@ void loop() {
   s += sprint02d(rtc.getHours());
   s += ":";
   s += sprint02d(rtc.getMinutes());
-  s += "\r\n";
+  s += LF;
 
   float bat0 = battery();
-  s += String(bat0) + "\r\n";
+  s += String(bat0) + LF;
 
   bool pm = bat0 < BAT_LOW;
 
   SHTC3.readSample(low_power=pm);
-  s += String(SHTC3.getTemperature()) + "\r\n";
-  s += String(SHTC3.getHumidity()) + "\r\n";
+  s += String(SHTC3.getTemperature()) + LF;
+  s += String(SHTC3.getHumidity()) + LF;
 
   enable();
   for (char *p = sid; *p; p++)
@@ -251,11 +273,15 @@ void loop() {
     nbAccess.shutdown();
     dump(s);
   } else {
-    if (addr > 0)
+    if (paddr < addr)
       s += load();
     verify();
-    if (!post(s))
+    if (!post(s)) {
+      addr = paddr;
       dump(s);
+    } else {
+      paddr = addr;
+    }
   }
 
   if (!pm)
