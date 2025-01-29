@@ -1,4 +1,4 @@
-import json
+import json # alt. ijson
 import re
 from pathlib import Path
 
@@ -62,17 +62,19 @@ def insert(sid, item):
             "lat": 0.0,
             "lng": 0.0,
             "comment": "",
-            "timeseries": [],
         }
         schema = {}
-        for k in rd[0]["data"].keys():
-            schema[k] = {"var": "", "unit": "", "label": ""}
+        ref = rd[0]["data"]
+        for k in ref.keys():
+            schema[k] = [
+                {"var": "", "unit": "", "label": ""} for _ in range(len(ref[k]))
+            ]
         o["schema"] = schema
     else:
         with open(f) as ifd:
             o = json.load(ifd)
 
-    o["timeseries"].append(rd)
+    o["timeseries"] = rd
 
     with open(f, "w") as ofd:
         json.dump(o, ofd)

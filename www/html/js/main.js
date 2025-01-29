@@ -2,6 +2,21 @@ function wnd_close() {
   document.getElementById("dform").style.visibility = "hidden";
 }
 
+function wnd_open(sid) {
+  fetch("http://127.0.0.1:8000/station/" + sid)
+    .then((r) => r.json())
+    .then((o) => {
+      const ts = o.timeseries;
+      const x = [];
+      for (let i = 0; i < ts.length; i++) {
+        x.push([new Date(ts[i].date), ts[i].bat]);
+      }
+      new Dygraph(document.getElementById("gbat"), x, { width: "auto", labels: ["Date", "V"] });
+    });
+  document.getElementById("dform").style.visibility = "visible";
+  return false;
+}
+
 function init_map() {
   let map = L.map("map", { minZoom: 3, zoomControl: false });
   L.tileLayer(
@@ -9,7 +24,7 @@ function init_map() {
     {
       attribution:
         "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community",
-    }
+    },
   ).addTo(map);
   L.control.scale().addTo(map);
   return map;
@@ -18,7 +33,8 @@ function init_map() {
 function search_item(e) {
   const li = document.createElement("li");
   const a = document.createElement("a");
-  a.href = "#" + e.id;
+  a.href = "#";
+  a.addEventListener("click", (ev) => wnd_open(e.id), false);
   li.innerHTML = e.name + ", <span class='addendum'>" + e.id + "</span>";
   a.appendChild(li);
   return a;
@@ -41,74 +57,3 @@ fetch("http://127.0.0.1:8000/station")
     lng /= l.length;
     map.setView([lat, lng], 9);
   });
-
-Dygraph.onDOMready(function onDOMready() {
-  g = new Dygraph(
-    // containing div
-    document.getElementById("m1"),
-
-    // CSV or path to a CSV file.
-    "Date,Temperature\n" +
-      "2008-05-07,75\n" +
-      "2008-05-08,70\n" +
-      "2008-05-09,80\n",
-    { width: "auto" }
-  );
-
-  g2 = new Dygraph(
-    // containing div
-    document.getElementById("m2"),
-
-    // CSV or path to a CSV file.
-    "Date,Temperature\n" +
-      "2008-05-07,75\n" +
-      "2008-05-08,70\n" +
-      "2008-05-09,80\n",
-    { width: "auto" }
-  );
-
-  g3 = new Dygraph(
-    // containing div
-    document.getElementById("g1"),
-
-    // CSV or path to a CSV file.
-    "Date,Temperature\n" +
-      "2008-05-07,75\n" +
-      "2008-05-08,70\n" +
-      "2008-05-09,80\n",
-    { width: "auto" }
-  );
-  g4 = new Dygraph(
-    // containing div
-    document.getElementById("g2"),
-
-    // CSV or path to a CSV file.
-    "Date,Temperature\n" +
-      "2008-05-07,75\n" +
-      "2008-05-08,70\n" +
-      "2008-05-09,80\n",
-    { width: "auto" }
-  );
-  g5 = new Dygraph(
-    // containing div
-    document.getElementById("g3"),
-
-    // CSV or path to a CSV file.
-    "Date,Temperature\n" +
-      "2008-05-07,75\n" +
-      "2008-05-08,70\n" +
-      "2008-05-09,80\n",
-    { width: "auto" }
-  );
-  g6 = new Dygraph(
-    // containing div
-    document.getElementById("g4"),
-
-    // CSV or path to a CSV file.
-    "Date,Temperature\n" +
-      "2008-05-07,75\n" +
-      "2008-05-08,70\n" +
-      "2008-05-09,80\n",
-    { width: "auto" }
-  );
-});
