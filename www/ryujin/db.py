@@ -3,7 +3,9 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-database = Path("./db/station")
+db_root = Path("./db")
+db_stat = db_root / "station"
+db_stab = db_root / "sensor.tab"
 
 
 def sadd(o):
@@ -14,19 +16,18 @@ def sadd(o):
     #         {"var": "", "unit": "", "idx": 0},
     #     ],
     # }
-    p = database / "sensor.tab"
-    if p.exists():
-        with open(p) as f:
+    if db_stab.exists():
+        with open(db_stab) as f:
             j = json.load(f)
     else:
         j = []
     j.append(o)
-    with open(p, "w") as f:
+    with open(db_stab, "w") as f:
         json.dump(j, f)
 
 
-def stab():
-    with open(database / "sensor.tab") as f:
+def _stab():
+    with open(db_stab) as f:
         j = json.load(f)
     return j
 
@@ -76,7 +77,7 @@ def _parse(s):
 
 
 def insert(sid, item):
-    f = database / sid
+    f = db_stat / sid
     t, s = _parse(item)
 
     if not f.exists():
@@ -103,9 +104,7 @@ def insert(sid, item):
 
 def list():
     r = []
-    for f in database.iterdir():
-        if f.name == "sensor.tab":
-            continue
+    for f in db_stat.iterdir():
         with open(f) as fd:
             o = json.load(fd)
         del o["t"]
@@ -115,11 +114,11 @@ def list():
 
 
 def select(sid, include_tab=True):
-    f = database / sid
+    f = db_stat / sid
     with open(f) as fd:
         o = json.load(fd)
     if include_tab:
-        return {"dat": o, "sen": stab()}
+        return {"dat": o, "tab": _stab()}
     return o
 
 
@@ -127,5 +126,5 @@ def update(sid, **kwargs):
     assert all([k not in kwargs.keys() for k in ["id", "t", "s"]])
     o = select(sid, include_tab=False)
     o.update(kwargs)
-    with open(database / sid, "w") as ofd:
+    with open(db_stat / sid, "w") as ofd:
         json.dump(o, ofd)

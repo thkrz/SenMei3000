@@ -1,68 +1,75 @@
-function hide() {
-  document.getElementById("dform").style.visibility = "hidden";
+function createSchemaNodes(dat, tab) {
+  const dl = document.getElementById("sensors");
+  dl.replaceChildren();
+  for (const [k, v] of Object.entries(dat.schema)) {
+    const dt = document.createElement("dt");
+    dt.style = "text-transform: none; font-weight: 500";
+    dt.appendChild(document.createTextNode(k));
+
+    const dd = document.createElement("dd");
+
+    let label = document.createElement("label");
+    label.appendChild(document.createTextNode("Sensor:"));
+    const sel = document.createElement("select");
+    sel.name = k;
+    for (let i = 0; i < tab.length; i++) {
+      const opt = document.createElement("option");
+      opt.value = i;
+      opt.appendChild(document.createTextNode(tab[i].name));
+      sel.appendChild(opt);
+    }
+    sel.selectedIndex = dat.schema[k].type;
+    label.appendChild(sel);
+
+    dd.appendChild(label);
+
+    label = document.createElement("label");
+    label.appendChild(document.createTextNode("Label:"));
+    const input = document.createElement("input");
+    input.value = dat.schema[k].label;
+    input.name = k;
+    label.append(input);
+
+    dd.appendChild(label);
+
+    dl.appendChild(dt);
+    dl.appendChild(dd);
+  }
 }
 
-function createGraph(p, x, labels) {
-  const g = document.createElement("div");
-  p.appendChild(g);
-  new Dygraph(g, x, { width: "auto", labels: labels });
+function hide() {
+  document.getElementById("dform").style.visibility = "hidden";
 }
 
 function show(sid) {
   fetch("http://127.0.0.1:8000/station/" + sid)
     .then((r) => r.json())
-    .then((oj) => {
-      // const { form } = document.querySelector("form");
-      // for (const [k, v] of Object.entries(o)) {
-      //   const field = form.namedItem(key);
-      //   field && (field.value = value);
-      // }
-      o = oj.dat
-      j = oj.sen
-      const dl = document.getElementById("sensors");
-      dl.replaceChildren();
-      for (const [k, v] of Object.entries(o.schema)) {
-        const dt = document.createElement("dt");
-        dt.style = "text-transform: none";
-        dt.appendChild(document.createTextNode(k));
-        const dd = document.createElement("dd");
-
-        let label = document.createElement("label");
-        label.appendChild(document.createTextNode("Sensor:"));
-        const sel = document.createElement("select");
-        for (let i = 0; i < j.length; i++) {
-          const opt = document.createElement("option");
-          opt.appendChild(document.createTextNode(j[i].name));
-          sel.appendChild(opt);
-        }
-        sel.selectedIndex = o.schema[k].type;
-        label.appendChild(sel);
-        dd.appendChild(label);
-
-        label = document.createElement("label");
-        label.appendChild(document.createTextNode("Label:"));
-        const input = document.createElement("input");
-        input.value = o.schema[k].label;
-        dd.appendChild(label);
-
-        dl.appendChild(dt);
-        dl.appendChild(dd);
+    .then((dt) => {
+      document
+        .getElementById("sid")
+        .replaceChildren(document.createTextNode(dt.dat.id));
+      const form = document.getElementById("meta");
+      for (const [k, v] of Object.entries(dt.dat)) {
+        const field = form.querySelector(`input[name="${k}"]`);
+        field && (field.value = v);
       }
-      const div = document.getElementById("health");
-      createGraph(
-        div,
-        o.t.map((e, i) => {
-          return [new Date(e), o.s["#"][i]];
-        }),
-        ["Date", "Voltage"],
-      );
-      createGraph(
-        div,
-        o.t.map((e, i) => {
-          return [new Date(e), o.s["*"][i][0], o.s["*"][i][1]];
-        }),
-        ["Date", "Temperature", "Humidity"],
-      );
+      createSchemaNodes(dt.dat, dt.tab);
+
+      // const div = document.getElementById("health");
+      // createGraph(
+      //   div,
+      //   o.t.map((e, i) => {
+      //     return [new Date(e), o.s["#"][i]];
+      //   }),
+      //   ["Date", "Voltage"]
+      // );
+      // createGraph(
+      //   div,
+      //   o.t.map((e, i) => {
+      //     return [new Date(e), o.s["*"][i][0], o.s["*"][i][1]];
+      //   }),
+      //   ["Date", "Temperature", "Humidity"]
+      // );
     });
   document.getElementById("dform").style.visibility = "visible";
   return false;
@@ -85,7 +92,7 @@ function search_item(e) {
   a.href = "#";
   let s = e.name;
   if (s !== "") s += ", ";
-  li.innerHTML = s + "<span class='addendum'>" + e.id + "</span>";
+  li.innerHTML = `${s}<span class='addendum'>${e.id}</span>`;
   a.appendChild(li);
   return a;
 }
@@ -106,7 +113,7 @@ fetch("http://127.0.0.1:8000/station")
           show(l[i].id);
           map.setView(latlng, 12);
         },
-        false,
+        false
       );
       ul.appendChild(a);
       L.marker(latlng)
