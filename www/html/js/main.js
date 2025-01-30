@@ -2,35 +2,79 @@ function hide() {
   document.getElementById("dform").style.visibility = "hidden";
 }
 
-function schema() {}
+function createGraph(p, x, labels) {
+  const g = document.createElement("div");
+  p.appendChild(g);
+  new Dygraph(g, x, { width: "auto", labels: labels });
+}
 
 function show(sid) {
   fetch("http://127.0.0.1:8000/station/" + sid)
     .then((r) => r.json())
-    .then((o) => {
-      const x = o.timeseries.datetime;
-      const y = o.timeseries.battery;
-      const len = x.length;
-      const xy = new Array(len);
-      for (let i = 0; i < len; i++) xy[i] = [new Date(x[i]), y[i]];
+    .then((oj) => {
+      // const { form } = document.querySelector("form");
+      // for (const [k, v] of Object.entries(o)) {
+      //   const field = form.namedItem(key);
+      //   field && (field.value = value);
+      // }
+      o = oj.dat
+      j = oj.sen
+      const dl = document.getElementById("sensors");
+      dl.replaceChildren();
+      for (const [k, v] of Object.entries(o.schema)) {
+        const dt = document.createElement("dt");
+        dt.style = "text-transform: none";
+        dt.appendChild(document.createTextNode(k));
+        const dd = document.createElement("dd");
+
+        let label = document.createElement("label");
+        label.appendChild(document.createTextNode("Sensor:"));
+        const sel = document.createElement("select");
+        for (let i = 0; i < j.length; i++) {
+          const opt = document.createElement("option");
+          opt.appendChild(document.createTextNode(j[i].name));
+          sel.appendChild(opt);
+        }
+        sel.selectedIndex = o.schema[k].type;
+        label.appendChild(sel);
+        dd.appendChild(label);
+
+        label = document.createElement("label");
+        label.appendChild(document.createTextNode("Label:"));
+        const input = document.createElement("input");
+        input.value = o.schema[k].label;
+        dd.appendChild(label);
+
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+      }
       const div = document.getElementById("health");
-      const g = document.createElement("div");
-      div.appendChild(g);
-      new Dygraph(g, xy, { width: "auto", labels: ["Date", "V"] });
+      createGraph(
+        div,
+        o.t.map((e, i) => {
+          return [new Date(e), o.s["#"][i]];
+        }),
+        ["Date", "Voltage"],
+      );
+      createGraph(
+        div,
+        o.t.map((e, i) => {
+          return [new Date(e), o.s["*"][i][0], o.s["*"][i][1]];
+        }),
+        ["Date", "Temperature", "Humidity"],
+      );
     });
   document.getElementById("dform").style.visibility = "visible";
   return false;
 }
 
 function init_map() {
+  const uri =
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}";
+  const copyright =
+    "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community";
   let map = L.map("map", { minZoom: 3, zoomControl: false });
-  L.tileLayer(
-    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
-    {
-      attribution:
-        "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community",
-    }
-  ).addTo(map);
+  L.tileLayer(uri, { attribution: copyright }).addTo(map);
   L.control.scale().addTo(map);
   return map;
 }
@@ -54,17 +98,18 @@ fetch("http://127.0.0.1:8000/station")
     let lng = 0;
     const ul = document.getElementById("search-results");
     for (let i = 0; i < l.length; i++) {
+      const latlng = [l[i].lat, l[i].lng];
       const a = search_item(l[i]);
       a.addEventListener(
         "click",
         (ev) => {
           show(l[i].id);
-          map.setView([l[i].lat, l[i].lng], 12);
+          map.setView(latlng, 12);
         },
-        false
+        false,
       );
       ul.appendChild(a);
-      L.marker([l[i].lat, l[i].lng])
+      L.marker(latlng)
         .addTo(map)
         .on("click", (ev) => show(l[i].id))
         .bindTooltip(a.lastChild.innerHTML);

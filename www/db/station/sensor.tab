@@ -1,0 +1,1 @@
+[{"name": "SMT100", "schema": [{"var": "Humidity", "unit": "VWC", "idx": 2}, {"var": "Temperature", "unit": "\u00b0C", "idx": 3}]}, {"name": "TensioMark", "schema": [{"var": "Pore pressure", "unit": "pF", "idx": 0}]}]

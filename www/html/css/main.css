@@ -109,15 +109,16 @@ ul a {
 .curses {
   text-transform: uppercase;
 }
-.curses input {
+.curses input, select {
   border: 0;
   outline: none;
   background-color: #ccc;
   padding: 0;
-  margin: 0;
+  margin: 0 1em;
   line-height: 24px;
   font-family: inherit;
   width: 16em;
+  height: 24px;
 }
 
 .wnd {
@@ -125,6 +126,7 @@ ul a {
   position: absolute;
   top: 50%;
   left: 50%;
+  visibility: hidden;
   z-index: 999;
   background-color: #fff;
   flex-direction: column;
@@ -135,7 +137,17 @@ ul a {
   min-width: 1024px;
   width: 75%;
   font-family: monospace;
-  /* visibility: hidden; */
+}
+
+button {
+  background-color: #1f1f1f;
+  color: #fff;
+  border: 0;
+  padding: 1em;
+  margin: 1em;
+  font-weight: 500;
+  font-family: monospace;
+  text-transform: uppercase;
 }
 
 h1,

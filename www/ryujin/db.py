@@ -6,6 +6,31 @@ from pathlib import Path
 database = Path("./db/station")
 
 
+def sadd(o):
+    # o = {
+    #     "name": "",
+    #     "schema": [
+    #         {"var": "", "unit": "", "idx": 0},
+    #         {"var": "", "unit": "", "idx": 0},
+    #     ],
+    # }
+    p = database / "sensor.tab"
+    if p.exists():
+        with open(p) as f:
+            j = json.load(f)
+    else:
+        j = []
+    j.append(o)
+    with open(p, "w") as f:
+        json.dump(j, f)
+
+
+def stab():
+    with open(database / "sensor.tab") as f:
+        j = json.load(f)
+    return j
+
+
 def _num(s):
     try:
         n = int(s)
@@ -36,9 +61,10 @@ def _parse(s):
     i = 0
     while i < len(ln) - 4 and not eof:
         t.append(ln[i])
-        s["#"].append([float(ln[i + k] for k in range(1, 4))])
-        eof = True
+        s["#"].append(float(ln[i + 1]))
+        s["*"].append([float(ln[i + 2]), float(ln[i + 3])])
         i += 4
+        eof = True
         for sen in ln[i:]:
             i += 1
             if not sen:
@@ -60,15 +86,16 @@ def insert(sid, item):
             "lat": 0.0,
             "lng": 0.0,
             "comment": "",
+            "sensor": {k: {"type": -1, "label": ""} for k in s.keys() if k.isalnum()},
         }
-        o["datetime"] = t
-        o["data"] = s
+        o["t"] = t
+        o["s"] = s
     else:
         with open(f) as ifd:
             o = json.load(ifd)
-        o["datetime"] += t
+        o["t"] += t
         for k in s.keys():
-            o["data"][k] += s[k]
+            o["s"][k] += s[k]
 
     with open(f, "w") as ofd:
         json.dump(o, ofd)
@@ -77,23 +104,28 @@ def insert(sid, item):
 def list():
     r = []
     for f in database.iterdir():
+        if f.name == "sensor.tab":
+            continue
         with open(f) as fd:
             o = json.load(fd)
-        del o["timeseries"]
+        del o["t"]
+        del o["s"]
         r.append(o)
     return r
 
 
-def select(sid):
+def select(sid, include_tab=True):
     f = database / sid
     with open(f) as fd:
         o = json.load(fd)
+    if include_tab:
+        return {"dat": o, "sen": stab()}
     return o
 
 
 def update(sid, **kwargs):
-    assert all([k not in kwargs.keys() for k in ["id", "timeseries"]])
-    o = select(sid)
+    assert all([k not in kwargs.keys() for k in ["id", "t", "s"]])
+    o = select(sid, include_tab=False)
     o.update(kwargs)
     with open(database / sid, "w") as ofd:
         json.dump(o, ofd)
