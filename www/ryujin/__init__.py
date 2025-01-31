@@ -10,22 +10,38 @@ from starlette.staticfiles import StaticFiles
 from . import db
 
 
-async def station(request):
+async def sensor(request):
+    if request.method == "POST":
+        o = await request.json()
+        db.sensor.update(o)
+        return PlainTextResponse("success.\r\n", status_code=201)
+    return JSONResponse(db.sensor.list())
+
+
+async def stationupd(request):
     sid = request.path_params["sid"]
+    o = await request.json()
+    db.station.update(sid, o)
+    return PlainTextResponse("success.\r\n", status_code=201)
+
+
+async def station(request):
+    try:
+        sid = request.path_params["sid"]
+    except KeyError:
+        return JSONResponse(db.station.list())
     if request.method == "POST":
         b = await request.body()
-        db.insert(sid, b.decode("utf-8"))
-        return PlainTextResponse("data inserted\r\n", status_code=201)
-    return JSONResponse(db.select(sid))
-
-
-async def station_list(request):
-    return JSONResponse(db.list())
+        db.station.insert(sid, b.decode("utf-8"))
+        return PlainTextResponse("success.\r\n", status_code=201)
+    return JSONResponse(db.station.select(sid))
 
 
 routes = [
+    Route("/sensor", sensor, methods=["GET", "POST"]),
+    Route("/station/{sid}/update", stationupd, methods=["POST"]),
     Route("/station/{sid}", station, methods=["GET", "POST"]),
-    Route("/station", station_list, methods=["GET"]),
+    Route("/station", station, methods=["GET"]),
     # DEBUG
     Mount("/", app=StaticFiles(directory="html", html=True), name="static"),
 ]

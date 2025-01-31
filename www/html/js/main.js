@@ -1,7 +1,7 @@
-function createSchemaNodes(dat, tab) {
+function createConfig(dat, tab) {
   const dl = document.getElementById("sensors");
   dl.replaceChildren();
-  for (const [k, v] of Object.entries(dat.schema)) {
+  for (const [k, v] of Object.entries(dat.config)) {
     const dt = document.createElement("dt");
     dt.style = "text-transform: none; font-weight: 500";
     dt.appendChild(document.createTextNode(k));
@@ -18,7 +18,7 @@ function createSchemaNodes(dat, tab) {
       opt.appendChild(document.createTextNode(tab[i].name));
       sel.appendChild(opt);
     }
-    sel.selectedIndex = dat.schema[k].type;
+    sel.selectedIndex = dat.config[k].sensor;
     label.appendChild(sel);
 
     dd.appendChild(label);
@@ -26,7 +26,7 @@ function createSchemaNodes(dat, tab) {
     label = document.createElement("label");
     label.appendChild(document.createTextNode("Label:"));
     const input = document.createElement("input");
-    input.value = dat.schema[k].label;
+    input.value = dat.config[k].label;
     input.name = k;
     label.append(input);
 
@@ -42,35 +42,36 @@ function hide() {
 }
 
 function show(sid) {
-  fetch("http://127.0.0.1:8000/station/" + sid)
-    .then((r) => r.json())
-    .then((dt) => {
-      document
-        .getElementById("sid")
-        .replaceChildren(document.createTextNode(dt.dat.id));
-      const form = document.getElementById("meta");
-      for (const [k, v] of Object.entries(dt.dat)) {
-        const field = form.querySelector(`input[name="${k}"]`);
-        field && (field.value = v);
-      }
-      createSchemaNodes(dt.dat, dt.tab);
+  Promise.all([
+    fetch("http://127.0.0.1:8000/station/" + sid).then((r) => r.json()),
+    fetch("http://127.0.0.1:8000/sensor").then((r) => r.json()),
+  ]).then(([dat, tab]) => {
+    document
+      .getElementById("sid")
+      .replaceChildren(document.createTextNode(dat.id));
+    const form = document.getElementById("meta");
+    for (const [k, v] of Object.entries(dat)) {
+      const field = form.querySelector(`input[name="${k}"]`);
+      field && (field.value = v);
+    }
+    createConfig(dat, tab);
 
-      // const div = document.getElementById("health");
-      // createGraph(
-      //   div,
-      //   o.t.map((e, i) => {
-      //     return [new Date(e), o.s["#"][i]];
-      //   }),
-      //   ["Date", "Voltage"]
-      // );
-      // createGraph(
-      //   div,
-      //   o.t.map((e, i) => {
-      //     return [new Date(e), o.s["*"][i][0], o.s["*"][i][1]];
-      //   }),
-      //   ["Date", "Temperature", "Humidity"]
-      // );
-    });
+    // const div = document.getElementById("health");
+    // createGraph(
+    //   div,
+    //   o.t.map((e, i) => {
+    //     return [new Date(e), o.s["#"][i]];
+    //   }),
+    //   ["Date", "Voltage"]
+    // );
+    // createGraph(
+    //   div,
+    //   o.t.map((e, i) => {
+    //     return [new Date(e), o.s["*"][i][0], o.s["*"][i][1]];
+    //   }),
+    //   ["Date", "Temperature", "Humidity"]
+    // );
+  });
   document.getElementById("dform").style.visibility = "visible";
   return false;
 }
@@ -113,7 +114,7 @@ fetch("http://127.0.0.1:8000/station")
           show(l[i].id);
           map.setView(latlng, 12);
         },
-        false
+        false,
       );
       ul.appendChild(a);
       L.marker(latlng)
