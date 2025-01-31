@@ -96,6 +96,11 @@ def select(sid):
 def update(sid, **kwargs):
     assert all([k not in kwargs.keys() for k in ["id", "data"]])
     o = select(sid)
+    cfg = kwargs.get("config")
+    if cfg is not None:
+        del kwargs["config"]
+        for k, v in cfg.items():
+            o["config"][k].update(v)
     o.update(kwargs)
     with open(database / sid, "w") as ofd:
         json.dump(o, ofd)

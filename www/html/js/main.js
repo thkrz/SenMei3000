@@ -76,6 +76,31 @@ function show(sid) {
   return false;
 }
 
+function submit(form) {
+  const o = {
+    name: form.querySelector('input[name="name"]').value,
+    lat: parseFloat(form.querySelector('input[name="lat"]').value || 0),
+    lng: parseFloat(form.querySelector('input[name="lng"]').value || 0),
+    note: form.querySelector('input[name="note"]').value,
+  };
+  const items = document.getElementById("sensors").children;
+  const config = {};
+  for (let i = 0; i < items.length; i += 2) {
+    const k = items[i].childNodes[0].nodeValue;
+    config[k] = {
+      sensor: parseInt(items[i + 1].querySelector(`select[name="${k}"]`).value || -1),
+      label: items[i + 1].querySelector(`input[name="${k}"]`).value,
+    };
+  }
+  o["config"] = config;
+  const sid = document.getElementById("sid").childNodes[0].nodeValue;
+  fetch(`http://127.0.0.1:8000/station/${sid}/update`, {
+    method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify(o),
+  });
+}
+
 function init_map() {
   const uri =
     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}";
@@ -98,6 +123,11 @@ function search_item(e) {
   return a;
 }
 
+const form = document.getElementById("meta");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  submit(form);
+});
 fetch("http://127.0.0.1:8000/station")
   .then((r) => r.json())
   .then((l) => {

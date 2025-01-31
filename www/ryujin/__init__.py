@@ -21,7 +21,7 @@ async def sensor(request):
 async def stationupd(request):
     sid = request.path_params["sid"]
     o = await request.json()
-    db.station.update(sid, o)
+    db.station.update(sid, **o)
     return PlainTextResponse("success.\r\n", status_code=201)
 
 
