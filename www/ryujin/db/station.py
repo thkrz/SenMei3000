@@ -50,6 +50,17 @@ def _parse(s):
     return s
 
 
+def _upd(o, n, exclude=[]):
+    for k, v in n.items():
+        if k in exclude:
+            continue
+        if isinstance(v, dict):
+            assert isinstance(o[k], dict)
+            _upd(o[k], v)
+        else:
+            o[k] = v
+
+
 def insert(sid, item):
     with open(raw, "a") as f:
         f.write(item + "\r\n")
@@ -94,13 +105,7 @@ def select(sid):
 
 
 def update(sid, **kwargs):
-    assert all([k not in kwargs.keys() for k in ["id", "data"]])
     o = select(sid)
-    cfg = kwargs.get("config")
-    if cfg is not None:
-        del kwargs["config"]
-        for k, v in cfg.items():
-            o["config"][k].update(v)
-    o.update(kwargs)
+    _upd(o, kwargs, exclude=["id", "data"])
     with open(database / sid, "w") as ofd:
         json.dump(o, ofd)

@@ -45,38 +45,79 @@ function show(sid) {
   Promise.all([
     fetch("http://127.0.0.1:8000/station/" + sid).then((r) => r.json()),
     fetch("http://127.0.0.1:8000/sensor").then((r) => r.json()),
-  ]).then(([dat, tab]) => {
+  ]).then(([series, meta]) => {
     document
       .getElementById("sid")
-      .replaceChildren(document.createTextNode(dat.id));
+      .replaceChildren(document.createTextNode(series.id));
     const form = document.getElementById("meta");
-    for (const [k, v] of Object.entries(dat)) {
+    for (const [k, v] of Object.entries(series)) {
       const field = form.querySelector(`input[name="${k}"]`);
       field && (field.value = v);
     }
-    createConfig(dat, tab);
+    createConfig(series, meta);
 
-    // const div = document.getElementById("health");
-    // createGraph(
-    //   div,
-    //   o.t.map((e, i) => {
-    //     return [new Date(e), o.s["#"][i]];
-    //   }),
-    //   ["Date", "Voltage"]
-    // );
-    // createGraph(
-    //   div,
-    //   o.t.map((e, i) => {
-    //     return [new Date(e), o.s["*"][i][0], o.s["*"][i][1]];
-    //   }),
-    //   ["Date", "Temperature", "Humidity"]
-    // );
+    let div = document.getElementById("health");
+    div.replaceChildren();
+    for (let i = 0; i < series.h.length; i++) {
+      const ser = series.h[i];
+      const g = document.createElement("div");
+      div.appendChild(g);
+      opts = {
+        title: ser.title,
+        width: "auto",
+        labels: ["Date"].concat(ser.labels),
+        rollPeriod: 16,
+        showRoller: true,
+        series: {},
+      };
+      if (ser.length > 1) {
+        opts.series[ser.labels[0]] = { color: "#0000ff" };
+        opts.series[ser.labels[1]] = { color: "#ff0000", axis: "y2" };
+      } else {
+        opts.series[ser.labels[0]] = { color: "#00ff00" };
+      }
+      new Dygraph(
+        g,
+        series.t.map((e, i) => {
+          return [new Date(e)].concat(ser.data[i]);
+        }),
+        opts
+      );
+    }
+
+    div = document.getElementById("data");
+    div.replaceChildren();
+    for (const [k, ser] of Object.entries(series.s)) {
+      const g = document.createElement("div");
+      div.appendChild(g);
+      opts = {
+        title: ser.title,
+        width: "auto",
+        labels: ["Date"].concat(ser.labels),
+        rollPeriod: 16,
+        showRoller: true,
+        series: {},
+      };
+      if (ser.length > 1) {
+        opts.series[ser.labels[0]] = { color: "#0000ff" };
+        opts.series[ser.labels[1]] = { color: "#ff0000", axis: "y2" };
+      } else {
+        opts.series[ser.labels[0]] = { color: "#00ff00" };
+      }
+      new Dygraph(
+        g,
+        series.t.map((e, i) => {
+          return [new Date(e)].concat(ser.data[i]);
+        }),
+        opts
+      );
+    }
   });
   document.getElementById("dform").style.visibility = "visible";
   return false;
 }
 
-function submit(form) {
+async function submit(form) {
   const o = {
     name: form.querySelector('input[name="name"]').value,
     lat: parseFloat(form.querySelector('input[name="lat"]').value || 0),
@@ -88,13 +129,15 @@ function submit(form) {
   for (let i = 0; i < items.length; i += 2) {
     const k = items[i].childNodes[0].nodeValue;
     config[k] = {
-      sensor: parseInt(items[i + 1].querySelector(`select[name="${k}"]`).value || -1),
+      sensor: parseInt(
+        items[i + 1].querySelector(`select[name="${k}"]`).value || -1
+      ),
       label: items[i + 1].querySelector(`input[name="${k}"]`).value,
     };
   }
   o["config"] = config;
   const sid = document.getElementById("sid").childNodes[0].nodeValue;
-  fetch(`http://127.0.0.1:8000/station/${sid}/update`, {
+  await fetch(`http://127.0.0.1:8000/station/${sid}/update`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
     body: JSON.stringify(o),
@@ -128,6 +171,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   submit(form);
 });
+
 fetch("http://127.0.0.1:8000/station")
   .then((r) => r.json())
   .then((l) => {
@@ -144,7 +188,7 @@ fetch("http://127.0.0.1:8000/station")
           show(l[i].id);
           map.setView(latlng, 12);
         },
-        false,
+        false
       );
       ul.appendChild(a);
       L.marker(latlng)
