@@ -4341,6 +4341,12 @@
 		(uuid "ccb5d9b2-babb-4a76-ba34-b12e775b9dfe")
 	)
 	(junction
+		(at 33.02 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cd356bab-366b-4f72-95a0-d5f89a96fb83")
+	)
+	(junction
 		(at 204.47 66.04)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4715,6 +4721,16 @@
 			(type default)
 		)
 		(uuid "455f5535-27d6-446e-bc4d-5e656f5f1cc1")
+	)
+	(wire
+		(pts
+			(xy 33.02 53.34) (xy 33.02 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46f21fc1-b96f-42fd-b18e-d31367ff65ec")
 	)
 	(wire
 		(pts
@@ -5878,6 +5894,16 @@
 		)
 		(uuid "9630bc0d-0904-41df-b9fb-03abd378ad8b")
 	)
+	(label "3V3"
+		(at 33.02 53.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "996c6431-8865-445b-b1f3-6cb984d87918")
+	)
 	(label "D2"
 		(at 240.03 46.99 0)
 		(effects
@@ -6097,16 +6123,6 @@
 			(justify right bottom)
 		)
 		(uuid "da143398-9080-4e5d-93e7-39615d819717")
-	)
-	(label "3V3"
-		(at 33.02 55.88 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "de7895d8-0ce2-4af3-b230-ea028a34fa72")
 	)
 	(label "BUS"
 		(at 21.59 165.1 0)
