@@ -58,20 +58,20 @@ async def station(request):
         }
     o["t"] = data["!"]
     o["s"] = s
-    o["h"] = [
-        {
+    o["h"] = {
+        0: {
             "data": data["#"],
             "labels": ["Battery [V]"],
             "length": 1,
             "title": "Battery Voltage",
         },
-        {
+        1: {
             "data": data["*"],
             "labels": ["Temperature [°C]", "Humidity [-]"],
             "length": 2,
             "title": "Station Climate",
         },
-    ]
+    }
     return JSONResponse(o)
 
 

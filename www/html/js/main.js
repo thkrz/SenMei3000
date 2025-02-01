@@ -37,6 +37,35 @@ function createConfig(dat, tab) {
   }
 }
 
+function createGraphs(c, x, y) {
+  c.replaceChildren();
+  for (const [_, ser] of Object.entries(y)) {
+    const g = document.createElement("div");
+    c.appendChild(g);
+    opts = {
+      title: ser.title,
+      width: "auto",
+      labels: ["Date"].concat(ser.labels),
+      rollPeriod: Math.floor(x.length / 100),
+      showRoller: true,
+      series: {},
+    };
+    if (ser.length > 1) {
+      opts.series[ser.labels[0]] = { color: "#0000ff" };
+      opts.series[ser.labels[1]] = { color: "#ff0000", axis: "y2" };
+    } else {
+      opts.series[ser.labels[0]] = { color: "#00ff00" };
+    }
+    new Dygraph(
+      g,
+      x.map((e, i) => {
+        return [new Date(e)].concat(ser.data[i]);
+      }),
+      opts
+    );
+  }
+}
+
 function hide() {
   document.getElementById("dform").style.visibility = "hidden";
 }
@@ -55,63 +84,8 @@ function show(sid) {
       field && (field.value = v);
     }
     createConfig(series, meta);
-
-    let div = document.getElementById("health");
-    div.replaceChildren();
-    for (let i = 0; i < series.h.length; i++) {
-      const ser = series.h[i];
-      const g = document.createElement("div");
-      div.appendChild(g);
-      opts = {
-        title: ser.title,
-        width: "auto",
-        labels: ["Date"].concat(ser.labels),
-        rollPeriod: 16,
-        showRoller: true,
-        series: {},
-      };
-      if (ser.length > 1) {
-        opts.series[ser.labels[0]] = { color: "#0000ff" };
-        opts.series[ser.labels[1]] = { color: "#ff0000", axis: "y2" };
-      } else {
-        opts.series[ser.labels[0]] = { color: "#00ff00" };
-      }
-      new Dygraph(
-        g,
-        series.t.map((e, i) => {
-          return [new Date(e)].concat(ser.data[i]);
-        }),
-        opts
-      );
-    }
-
-    div = document.getElementById("data");
-    div.replaceChildren();
-    for (const [k, ser] of Object.entries(series.s)) {
-      const g = document.createElement("div");
-      div.appendChild(g);
-      opts = {
-        title: ser.title,
-        width: "auto",
-        labels: ["Date"].concat(ser.labels),
-        rollPeriod: 16,
-        showRoller: true,
-        series: {},
-      };
-      if (ser.length > 1) {
-        opts.series[ser.labels[0]] = { color: "#0000ff" };
-        opts.series[ser.labels[1]] = { color: "#ff0000", axis: "y2" };
-      } else {
-        opts.series[ser.labels[0]] = { color: "#00ff00" };
-      }
-      new Dygraph(
-        g,
-        series.t.map((e, i) => {
-          return [new Date(e)].concat(ser.data[i]);
-        }),
-        opts
-      );
-    }
+    createGraphs(document.getElementById("health"), series.t, series.h);
+    createGraphs(document.getElementById("data"), series.t, series.s);
   });
   document.getElementById("dform").style.visibility = "visible";
   return false;
