@@ -4245,6 +4245,12 @@
 		(uuid "033500f6-0b3d-4542-a8ff-cde0ee53194c")
 	)
 	(junction
+		(at 27.94 105.41)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "03c776d0-2c37-4af0-a1f0-e678b540f9db")
+	)
+	(junction
 		(at 217.17 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4255,6 +4261,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3eac3af1-4dad-4839-b58b-fd4224d17e3d")
+	)
+	(junction
+		(at 27.94 115.57)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4d3058c3-ba10-404b-83bb-4baf4077a7b7")
 	)
 	(junction
 		(at 184.15 137.16)
@@ -4454,6 +4466,16 @@
 	)
 	(wire
 		(pts
+			(xy 13.97 105.41) (xy 17.78 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d42ccb7-36d4-4719-b901-4277b6647ff4")
+	)
+	(wire
+		(pts
 			(xy 204.47 30.48) (xy 219.71 30.48)
 		)
 		(stroke
@@ -4491,6 +4513,16 @@
 			(type default)
 		)
 		(uuid "157e818f-0e2b-4069-92b4-ae8bf50f2455")
+	)
+	(wire
+		(pts
+			(xy 27.94 115.57) (xy 27.94 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16172b6b-4b98-4cf2-ac16-9bf73a46222f")
 	)
 	(wire
 		(pts
@@ -4684,6 +4716,16 @@
 	)
 	(wire
 		(pts
+			(xy 27.94 105.41) (xy 30.48 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c677bc5-0cca-482e-9cab-892436b3eedb")
+	)
+	(wire
+		(pts
 			(xy 274.32 46.99) (xy 270.51 46.99)
 		)
 		(stroke
@@ -4754,6 +4796,16 @@
 	)
 	(wire
 		(pts
+			(xy 27.94 106.68) (xy 27.94 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d6c40a4-d23b-4376-b289-9d16d076dd35")
+	)
+	(wire
+		(pts
 			(xy 116.84 38.1) (xy 129.54 38.1)
 		)
 		(stroke
@@ -4781,6 +4833,16 @@
 			(type default)
 		)
 		(uuid "51fdfeba-34aa-45b1-aa94-ecf01157d07a")
+	)
+	(wire
+		(pts
+			(xy 27.94 115.57) (xy 22.86 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55235897-bd05-4616-98f3-793844b9d067")
 	)
 	(wire
 		(pts
@@ -4931,6 +4993,16 @@
 			(type default)
 		)
 		(uuid "7985871a-7e2a-4a9f-b276-5d54dd76bad2")
+	)
+	(wire
+		(pts
+			(xy 38.1 96.52) (xy 38.1 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c6cbaca-6a31-48b9-9713-11bec64cd0c9")
 	)
 	(wire
 		(pts
@@ -5264,6 +5336,16 @@
 	)
 	(wire
 		(pts
+			(xy 25.4 105.41) (xy 27.94 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c595bef4-c558-4c7a-b89d-86580198e14d")
+	)
+	(wire
+		(pts
 			(xy 170.18 137.16) (xy 170.18 139.7)
 		)
 		(stroke
@@ -5291,16 +5373,6 @@
 			(type default)
 		)
 		(uuid "d0ebb571-f8f6-4845-ba26-5970150216d1")
-	)
-	(wire
-		(pts
-			(xy 38.1 96.52) (xy 38.1 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d15c0de0-741f-4d0b-88e6-7982fcb21865")
 	)
 	(wire
 		(pts
@@ -5381,6 +5453,16 @@
 			(type default)
 		)
 		(uuid "defd1202-22a9-4b9e-91af-a0b4e42bd624")
+	)
+	(wire
+		(pts
+			(xy 38.1 115.57) (xy 38.1 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dfdd4699-4a46-4146-bd98-77f82c41cb6b")
 	)
 	(wire
 		(pts
@@ -5501,6 +5583,16 @@
 			(type default)
 		)
 		(uuid "feeea628-cdbe-4b1e-9ded-38099eeabf9b")
+	)
+	(wire
+		(pts
+			(xy 27.94 115.57) (xy 38.1 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff573db9-d273-422b-a15c-0d17081f1d74")
 	)
 	(wire
 		(pts
@@ -5674,7 +5766,7 @@
 		)
 		(uuid "1c79fb6d-c294-4995-ae98-a7ba47fb5f69")
 	)
-	(label "RXD"
+	(label "RX"
 		(at 274.32 36.83 180)
 		(effects
 			(font
@@ -5754,7 +5846,7 @@
 		)
 		(uuid "3ec6641c-d08e-4006-8b80-b88f128abe76")
 	)
-	(label "TXD"
+	(label "TX"
 		(at 274.32 34.29 180)
 		(effects
 			(font
@@ -5763,6 +5855,16 @@
 			(justify right bottom)
 		)
 		(uuid "3f6830cb-f5b6-45ce-8312-eed12dd7a674")
+	)
+	(label "D6"
+		(at 13.97 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "44d6c0ac-1b23-4d85-884a-3e08a9459220")
 	)
 	(label "BUS"
 		(at 119.38 104.14 0)
@@ -5964,6 +6066,16 @@
 		)
 		(uuid "af395e50-37d3-4947-aba1-67f300790d8a")
 	)
+	(label "GND"
+		(at 22.86 115.57 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b0d20a61-8e19-4f04-bc39-ceffbf5a6a5e")
+	)
 	(label "5V"
 		(at 157.48 104.14 0)
 		(effects
@@ -6034,7 +6146,7 @@
 		)
 		(uuid "b9e31e23-e28a-46d8-b981-c941d725d007")
 	)
-	(label "TXD"
+	(label "RX"
 		(at 16.51 71.12 0)
 		(effects
 			(font
@@ -6224,7 +6336,7 @@
 		)
 		(uuid "f6441807-7991-43bd-a8cf-c570b3e02112")
 	)
-	(label "RXD"
+	(label "TX"
 		(at 16.51 68.58 0)
 		(effects
 			(font
@@ -6430,72 +6542,6 @@
 			(project ""
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "U7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 38.1 101.6 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "042b6f3e-7a19-4565-9ad8-74a224d9a5a3")
-		(property "Reference" "#PWR03"
-			(at 38.1 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 38.1 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 38.1 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 38.1 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 38.1 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c9745b8f-cb52-4785-addf-163d168c5ca6")
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -6920,6 +6966,85 @@
 			(project ""
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 27.94 110.49 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6710a4a7-2869-410f-9bc9-3a1a8642e64c")
+		(property "Reference" "R9"
+			(at 30.48 109.2199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "47k"
+			(at 30.48 111.7599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 29.718 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 27.94 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 27.94 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "47k 0603"
+			(at 27.94 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "1a9a6a59-f895-49f1-a257-951693e23556")
+		)
+		(pin "1"
+			(uuid "251b74d0-4c88-4433-9e65-296fab6cb3a2")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -7459,6 +7584,83 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 21.59 105.41 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "aea7d4f1-2885-4641-a0e0-38f3f62ef2cf")
+		(property "Reference" "R8"
+			(at 21.59 99.06 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100"
+			(at 21.59 101.6 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 21.59 103.632 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 21.59 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 21.59 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "100 0603"
+			(at 21.59 105.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "85f8f8c7-06ba-464d-a35d-e3b06ebb0cd6")
+		)
+		(pin "1"
+			(uuid "e3da58c2-934d-4e5f-940a-a1cf7d4324ac")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -8053,6 +8255,90 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLML6244")
+		(at 35.56 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ce2873f4-1f63-42fd-ac40-847f8176ae68")
+		(property "Reference" "Q2"
+			(at 41.91 104.1399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRLML6244"
+			(at 41.91 106.6799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 40.64 107.315 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "../../docs/Infineon-IRLML6244-DataSheet-v01_01-EN.pdf"
+			(at 40.64 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "6.3A Id, 20V Vds, 21mOhm Rds, N-Channel StrongIRFET Power MOSFET, SOT-23"
+			(at 35.56 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRLML6244TRPBF"
+			(at 35.56 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9fe36409-17af-4953-8b4f-3428e352beac")
+		)
+		(pin "3"
+			(uuid "09981756-358f-4994-a03b-001993568486")
+		)
+		(pin "1"
+			(uuid "3ea1a170-ee76-44e1-9f8f-a6ce8d8669b4")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "Q2")
 					(unit 1)
 				)
 			)
