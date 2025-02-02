@@ -3,7 +3,6 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-raw = Path("./db/station.raw")
 database = Path("./db/station")
 
 
@@ -35,9 +34,9 @@ def _parse(s):
     eof = False
     i = 0
     while i < len(ln) - 4 and not eof:
-        s["!"].append(ln[i])
-        s["#"].append(float(ln[i + 1]))
-        s["*"].append([float(ln[i + 2]), float(ln[i + 3])])
+        s["#time"].append(ln[i])
+        s["#volt"].append(float(ln[i + 1]))
+        s["#clim"].append([float(ln[i + 2]), float(ln[i + 3])])
         i += 4
         eof = True
         for sen in ln[i:]:
@@ -62,50 +61,58 @@ def _upd(o, n, exclude=[]):
 
 
 def insert(sid, item):
-    with open(raw, "a") as f:
+    with open(database / (sid + ".raw"), "a") as f:
         f.write(item + "\r\n")
-    f = database / sid
+
+    mf = database / (sid + ".meta")
+    df = database / (sid + ".dat")
     s = _parse(item)
 
-    if not f.exists():
-        o = {
+    if not mf.exists():
+        m = {
             "id": sid,
             "name": "",
             "lat": 0.0,
             "lng": 0.0,
             "comment": "",
             "config": {k: {"sensor": -1, "label": ""} for k in s.keys() if k.isalnum()},
-            "data": s,
         }
+        with open(mf, "w") as ofd:
+            json.dump(m, ofd)
+        d = defaultdict(list)
     else:
-        with open(f) as ifd:
-            o = json.load(ifd)
-        for k in s.keys():
-            o["s"][k] += s[k]
+        with open(df) as ifd:
+            d = json.load(ifd)
 
-    with open(f, "w") as ofd:
-        json.dump(o, ofd)
+    for k in s.keys():
+        d[k] += s[k]
+    with open(df, "w") as ofd:
+        json.dump(d, ofd)
 
 
 def list():
     r = []
-    for f in database.iterdir():
+    for f in database.glob("*.meta"):
         with open(f) as fd:
             o = json.load(fd)
-        del o["data"]
         r.append(o)
     return r
 
 
-def select(sid):
-    f = database / sid
-    with open(f) as fd:
-        o = json.load(fd)
+def select(sid, include_data=True):
+    mf = database / (sid + ".meta")
+    with open(mf) as ifd:
+        o = json.load(ifd)
+    if include_data:
+        df = database / (sid + ".dat")
+        with open(df) as ifd:
+            j = json.load(ifd)
+        return o, j
     return o
 
 
 def update(sid, **kwargs):
-    o = select(sid)
-    _upd(o, kwargs, exclude=["id", "data"])
-    with open(database / sid, "w") as ofd:
+    o = select(sid, include_data=False)
+    _upd(o, kwargs, exclude=["id"])
+    with open(database / (sid + ".meta"), "w") as ofd:
         json.dump(o, ofd)

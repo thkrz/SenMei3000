@@ -70,11 +70,14 @@ ul a {
   font-weight: normal;
 }
 
-.grd {
-  display: grid;
-  grid-gap: 3em;
-  grid-template-rows: 320px;
-  grid-template-columns: 1fr 1fr;
+.alert {
+  text-align: center;
+}
+
+.view {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .quit {

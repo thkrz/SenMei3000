@@ -38,16 +38,16 @@
             </p>
             <p><label>Comment:<input name="note" style="width: 48em" /></label></p>
             <p>Config:<br /><dl id="sensors"></dl></p>
-            <button type="submit">Submit</button><button>Re-configure</button>
+            <button type="submit">Submit</button><button id="recfg" type="button">Re-configure</button>
           </form>
         </details>
         <details>
           <summary>Health</summary>
-          <div id="health" class="grd"></div>
+          <div id="health" class="view"></div>
         </details>
-        <details>
+        <details open>
           <summary>Readings</summary>
-          <div id="data" class="grd"></div>
+          <div id="data" class="view"></div>
         </details>
       </div>
     </div>

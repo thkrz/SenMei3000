@@ -39,9 +39,14 @@ function createConfig(dat, tab) {
 
 function createGraphs(c, x, y) {
   c.replaceChildren();
-  for (const [_, ser] of Object.entries(y)) {
+  for (const [k, ser] of Object.entries(y)) {
     const g = document.createElement("div");
+    g.style = "height: 320px";
     c.appendChild(g);
+    if (ser == null) {
+      g.innerHTML = `<div class="alert"><h2>Sensor ${k} not configured yet</h2></div>`;
+      continue;
+    }
     opts = {
       title: ser.title,
       width: "auto",
@@ -59,7 +64,7 @@ function createGraphs(c, x, y) {
     new Dygraph(
       g,
       x.map((e, i) => {
-        return [new Date(e)].concat(ser.data[i]);
+        return [new Date(e)].concat(ser.x[i]);
       }),
       opts
     );
@@ -71,22 +76,21 @@ function hide() {
 }
 
 function show(sid) {
-  Promise.all([
-    fetch("http://127.0.0.1:8000/station/" + sid).then((r) => r.json()),
-    fetch("http://127.0.0.1:8000/sensor").then((r) => r.json()),
-  ]).then(([series, meta]) => {
-    document
-      .getElementById("sid")
-      .replaceChildren(document.createTextNode(series.id));
-    const form = document.getElementById("meta");
-    for (const [k, v] of Object.entries(series)) {
-      const field = form.querySelector(`input[name="${k}"]`);
-      field && (field.value = v);
-    }
-    createConfig(series, meta);
-    createGraphs(document.getElementById("health"), series.t, series.h);
-    createGraphs(document.getElementById("data"), series.t, series.s);
-  });
+  fetch("http://127.0.0.1:8000/station/" + sid)
+    .then((r) => r.json())
+    .then(({ schema, meta, data }) => {
+      document
+        .getElementById("sid")
+        .replaceChildren(document.createTextNode(meta.id));
+      const form = document.getElementById("meta");
+      for (const [k, v] of Object.entries(meta)) {
+        const field = form.querySelector(`input[name="${k}"]`);
+        field && (field.value = v);
+      }
+      createConfig(meta, schema);
+      createGraphs(document.getElementById("health"), data.t, data.r);
+      createGraphs(document.getElementById("data"), data.t, data.s);
+    });
   document.getElementById("dform").style.visibility = "visible";
   return false;
 }
@@ -145,6 +149,9 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   submit(form);
 });
+
+const button = document.getElementById("recfg");
+button.addEventListener("click", (e) => reconfigure());
 
 fetch("http://127.0.0.1:8000/station")
   .then((r) => r.json())
