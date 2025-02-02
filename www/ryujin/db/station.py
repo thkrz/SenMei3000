@@ -30,23 +30,23 @@ def _lex(s):
 
 def _parse(s):
     ln = s.splitlines()
-    s = defaultdict(list)
+    d = defaultdict(list)
     eof = False
     i = 0
     while i < len(ln) - 4 and not eof:
-        s["#time"].append(ln[i])
-        s["#volt"].append(float(ln[i + 1]))
-        s["#clim"].append([float(ln[i + 2]), float(ln[i + 3])])
+        d["#time"].append(ln[i])
+        d["#volt"].append(float(ln[i + 1]))
+        d["#clim"].append([float(ln[i + 2]), float(ln[i + 3])])
         i += 4
         eof = True
-        for sen in ln[i:]:
+        for rd in ln[i:]:
             i += 1
-            if not sen:
+            if not rd:
                 eof = False
                 break
-            j, d = _lex(sen)
-            s[j].append(d)
-    return s
+            k, n = _lex(rd)
+            d[k].append(n)
+    return d
 
 
 def _upd(o, n, exclude=[]):
@@ -60,12 +60,22 @@ def _upd(o, n, exclude=[]):
             o[k] = v
 
 
+def catalogue():
+    r = []
+    for f in database.glob("*.meta"):
+        with open(f) as ifd:
+            o = json.load(ifd)
+        r.append(o)
+    return r
+
+
 def insert(sid, item):
-    with open(database / (sid + ".raw"), "a") as f:
-        f.write(item + "\r\n")
+    with open(database / (sid + ".raw"), "a") as ofd:
+        ofd.write(item + "\r\n")
 
     mf = database / (sid + ".meta")
     df = database / (sid + ".dat")
+
     s = _parse(item)
 
     if not mf.exists():
@@ -79,6 +89,8 @@ def insert(sid, item):
         }
         with open(mf, "w") as ofd:
             json.dump(m, ofd)
+        del m
+    if not df.exists():
         d = defaultdict(list)
     else:
         with open(df) as ifd:
@@ -88,15 +100,6 @@ def insert(sid, item):
         d[k] += s[k]
     with open(df, "w") as ofd:
         json.dump(d, ofd)
-
-
-def list():
-    r = []
-    for f in database.glob("*.meta"):
-        with open(f) as fd:
-            o = json.load(fd)
-        r.append(o)
-    return r
 
 
 def select(sid, include_data=True):

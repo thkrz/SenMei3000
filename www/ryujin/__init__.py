@@ -29,7 +29,7 @@ async def prepare(meta, data, schema):
         lbl = meta["config"][k]["label"]
         if lbl:
             title += " / " + lbl
-        s[k] = {"x": a, "labels": labels, "length": len(labels), "title": title}
+        s[k] = {"value": a, "labels": labels, "length": len(labels), "title": title}
     return s
 
 
@@ -38,7 +38,7 @@ async def sensor(request):
         o = await request.json()
         db.sensor.update(o)
         return PlainTextResponse("success.\r\n", status_code=201)
-    return JSONResponse(db.sensor.list())
+    return JSONResponse(db.sensor.catalogue())
 
 
 async def stationupd(request):
@@ -52,14 +52,13 @@ async def station(request):
     try:
         sid = request.path_params["sid"]
     except KeyError:
-        return JSONResponse(db.station.list())
+        return JSONResponse(db.station.catalogue())
     if request.method == "POST":
         b = await request.body()
         db.station.insert(sid, b.decode("utf-8"))
         return PlainTextResponse("success.\r\n", status_code=201)
-
     meta, data = db.station.select(sid)
-    schema = db.sensor.list()
+    schema = db.sensor.catalogue()
     return JSONResponse(
         {
             "schema": schema,
@@ -67,15 +66,15 @@ async def station(request):
             "data": {
                 "t": data["#time"],
                 "s": await prepare(meta, data, schema),
-                "r": {
+                "s0": {
                     0: {
-                        "x": data["#volt"],
+                        "value": data["#volt"],
                         "labels": ["Voltage\u00A0[V]"],
                         "length": 1,
                         "title": "Battery",
                     },
                     1: {
-                        "x": data["#clim"],
+                        "value": data["#clim"],
                         "labels": ["Temperature\u00A0[°C]", "Humidity\u00A0[-]"],
                         "length": 2,
                         "title": "Station Climate",

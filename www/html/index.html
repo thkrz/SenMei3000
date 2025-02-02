@@ -18,14 +18,14 @@
   </head>
   <body>
     <div id="map"></div>
-    <div id="search" class="shadow">
-      <input id="station" class="searchbox" placeholder="Search stations" />
-      <span class="material-icons" style="vertical-align: middle">search</span>
-      <ul id="search-results" class="scroll"></ul>
+    <div id="menu" class="shadow">
+      <ul id="menu-list" class="scroll">
+        <li><span class="material-icons">menu</span></li>
+      </ul>
     </div>
     <div id="dform" class="wnd shadow">
-      <div id="deco">
-        <span id="sid"></span><span class="material-icons quit" onclick="hide()">close</span>
+      <div id="header">
+        ID:&nbsp;<span id="sid"></span><span class="material-icons quit" onclick="hide()">close</span>
       </div>
       <div class="content scroll">
         <details>
@@ -38,7 +38,7 @@
             </p>
             <p><label>Comment:<input name="note" style="width: 48em" /></label></p>
             <p>Config:<br /><dl id="sensors"></dl></p>
-            <button type="submit">Submit</button><button id="recfg" type="button">Re-configure</button>
+            <button type="submit">Submit</button>
           </form>
         </details>
         <details>

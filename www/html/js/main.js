@@ -1,7 +1,7 @@
-function createConfig(dat, tab) {
+function createConfig(meta, schema) {
   const dl = document.getElementById("sensors");
   dl.replaceChildren();
-  for (const [k, v] of Object.entries(dat.config)) {
+  for (const [k, v] of Object.entries(meta.config)) {
     const dt = document.createElement("dt");
     dt.style = "text-transform: none; font-weight: 500";
     dt.appendChild(document.createTextNode(k));
@@ -12,13 +12,17 @@ function createConfig(dat, tab) {
     label.appendChild(document.createTextNode("Sensor:"));
     const sel = document.createElement("select");
     sel.name = k;
-    for (let i = 0; i < tab.length; i++) {
-      const opt = document.createElement("option");
+    let opt = document.createElement("option");
+    opt.value = -1;
+    opt.appendChild(document.createTextNode("Pending configuration"));
+    sel.appendChild(opt);
+    for (let i = 0; i < schema.length; i++) {
+      opt = document.createElement("option");
       opt.value = i;
-      opt.appendChild(document.createTextNode(tab[i].name));
+      opt.appendChild(document.createTextNode(schema[i].name));
       sel.appendChild(opt);
     }
-    sel.selectedIndex = dat.config[k].sensor;
+    sel.selectedIndex = meta.config[k].sensor + 1;
     label.appendChild(sel);
 
     dd.appendChild(label);
@@ -26,7 +30,7 @@ function createConfig(dat, tab) {
     label = document.createElement("label");
     label.appendChild(document.createTextNode("Label:"));
     const input = document.createElement("input");
-    input.value = dat.config[k].label;
+    input.value = meta.config[k].label;
     input.name = k;
     label.append(input);
 
@@ -37,34 +41,34 @@ function createConfig(dat, tab) {
   }
 }
 
-function createGraphs(c, x, y) {
+function createGraphs(c, x, S) {
   c.replaceChildren();
-  for (const [k, ser] of Object.entries(y)) {
+  for (const [k, s] of Object.entries(S)) {
     const g = document.createElement("div");
     g.style = "height: 320px";
     c.appendChild(g);
-    if (ser == null) {
+    if (s == null) {
       g.innerHTML = `<div class="alert"><h2>Sensor ${k} not configured yet</h2></div>`;
       continue;
     }
     opts = {
-      title: ser.title,
+      title: s.title,
       width: "auto",
-      labels: ["Date"].concat(ser.labels),
+      labels: ["Date"].concat(s.labels),
       rollPeriod: Math.floor(x.length / 100),
       showRoller: true,
       series: {},
     };
-    if (ser.length > 1) {
-      opts.series[ser.labels[0]] = { color: "#0000ff" };
-      opts.series[ser.labels[1]] = { color: "#ff0000", axis: "y2" };
+    if (s.length > 1) {
+      opts.series[s.labels[0]] = { color: "#0000ff" };
+      opts.series[s.labels[1]] = { color: "#ff0000", axis: "y2" };
     } else {
-      opts.series[ser.labels[0]] = { color: "#00ff00" };
+      opts.series[s.labels[0]] = { color: "#00ff00" };
     }
     new Dygraph(
       g,
       x.map((e, i) => {
-        return [new Date(e)].concat(ser.x[i]);
+        return [new Date(e)].concat(s.value[i]);
       }),
       opts
     );
@@ -88,7 +92,7 @@ function show(sid) {
         field && (field.value = v);
       }
       createConfig(meta, schema);
-      createGraphs(document.getElementById("health"), data.t, data.r);
+      createGraphs(document.getElementById("health"), data.t, data.s0);
       createGraphs(document.getElementById("data"), data.t, data.s);
     });
   document.getElementById("dform").style.visibility = "visible";
@@ -150,19 +154,17 @@ form.addEventListener("submit", (e) => {
   submit(form);
 });
 
-const button = document.getElementById("recfg");
-button.addEventListener("click", (e) => reconfigure());
-
 fetch("http://127.0.0.1:8000/station")
   .then((r) => r.json())
   .then((l) => {
     var map = init_map();
     let lat = 0;
     let lng = 0;
-    const ul = document.getElementById("search-results");
+    const ul = document.getElementById("menu-list");
     for (let i = 0; i < l.length; i++) {
       const latlng = [l[i].lat, l[i].lng];
       const a = search_item(l[i]);
+      a.style = "text-overflow: ellipses";
       a.addEventListener(
         "click",
         (ev) => {

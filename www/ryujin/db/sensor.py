@@ -22,7 +22,7 @@ def insert(o):
         json.dump(j, f)
 
 
-def list():
+def catalogue():
     with open(database) as f:
         j = json.load(f)
     return j

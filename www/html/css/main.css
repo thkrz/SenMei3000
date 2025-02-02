@@ -4,19 +4,26 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
+  color: #1f1f1f;
+  box-sizing: border-box;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  max-height: 768px;
 }
 
 ul li {
   font-weight: 500;
   text-align: center;
-  padding: 0.5em 0;
+  padding: 0.5em;
+  /* overflow */
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 72px;
 }
 ul li:hover {
   background-color: rgba(60, 64, 67, 0.04);
@@ -32,32 +39,28 @@ ul a {
   height: 100vh;
 }
 
-#search {
+#menu {
   position: absolute;
-  top: 12px;
-  left: 32px;
-  z-index: 998;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
   background-color: #fff;
   flex-direction: column;
   padding: 0 0 1.5em 0;
   overflow: hidden;
-  border-radius: 1.5em;
-  width: 264px;
+  font-size: 0.9rem;
+  /* border-radius: 1.5em; */
+  width: 72px;
   line-height: 24px;
 }
-#search-results {
-  /* display: none; */
-  border-top: 1px solid #ccc;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
 
-#deco {
+#header {
   text-align: center;
   font-weight: 500;
   padding: 0.5em;
-  background-color: rgba(60, 64, 67, 0.04);
-  border-radius: 1em 1em 0 0;
+  /* background-color: rgba(60, 64, 67, 0.04); */
+  /* border-radius: 1em 1em 0 0; */
 }
 
 .content {
@@ -127,16 +130,16 @@ ul a {
 .wnd {
   display: flex;
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 50%;
   visibility: hidden;
-  z-index: 999;
+  z-index: 9999;
   background-color: #fff;
   flex-direction: column;
   padding: 0;
-  transform: translate(-50%, -50%);
-  border-radius: 1em;
-  height: 85vh;
+  transform: translate(-50%, 0);
+  /* border-radius: 1em; */
+  height: 100vh;
   min-width: 1024px;
   width: 75%;
   font-family: monospace;
