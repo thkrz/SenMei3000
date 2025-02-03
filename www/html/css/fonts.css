@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "CourierPrime";
+  src: url("/css/fonts/CourierPrime-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "CourierPrime";
+  src: url("/css/fonts/CourierPrime-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "CourierPrime";
+  src: url("/css/fonts/CourierPrime-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "CourierPrime";
+  src: url("/css/fonts/CourierPrime-Italic.ttf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("/css/fonts/SpaceGrotesk-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("/css/fonts/SpaceGrotesk-Light.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("/css/fonts/SpaceGrotesk-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("/css/fonts/SpaceGrotesk-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("/css/fonts/SpaceGrotesk-Bold.ttf") format("truetype");
+  font-weight: bold;
+}

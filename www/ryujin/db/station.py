@@ -1,6 +1,7 @@
 import json  # alt. ijson
 import re
 from collections import defaultdict
+# from datetime import datetime
 from pathlib import Path
 
 database = Path("./db/station")
@@ -34,6 +35,8 @@ def _parse(s):
     eof = False
     i = 0
     while i < len(ln) - 4 and not eof:
+        # dt = datetime.fromisoformat(ln[i])
+        # d["#time"].append(dt.timestamp())
         d["#time"].append(ln[i])
         d["#volt"].append(float(ln[i + 1]))
         d["#clim"].append([float(ln[i + 2]), float(ln[i + 3])])

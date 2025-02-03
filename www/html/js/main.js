@@ -60,23 +60,29 @@ function createGraphs(c, x, S) {
       series: {},
     };
     if (s.length > 1) {
-      opts.series[s.labels[0]] = { color: "#0000ff" };
-      opts.series[s.labels[1]] = { color: "#ff0000", axis: "y2" };
+      opts.series[s.labels[0]] = { color: "#47a" };
+      opts.series[s.labels[1]] = { color: "#e67", axis: "y2" };
     } else {
-      opts.series[s.labels[0]] = { color: "#00ff00" };
+      opts.series[s.labels[0]] = { color: "#283" };
     }
     new Dygraph(
       g,
       x.map((e, i) => {
         return [new Date(e)].concat(s.value[i]);
       }),
-      opts
+      opts,
     );
+    const b = document.createElement("button");
+    b.classList.add("btn");
+    b.appendChild(document.createTextNode("Download"));
+    const d = document.createElement("div");
+    d.appendChild(b);
+    c.appendChild(d);
   }
 }
 
 function hide() {
-  document.getElementById("dform").style.visibility = "hidden";
+  document.getElementById("form").style.visibility = "hidden";
 }
 
 function show(sid) {
@@ -95,7 +101,7 @@ function show(sid) {
       createGraphs(document.getElementById("health"), data.t, data.s0);
       createGraphs(document.getElementById("data"), data.t, data.s);
     });
-  document.getElementById("dform").style.visibility = "visible";
+  document.getElementById("form").style.visibility = "visible";
   return false;
 }
 
@@ -112,7 +118,7 @@ async function submit(form) {
     const k = items[i].childNodes[0].nodeValue;
     config[k] = {
       sensor: parseInt(
-        items[i + 1].querySelector(`select[name="${k}"]`).value || -1
+        items[i + 1].querySelector(`select[name="${k}"]`).value || -1,
       ),
       label: items[i + 1].querySelector(`input[name="${k}"]`).value,
     };
@@ -152,6 +158,7 @@ const form = document.getElementById("meta");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   submit(form);
+  location.reload();
 });
 
 fetch("http://127.0.0.1:8000/station")
@@ -160,7 +167,7 @@ fetch("http://127.0.0.1:8000/station")
     var map = init_map();
     let lat = 0;
     let lng = 0;
-    const ul = document.getElementById("menu-list");
+    const ul = document.getElementById("sbar-list");
     for (let i = 0; i < l.length; i++) {
       const latlng = [l[i].lat, l[i].lng];
       const a = search_item(l[i]);
@@ -171,7 +178,7 @@ fetch("http://127.0.0.1:8000/station")
           show(l[i].id);
           map.setView(latlng, 12);
         },
-        false
+        false,
       );
       ul.appendChild(a);
       L.marker(latlng)

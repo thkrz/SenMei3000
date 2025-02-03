@@ -25,10 +25,10 @@ async def prepare(meta, data, schema):
             idx.append(col["idx"])
             labels.append(f"{col['var']}\u00A0[{col['unit']}]")
         a = y[:, tuple(idx)].tolist()
-        title = f"Sensor {k}: {schema[i]['name']}"
+        title = f"Sensor: {k}\u00A0({schema[i]['name']})"
         lbl = meta["config"][k]["label"]
         if lbl:
-            title += " / " + lbl
+            title += "\u00A0/ " + lbl
         s[k] = {"value": a, "labels": labels, "length": len(labels), "title": title}
     return s
 

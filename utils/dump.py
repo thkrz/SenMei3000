@@ -6,6 +6,8 @@ port = "/dev/ttyACM0"
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        port = sys.argv[-1]
     com = serial.Serial(port)
     com.baudrate = 9600
     com.bytesize = 8

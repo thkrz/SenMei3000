@@ -1,5 +1,4 @@
 __pycache__/
-*-backups/
 *.lck
 .venv/
 venv/
