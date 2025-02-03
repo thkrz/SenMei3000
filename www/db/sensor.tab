@@ -1,1 +1,24 @@
-[{"name": "SMT100", "schema": [{"var": "Humidity", "unit": "-", "idx": 0}, {"var": "Temperature", "unit": "\u00b0C", "idx": 1}]}, {"name": "TensioMark", "schema": [{"var": "Pore pressure", "unit": "pF", "idx": 0}]}]
+[
+  {
+    "name": "SMT100",
+    "num": 5,
+    "idx": [
+      1,
+      2
+    ],
+    "parameter": [
+      "Humidity [-]",
+      "Temperature °C"
+    ]
+  },
+  {
+    "name": "TensioMark",
+    "num": 5,
+    "idx": [
+      0
+    ],
+    "parameter": [
+      "Pore pressure pF"
+    ]
+  }
+]

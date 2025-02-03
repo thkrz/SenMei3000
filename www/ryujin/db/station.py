@@ -32,26 +32,22 @@ def _num(s):
 
 def _parse(s):
     ln = s.splitlines()
-    y = defaultdict(list)
-    eof = False
+    x = defaultdict(list)
     i = 0
-    keys = []
-    while i < len(ln) - 4 and not eof:
+    while i < len(ln) - 4:
         dt = datetime.fromisoformat(ln[i])
-        t = dt.timestamp()
-        y["bat"].append([t, float(ln[i + 1])])
-        y["env"].append([t, float(ln[i + 2]), float(ln[i + 3])])
+        x["time"].append(dt.timestamp())
+        x["bat"].append(float(ln[i + 1]))
+        x["temp"].append(float(ln[i + 2]))
+        x["rh"].append(float(ln[i + 3]))
         i += 4
-        eof = True
         for rd in ln[i:]:
             i += 1
             if not rd:
-                eof = False
                 break
             k, n = _lex(rd)
-            y[k].append([t] + n)
-            keys.append(k)
-    return keys, y
+            x[k].append(n)
+    return x
 
 
 def _upd(o, n, exclude=[]):
@@ -67,8 +63,8 @@ def _upd(o, n, exclude=[]):
 
 def catalogue():
     r = []
-    for f in database.glob("*.meta"):
-        with open(f) as ifd:
+    for f in database.iterdir():
+        with open(f / "meta.json") as ifd:
             o = json.load(ifd)
         r.append(o)
     return r
@@ -78,11 +74,11 @@ def insert(sid, item):
     root = database / sid
     if not root.exists():
         Path.mkdir(root)
-    with open(root / "raw", "a") as ofd:
+    with open(root / "raw.txt", "a") as ofd:
         ofd.write(item + "\r\n")
 
-    keys, y = _parse(item)
-    p = root / "meta"
+    x = _parse(item)
+    p = root / "meta.json"
     if not p.exists():
         m = {
             "id": sid,
@@ -90,34 +86,28 @@ def insert(sid, item):
             "lat": 0.0,
             "lng": 0.0,
             "comment": "",
-            "config": {k: {"sensor": -1, "label": ""} for k in keys},
+            "config": {k: {"sensor": -1, "label": ""} for k in x.keys() if len(k) == 1},
         }
         with open(p, "w") as ofd:
             json.dump(m, ofd)
-    for k, v in y.items():
-        with open(root / k, "a") as ofd:
-            for i in range(len(v)):
-                ofd.write(",".join([str(n) for n in v[i]]) + "\n")
+
+    for k, v in x.items():
+        with open(root / (k + ".csv"), "a") as ofd:
+            np.savetxt(ofd, v, delimiter=",", fmt="%.4f")
 
 
-def select(sid, include_data=True):
-    mf = database / sid / "meta"
-    with open(mf) as ifd:
-        o = json.load(ifd)
-    if include_data:
-        df = database / sid
-        d = {}
-        for p in df.iterdir():
-            k = p.name
-            if len(k) != 1:
-                continue
-            d[k] = np.loadtxt(p, delimiter=",").tolist()
-        return o, d
-    return o
+def select(sid):
+    p = database / sid
+    with open(p / "meta.json") as ifd:
+        a = json.load(ifd)
+    b = {f.stem: np.loadtxt(f, delimiter=",") for f in p.glob("*.csv")}
+    return a, b
 
 
 def update(sid, **kwargs):
-    o = select(sid, include_data=False)
+    mf = database / sid / "meta.json"
+    with open(mf) as ifd:
+        o = json.load(ifd)
     _upd(o, kwargs, exclude=["id"])
-    with open(database / (sid + ".meta"), "w") as ofd:
+    with open(mf, "w") as ofd:
         json.dump(o, ofd)

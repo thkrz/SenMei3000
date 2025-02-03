@@ -65,30 +65,9 @@ async def station(request):
         return PlainTextResponse("success.\r\n", status_code=201)
     meta, data = db.station.select(sid)
     schema = db.sensor.catalogue()
-    return JSONResponse(
-        {
-            "schema": schema,
-            "meta": meta,
-            "data": {
-                "t": data["#time"],
-                "s": await prepare(meta, data, schema),
-                "s0": {
-                    0: {
-                        "value": data["#volt"],
-                        "labels": ["Voltage\u00A0[V]"],
-                        "length": 1,
-                        "title": "Battery",
-                    },
-                    1: {
-                        "value": data["#clim"],
-                        "labels": ["Temperature\u00A0[°C]", "Humidity\u00A0[-]"],
-                        "length": 2,
-                        "title": "Station Climate",
-                    },
-                },
-            },
-        }
-    )
+    print(meta)
+    print(data)
+    return JSONResponse({})
 
 
 routes = [
