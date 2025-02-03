@@ -11,6 +11,12 @@ from starlette.staticfiles import StaticFiles
 from . import db
 
 
+async def download(request):
+    sid = request.path_params["sid"]
+    k = request.path_params["k"]
+    meta, data = db.station.select(sid)
+
+
 async def prepare(meta, data, schema):
     s = {}
     for k in meta["config"].keys():
@@ -87,6 +93,7 @@ async def station(request):
 
 routes = [
     Route("/sensor", sensor, methods=["GET", "POST"]),
+    Route("/station/{sid}/{k}/download", download, methods=["GET"]),
     Route("/station/{sid}/update", stationupd, methods=["POST"]),
     Route("/station/{sid}", station, methods=["GET", "POST"]),
     Route("/station", station, methods=["GET"]),

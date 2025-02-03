@@ -1,18 +1,11 @@
 import json  # alt. ijson
+import numpy as np
 import re
 from collections import defaultdict
-# from datetime import datetime
+from datetime import datetime
 from pathlib import Path
 
 database = Path("./db/station")
-
-
-def _num(s):
-    try:
-        n = int(s)
-    except ValueError:
-        n = float(s)
-    return n
 
 
 def _lex(s):
@@ -29,17 +22,25 @@ def _lex(s):
     return idx, n
 
 
+def _num(s):
+    try:
+        n = int(s)
+    except ValueError:
+        n = float(s)
+    return n
+
+
 def _parse(s):
     ln = s.splitlines()
-    d = defaultdict(list)
+    y = defaultdict(list)
     eof = False
     i = 0
+    keys = []
     while i < len(ln) - 4 and not eof:
-        # dt = datetime.fromisoformat(ln[i])
-        # d["#time"].append(dt.timestamp())
-        d["#time"].append(ln[i])
-        d["#volt"].append(float(ln[i + 1]))
-        d["#clim"].append([float(ln[i + 2]), float(ln[i + 3])])
+        dt = datetime.fromisoformat(ln[i])
+        t = dt.timestamp()
+        y["bat"].append([t, float(ln[i + 1])])
+        y["env"].append([t, float(ln[i + 2]), float(ln[i + 3])])
         i += 4
         eof = True
         for rd in ln[i:]:
@@ -48,8 +49,9 @@ def _parse(s):
                 eof = False
                 break
             k, n = _lex(rd)
-            d[k].append(n)
-    return d
+            y[k].append([t] + n)
+            keys.append(k)
+    return keys, y
 
 
 def _upd(o, n, exclude=[]):
@@ -73,47 +75,44 @@ def catalogue():
 
 
 def insert(sid, item):
-    with open(database / (sid + ".raw"), "a") as ofd:
+    root = database / sid
+    if not root.exists():
+        Path.mkdir(root)
+    with open(root / "raw", "a") as ofd:
         ofd.write(item + "\r\n")
 
-    mf = database / (sid + ".meta")
-    df = database / (sid + ".dat")
-
-    s = _parse(item)
-
-    if not mf.exists():
+    keys, y = _parse(item)
+    p = root / "meta"
+    if not p.exists():
         m = {
             "id": sid,
             "name": "",
             "lat": 0.0,
             "lng": 0.0,
             "comment": "",
-            "config": {k: {"sensor": -1, "label": ""} for k in s.keys() if k.isalnum()},
+            "config": {k: {"sensor": -1, "label": ""} for k in keys},
         }
-        with open(mf, "w") as ofd:
+        with open(p, "w") as ofd:
             json.dump(m, ofd)
-        del m
-    if not df.exists():
-        d = defaultdict(list)
-    else:
-        with open(df) as ifd:
-            d = json.load(ifd)
-
-    for k in s.keys():
-        d[k] += s[k]
-    with open(df, "w") as ofd:
-        json.dump(d, ofd)
+    for k, v in y.items():
+        with open(root / k, "a") as ofd:
+            for i in range(len(v)):
+                ofd.write(",".join([str(n) for n in v[i]]) + "\n")
 
 
 def select(sid, include_data=True):
-    mf = database / (sid + ".meta")
+    mf = database / sid / "meta"
     with open(mf) as ifd:
         o = json.load(ifd)
     if include_data:
-        df = database / (sid + ".dat")
-        with open(df) as ifd:
-            j = json.load(ifd)
-        return o, j
+        df = database / sid
+        d = {}
+        for p in df.iterdir():
+            k = p.name
+            if len(k) != 1:
+                continue
+            d[k] = np.loadtxt(p, delimiter=",").tolist()
+        return o, d
     return o
 
 
