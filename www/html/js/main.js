@@ -42,6 +42,7 @@ function createConfig(meta, schema) {
 }
 
 function createGraphs(sid, c, time, series) {
+  c.replaceChildren();
   for (const [k, s] of Object.entries(series)) {
     const div = document.createElement("div");
     div.style = "height: 320px";
