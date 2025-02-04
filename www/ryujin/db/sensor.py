@@ -2,27 +2,33 @@ import json  # alt. ijson
 from pathlib import Path
 
 database = Path("./db/sensor.tab")
+builtin = {
+    "config": {
+        "bat": {"sensor": 0, "label": "Battery"},
+        "sht": {"sensor": 1, "label": "Station climate"},
+    },
+    "schema": [
+        {"name": "BAT", "idx": None, "parameter": ["Voltage\u00A0[V]"]},
+        {
+            "name": "SHTC3",
+            "idx": [0, 1],
+            "parameter": ["Temperature\u00A0[°C]", "Humidity\u00A0[-]"],
+        },
+    ],
+}
 
 
 def insert(o):
-    # o = {
-    #     "name": "",
-    #     "schema": [
-    #         {"var": "", "unit": "", "idx": 0},
-    #         {"var": "", "unit": "", "idx": 0},
-    #     ],
-    # }
     if database.exists():
-        with open(database) as f:
+        with database.open() as f:
             j = json.load(f)
     else:
         j = []
     j.append(o)
-    with open(database, "w") as f:
+    with database.open("w") as f:
         json.dump(j, f)
 
 
 def catalogue():
-    with open(database) as f:
-        j = json.load(f)
-    return j
+    with database.open() as f:
+        return json.load(f)

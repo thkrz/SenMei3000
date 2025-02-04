@@ -8,6 +8,11 @@ from pathlib import Path
 database = Path("./db/station")
 
 
+def _dump(p, a):
+    with p.open("a") as fod:
+        np.savetxt(fod, a, delimiter=",", fmt="%.4f")
+
+
 def _lex(s):
     idx, s = s[0], s[1:]
     i = 0
@@ -20,6 +25,11 @@ def _lex(s):
         i = j
     n.append(_num(s[i:]))
     return idx, n
+
+
+def _load(p):
+    with p.open() as fid:
+        return np.loadtxt(fid, delimiter=",")
 
 
 def _num(s):
@@ -38,8 +48,7 @@ def _parse(s):
         dt = datetime.fromisoformat(ln[i])
         x["time"].append(dt.timestamp())
         x["bat"].append(float(ln[i + 1]))
-        x["temp"].append(float(ln[i + 2]))
-        x["rh"].append(float(ln[i + 3]))
+        x["sht"].append([float(ln[i + 2]), float(ln[i + 3])])
         i += 4
         for rd in ln[i:]:
             i += 1
@@ -64,8 +73,8 @@ def _upd(o, n, exclude=[]):
 def catalogue():
     r = []
     for f in database.iterdir():
-        with open(f / "meta.json") as ifd:
-            o = json.load(ifd)
+        with open(f / "meta.json") as fid:
+            o = json.load(fid)
         r.append(o)
     return r
 
@@ -74,8 +83,8 @@ def insert(sid, item):
     root = database / sid
     if not root.exists():
         Path.mkdir(root)
-    with open(root / "raw.txt", "a") as ofd:
-        ofd.write(item + "\r\n")
+    with open(root / "raw.txt", "a") as fod:
+        fod.write(item + "\r\n")
 
     x = _parse(item)
     p = root / "meta.json"
@@ -88,26 +97,31 @@ def insert(sid, item):
             "comment": "",
             "config": {k: {"sensor": -1, "label": ""} for k in x.keys() if len(k) == 1},
         }
-        with open(p, "w") as ofd:
-            json.dump(m, ofd)
+        with p.open("w") as fod:
+            json.dump(m, fod)
 
     for k, v in x.items():
-        with open(root / (k + ".csv"), "a") as ofd:
-            np.savetxt(ofd, v, delimiter=",", fmt="%.4f")
+        _dump(root / (k + ".dat"), v)
 
 
-def select(sid):
+def select(sid, key=None):
     p = database / sid
-    with open(p / "meta.json") as ifd:
-        a = json.load(ifd)
-    b = {f.stem: np.loadtxt(f, delimiter=",") for f in p.glob("*.csv")}
+
+    if key:
+        a = _load(p / "time.dat")
+        b = _load(p / (key + ".dat"))
+        return np.column_stack((a, b))
+
+    with open(p / "meta.json") as fid:
+        a = json.load(fid)
+    b = {f.stem: _load(f) for f in p.glob("*.dat")}
     return a, b
 
 
 def update(sid, **kwargs):
-    mf = database / sid / "meta.json"
-    with open(mf) as ifd:
-        o = json.load(ifd)
+    mp = database / sid / "meta.json"
+    with mp.open() as fid:
+        o = json.load(fid)
     _upd(o, kwargs, exclude=["id"])
-    with open(mf, "w") as ofd:
-        json.dump(o, ofd)
+    with mp.open("w") as fod:
+        json.dump(o, fod)

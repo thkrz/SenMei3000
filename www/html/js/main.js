@@ -41,38 +41,46 @@ function createConfig(meta, schema) {
   }
 }
 
-function createGraphs(c, x, S) {
-  c.replaceChildren();
-  for (const [k, s] of Object.entries(S)) {
-    const g = document.createElement("div");
-    g.style = "height: 320px";
-    c.appendChild(g);
+function createGraphs(sid, c, time, series) {
+  for (const [k, s] of Object.entries(series)) {
+    const div = document.createElement("div");
+    div.style = "height: 320px";
+    c.appendChild(div);
     if (s == null) {
-      g.innerHTML = `<div class="alert"><h2>Sensor ${k} not configured yet</h2></div>`;
+      div.innerHTML = `<div class="alert"><h2>Sensor ${k} not configured yet</h2></div>`;
       continue;
     }
     opts = {
       title: s.title,
+      xlabel: "Date",
+      ylabel: s.labels[0],
       width: "auto",
       labels: ["Date"].concat(s.labels),
-      rollPeriod: Math.floor(x.length / 100),
-      showRoller: true,
+      labelsSeparateLines: true,
       series: {},
+      axes: {
+        y: { axisLabelWidth: 72 },
+        y2: { axisLabelWidth: 72 },
+      },
     };
     if (s.length > 1) {
+      opts["y2label"] = s.labels[1];
       opts.series[s.labels[0]] = { color: "#47a" };
       opts.series[s.labels[1]] = { color: "#e67", axis: "y2" };
     } else {
       opts.series[s.labels[0]] = { color: "#283" };
     }
-    new Dygraph(
-      g,
-      x.map((e, i) => {
-        return [new Date(e)].concat(s.value[i]);
+    const g = new Dygraph(
+      div,
+      time.map((e, i) => {
+        return [new Date(e * 1000)].concat(s.data[i]);
       }),
       opts,
     );
     const b = document.createElement("button");
+    b.addEventListener("click", (e) => {
+      fetch(`http://127.0.0.1:8000/station/${sid}/${k}/download`);
+    });
     b.classList.add("btn");
     b.appendChild(document.createTextNode("Download"));
     const d = document.createElement("div");
@@ -98,8 +106,18 @@ function show(sid) {
         field && (field.value = v);
       }
       createConfig(meta, schema);
-      createGraphs(document.getElementById("health"), data.t, data.s0);
-      createGraphs(document.getElementById("data"), data.t, data.s);
+      createGraphs(
+        meta.id,
+        document.getElementById("health"),
+        data.time,
+        data.health,
+      );
+      createGraphs(
+        meta.id,
+        document.getElementById("data"),
+        data.time,
+        data.series,
+      );
     });
   document.getElementById("form").style.visibility = "visible";
   return false;

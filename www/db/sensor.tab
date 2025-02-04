@@ -1,24 +1,22 @@
 [
   {
     "name": "SMT100",
-    "num": 5,
     "idx": [
-      1,
-      2
+      0,
+      1
     ],
     "parameter": [
       "Humidity [-]",
-      "Temperature °C"
+      "Temperature [°C]"
     ]
   },
   {
     "name": "TensioMark",
-    "num": 5,
     "idx": [
       0
     ],
     "parameter": [
-      "Pore pressure pF"
+      "Pore pressure [pF]"
     ]
   }
 ]
