@@ -6731,6 +6731,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "826632-2"
+			(at 30.48 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "9bd3749b-2130-4ce5-be47-49fcdcf36dc7")
 		)

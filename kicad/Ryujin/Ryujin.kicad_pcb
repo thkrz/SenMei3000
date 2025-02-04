@@ -5170,6 +5170,19 @@
 				)
 			)
 		)
+		(property "MPN" "826632-2"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f56a3412-4f86-479d-9f0e-163dac7f3b60")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Connector*:*_2x??_*")
 		(path "/724899d3-be82-4558-95fb-06b8aaf88196")
 		(sheetname "Root")
