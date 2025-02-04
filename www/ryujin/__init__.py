@@ -1,8 +1,7 @@
 import numpy as np
-import tempfile
 import uvicorn
 from starlette.applications import Starlette
-from starlette.responses import PlainTextResponse, JSONResponse
+from starlette.responses import PlainTextResponse, JSONResponse, FileResponse
 from starlette.routing import Route
 
 # DEBUG
@@ -16,15 +15,13 @@ async def download(request):
     sid = request.path_params["sid"]
     k = request.path_params["k"]
     arr = db.station.select(sid, key=k)
-    with tempfile.NamedTemporaryFile(delete_on_close=False) as fp:
-        np.savetxt(fp, arr[arr[:, 0].argsort()], delimiter=",", fmt="%.4f")
-        fp.close()
-        with open(fp.name) as f:
-            s = f.read()
-        return PlainTextResponse(s)
+    name = f"{sid}_{k}.csv"
+    path = "data/" + name
+    np.savetxt(path, arr[arr[:, 0].argsort()], delimiter=",", fmt="%.4f")
+    return FileResponse(path, filename=name)
 
 
-async def prepare(meta, inds, data, schema=None):
+async def prepare(meta, data, schema=None, inds=None):
     if schema is None:
         schema = meta["schema"]
     s = {}
@@ -87,8 +84,8 @@ async def station(request):
             "meta": meta,
             "data": {
                 "time": t.tolist(),
-                "series": await prepare(meta, inds, data, schema),
-                "health": await prepare(db.sensor.builtin, inds, data),
+                "series": await prepare(meta, data, schema, inds),
+                "health": await prepare(db.sensor.builtin, data, inds=inds),
             },
         }
     )

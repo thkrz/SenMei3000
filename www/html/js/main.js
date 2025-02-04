@@ -45,10 +45,10 @@ function createGraphs(sid, c, time, series) {
   c.replaceChildren();
   for (const [k, s] of Object.entries(series)) {
     const div = document.createElement("div");
-    div.style = "height: 320px";
+    div.style = "height: 400px";
     c.appendChild(div);
     if (s == null) {
-      div.innerHTML = `<div class="alert"><h2>Sensor ${k} not configured yet</h2></div>`;
+      div.innerHTML = `<div class="alert"><h2>Sensor ${k} is not configured yet</h2></div>`;
       continue;
     }
     opts = {
@@ -80,7 +80,7 @@ function createGraphs(sid, c, time, series) {
     );
     const b = document.createElement("button");
     b.addEventListener("click", (e) => {
-      fetch(`http://127.0.0.1:8000/station/${sid}/${k}/download`);
+      location.href = `http://127.0.0.1:8000/station/${sid}/${k}/download`;
     });
     b.classList.add("btn");
     b.appendChild(document.createTextNode("Download"));

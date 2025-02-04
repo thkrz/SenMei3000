@@ -46,6 +46,11 @@ void connect() {
 }
 
 void debug() {
+  //Serial1.begin(9600);
+  //while (!Serial1);
+  // send GPS
+  //Serial1.close();
+
   Serial.begin(9600);
   while (!Serial);
 
@@ -212,6 +217,7 @@ void verify() {
 }
 
 void setup() {
+  //pinMode(DBG_PIN, INPUT_PULLUP);
   if (digitalRead(DBG_PIN) == HIGH)
     debug();
     /* not reached */
