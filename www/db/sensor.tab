@@ -2,21 +2,35 @@
   {
     "name": "SMT100",
     "idx": [
-      0,
-      1
+      2,
+      3
     ],
     "parameter": [
-      "Humidity [-]",
-      "Temperature [°C]"
+      "Raw [-]",
+      "Permittivity [-]",
+      "VWC [%]",
+      "Temperature [°C]",
+      "Voltage [V]"
     ]
   },
   {
-    "name": "TensioMark",
+    "name": "Ex1",
     "idx": [
       0
     ],
     "parameter": [
       "Pore pressure [pF]"
+    ]
+  },
+  {
+    "name": "Ex2",
+    "idx": [
+      0,
+      1
+    ],
+    "parameter": [
+      "Raw [-]",
+      "Permittivity [-]"
     ]
   }
 ]

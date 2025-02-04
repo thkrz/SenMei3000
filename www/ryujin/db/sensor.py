@@ -8,7 +8,7 @@ builtin = {
         "sht": {"sensor": 1, "label": "Station climate"},
     },
     "schema": [
-        {"name": "BAT", "idx": None, "parameter": ["Voltage\u00A0[V]"]},
+        {"name": "BAT", "idx": [0], "parameter": ["Voltage\u00A0[V]"]},
         {
             "name": "SHTC3",
             "idx": [0, 1],

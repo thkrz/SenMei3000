@@ -14,14 +14,17 @@ from . import db
 async def download(request):
     sid = request.path_params["sid"]
     k = request.path_params["k"]
-    arr = db.station.select(sid, key=k)
+    meta, arr = db.station.select(sid, key=k)
+    schema = db.sensor.catalogue()
+    i = meta["config"][k]["sensor"]
+    hdr = ",".join(["Time"] + schema[i]["parameter"])
     name = f"{sid}_{k}.csv"
     path = "data/" + name
-    np.savetxt(path, arr[arr[:, 0].argsort()], delimiter=",", fmt="%.4f")
+    np.savetxt(path, arr, delimiter=",", fmt="%.3f", header=hdr.upper())
     return FileResponse(path, filename=name)
 
 
-async def prepare(meta, data, schema=None, inds=None):
+async def prepare(meta, data, schema=None):
     if schema is None:
         schema = meta["schema"]
     s = {}
@@ -31,18 +34,15 @@ async def prepare(meta, data, schema=None, inds=None):
             s[k] = None
             continue
         y = data[k]
-        idx = schema[i]["idx"]
-        labels = schema[i]["parameter"]
-        if isinstance(idx, list):
-            a = y[:, tuple(idx)]
-        else:
-            a = y
+        idx = tuple(schema[i]["idx"])
+        a = y[:, idx] if len(y.shape) > 1 else y
+        labels = [schema[i]["parameter"][j] for j in idx]
         title = f"Sensor: {k}\u00A0({schema[i]['name']})"
         lbl = cfg["label"]
         if lbl:
             title += "\u00A0/ " + lbl
         s[k] = {
-            "data": a[inds].tolist(),
+            "data": a.tolist(),
             "labels": labels,
             "length": len(labels),
             "title": title,
@@ -76,16 +76,14 @@ async def station(request):
         return PlainTextResponse("success.\r\n", status_code=201)
     meta, data = db.station.select(sid)
     schema = db.sensor.catalogue()
-    inds = data["time"].argsort()
-    t = data["time"][inds]
     return JSONResponse(
         {
             "schema": schema,
             "meta": meta,
             "data": {
-                "time": t.tolist(),
-                "series": await prepare(meta, data, schema, inds),
-                "health": await prepare(db.sensor.builtin, data, inds=inds),
+                "time": data["time"].tolist(),
+                "series": await prepare(meta, data, schema),
+                "health": await prepare(db.sensor.builtin, data),
             },
         }
     )

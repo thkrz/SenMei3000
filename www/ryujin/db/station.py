@@ -8,9 +8,16 @@ from pathlib import Path
 database = Path("./db/station")
 
 
-def _dump(p, a):
-    with p.open("a") as fod:
-        np.savetxt(fod, a, delimiter=",", fmt="%.4f")
+def _dump(p, a, idx=None):
+    a = np.asarray(a)
+    if p.exists():
+        b = np.load(p)
+        a = np.concatenate((b, a), axis=0)
+    if idx is None:
+        idx = a.argsort()
+    with p.open("wb") as fop:
+        np.save(fop, a[idx])
+    return idx
 
 
 def _lex(s):
@@ -27,11 +34,6 @@ def _lex(s):
     return idx, n
 
 
-def _load(p):
-    with p.open() as fid:
-        return np.loadtxt(fid, delimiter=",")
-
-
 def _num(s):
     try:
         n = int(s)
@@ -46,7 +48,7 @@ def _parse(s):
     i = 0
     while i < len(ln) - 4:
         dt = datetime.fromisoformat(ln[i])
-        x["time"].append(dt.timestamp())
+        x["time"].append(dt.timestamp())  # must be first key in dict
         x["bat"].append(float(ln[i + 1]))
         x["sht"].append([float(ln[i + 2]), float(ln[i + 3])])
         i += 4
@@ -100,21 +102,21 @@ def insert(sid, item):
         with p.open("w") as fod:
             json.dump(m, fod)
 
+    idx = None
     for k, v in x.items():
-        _dump(root / (k + ".dat"), v)
+        idx = _dump(root / (k + ".bin"), v, idx)
 
 
 def select(sid, key=None):
     p = database / sid
-
-    if key:
-        a = _load(p / "time.dat")
-        b = _load(p / (key + ".dat"))
-        return np.column_stack((a, b))
-
     with open(p / "meta.json") as fid:
         a = json.load(fid)
-    b = {f.stem: _load(f) for f in p.glob("*.dat")}
+    if key:
+        t = np.load(p / "time.bin")
+        b = np.load(p / (key + ".bin"))
+        b = np.column_stack((t, b))
+    else:
+        b = {f.stem: np.load(f) for f in p.glob("*.bin")}
     return a, b
 
 
