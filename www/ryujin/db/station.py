@@ -43,22 +43,27 @@ def _num(s):
 
 
 def _parse(s):
-    ln = s.splitlines()
     x = defaultdict(list)
-    i = 0
-    while i < len(ln) - 4:
-        dt = datetime.fromisoformat(ln[i])
-        x["time"].append(dt.timestamp())  # must be first key in dict
-        x["bat"].append(float(ln[i + 1]))
-        x["sht"].append([float(ln[i + 2]), float(ln[i + 3])])
-        i += 4
-        for rd in ln[i:]:
-            i += 1
-            if not rd:
-                break
-            k, n = _lex(rd)
-            x[k].append(n)
-    return x
+    cfg = {}
+    rows = iter(s.splitlines())
+    for ln in rows:
+        if ln == "CALIBRATE":
+            for ln in rows:
+                if not ln:
+                    break
+                k, sens = ln[0], ln[11:17]
+                cfg[k] = {"sensor": sens, "label": ""}
+        else:
+            dt = datetime.fromisoformat(ln)
+            x["time"].append(dt.timestamp())  # must be first key in dict
+            x["bat"].append(float(next(rows)))
+            x["sht"].append([float(next(rows)), float(next(rows))])
+            for ln in rows:
+                if not ln:
+                    break
+                k, n = _lex(ln)
+                x[k].append(n)
+    return cfg, x
 
 
 def _upd(o, n, exclude=[]):
@@ -84,21 +89,38 @@ def catalogue():
 def insert(sid, item):
     root = database / sid
     if not root.exists():
-        Path.mkdir(root)
-    with open(root / "raw.txt", "a") as fod:
-        fod.write(item + "\r\n")
+        root.mkdir()
 
-    x = _parse(item)
+    cfg, x = _parse(item)
     p = root / "meta.json"
     if not p.exists():
+        assert len(cfg) > 0
         m = {
             "id": sid,
             "name": "",
             "lat": 0.0,
             "lng": 0.0,
-            "comment": "",
-            "config": {k: {"sensor": -1, "label": ""} for k in x.keys() if len(k) == 1},
+            "config": cfg,
         }
+        with p.open("w") as fod:
+            json.dump(m, fod)
+    elif len(cfg) > 0:
+        with p.open() as fid:
+            m = json.load(fid)
+        now = datetime.now().timestamp()
+        r = root / str(int(now))
+        rebase = False
+        for k, v in m["config"].items():
+            if k not in cfg.keys() or v["sensor"] != cfg[k]["sensor"]:
+                r.mkdir(exists_ok=True)
+                q = root / (k + ".bin")
+                q.rename(r / (k + ".bin"))
+                rebase = True
+        if rebase:
+            q = r / "meta.json"
+            with q.open("w") as fod:
+                json.dump(m, fod)
+        m["config"] = cfg
         with p.open("w") as fod:
             json.dump(m, fod)
 

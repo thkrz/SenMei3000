@@ -1,6 +1,5 @@
-[
+{ "SMT100":
   {
-    "name": "SMT100",
     "idx": [
       2,
       3
@@ -13,8 +12,7 @@
       "Voltage [V]"
     ]
   },
-  {
-    "name": "TensioMark",
+  "TensioMark": {
     "idx": [
       0,
       1

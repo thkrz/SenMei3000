@@ -33,19 +33,11 @@ async def prepare(meta, data, schema=None):
         schema = meta["schema"]
     s = {}
     for k, cfg in meta["config"].items():
-        i = cfg["sensor"]
-        if i < 0:
-            s[k] = errmsg(f"Sensor {k} is not configured yet")
-            continue
+        name = cfg["sensor"]
         y = data[k]
-        idx = tuple(schema[i]["idx"])
-        name = schema[i]["name"]
-        param = schema[i]["parameter"]
-        dim = y.shape[1] if len(y.shape) > 1 else 1
-        if dim != len(param):
-            s[k] = errmsg(f"Sensor {k} missmatch with {name}")
-            continue
-        a = y[:, idx] if dim > 1 else y
+        idx = tuple(schema[name]["idx"])
+        param = schema[name]["parameter"]
+        a = y[:, idx] if len(y.shape) > 1 else y
         labels = [param[j] for j in idx]
         title = f"Sensor: {k}\u00A0({name})"
         lbl = cfg["label"]
@@ -82,13 +74,15 @@ async def station(request):
         return JSONResponse(db.station.catalogue())
     if request.method == "POST":
         b = await request.body()
-        db.station.insert(sid, b.decode("utf-8"))
+        try:
+            db.station.insert(sid, b.decode("utf-8"))
+        except Exception as ex:
+            return PlainTextResponse(str(ex) + "\r\n", status_code=401)
         return PlainTextResponse("success.\r\n", status_code=201)
     meta, data = db.station.select(sid)
     schema = db.sensor.catalogue()
     return JSONResponse(
         {
-            "schema": schema,
             "meta": meta,
             "data": {
                 "time": data["time"].tolist(),

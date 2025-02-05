@@ -4,17 +4,16 @@ from pathlib import Path
 database = Path("./db/sensor.tab")
 builtin = {
     "config": {
-        "bat": {"sensor": 0, "label": "Battery"},
-        "sht": {"sensor": 1, "label": "Station climate"},
+        "bat": {"sensor": "BAT", "label": "Battery"},
+        "sht": {"sensor": "SHTC3", "label": "Station climate"},
     },
-    "schema": [
-        {"name": "BAT", "idx": [0], "parameter": ["Voltage\u00A0[V]"]},
-        {
-            "name": "SHTC3",
+    "schema": {
+        "BAT": {"idx": [0], "parameter": ["Voltage\u00A0[V]"]},
+        "SHTC3": {
             "idx": [0, 1],
             "parameter": ["Temperature\u00A0[°C]", "Humidity\u00A0[-]"],
         },
-    ],
+    },
 }
 
 
