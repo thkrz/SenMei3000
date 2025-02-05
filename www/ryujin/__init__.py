@@ -11,6 +11,10 @@ from starlette.staticfiles import StaticFiles
 from . import db
 
 
+def errmsg(s):
+    return {"length": 0, "title": s}
+
+
 async def download(request):
     sid = request.path_params["sid"]
     k = request.path_params["k"]
@@ -31,13 +35,19 @@ async def prepare(meta, data, schema=None):
     for k, cfg in meta["config"].items():
         i = cfg["sensor"]
         if i < 0:
-            s[k] = None
+            s[k] = errmsg(f"Sensor {k} is not configured yet")
             continue
         y = data[k]
         idx = tuple(schema[i]["idx"])
-        a = y[:, idx] if len(y.shape) > 1 else y
-        labels = [schema[i]["parameter"][j] for j in idx]
-        title = f"Sensor: {k}\u00A0({schema[i]['name']})"
+        name = schema[i]["name"]
+        param = schema[i]["parameter"]
+        dim = y.shape[1] if len(y.shape) > 1 else 1
+        if dim != len(param):
+            s[k] = errmsg(f"Sensor {k} missmatch with {name}")
+            continue
+        a = y[:, idx] if dim > 1 else y
+        labels = [param[j] for j in idx]
+        title = f"Sensor: {k}\u00A0({name})"
         lbl = cfg["label"]
         if lbl:
             title += "\u00A0/ " + lbl

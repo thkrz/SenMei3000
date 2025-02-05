@@ -1,3 +1,11 @@
+function toggleNav() {
+  const e = document.getElementById("nav");
+  if (e.style.width === "264px")
+    e.style.width = 0;
+  else
+    e.style.width = "264px";
+}
+
 function createConfig(meta, schema) {
   const dl = document.getElementById("sensors");
   dl.replaceChildren();
@@ -47,8 +55,11 @@ function createGraphs(sid, c, time, series) {
     const div = document.createElement("div");
     div.style = "height: 400px";
     c.appendChild(div);
-    if (s == null) {
-      div.innerHTML = `<div class="alert"><h2>Sensor ${k} is not configured yet</h2></div>`;
+    if (s.length === 0) {
+      div.innerHTML = `<div class="alert">
+        <span class="material-icons">warning_amber</span>
+        <h2>${s.title}</h2>
+        </div>`;
       continue;
     }
     opts = {
@@ -165,7 +176,7 @@ function init_map() {
 function search_item(e) {
   const li = document.createElement("li");
   const a = document.createElement("a");
-  a.href = "#";
+  a.href = "javascript:void(0)";
   let s = e.name;
   if (s !== "") s += ", ";
   li.innerHTML = `${s}<span class='addendum'>${e.id}</span>`;

@@ -63,6 +63,19 @@ void measure(int i) {
   c->u[1] *= 0.001629;
 }
 
+char peekaddr(int a) {
+  static const char s = 'A';
+
+  char c = EEPROM.read(EE_ADDR + a);
+  if (!((c >= '0' && c <= '9') ||
+    (c >= 'a' && c <= 'z') ||
+    (c >= 'A' && c <= 'Z'))) {
+    c = s + a;
+    EEPROM.write(EE_ADDR + a, c);
+  }
+  return c;
+}
+
 void rc() {
   char addr = buf[0];
   int i = index(addr);
@@ -102,7 +115,7 @@ void rc() {
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   for (int i = 0; i < NUM_CON; i++)
-    term[i].addr = EEPROM.read(EE_ADDR+i);
+    term[i].addr = peekaddr(i);
   socket.begin();
   delay(100);
   socket.forceListen();

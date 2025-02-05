@@ -22,10 +22,23 @@
   </head>
   <body>
     <div id="map"></div>
+    <div id="nav" class="sidenav shadow">
+      <span class="material-icons closebtn" onclick="toggleNav()">close</span>
+      <h1>Ryujin</h1>
+      <div class="side-menu">
+        <ul>
+          <li><span class="material-icons icon">sensors</span>Sensor settings</li>
+        </ul>
+      </div>
+      <div class="side-menu">
+        <ul>
+          <li>Impressum</li>
+        </ul>
+      </div>
+    </div>
     <div id="sbar" class="shadow">
       <ul id="sbar-list">
-        <!-- <a href="#"><li><span class="material-icons">menu</span></li></a> -->
-        <a href="#"><li><span class="material-icons">sensors</span></li></a>
+        <a href="javascript:void(0)" onclick="toggleNav()"><li><span class="material-icons">menu</span></li></a>
       </ul>
     </div>
     <div id="form" class="wnd shadow">
