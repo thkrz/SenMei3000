@@ -99,18 +99,32 @@ void rc() {
 }
 
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
-  for (int i = 0; i < NUM_CON; i++)
+  Serial.begin(9600);
+  delay(5000);
+
+  Serial.println("TEST AOQUIN");
+
+  for (int i = 0; i < NUM_CON; i++) {
     term[i].addr = peekaddr(i);
+    Serial.print("TERM ");
+    Serial.print(i);
+    Serial.print(": ");
+    Serial.println(term[i].addr);
+  }
   socket.begin();
   delay(500);
   socket.forceListen();
+  Serial.println("START LISTENING");
 }
 
 void loop() {
   if (socket.available()) {
     char c = socket.read();
+    Serial.print(c);
     if (c == '!') {
+      Serial.println();
+      Serial.println(buf);
+      Serial.println("--");
       socket.clearBuffer();
       socket.forceHold();
       if (len > 0) {

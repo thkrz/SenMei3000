@@ -9,7 +9,6 @@
 
 struct Term {
   char addr;
-  bool active;
   float u[2];
 };
 
@@ -21,15 +20,6 @@ int pin[] = {
   A0, A1, A2, A3, A4, A5,
   A6, A7, A8, A9, A10, A11
 };
-
-void chkactive(int i) {
-  int j = i * 2;
-  pinMode(pin[j], INPUT_PULLUP);
-  delay(10);
-  term[i].active = analogRead(pin[j]) > 0;
-  if (term[i].active)
-    pinMode(pin[j], INPUT);
-}
 
 String data(int i) {
   static String s;
@@ -64,13 +54,13 @@ void measure(int i) {
 }
 
 char peekaddr(int a) {
-  static const char s = 'A';
+  static const char i = '0';
 
   char c = EEPROM.read(EE_ADDR + a);
   if (!((c >= '0' && c <= '9') ||
     (c >= 'a' && c <= 'z') ||
     (c >= 'A' && c <= 'Z'))) {
-    c = s + a;
+    c = i + a;
     EEPROM.write(EE_ADDR + a, c);
   }
   return c;
@@ -80,10 +70,6 @@ void rc() {
   char addr = buf[0];
   int i = index(addr);
   if (i < 0)
-    return;
-  if (len == 1)
-    chkactive(i);
-  if (!term[i].active)
     return;
   String r = "";
   bool m = false;
