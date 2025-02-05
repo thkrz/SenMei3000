@@ -158,7 +158,7 @@ function init_map() {
     "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community";
   let map = L.map("map", { minZoom: 3, zoomControl: false });
   L.tileLayer(uri, { attribution: copyright }).addTo(map);
-  L.control.scale().addTo(map);
+  L.control.scale({ position: "bottomright" }).addTo(map);
   return map;
 }
 

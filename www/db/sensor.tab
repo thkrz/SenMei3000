@@ -14,23 +14,14 @@
     ]
   },
   {
-    "name": "Ex1",
-    "idx": [
-      0
-    ],
-    "parameter": [
-      "Pore pressure [pF]"
-    ]
-  },
-  {
-    "name": "Ex2",
+    "name": "TensioMark",
     "idx": [
       0,
       1
     ],
     "parameter": [
-      "Raw [-]",
-      "Permittivity [-]"
+      "Temperature [°C]",
+      "pF-Value [-]"
     ]
   }
 ]
