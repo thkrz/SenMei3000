@@ -33,6 +33,15 @@ float battery() {
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
+bool calibrate() {
+  String s = "CALIBRATE\r\n";
+  enable();
+  for (char *p = sid; *p; p++)
+    s += info(*p);
+  disable();
+  return post(s);
+}
+
 void connect() {
   bool connected = false;
   while (!connected) {
@@ -106,6 +115,17 @@ void idle() {
     digitalWrite(LED_BUILTIN, LOW);
     delay(1000);
   }
+}
+
+String info(char i) {
+  static char cmd[4] = "aI!";
+  static String s;
+
+  st[0] = i;
+  socket.sendCommand(st);
+  delay(300);
+  s = socket.readStringUntil('\n');
+  return s;
 }
 
 String load() {
@@ -239,6 +259,7 @@ void setup() {
   SHTC3.begin();
 
   connect();
+  calibrate();
 
   rtc.begin();
   rtc.setEpoch(nbAccess.getTime());

@@ -1,1 +1,1 @@
-{"id": "1", "name": "Labor", "lat": 49.7814075, "lng": 9.9698083, "comment": "", "config": {"0": {"sensor": 1, "label": ""}, "1": {"sensor": 1, "label": ""}, "a": {"sensor": 1, "label": ""}, "b": {"sensor": 1, "label": ""}}, "note": ""}
+{"id": "1", "name": "Labor", "lat": 49.7814075, "lng": 9.9698083, "comment": "", "config": {"0": {"sensor": -1, "label": ""}, "1": {"sensor": 1, "label": ""}, "a": {"sensor": 1, "label": ""}, "b": {"sensor": 1, "label": ""}}, "note": ""}
