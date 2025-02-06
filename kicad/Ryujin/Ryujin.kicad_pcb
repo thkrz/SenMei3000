@@ -330,7 +330,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://content.u-blox.com/sites/default/files/MAX-M10S_DataSheet_UBX-20035208.pdf"
+		(property "Datasheet" "../../docs/MAX-M10S_DataSheet_UBX-20035208.pdf"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")

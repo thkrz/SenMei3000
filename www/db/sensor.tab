@@ -12,7 +12,7 @@
       "Voltage [V]"
     ]
   },
-  "TensioMark": {
+  "RK_2Vh": {
     "idx": [
       0,
       1
@@ -22,4 +22,4 @@
       "pF-Value [-]"
     ]
   }
-]
+}

@@ -1,1 +1,1 @@
-{"id": "1", "name": "", "lat": 0.0, "lng": 0.0, "comment": "", "config": {"0": {"sensor": "SMT100", "label": ""}, "1": {"sensor": "SMT100", "label": ""}, "a": {"sensor": "SMT100", "label": ""}, "b": {"sensor": "SMT100", "label": ""}}}
+{"id": "1", "name": "Labor", "lat": 49.7821483, "lng": 9.9703302, "config": {"1": {"sensor": "RK_2Vh", "label": "Wasserspannung"}, "2": {"sensor": "RK_2Vh", "label": "Wasserspannung"}, "a": {"sensor": "SMT100", "label": ""}, "b": {"sensor": "SMT100", "label": ""}}}

@@ -30,6 +30,17 @@ bool handshake(char i) {
   return false;
 }
 
+String ident(char i) {
+  static char cmd[4] = "aI!";
+  static String s;
+
+  cmd[0] = i;
+  socket.sendCommand(cmd);
+  delay(300);
+  s = socket.readStringUntil('\n');
+  return s;
+}
+
 String measure(char i) {
   static char st[4] = "aM!";
   static char rd[5] = "aD0!";
@@ -90,11 +101,10 @@ void setup() {
 }
 
 void loop() {
+  for (char *p = sid; *p; p++) {
+    Serial.println("--");
+    Serial.println(ident(*p));
+    Serial.println(measure(*p));
+  }
   delay(5000);
-
-  String s = "";
-  for (char *p = sid; *p; p++)
-    s += measure(*p);
-
-  Serial.println(s);
 }

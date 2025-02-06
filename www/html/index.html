@@ -25,7 +25,6 @@
     <div id="map"></div>
     <div id="nav" class="sidenav shadow">
       <span class="material-icons closebtn" onclick="toggleNav()">close</span>
-      <h1>Ryujin</h1>
       <div class="side-menu">
         <ul>
           <li><span class="material-icons icon">sensors</span>Sensor settings</li>
@@ -55,8 +54,7 @@
               <label>Lat.:<input name="lat" type="number" step="any" /></label>
               <label>Lng.:<input name="lng" type="number" step="any" /></label>
             </p>
-            <p><label>Comment:<input name="note" style="width: 48em" /></label></p>
-            <p>Config:<br /><dl id="sensors"></dl></p>
+            <p>Config:<table id="sensor-config"></table></p>
             <button type="submit">Submit</button>
           </form>
         </details>

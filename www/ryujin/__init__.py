@@ -28,18 +28,23 @@ async def download(request):
     return FileResponse(path, filename=name)
 
 
-async def prepare(meta, data, schema=None):
-    if schema is None:
-        schema = meta["schema"]
+async def prepare(data, meta, schema):
     s = {}
     for k, cfg in meta["config"].items():
-        name = cfg["sensor"]
+        nam = cfg["sensor"]
+        if nam not in schema.keys():
+            s[k] = errmsg(f"{k}: sensor {nam} is not configured yet")
+            continue
         y = data[k]
-        idx = tuple(schema[name]["idx"])
-        param = schema[name]["parameter"]
-        a = y[:, idx] if len(y.shape) > 1 else y
+        dim = len(y.shape)
+        idx = tuple(schema[nam]["idx"])
+        param = schema[nam]["parameter"]
+        if max(idx) >= dim:
+            s[k] = errmsg(f"{k}: sensor {nam} missmatch")
+            continue
+        a = y[:, idx] if dim > 1 else y
         labels = [param[j] for j in idx]
-        title = f"Sensor: {k}\u00A0({name})"
+        title = f"Sensor: {k}\u00A0({nam})"
         lbl = cfg["label"]
         if lbl:
             title += "\u00A0/ " + lbl
@@ -79,18 +84,13 @@ async def station(request):
         except Exception as ex:
             return PlainTextResponse(str(ex) + "\r\n", status_code=401)
         return PlainTextResponse("success.\r\n", status_code=201)
-    meta, data = db.station.select(sid)
-    schema = db.sensor.catalogue()
-    return JSONResponse(
-        {
-            "meta": meta,
-            "data": {
-                "time": data["time"].tolist(),
-                "series": await prepare(meta, data, schema),
-                "health": await prepare(db.sensor.builtin, data),
-            },
-        }
-    )
+    meta, data_ = db.station.select(sid)
+    data = {"time": [], "series": [], "health": []}
+    if len(data_) > 0:
+        data["time"] = data_["time"].tolist()
+        data["series"] = await prepare(data_, meta, db.sensor.catalogue())
+        data["health"] = await prepare(data_, *db.sensor.builtin)
+    return JSONResponse({"meta": meta, "data": data})
 
 
 routes = [

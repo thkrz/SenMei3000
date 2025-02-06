@@ -108,6 +108,17 @@ bool handshake(char i) {
   return false;
 }
 
+String ident(char i) {
+  static char cmd[4] = "aI!";
+  static String s;
+
+  cmd[0] = i;
+  socket.sendCommand(cmd);
+  delay(300);
+  s = socket.readStringUntil('\n');
+  return s;
+}
+
 void idle() {
   for(;;) {
     digitalWrite(LED_BUILTIN, HIGH);
@@ -115,17 +126,6 @@ void idle() {
     digitalWrite(LED_BUILTIN, LOW);
     delay(1000);
   }
-}
-
-String info(char i) {
-  static char cmd[4] = "aI!";
-  static String s;
-
-  st[0] = i;
-  socket.sendCommand(st);
-  delay(300);
-  s = socket.readStringUntil('\n');
-  return s;
 }
 
 String load() {

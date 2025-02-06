@@ -88,8 +88,7 @@ def catalogue():
 
 def insert(sid, item):
     root = database / sid
-    if not root.exists():
-        root.mkdir()
+    root.mkdir(exist_ok=True)
 
     cfg, x = _parse(item)
     p = root / "meta.json"
@@ -107,19 +106,10 @@ def insert(sid, item):
     elif len(cfg) > 0:
         with p.open() as fid:
             m = json.load(fid)
-        now = datetime.now().timestamp()
-        r = root / str(int(now))
-        rebase = False
         for k, v in m["config"].items():
             if k not in cfg.keys() or v["sensor"] != cfg[k]["sensor"]:
-                r.mkdir(exists_ok=True)
-                q = root / (k + ".bin")
-                q.rename(r / (k + ".bin"))
-                rebase = True
-        if rebase:
-            q = r / "meta.json"
-            with q.open("w") as fod:
-                json.dump(m, fod)
+                f = root / (k + ".bin")
+                f.unlink()
         m["config"] = cfg
         with p.open("w") as fod:
             json.dump(m, fod)
