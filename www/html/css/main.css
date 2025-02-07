@@ -35,6 +35,10 @@ ul a {
 	color: #000;
 }
 
+li {
+  margin: 1rem 0;
+}
+
 details {
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 1rem;
@@ -197,6 +201,7 @@ button {
 	margin: 1em;
 	font-weight: 500;
 	text-transform: uppercase;
+  cursor: pointer;
 }
 
 h1,
@@ -213,3 +218,29 @@ h2,
 summary {
 	font-size: 1.2rem;
 }
+
+.selection {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selection input {
+  margin: 11px;
+}
+
+.ctrl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  align-content: center;
+  align-items: baseline;
+}
+
+.logo {
+  text-align: center;
+}
+
+
+
