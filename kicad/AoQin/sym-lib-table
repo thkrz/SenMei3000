@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "FFKDSA1_V_381_4")(type "KiCad")(uri "${KIPRJMOD}/symbols/FFKDSA1_V_381_4.kicad_sym")(options "")(descr ""))
+  (lib (name "FFKDSA1_V_381")(type "KiCad")(uri "${KIPRJMOD}/symbols/FFKDSA1_V_381.kicad_sym")(options "")(descr ""))
+  (lib (name "PheonixContact")(type "KiCad")(uri "${KIPRJMOD}/symbols/PheonixContact.kicad_sym")(options "")(descr ""))
+)
