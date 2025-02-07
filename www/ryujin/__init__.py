@@ -38,7 +38,7 @@ async def prepare(data, config):
             continue
         y = data[k]
         if len(y.shape) == 1:
-            y = np.asarray([y])
+            y = y[:, None]
         labels = schema[nam]
         title = f"Sensor: {k}\u00A0({nam})"
         lbl = cfg["label"]

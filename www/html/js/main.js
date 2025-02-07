@@ -37,10 +37,6 @@ function createGraphs(sid, c, time, series) {
         </div>`;
 			continue;
 		}
-		if (s.length !== s.data[0].length) {
-      console.log(k);
-      continue;
-    }
 		const visibility = Array(s.length).fill(false);
 		visibility[0] = true;
 		opts = {
