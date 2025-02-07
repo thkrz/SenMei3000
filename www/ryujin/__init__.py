@@ -20,36 +20,32 @@ async def download(request):
     k = request.path_params["k"]
     meta, arr = db.station.select(sid, key=k)
     schema = db.sensor.catalogue()
-    i = meta["config"][k]["sensor"]
-    hdr = ",".join(["Time"] + schema[i]["parameter"])
+    nam = meta["config"][k]["sensor"]
+    hdr = ",".join(["Time"] + schema[nam])
     name = f"{sid}_{k}.csv"
     path = "data/" + name
     np.savetxt(path, arr, delimiter=",", fmt="%.3f", header=hdr.upper())
     return FileResponse(path, filename=name)
 
 
-async def prepare(data, meta, schema):
+async def prepare(data, config):
+    schema = db.sensor.catalogue()
     s = {}
-    for k, cfg in meta["config"].items():
+    for k, cfg in config.items():
         nam = cfg["sensor"]
         if nam not in schema.keys():
             s[k] = errmsg(f"{k}: sensor {nam} is not configured yet")
             continue
         y = data[k]
-        dim = len(y.shape)
-        idx = tuple(schema[nam]["idx"])
-        param = schema[nam]["parameter"]
-        if max(idx) >= dim:
-            s[k] = errmsg(f"{k}: sensor {nam} missmatch")
-            continue
-        a = y[:, idx] if dim > 1 else y
-        labels = [param[j] for j in idx]
+        if len(y.shape) == 1:
+            y = np.asarray([y])
+        labels = schema[nam]
         title = f"Sensor: {k}\u00A0({nam})"
         lbl = cfg["label"]
         if lbl:
             title += "\u00A0/ " + lbl
         s[k] = {
-            "data": a.tolist(),
+            "data": y.tolist(),
             "labels": labels,
             "length": len(labels),
             "title": title,
@@ -88,8 +84,8 @@ async def station(request):
     data = {"time": [], "series": [], "health": []}
     if len(data_) > 0:
         data["time"] = data_["time"].tolist()
-        data["series"] = await prepare(data_, meta, db.sensor.catalogue())
-        data["health"] = await prepare(data_, *db.sensor.builtin)
+        data["series"] = await prepare(data_, meta["config"])
+        data["health"] = await prepare(data_, db.sensor.builtin)
     return JSONResponse({"meta": meta, "data": data})
 
 

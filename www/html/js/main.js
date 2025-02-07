@@ -37,26 +37,20 @@ function createGraphs(sid, c, time, series) {
         </div>`;
 			continue;
 		}
+		if (s.length !== s.data[0].length) {
+      console.log(k);
+      continue;
+    }
+		const visibility = Array(s.length).fill(false);
+		visibility[0] = true;
 		opts = {
 			title: s.title,
 			xlabel: "Date",
-			ylabel: s.labels[0],
 			width: "auto",
 			labels: ["Date"].concat(s.labels),
 			labelsSeparateLines: true,
-			series: {},
-			axes: {
-				y: { axisLabelWidth: 72 },
-				y2: { axisLabelWidth: 72 },
-			},
+			visibility: visibility,
 		};
-		if (s.length > 1) {
-			opts.y2label = s.labels[1];
-			opts.series[s.labels[0]] = { color: "#47a" };
-			opts.series[s.labels[1]] = { color: "#e67", axis: "y2" };
-		} else {
-			opts.series[s.labels[0]] = { color: "#283" };
-		}
 		const g = new Dygraph(
 			div,
 			time.map((e, i) => {
@@ -64,14 +58,33 @@ function createGraphs(sid, c, time, series) {
 			}),
 			opts,
 		);
+
+		const box = document.createElement("div");
+		for (let j = 0; j < s.length; j++) {
+			const lbl = document.createElement("label");
+			const rad = document.createElement("input");
+			rad.type = "radio";
+			rad.name = k;
+			rad.value = j;
+			rad.checked = j === 0;
+			rad.addEventListener("change", (e) => {
+				sel = Number.parseInt(e.target.value);
+				for (let x = 0; x < visibility.length; x++) visibility[x] = x === sel;
+				g.updateOptions({ visibility: visibility });
+			});
+			lbl.appendChild(rad);
+			lbl.appendChild(document.createTextNode(s.labels[j]));
+			box.appendChild(lbl);
+		}
+
 		const b = document.createElement("button");
 		b.addEventListener("click", (e) => {
 			location.href = `http://127.0.0.1:8000/station/${sid}/${k}/download`;
 		});
 		b.classList.add("btn");
 		b.appendChild(document.createTextNode("Download"));
-		const box = document.createElement("div");
 		box.appendChild(b);
+
 		c.appendChild(box);
 	}
 }
@@ -81,7 +94,7 @@ function hide() {
 }
 
 function show(sid) {
-	fetch("http://127.0.0.1:8000/station/" + sid)
+	fetch(`http://127.0.0.1:8000/station/${sid}`)
 		.then((r) => r.json())
 		.then(({ meta, data }) => {
 			document
@@ -90,7 +103,7 @@ function show(sid) {
 			const form = document.getElementById("meta");
 			for (const [k, v] of Object.entries(meta)) {
 				const field = form.querySelector(`input[name="${k}"]`);
-				field && (field.value = v);
+				if (field) field.value = v;
 			}
 			createConfig(meta);
 			createGraphs(

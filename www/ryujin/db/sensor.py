@@ -1,22 +1,11 @@
 import json  # alt. ijson
 from pathlib import Path
 
-database = Path("./db/sensor.tab")
-builtin = (
-    {
-        "config": {
-            "bat": {"sensor": "BAT", "label": "Battery"},
-            "sht": {"sensor": "SHTC3", "label": "Station climate"},
-        }
-    },
-    {
-        "BAT": {"idx": [0], "parameter": ["Voltage\u00A0[V]"]},
-        "SHTC3": {
-            "idx": [0, 1],
-            "parameter": ["Temperature\u00A0[°C]", "Humidity\u00A0[-]"],
-        },
-    },
-)
+database = Path("./db/sensor.json")
+builtin = {
+    "bat": {"sensor": "BAT", "label": "Battery"},
+    "sht": {"sensor": "SHTC3", "label": "Station climate"},
+}
 
 
 def insert(o):

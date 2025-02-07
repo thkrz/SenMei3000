@@ -1,0 +1,12 @@
+{
+	"BAT": ["Voltage\u00A0[V]"],
+	"SHTC3": ["Temperature\u00A0[°C]", "Humidity\u00A0[-]"],
+	"SMT100": [
+		"Raw\u00A0[-]",
+		"Permittivity\u00A0[-]",
+		"VWC\u00A0[%]",
+		"Temperature\u00A0[°C]",
+		"Voltage\u00A0[V]"
+	],
+	"RK_2Vh": ["Temperature\u00A0[°C]", "pF-Value\u00A0[-]"]
+}
