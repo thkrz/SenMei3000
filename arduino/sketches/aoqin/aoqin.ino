@@ -44,10 +44,9 @@ int index(char a) {
 
 void measure(int i) {
   Term *c = &term[i];
-  int k = i * 2;
   for (int j = 0; j < 3; j++) {
     c->u[0] += analogRead(pin[k]);
-    c->u[1] += analogRead(pin[k+1]);
+    c->u[1] += analogRead(pin[k+6]);
   }
   c->u[0] *= 0.001629;
   c->u[1] *= 0.001629;
@@ -103,7 +102,7 @@ void setup() {
   for (int i = 0; i < NUM_CON; i++)
     term[i].addr = peekaddr(i);
   socket.begin();
-  delay(100);
+  delay(500);
   socket.forceListen();
 }
 

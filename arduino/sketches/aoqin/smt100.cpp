@@ -9,9 +9,9 @@ float (*tr[2])(float) = {
 };
 
 float smt100moist(float u) {
-  return u;
+  return u * 10.0;
 }
 
 float smt100temp(float u) {
-  return u;
+  return u * 10.0;
 }
