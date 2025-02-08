@@ -2449,16 +2449,6 @@
 		)
 		(uuid "05f81e58-6774-42c2-b89c-e6930e55136e")
 	)
-	(label "A10"
-		(at 86.36 149.86 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0706dd30-1b5b-403f-861f-add765b9d574")
-	)
 	(label "3V3"
 		(at 121.92 90.17 0)
 		(effects
@@ -2509,16 +2499,6 @@
 		)
 		(uuid "1dc09201-c2fc-4177-ab94-6fdeaa5d93f9")
 	)
-	(label "A9"
-		(at 44.45 149.86 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "206a9bb9-eb17-4487-a79b-576afec63d10")
-	)
 	(label "GND"
 		(at 130.81 152.4 0)
 		(effects
@@ -2539,7 +2519,7 @@
 		)
 		(uuid "2663b68e-4101-4bef-a183-4e64596d3407")
 	)
-	(label "A2"
+	(label "A7"
 		(at 45.72 115.57 0)
 		(effects
 			(font
@@ -2558,6 +2538,16 @@
 			(justify left bottom)
 		)
 		(uuid "28d0c4f1-a5aa-4463-8e48-a6988c5ea31a")
+	)
+	(label "A0"
+		(at 130.81 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "427ac634-f7b5-4392-ac69-d499d5faf52f")
 	)
 	(label "+12V"
 		(at 121.92 85.09 0)
@@ -2579,7 +2569,7 @@
 		)
 		(uuid "465f331e-1db8-481e-9974-fe0ecb421f3b")
 	)
-	(label "A0"
+	(label "A11"
 		(at 45.72 80.01 0)
 		(effects
 			(font
@@ -2650,6 +2640,16 @@
 		(uuid "6bdb69d5-450a-469e-8ed6-4af76af77061")
 	)
 	(label "A1"
+		(at 130.81 147.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6d3b0670-adaf-4e92-9fb2-b0258dba9cd8")
+	)
+	(label "A9"
 		(at 45.72 97.79 0)
 		(effects
 			(font
@@ -2669,16 +2669,6 @@
 		)
 		(uuid "80a9ac89-a69c-4bd0-be62-28db3c65df25")
 	)
-	(label "A4"
-		(at 86.36 147.32 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "844028f9-6e36-4978-b3bc-06b4a9f6b045")
-	)
 	(label "+12V"
 		(at 30.48 57.15 0)
 		(effects
@@ -2688,6 +2678,16 @@
 			(justify left bottom)
 		)
 		(uuid "8813432c-9ff4-4cdd-9ef1-83e047ca8817")
+	)
+	(label "A2"
+		(at 86.36 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "88ba5b32-b637-4d84-acfa-cf07e9bbad70")
 	)
 	(label "A11"
 		(at 186.69 69.85 0)
@@ -2699,6 +2699,16 @@
 		)
 		(uuid "8c0c07c0-a888-42f3-86e3-65cf68409067")
 	)
+	(label "A5"
+		(at 44.45 147.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8ef546e1-0b46-4738-bd3d-0163b3343098")
+	)
 	(label "VIN2"
 		(at 44.45 154.94 0)
 		(effects
@@ -2709,7 +2719,7 @@
 		)
 		(uuid "915e0dcb-333b-4a9c-994a-dbaf853efbd8")
 	)
-	(label "A8"
+	(label "A6"
 		(at 45.72 118.11 0)
 		(effects
 			(font
@@ -2718,6 +2728,16 @@
 			(justify left bottom)
 		)
 		(uuid "97378266-b502-4f92-941e-78509132591d")
+	)
+	(label "A4"
+		(at 44.45 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9b62601c-8df9-4dfc-a45f-f331e39d9ff2")
 	)
 	(label "GND"
 		(at 44.45 152.4 0)
@@ -2779,7 +2799,7 @@
 		)
 		(uuid "bfd1ed03-2ef3-4cba-90f9-39a18102d5c9")
 	)
-	(label "A6"
+	(label "A10"
 		(at 45.72 82.55 0)
 		(effects
 			(font
@@ -2808,16 +2828,6 @@
 			(justify left bottom)
 		)
 		(uuid "ca3561c5-dd8a-4d6b-9a14-17f144b7f24d")
-	)
-	(label "A3"
-		(at 44.45 147.32 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d0639f14-885f-4bb9-a9fe-b176382a9c0f")
 	)
 	(label "5V"
 		(at 121.92 87.63 0)
@@ -2869,7 +2879,7 @@
 		)
 		(uuid "e2a73fd4-e290-4eaf-b0bd-ca9996b93988")
 	)
-	(label "A7"
+	(label "A8"
 		(at 45.72 100.33 0)
 		(effects
 			(font
@@ -2878,6 +2888,16 @@
 			(justify left bottom)
 		)
 		(uuid "ecfd3ec8-4b24-4a64-92d9-fd78d40304b2")
+	)
+	(label "A3"
+		(at 86.36 147.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ed811306-bd24-43d4-8990-c0238a9421a6")
 	)
 	(label "A6"
 		(at 186.69 49.53 0)
@@ -2888,16 +2908,6 @@
 			(justify left bottom)
 		)
 		(uuid "ef267332-8fa6-4396-bac3-38954ea635e6")
-	)
-	(label "A5"
-		(at 130.81 147.32 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f06b4719-4ca8-4b4f-afd6-4048259f132b")
 	)
 	(label "A9"
 		(at 186.69 62.23 0)
@@ -2919,16 +2929,6 @@
 		)
 		(uuid "f9caa84a-5435-448e-a2d4-a84b875e8aee")
 	)
-	(label "A11"
-		(at 130.81 149.86 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "fd159e76-8833-49b1-a1d3-2292f3795745")
-	)
 	(symbol
 		(lib_id "PheonixContact:1869237")
 		(at 53.34 147.32 0)
@@ -2938,7 +2938,7 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "138ef3b0-ebc2-4e1d-a230-d3993e3b2b73")
+		(uuid "134a7005-99bc-4123-8c32-91ae55b4f91a")
 		(property "Reference" "J6"
 			(at 69.85 149.8599 0)
 			(effects
@@ -3056,17 +3056,26 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "1869237"
+			(at 53.34 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "44f8fbd0-c2d9-486d-ad12-13dc892e0060")
+			(uuid "26c13275-6ef5-497d-b463-309cb9242f98")
 		)
 		(pin "2"
-			(uuid "8e7ac265-7ed5-4562-84bd-84c29e9cbb26")
+			(uuid "13ace330-4de5-446b-934b-9459b573f2da")
 		)
 		(pin "3"
-			(uuid "9e3009a5-7447-42d7-a56b-86c65d3d5163")
+			(uuid "d17bae97-3050-4c14-95f8-e397f25575f3")
 		)
 		(pin "4"
-			(uuid "4956f9e2-9289-44c8-a35c-402eb81ae09f")
+			(uuid "7927b654-4f94-4362-b7ea-323b093cd145")
 		)
 		(instances
 			(project "AoQin"
@@ -3218,6 +3227,477 @@
 			(project ""
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PheonixContact:1869237")
+		(at 139.7 147.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3364cd67-3dcd-4f3a-a095-898c20352c48")
+		(property "Reference" "J10"
+			(at 156.21 149.8599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1869237"
+			(at 156.21 152.3999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:SMKDSN_15_4_508"
+			(at 156.21 242.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
+			(at 156.21 342.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
+			(at 139.7 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "11.15"
+			(at 156.21 542.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Phoenix Contact"
+			(at 156.21 642.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "1869237"
+			(at 156.21 742.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "651-1869237"
+			(at 156.21 842.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
+			(at 156.21 942.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" "1869237"
+			(at 156.21 1042.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
+			(at 156.21 1142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1869237"
+			(at 139.7 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ae644fb1-675c-40d7-b685-5426d751077e")
+		)
+		(pin "2"
+			(uuid "1f537d5a-cb80-4d8e-877e-5c3a7f330068")
+		)
+		(pin "3"
+			(uuid "27f0100f-2042-4745-8f2f-4687b1438075")
+		)
+		(pin "4"
+			(uuid "6abf6d91-c5bb-4d7f-a8d8-e8380c044249")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "J10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PheonixContact:1869237")
+		(at 95.25 147.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "46a1c0ed-3542-41cd-9d8e-5006a6b81625")
+		(property "Reference" "J7"
+			(at 111.76 149.8599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1869237"
+			(at 111.76 152.3999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:SMKDSN_15_4_508"
+			(at 111.76 242.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
+			(at 111.76 342.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
+			(at 95.25 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "11.15"
+			(at 111.76 542.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Phoenix Contact"
+			(at 111.76 642.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "1869237"
+			(at 111.76 742.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "651-1869237"
+			(at 111.76 842.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
+			(at 111.76 942.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" "1869237"
+			(at 111.76 1042.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
+			(at 111.76 1142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1869237"
+			(at 95.25 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "79315ddf-1639-4893-a526-e8795c802c36")
+		)
+		(pin "2"
+			(uuid "0c1159f3-7ed4-4833-89d6-5e1c24c594b5")
+		)
+		(pin "3"
+			(uuid "94c79e26-b574-4fc5-b7fc-263422d0120a")
+		)
+		(pin "4"
+			(uuid "0c293996-01fc-47ab-b706-df571e7e2021")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "J7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PheonixContact:1869237")
+		(at 54.61 97.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6099eb7e-4775-47bb-af1d-2cb8cd82bea7")
+		(property "Reference" "J4"
+			(at 71.12 100.3299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1869237"
+			(at 71.12 102.8699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:SMKDSN_15_4_508"
+			(at 71.12 192.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
+			(at 71.12 292.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
+			(at 54.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "11.15"
+			(at 71.12 492.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Phoenix Contact"
+			(at 71.12 592.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "1869237"
+			(at 71.12 692.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "651-1869237"
+			(at 71.12 792.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
+			(at 71.12 892.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" "1869237"
+			(at 71.12 992.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
+			(at 71.12 1092.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1869237"
+			(at 54.61 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b88b7d8b-49a8-4aed-b82e-4c76590bc268")
+		)
+		(pin "2"
+			(uuid "18e5e420-5255-402f-b888-e8dafb6b5bf2")
+		)
+		(pin "3"
+			(uuid "74e3c3c7-b6ce-4894-be5e-75e3f9852399")
+		)
+		(pin "4"
+			(uuid "fafd39d1-8807-421b-a7f2-71cd6a5d2038")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -3595,6 +4075,163 @@
 		)
 	)
 	(symbol
+		(lib_id "PheonixContact:1869237")
+		(at 54.61 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a01f98f0-85f9-41d1-a63d-8bbc75a62a13")
+		(property "Reference" "J5"
+			(at 71.12 118.1099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1869237"
+			(at 71.12 120.6499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:SMKDSN_15_4_508"
+			(at 71.12 210.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
+			(at 71.12 310.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
+			(at 54.61 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "11.15"
+			(at 71.12 510.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Phoenix Contact"
+			(at 71.12 610.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "1869237"
+			(at 71.12 710.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "651-1869237"
+			(at 71.12 810.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
+			(at 71.12 910.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" "1869237"
+			(at 71.12 1010.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
+			(at 71.12 1110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1869237"
+			(at 54.61 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e4163abd-59b6-4d5a-9df0-e1a17658c879")
+		)
+		(pin "2"
+			(uuid "c8810852-f53d-4829-896c-c41f501769f4")
+		)
+		(pin "3"
+			(uuid "efc14215-edb9-428a-8712-50460634a414")
+		)
+		(pin "4"
+			(uuid "1873a7c0-9d68-4260-8b09-13db553a065b")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Screw_Terminal_01x03")
 		(at 43.18 22.86 0)
 		(unit 1)
@@ -3736,154 +4373,6 @@
 	)
 	(symbol
 		(lib_id "PheonixContact:1869237")
-		(at 95.25 147.32 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c777a66c-cb1a-4741-8f03-24672b08c1f3")
-		(property "Reference" "J7"
-			(at 111.76 149.8599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1869237"
-			(at 111.76 152.3999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "footprints:SMKDSN_15_4_508"
-			(at 111.76 242.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
-			(at 111.76 342.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 95.25 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" "11.15"
-			(at 111.76 542.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 111.76 642.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "1869237"
-			(at 111.76 742.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "651-1869237"
-			(at 111.76 842.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
-			(at 111.76 942.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Part Number" "1869237"
-			(at 111.76 1042.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
-			(at 111.76 1142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7f04c47d-8f1f-4f54-a967-1db00502933e")
-		)
-		(pin "2"
-			(uuid "5a6755de-0ac4-410c-a0c5-bd1bd035e083")
-		)
-		(pin "3"
-			(uuid "eaf96ea7-28af-46cf-b38f-c9fc0e12c19c")
-		)
-		(pin "4"
-			(uuid "5495962d-af48-4f02-80fd-2f53b9df79b1")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "J7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PheonixContact:1869237")
 		(at 54.61 80.01 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4009,6 +4498,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "1869237"
+			(at 54.61 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3971868e-679c-4fe0-998a-d84688f9c522")
 		)
@@ -4025,450 +4523,6 @@
 			(project ""
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "J3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PheonixContact:1869237")
-		(at 54.61 115.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d63c0005-5dec-48f1-954c-4ab45a2b1f20")
-		(property "Reference" "J5"
-			(at 71.12 118.1099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1869237"
-			(at 71.12 120.6499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "footprints:SMKDSN_15_4_508"
-			(at 71.12 210.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
-			(at 71.12 310.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 54.61 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" "11.15"
-			(at 71.12 510.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 71.12 610.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "1869237"
-			(at 71.12 710.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "651-1869237"
-			(at 71.12 810.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
-			(at 71.12 910.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Part Number" "1869237"
-			(at 71.12 1010.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
-			(at 71.12 1110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e67baa42-5cf3-483b-a9e2-5a726d4f70b4")
-		)
-		(pin "2"
-			(uuid "2731f247-82c6-45ae-b58c-514b4ca6c041")
-		)
-		(pin "3"
-			(uuid "d3c0f0f3-2713-45de-ad54-745d4a673043")
-		)
-		(pin "4"
-			(uuid "428faddc-fffa-4a1f-8ae7-f9742aa19ee1")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "J5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PheonixContact:1869237")
-		(at 139.7 147.32 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "edb34f34-e483-47dd-abb8-debb27a62085")
-		(property "Reference" "J10"
-			(at 156.21 149.8599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1869237"
-			(at 156.21 152.3999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "footprints:SMKDSN_15_4_508"
-			(at 156.21 242.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
-			(at 156.21 342.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 139.7 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" "11.15"
-			(at 156.21 542.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 156.21 642.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "1869237"
-			(at 156.21 742.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "651-1869237"
-			(at 156.21 842.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
-			(at 156.21 942.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Part Number" "1869237"
-			(at 156.21 1042.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
-			(at 156.21 1142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e87a3282-cc87-4e47-91d1-b861a1155cc3")
-		)
-		(pin "2"
-			(uuid "12db711a-f840-4b9f-86fc-ff8d5b314ad1")
-		)
-		(pin "3"
-			(uuid "4f0f3883-4384-4729-abce-e4ce6a5a7ca3")
-		)
-		(pin "4"
-			(uuid "15433799-2a1d-4500-9da0-7b03aff9009c")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "J10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PheonixContact:1869237")
-		(at 54.61 97.79 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ef096ada-ce9b-4f28-a9e2-fd7fa7f4fa51")
-		(property "Reference" "J4"
-			(at 71.12 100.3299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1869237"
-			(at 71.12 102.8699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "footprints:SMKDSN_15_4_508"
-			(at 71.12 192.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
-			(at 71.12 292.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 54.61 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" "11.15"
-			(at 71.12 492.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 71.12 592.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "1869237"
-			(at 71.12 692.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "651-1869237"
-			(at 71.12 792.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
-			(at 71.12 892.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Part Number" "1869237"
-			(at 71.12 992.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
-			(at 71.12 1092.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e078d1b8-ad66-4d92-9b96-506400bff506")
-		)
-		(pin "2"
-			(uuid "dabc948e-cd62-4c7b-b2bc-d245f9138a62")
-		)
-		(pin "3"
-			(uuid "f943b6e9-d70f-495d-9c97-cecc0d04327b")
-		)
-		(pin "4"
-			(uuid "285541c9-b40f-4afb-9e1c-a5201956f9ce")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "J4")
 					(unit 1)
 				)
 			)
