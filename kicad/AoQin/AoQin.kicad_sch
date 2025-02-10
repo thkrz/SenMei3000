@@ -3447,6 +3447,160 @@
 		(uuid "fece09e3-43e7-4ee3-83a5-794c405691bf")
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 52.07 152.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "08352f8d-aaa8-472b-a892-9401e3e67361")
+		(property "Reference" "R4"
+			(at 52.07 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 52.07 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 52.07 154.178 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 52.07 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k 0603"
+			(at 52.07 152.4 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "51425eb7-25f9-4855-9a68-09631a0b5fb3")
+		)
+		(pin "1"
+			(uuid "5bfdd3b6-25b2-4455-a0d0-d206b4ff2f28")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 137.16 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0d947260-5a66-4255-9aaf-e1d4b0f9cec2")
+		(property "Reference" "R12"
+			(at 232.41 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 133.35 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 232.41 138.938 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k 0603"
+			(at 232.41 137.16 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6f4d720e-6115-4d21-99d2-8331df753842")
+		)
+		(pin "1"
+			(uuid "86958bb3-31a4-415a-a751-c0e90e7ff757")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PheonixContact:1869237")
 		(at 248.92 99.06 0)
 		(unit 1)
@@ -3605,16 +3759,16 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 52.07 134.62 90)
+		(at 52.07 149.86 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "1d7ed29d-f5d3-4db7-bbba-db3ef345fb0d")
-		(property "Reference" "R2"
-			(at 52.07 128.27 90)
+		(uuid "17bb6991-fe1c-4151-a996-98c758fa6d36")
+		(property "Reference" "R3"
+			(at 52.07 143.51 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3622,15 +3776,15 @@
 			)
 		)
 		(property "Value" "5.1k"
-			(at 52.07 130.81 90)
+			(at 52.07 146.05 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 52.07 136.398 90)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 52.07 151.638 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3639,7 +3793,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 52.07 134.62 0)
+			(at 52.07 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3648,7 +3802,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 52.07 134.62 0)
+			(at 52.07 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3656,8 +3810,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 52.07 134.62 90)
+		(property "MPN" "5.1k 0603"
+			(at 52.07 149.86 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3666,15 +3820,92 @@
 			)
 		)
 		(pin "2"
-			(uuid "500e772d-f612-4bcd-8078-b78af8abfbf3")
+			(uuid "d035fe18-0bc4-45b3-9aa8-35a3d70efb36")
 		)
 		(pin "1"
-			(uuid "e75e76ee-81e5-44dc-8c4e-01f548fc3d13")
+			(uuid "e3e4a46f-c3c2-4cd7-a39d-cfee94cb5857")
 		)
 		(instances
 			(project "AoQin"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R2")
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 52.07 170.18 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "18db5946-5e36-4ed9-816c-de5499083b2d")
+		(property "Reference" "R6"
+			(at 52.07 163.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 52.07 166.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 52.07 171.958 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 52.07 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k 0603"
+			(at 52.07 170.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ced4ab9e-bc76-4e2c-aad5-bd0e904b4b61")
+		)
+		(pin "1"
+			(uuid "64b90fe7-ab4c-4f97-a348-854a0e7c857d")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -3985,83 +4216,6 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 232.41 101.6 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3e2184bf-7924-4c62-8efe-d38d056fd44c")
-		(property "Reference" "R8"
-			(at 232.41 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "5.1k"
-			(at 232.41 97.79 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 232.41 103.378 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 232.41 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 232.41 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 232.41 101.6 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "4675ec07-a876-42a9-8e77-099ab92f77c5")
-		)
-		(pin "1"
-			(uuid "2c9cb730-9467-46b9-92a8-23ba28c148f1")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
 		(at 27.94 40.64 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4088,7 +4242,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 29.718 40.64 90)
 			(effects
 				(font
@@ -4115,7 +4269,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "10k"
+		(property "MPN" "10k 0603"
 			(at 27.94 40.64 90)
 			(effects
 				(font
@@ -4378,6 +4532,83 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 232.41 99.06 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4fdd9037-18f5-4a31-af0c-b8cecdb1b31e")
+		(property "Reference" "R7"
+			(at 232.41 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 232.41 100.838 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k 0603"
+			(at 232.41 99.06 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6f2f0dea-3500-421c-9d34-6eb8b460ef0b")
+		)
+		(pin "1"
+			(uuid "d04c709d-271f-4a65-b65e-02da28c76208")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 52.07 132.08 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4402,7 +4633,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 52.07 133.858 90)
 			(effects
 				(font
@@ -4429,7 +4660,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
+		(property "MPN" "5.1k 0603"
 			(at 52.07 132.08 90)
 			(effects
 				(font
@@ -4448,6 +4679,83 @@
 			(project ""
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 134.62 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "59ec06b7-f919-4569-aa95-5c79e41db792")
+		(property "Reference" "R11"
+			(at 232.41 128.27 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 232.41 136.398 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k 0603"
+			(at 232.41 134.62 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "1d8cbf20-5f12-444d-831f-ea3c6d14b259")
+		)
+		(pin "1"
+			(uuid "1af1f0bf-699f-4095-9395-3f7bae5d2004")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -4835,83 +5143,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 52.07 167.64 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6b69743f-ba16-4ec6-9f3b-877e41a1fe6f")
-		(property "Reference" "R5"
-			(at 52.07 161.29 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "5.1k"
-			(at 52.07 163.83 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 52.07 169.418 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 52.07 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 52.07 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 52.07 167.64 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "f9e3592a-54c0-4925-b434-f085c014a9da")
-		)
-		(pin "1"
-			(uuid "44f9f7c5-f693-48a7-94b5-586f871fbd25")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 24.13 36.83 270)
 		(unit 1)
@@ -4980,16 +5211,16 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 232.41 119.38 90)
+		(at 52.07 167.64 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "7ce19395-bd81-4515-854c-26d925c6dbe6")
-		(property "Reference" "R10"
-			(at 232.41 113.03 90)
+		(uuid "7bdb1bc9-b007-4984-ad9c-b7e69bcf1687")
+		(property "Reference" "R5"
+			(at 52.07 161.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4997,15 +5228,15 @@
 			)
 		)
 		(property "Value" "5.1k"
-			(at 232.41 115.57 90)
+			(at 52.07 163.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 232.41 121.158 90)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 52.07 169.418 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5014,7 +5245,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 232.41 119.38 0)
+			(at 52.07 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5023,7 +5254,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 232.41 119.38 0)
+			(at 52.07 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5031,85 +5262,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 232.41 119.38 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "48fccf13-574c-4414-9ab9-b7e03d48f632")
-		)
-		(pin "1"
-			(uuid "555515b6-8178-45b4-971c-9cfdc52c61be")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 232.41 137.16 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8ca1ca5b-55ba-4571-9d8e-e7740dcddaf2")
-		(property "Reference" "R12"
-			(at 232.41 130.81 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "5.1k"
-			(at 232.41 133.35 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 232.41 138.938 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 232.41 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 232.41 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 232.41 137.16 90)
+		(property "MPN" "5.1k 0603"
+			(at 52.07 167.64 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5118,15 +5272,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "40c83fc2-85af-4643-9a63-9f933eb2374e")
+			(uuid "6c9a26d4-145f-4468-8363-e9db7a844bdb")
 		)
 		(pin "1"
-			(uuid "e57a83d2-0ba6-4a48-8c6d-5491acc93fa0")
+			(uuid "44f8966b-d137-4c5b-836a-42276a266c9e")
 		)
 		(instances
 			(project "AoQin"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R12")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -5363,160 +5517,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 52.07 149.86 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ae00bb99-5011-4660-991c-3b49faf07410")
-		(property "Reference" "R3"
-			(at 52.07 143.51 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "5.1k"
-			(at 52.07 146.05 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 52.07 151.638 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 52.07 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 52.07 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 52.07 149.86 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "14dc4866-7b47-4696-9068-dd7426ed90d3")
-		)
-		(pin "1"
-			(uuid "4da5be73-618c-4d24-87e3-6a08b6cdcbe3")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 52.07 170.18 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b86e0921-bbc1-435c-8352-4e47bb3af418")
-		(property "Reference" "R6"
-			(at 52.07 163.83 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "5.1k"
-			(at 52.07 166.37 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 52.07 171.958 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 52.07 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 52.07 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 52.07 170.18 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "f5c24dc2-bf80-4d77-b2bb-86471c79e93a")
-		)
-		(pin "1"
-			(uuid "9d390962-0b12-477c-9404-d71b9c16ed6c")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 36.83 22.86 270)
 		(unit 1)
@@ -5578,6 +5578,160 @@
 			(project ""
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 116.84 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c29b6866-3819-4548-b483-dc40940abec4")
+		(property "Reference" "R9"
+			(at 232.41 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 113.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 232.41 118.618 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k 0603"
+			(at 232.41 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9cfc53d8-0419-4067-a0a7-c2a8d741625a")
+		)
+		(pin "1"
+			(uuid "a3606416-d092-41dd-b72a-0c2f7d738aa9")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 119.38 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c6816362-839f-465e-a91e-6aaa8649b248")
+		(property "Reference" "R10"
+			(at 232.41 113.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 232.41 121.158 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k 0603"
+			(at 232.41 119.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ea9b6aa2-c79d-4a59-9d3f-5893b1e70d9a")
+		)
+		(pin "1"
+			(uuid "216f4cd8-3aca-4850-9e21-92bf4f43b6da")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -5742,16 +5896,16 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 232.41 99.06 90)
+		(at 52.07 134.62 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "d71cc4f3-c3f4-4b29-ba31-b317b2d3a677")
-		(property "Reference" "R7"
-			(at 232.41 92.71 90)
+		(uuid "cf731b2c-fad5-4ca7-a574-922f6da42a32")
+		(property "Reference" "R2"
+			(at 52.07 128.27 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5759,6 +5913,75 @@
 			)
 		)
 		(property "Value" "5.1k"
+			(at 52.07 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 52.07 136.398 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 52.07 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k 0603"
+			(at 52.07 134.62 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "cfbfb3fa-2058-490e-8b2c-7d1ff23fc295")
+		)
+		(pin "1"
+			(uuid "c9a950a2-cb01-4d07-91a6-4ba81555dd50")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 101.6 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f33355fa-451c-4dba-81f7-f7559e11ab2b")
+		(property "Reference" "R8"
 			(at 232.41 95.25 90)
 			(effects
 				(font
@@ -5766,162 +5989,16 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 232.41 100.838 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 232.41 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 232.41 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 232.41 99.06 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "282a77b7-e138-480a-befb-b575a6c3602e")
-		)
-		(pin "1"
-			(uuid "aa0afd54-b686-4330-8d8b-8a3c8e334e8c")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 232.41 116.84 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e9e9401d-2c75-41ef-8ecf-b7f1ebe51403")
-		(property "Reference" "R9"
-			(at 232.41 110.49 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(property "Value" "5.1k"
-			(at 232.41 113.03 90)
+			(at 232.41 97.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 232.41 118.618 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 232.41 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 232.41 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 232.41 116.84 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "a0d2c086-2ea2-45a9-8493-ae7efee7b513")
-		)
-		(pin "1"
-			(uuid "d98e13f1-eae3-49a6-8a65-6cf38a366214")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 52.07 152.4 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f1642be7-26c5-4ece-ab14-f21b26ed9035")
-		(property "Reference" "R4"
-			(at 52.07 146.05 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "5.1k"
-			(at 52.07 148.59 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 52.07 154.178 90)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 232.41 103.378 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5930,7 +6007,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 52.07 152.4 0)
+			(at 232.41 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5939,7 +6016,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 52.07 152.4 0)
+			(at 232.41 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5947,85 +6024,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 52.07 152.4 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "89709997-2607-48f0-8f07-63941b50608e")
-		)
-		(pin "1"
-			(uuid "618091c1-e4bc-4c86-9040-2a65aaddc813")
-		)
-		(instances
-			(project "AoQin"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 232.41 134.62 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f5fe7196-55dd-4eda-84f7-46b076722f5b")
-		(property "Reference" "R11"
-			(at 232.41 128.27 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "5.1k"
-			(at 232.41 130.81 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
-			(at 232.41 136.398 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 232.41 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 232.41 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5.1k DIN0204 7.62mm"
-			(at 232.41 134.62 90)
+		(property "MPN" "5.1k 0603"
+			(at 232.41 101.6 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6034,15 +6034,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "ff7694af-dadd-4a95-80f2-8c20414399ae")
+			(uuid "ecab0de5-705f-4a9e-b991-2ce2616327ad")
 		)
 		(pin "1"
-			(uuid "b263db28-dde5-4474-b9d8-71cd6d945f6c")
+			(uuid "d677694f-2d9d-4452-84c5-d57c94926019")
 		)
 		(instances
 			(project "AoQin"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "R11")
+					(reference "R8")
 					(unit 1)
 				)
 			)
