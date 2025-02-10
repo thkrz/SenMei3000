@@ -505,30 +505,32 @@
 				)
 			)
 		)
-		(symbol "Device:R_Network06"
+		(symbol "Device:R"
+			(pin_numbers hide)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "RN"
-				(at -10.16 0 90)
+			(property "Reference" "R"
+				(at 2.032 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "R_Network06"
-				(at 7.62 0 90)
+			(property "Value" "R"
+				(at 0 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" "Resistor_THT:R_Array_SIP7"
-				(at 9.525 0 90)
+			(property "Footprint" ""
+				(at -1.778 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -536,7 +538,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "http://www.vishay.com/docs/31509/csc.pdf"
+			(property "Datasheet" "~"
 				(at 0 0 0)
 				(effects
 					(font
@@ -545,7 +547,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "6 resistor network, star topology, bussed resistors, small symbol"
+			(property "Description" "Resistor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -554,7 +556,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "R network star-topology"
+			(property "ki_keywords" "R res resistor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -563,7 +565,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "R?Array?SIP*"
+			(property "ki_fp_filters" "R_*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -572,263 +574,10 @@
 					(hide yes)
 				)
 			)
-			(symbol "R_Network06_0_1"
+			(symbol "R_0_1"
 				(rectangle
-					(start -8.89 -3.175)
-					(end 6.35 3.175)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -8.382 1.524)
-					(end -6.858 -2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -7.62 2.286)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -5.842 1.524)
-					(end -4.318 -2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -5.08 2.286)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -3.302 1.524)
-					(end -1.778 -2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -2.54 2.286)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -0.762 1.524)
-					(end 0.762 -2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -7.62 -2.54) (xy -7.62 -3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -5.08 -2.54) (xy -5.08 -3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 -2.54) (xy -2.54 -3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.54) (xy 0 -3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 2.54 -3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 -2.54) (xy 5.08 -3.81)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -7.62 1.524) (xy -7.62 2.286) (xy -5.08 2.286) (xy -5.08 1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -5.08 1.524) (xy -5.08 2.286) (xy -2.54 2.286) (xy -2.54 1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 1.524) (xy -2.54 2.286) (xy 0 2.286) (xy 0 1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.524) (xy 0 2.286) (xy 2.54 2.286) (xy 2.54 1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 1.524) (xy 2.54 2.286) (xy 5.08 2.286) (xy 5.08 1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 2.286)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start 1.778 1.524)
-					(end 3.302 -2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 2.286)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start 4.318 1.524)
-					(end 5.842 -2.54)
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -838,11 +587,11 @@
 					)
 				)
 			)
-			(symbol "R_Network06_1_1"
+			(symbol "R_1_1"
 				(pin passive line
-					(at -7.62 5.08 270)
-					(length 2.54)
-					(name "common"
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -858,9 +607,9 @@
 					)
 				)
 				(pin passive line
-					(at -7.62 -5.08 90)
+					(at 0 -3.81 90)
 					(length 1.27)
-					(name "R1"
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -868,96 +617,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 90)
-					(length 1.27)
-					(name "R2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -2.54 -5.08 90)
-					(length 1.27)
-					(name "R3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 90)
-					(length 1.27)
-					(name "R4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 1.27)
-					(name "R5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -5.08 90)
-					(length 1.27)
-					(name "R6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2280,14 +1939,144 @@
 		)
 	)
 	(junction
-		(at 49.53 59.69)
+		(at 222.25 116.84)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0865c836-ae99-4f7b-8ecc-f59c84853800")
+	)
+	(junction
+		(at 41.91 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1bc77051-16b3-4b71-902a-870b48743823")
+	)
+	(junction
+		(at 41.91 149.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "618f6443-269d-4687-99c6-d70b9fd9c1d2")
+	)
+	(junction
+		(at 69.85 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "638d5172-11a7-4af0-a4d2-6f36f237c0a3")
 	)
+	(junction
+		(at 222.25 134.62)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7a124712-8695-4827-8c2b-2ec475b0047c")
+	)
+	(junction
+		(at 254 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "852db184-2341-4432-b5ee-e45a5522b290")
+	)
+	(junction
+		(at 222.25 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8d525905-d4c8-4236-9ae3-768feeecd69b")
+	)
+	(junction
+		(at 41.91 134.62)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "af2aa3af-faf9-4d90-ae85-4707177ec008")
+	)
+	(junction
+		(at 222.25 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b3fd74de-4678-48f8-84c4-cf6c7c7210cb")
+	)
+	(junction
+		(at 41.91 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d7ec56a8-9285-4e47-90a9-d3cd758a05ae")
+	)
+	(junction
+		(at 222.25 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e0124070-fd90-4b75-b622-45a42dd42f2f")
+	)
+	(junction
+		(at 41.91 167.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ef19dfcb-028f-4cab-beda-e75a18c23a93")
+	)
+	(no_connect
+		(at 83.82 -24.13)
+		(uuid "73b64468-6343-47e5-b1c1-32a1dfe96cd0")
+	)
 	(wire
 		(pts
-			(xy 72.39 88.9) (xy 81.28 88.9)
+			(xy 41.91 149.86) (xy 48.26 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00225a6c-62cc-45f2-82af-d601445dc517")
+	)
+	(wire
+		(pts
+			(xy 236.22 137.16) (xy 248.92 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05a935ee-ee8e-4b2b-8441-864896319970")
+	)
+	(wire
+		(pts
+			(xy 222.25 137.16) (xy 228.6 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "062c095f-2d0f-4d19-a58f-1451726187d4")
+	)
+	(wire
+		(pts
+			(xy 41.91 167.64) (xy 41.91 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06aa2e65-9ff8-434f-bd65-fb4f65490227")
+	)
+	(wire
+		(pts
+			(xy 222.25 99.06) (xy 228.6 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b65286a-17b4-44ac-8555-1dbde34d6af4")
+	)
+	(wire
+		(pts
+			(xy 55.88 167.64) (xy 71.12 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "108d9ec3-2881-42a6-af70-0ec2428ed1bf")
+	)
+	(wire
+		(pts
+			(xy 62.23 137.16) (xy 71.12 137.16)
 		)
 		(stroke
 			(width 0)
@@ -2307,16 +2096,6 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 83.82) (xy 46.99 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "16f88949-f37a-40a9-aeaf-9a172367203b")
-	)
-	(wire
-		(pts
 			(xy 181.61 49.53) (xy 186.69 49.53)
 		)
 		(stroke
@@ -2327,33 +2106,43 @@
 	)
 	(wire
 		(pts
-			(xy 224.79 123.19) (xy 248.92 123.19)
+			(xy 254 76.2) (xy 254 78.74)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1a313fe1-8c34-42a3-96f9-c1b9ffad9361")
+		(uuid "18761256-08fd-43dc-ace4-3ec8390adfa8")
 	)
 	(wire
 		(pts
-			(xy 54.61 83.82) (xy 81.28 83.82)
+			(xy 234.95 78.74) (xy 241.3 78.74)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "21dbbd5b-71c4-440c-a4af-f76957753c67")
+		(uuid "1a27d14f-5bdc-476b-b82f-5851839731e8")
 	)
 	(wire
 		(pts
-			(xy 222.25 92.71) (xy 222.25 101.6)
+			(xy 41.91 149.86) (xy 41.91 152.4)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "225e24c9-a4c8-4773-9143-8445c03af504")
+		(uuid "1aeea445-b0be-4b12-9edc-403e13d5b817")
+	)
+	(wire
+		(pts
+			(xy 55.88 152.4) (xy 71.12 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "253e7a3d-9ffe-446e-91e1-0fff4abb26a6")
 	)
 	(wire
 		(pts
@@ -2367,13 +2156,23 @@
 	)
 	(wire
 		(pts
-			(xy 227.33 125.73) (xy 248.92 125.73)
+			(xy 41.91 132.08) (xy 48.26 132.08)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2faeafd9-2b96-426c-903a-4f8e8e80724a")
+		(uuid "2e20155d-e96c-4188-a2ea-5e67b2a764da")
+	)
+	(wire
+		(pts
+			(xy 222.25 99.06) (xy 222.25 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3198ee5a-769d-401a-9518-635d55491f36")
 	)
 	(wire
 		(pts
@@ -2397,7 +2196,7 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 128.27) (xy 248.92 128.27)
+			(xy 240.03 121.92) (xy 248.92 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2407,7 +2206,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 154.94) (xy 250.19 154.94)
+			(xy 240.03 142.24) (xy 248.92 142.24)
 		)
 		(stroke
 			(width 0)
@@ -2417,7 +2216,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.25 101.6) (xy 248.92 101.6)
+			(xy 222.25 101.6) (xy 228.6 101.6)
 		)
 		(stroke
 			(width 0)
@@ -2427,17 +2226,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 83.82) (xy 44.45 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3f685e74-43cc-403a-b6e2-eb6e4243401d")
-	)
-	(wire
-		(pts
-			(xy 49.53 59.69) (xy 49.53 62.23)
+			(xy 69.85 109.22) (xy 69.85 111.76)
 		)
 		(stroke
 			(width 0)
@@ -2457,13 +2246,23 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 130.81) (xy 248.92 130.81)
+			(xy 240.03 124.46) (xy 248.92 124.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "49b504de-7e38-4e49-9023-5ef5f9674240")
+	)
+	(wire
+		(pts
+			(xy 55.88 134.62) (xy 71.12 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49e28519-566a-4589-b102-d9e1d39015bb")
 	)
 	(wire
 		(pts
@@ -2477,7 +2276,7 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 106.68) (xy 81.28 106.68)
+			(xy 62.23 154.94) (xy 71.12 154.94)
 		)
 		(stroke
 			(width 0)
@@ -2487,13 +2286,53 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 124.46) (xy 81.28 124.46)
+			(xy 55.88 149.86) (xy 71.12 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b3e44d1-ffd7-42f7-a47d-b7b29beff73b")
+	)
+	(wire
+		(pts
+			(xy 236.22 134.62) (xy 248.92 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ba41b83-7dd6-4008-b848-9c36ae4fd751")
+	)
+	(wire
+		(pts
+			(xy 254 78.74) (xy 257.81 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4dcb916e-d916-4fde-b764-f90e230be92f")
+	)
+	(wire
+		(pts
+			(xy 62.23 172.72) (xy 71.12 172.72)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "51930152-491b-4051-b3d3-4dcce364c9de")
+	)
+	(wire
+		(pts
+			(xy 222.25 101.6) (xy 222.25 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55cfc98b-97db-45f6-b273-5b9f6fbe39ca")
 	)
 	(wire
 		(pts
@@ -2507,17 +2346,37 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 83.82) (xy 41.91 121.92)
+			(xy 222.25 119.38) (xy 228.6 119.38)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5fd5e1f4-faba-464d-9ea3-f8194c46ce66")
+		(uuid "58252a71-68fe-4880-b242-d3be0b381805")
 	)
 	(wire
 		(pts
-			(xy 72.39 109.22) (xy 81.28 109.22)
+			(xy 222.25 134.62) (xy 222.25 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58b14e2f-c120-49f2-8367-09f061a4eab1")
+	)
+	(wire
+		(pts
+			(xy 41.91 167.64) (xy 48.26 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b23ddd5-a172-4be8-8faf-58a6c6217989")
+	)
+	(wire
+		(pts
+			(xy 62.23 157.48) (xy 71.12 157.48)
 		)
 		(stroke
 			(width 0)
@@ -2547,7 +2406,7 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 127) (xy 81.28 127)
+			(xy 62.23 175.26) (xy 71.12 175.26)
 		)
 		(stroke
 			(width 0)
@@ -2557,17 +2416,17 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 92.71) (xy 229.87 147.32)
+			(xy 236.22 116.84) (xy 248.92 116.84)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "6403a8cf-9169-438c-b502-cd499589e0ef")
+		(uuid "6175d12b-39fd-4c56-a340-221ff3f082af")
 	)
 	(wire
 		(pts
-			(xy 241.3 152.4) (xy 250.19 152.4)
+			(xy 240.03 139.7) (xy 248.92 139.7)
 		)
 		(stroke
 			(width 0)
@@ -2587,16 +2446,6 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 71.12) (xy 50.8 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "66e3e089-5e5e-4056-b6c4-c7ab1003fd83")
-	)
-	(wire
-		(pts
 			(xy 24.13 39.37) (xy 38.1 39.37)
 		)
 		(stroke
@@ -2607,17 +2456,7 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 147.32) (xy 250.19 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "69e07b9b-886a-4f2f-b33b-9d8d4a476573")
-	)
-	(wire
-		(pts
-			(xy 49.53 59.69) (xy 53.34 59.69)
+			(xy 69.85 109.22) (xy 73.66 109.22)
 		)
 		(stroke
 			(width 0)
@@ -2647,13 +2486,43 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 73.66) (xy 41.91 71.12)
+			(xy 222.25 116.84) (xy 228.6 116.84)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7578b861-e78c-497a-8698-6135ce22a486")
+		(uuid "7127eb60-ea55-4842-8489-0ab444009535")
+	)
+	(wire
+		(pts
+			(xy 222.25 134.62) (xy 228.6 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a2c5a0e-76e9-46e4-9ca8-c7c5b7b9d63b")
+	)
+	(wire
+		(pts
+			(xy 234.95 76.2) (xy 241.3 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a5bbff7-01d2-45fc-b6bf-98cca32277cf")
+	)
+	(wire
+		(pts
+			(xy 41.91 129.54) (xy 41.91 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a5cf900-152a-44b5-926b-481c1a71a186")
 	)
 	(wire
 		(pts
@@ -2667,7 +2536,7 @@
 	)
 	(wire
 		(pts
-			(xy 49.53 57.15) (xy 49.53 59.69)
+			(xy 69.85 106.68) (xy 69.85 109.22)
 		)
 		(stroke
 			(width 0)
@@ -2677,7 +2546,17 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 57.15) (xy 36.83 57.15)
+			(xy 234.95 81.28) (xy 241.3 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "843b62c6-068b-41ce-a845-c17c066d1f60")
+	)
+	(wire
+		(pts
+			(xy 50.8 106.68) (xy 57.15 106.68)
 		)
 		(stroke
 			(width 0)
@@ -2687,7 +2566,7 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 86.36) (xy 81.28 86.36)
+			(xy 41.91 134.62) (xy 48.26 134.62)
 		)
 		(stroke
 			(width 0)
@@ -2697,27 +2576,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 82.55) (xy 219.71 80.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "898a8a16-acd8-47c0-9793-03c5567b2e26")
-	)
-	(wire
-		(pts
-			(xy 46.99 104.14) (xy 81.28 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8ba038f6-dfad-4b2b-8ff6-79ee36027057")
-	)
-	(wire
-		(pts
-			(xy 72.39 91.44) (xy 81.28 91.44)
+			(xy 62.23 139.7) (xy 71.12 139.7)
 		)
 		(stroke
 			(width 0)
@@ -2727,13 +2586,23 @@
 	)
 	(wire
 		(pts
-			(xy 232.41 92.71) (xy 232.41 149.86)
+			(xy 41.91 152.4) (xy 48.26 152.4)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "91cffda2-0e39-4583-9ff7-1150a0f99da5")
+		(uuid "8ffdcf62-e569-4443-8f4f-13692d73b6d8")
+	)
+	(wire
+		(pts
+			(xy 236.22 99.06) (xy 248.92 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "900d945c-afc6-4d13-96d2-2ae2f1ab6cb1")
 	)
 	(wire
 		(pts
@@ -2747,23 +2616,13 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 119.38) (xy 81.28 119.38)
+			(xy 41.91 152.4) (xy 41.91 167.64)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "95093b01-84d6-46b1-a349-dc6e9f61a9d6")
-	)
-	(wire
-		(pts
-			(xy 49.53 101.6) (xy 81.28 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9654c880-c9e4-42e5-9e82-1214abf211e9")
+		(uuid "9b81fb70-60b3-4588-8dc8-c35a90985b5c")
 	)
 	(wire
 		(pts
@@ -2777,16 +2636,6 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 92.71) (xy 219.71 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9ec7f196-ba36-40fc-a5ac-a97c27be94e3")
-	)
-	(wire
-		(pts
 			(xy 121.92 77.47) (xy 130.81 77.47)
 		)
 		(stroke
@@ -2797,17 +2646,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 121.92) (xy 81.28 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a71de7c7-2a03-4cd6-a686-319ec3c96c3d")
-	)
-	(wire
-		(pts
-			(xy 30.48 59.69) (xy 36.83 59.69)
+			(xy 50.8 109.22) (xy 57.15 109.22)
 		)
 		(stroke
 			(width 0)
@@ -2817,33 +2656,33 @@
 	)
 	(wire
 		(pts
-			(xy 49.53 83.82) (xy 49.53 101.6)
+			(xy 222.25 119.38) (xy 222.25 134.62)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b0437818-a575-4e40-bb55-76840646a26a")
+		(uuid "b53546fd-1df1-4d83-9433-7c24e32408b2")
 	)
 	(wire
 		(pts
-			(xy 219.71 80.01) (xy 228.6 80.01)
+			(xy 41.91 132.08) (xy 41.91 134.62)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "bbbafc7d-4835-4520-8cfa-b1c19087087f")
+		(uuid "b8dbf898-8161-402d-a9ec-15362159871d")
 	)
 	(wire
 		(pts
-			(xy 219.71 99.06) (xy 248.92 99.06)
+			(xy 236.22 101.6) (xy 248.92 101.6)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "bc15be44-e65e-48e6-8f54-8ec9ba10b4a4")
+		(uuid "be810abb-755f-439e-8e46-7c259a1d00b2")
 	)
 	(wire
 		(pts
@@ -2857,6 +2696,16 @@
 	)
 	(wire
 		(pts
+			(xy 254 78.74) (xy 254 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce9c2bd2-6d70-40cd-8dbb-85ae16bd6ce0")
+	)
+	(wire
+		(pts
 			(xy 121.92 64.77) (xy 130.81 64.77)
 		)
 		(stroke
@@ -2867,7 +2716,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 62.23) (xy 36.83 62.23)
+			(xy 50.8 111.76) (xy 57.15 111.76)
 		)
 		(stroke
 			(width 0)
@@ -2897,43 +2746,63 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 83.82) (xy 52.07 86.36)
+			(xy 41.91 170.18) (xy 48.26 170.18)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "dc2b50b5-ec6e-421e-8ad5-e8af07389864")
+		(uuid "d639c504-2a51-4124-89a7-654ef4dd1bdc")
 	)
 	(wire
 		(pts
-			(xy 224.79 92.71) (xy 224.79 123.19)
+			(xy 236.22 119.38) (xy 248.92 119.38)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e5027ec8-1ce7-4793-bc56-2d244905c843")
+		(uuid "df26a27d-2ef1-4c6b-a6cc-708cbd6825ee")
 	)
 	(wire
 		(pts
-			(xy 227.33 92.71) (xy 227.33 125.73)
+			(xy 55.88 132.08) (xy 71.12 132.08)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ea15c05f-8906-41c2-8432-d2a9c3876e85")
+		(uuid "e7a27fc0-e83c-4a1b-bfac-22f105cb1fec")
 	)
 	(wire
 		(pts
-			(xy 232.41 149.86) (xy 250.19 149.86)
+			(xy 41.91 134.62) (xy 41.91 149.86)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "eb2f6493-cfd0-426e-b1e5-94eab39c1115")
+		(uuid "e811995f-22f9-4144-8ea6-59e4cf4308f2")
+	)
+	(wire
+		(pts
+			(xy 222.25 96.52) (xy 222.25 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9de5f5f-4a6b-495e-8a7b-b611e89954e0")
+	)
+	(wire
+		(pts
+			(xy 55.88 170.18) (xy 71.12 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb5bdc14-2011-4db1-9ab9-c0489f8c50b4")
 	)
 	(wire
 		(pts
@@ -2957,6 +2826,16 @@
 	)
 	(wire
 		(pts
+			(xy 222.25 116.84) (xy 222.25 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f09578c0-7cc7-41db-b270-86f8612b0172")
+	)
+	(wire
+		(pts
 			(xy 240.03 106.68) (xy 248.92 106.68)
 		)
 		(stroke
@@ -2964,16 +2843,6 @@
 			(type default)
 		)
 		(uuid "f7a94511-f32d-4003-b66a-0a95ae15817e")
-	)
-	(label "VIN"
-		(at 72.39 109.22 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "007652cb-703f-4f9a-acbd-ed1594cc27a7")
 	)
 	(label "A10"
 		(at 186.69 64.77 0)
@@ -2996,7 +2865,7 @@
 		(uuid "0d7d97a8-4d9d-43c2-972e-59a60fceecc7")
 	)
 	(label "5V"
-		(at 30.48 59.69 0)
+		(at 50.8 109.22 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3004,16 +2873,6 @@
 			(justify left bottom)
 		)
 		(uuid "0e8e53f6-70cd-4af5-9d38-f214deeefae4")
-	)
-	(label "VIN"
-		(at 241.3 154.94 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1c541613-f7b9-4f27-b33b-1feb965d9e23")
 	)
 	(label "A5"
 		(at 121.92 64.77 0)
@@ -3036,7 +2895,7 @@
 		(uuid "1dc09201-c2fc-4177-ab94-6fdeaa5d93f9")
 	)
 	(label "GND"
-		(at 241.3 152.4 0)
+		(at 240.03 139.7 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3056,7 +2915,7 @@
 		(uuid "2663b68e-4101-4bef-a183-4e64596d3407")
 	)
 	(label "A7"
-		(at 72.39 119.38 0)
+		(at 62.23 167.64 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3066,7 +2925,7 @@
 		(uuid "283e0b17-a82f-4fb4-b8e5-c461d88cf8c3")
 	)
 	(label "GND"
-		(at 72.39 106.68 0)
+		(at 62.23 154.94 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3076,7 +2935,7 @@
 		(uuid "28d0c4f1-a5aa-4463-8e48-a6988c5ea31a")
 	)
 	(label "A0"
-		(at 241.3 149.86 0)
+		(at 240.03 137.16 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3106,7 +2965,7 @@
 		(uuid "465f331e-1db8-481e-9974-fe0ecb421f3b")
 	)
 	(label "A11"
-		(at 72.39 83.82 0)
+		(at 62.23 132.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3114,16 +2973,6 @@
 			(justify left bottom)
 		)
 		(uuid "48240af7-852b-44e0-8637-55b8344fd49d")
-	)
-	(label "5V"
-		(at 228.6 80.01 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4e6adefb-0312-4e91-9693-bfa26523973a")
 	)
 	(label "D13"
 		(at 24.13 25.4 0)
@@ -3135,8 +2984,8 @@
 		)
 		(uuid "5188b16b-4c2d-43b4-a793-add9cb7a406c")
 	)
-	(label "VIN"
-		(at 53.34 59.69 0)
+	(label "VIN1"
+		(at 73.66 109.22 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3146,7 +2995,7 @@
 		(uuid "54db0353-8ea2-45df-87ca-ba264585bb39")
 	)
 	(label "GND"
-		(at 72.39 88.9 0)
+		(at 62.23 137.16 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3155,38 +3004,28 @@
 		)
 		(uuid "5cfc8926-bf30-4cda-aa85-e10367bb9775")
 	)
-	(label "5V"
-		(at 50.8 71.12 0)
+	(label "VIN2"
+		(at 240.03 106.68 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "60b0e7c8-5d91-45f2-83f9-8d4238c45641")
+		(uuid "5ef14a5f-e27c-4be1-afdf-e887a953731c")
 	)
-	(label "VIN1"
-		(at 72.39 127 0)
+	(label "+12V"
+		(at 234.95 76.2 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "6886ec4e-eabb-4fad-b3ad-fb6b0b8608e5")
-	)
-	(label "VIN"
-		(at 240.03 130.81 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6bdb69d5-450a-469e-8ed6-4af76af77061")
+		(uuid "64b191d2-18f9-4766-8821-f54d98b56a57")
 	)
 	(label "A1"
-		(at 241.3 147.32 0)
+		(at 240.03 134.62 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3196,7 +3035,7 @@
 		(uuid "6d3b0670-adaf-4e92-9fb2-b0258dba9cd8")
 	)
 	(label "A9"
-		(at 72.39 101.6 0)
+		(at 62.23 149.86 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3204,6 +3043,26 @@
 			(justify left bottom)
 		)
 		(uuid "7218bcf8-cb84-4446-bfbf-4bd4a1c3f9e5")
+	)
+	(label "3V3"
+		(at 234.95 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "77767682-2864-4e13-8c27-b67251163f47")
+	)
+	(label "5V"
+		(at 222.25 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7d40ed5c-a7c4-4797-ad8b-621c029feb60")
 	)
 	(label "D13"
 		(at 24.13 39.37 0)
@@ -3215,8 +3074,18 @@
 		)
 		(uuid "80a9ac89-a69c-4bd0-be62-28db3c65df25")
 	)
+	(label "VIN2"
+		(at 257.81 78.74 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8526abc9-ec1b-4704-93df-f8665f51bdde")
+	)
 	(label "+12V"
-		(at 30.48 57.15 0)
+		(at 50.8 106.68 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3226,7 +3095,7 @@
 		(uuid "8813432c-9ff4-4cdd-9ef1-83e047ca8817")
 	)
 	(label "A2"
-		(at 240.03 125.73 0)
+		(at 240.03 119.38 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3255,18 +3124,8 @@
 		)
 		(uuid "8ef546e1-0b46-4738-bd3d-0163b3343098")
 	)
-	(label "VIN"
-		(at 240.03 106.68 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "915e0dcb-333b-4a9c-994a-dbaf853efbd8")
-	)
 	(label "A6"
-		(at 72.39 121.92 0)
+		(at 62.23 170.18 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3274,6 +3133,16 @@
 			(justify left bottom)
 		)
 		(uuid "97378266-b502-4f92-941e-78509132591d")
+	)
+	(label "VIN2"
+		(at 240.03 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "98d77b45-282f-4274-9550-7af2731247d8")
 	)
 	(label "A4"
 		(at 240.03 101.6 0)
@@ -3315,6 +3184,16 @@
 		)
 		(uuid "b06788d7-3605-44d2-9db9-b8ee10e09efa")
 	)
+	(label "VIN1"
+		(at 62.23 157.48 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b30b1e72-85f4-457b-8c0f-7b3c29f66988")
+	)
 	(label "A8"
 		(at 186.69 59.69 0)
 		(effects
@@ -3325,8 +3204,18 @@
 		)
 		(uuid "b30bb467-8a7a-49c4-ae7d-2249a8ae008c")
 	)
+	(label "5V"
+		(at 41.91 129.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b9375f00-e144-43ae-bdf4-67742bcb2366")
+	)
 	(label "GND"
-		(at 240.03 128.27 0)
+		(at 240.03 121.92 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3336,7 +3225,7 @@
 		(uuid "bfd1ed03-2ef3-4cba-90f9-39a18102d5c9")
 	)
 	(label "A10"
-		(at 72.39 86.36 0)
+		(at 62.23 134.62 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3356,7 +3245,7 @@
 		(uuid "c8559460-0667-46f2-85de-4ed6f03ca6fe")
 	)
 	(label "GND"
-		(at 72.39 124.46 0)
+		(at 62.23 172.72 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3375,16 +3264,6 @@
 		)
 		(uuid "d0f1b6c8-c8a1-40ef-85f9-470be7061100")
 	)
-	(label "VIN"
-		(at 72.39 91.44 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "dbe837bd-658d-4818-9792-17374b3c6144")
-	)
 	(label "A3"
 		(at 121.92 69.85 0)
 		(effects
@@ -3396,7 +3275,7 @@
 		(uuid "dc681053-015a-4c6b-9b93-43da3c269e29")
 	)
 	(label "3V3"
-		(at 30.48 62.23 0)
+		(at 50.8 111.76 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3405,8 +3284,18 @@
 		)
 		(uuid "e2a73fd4-e290-4eaf-b0bd-ca9996b93988")
 	)
+	(label "VIN1"
+		(at 62.23 175.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e7d077ef-39ec-4e95-bbb3-0d236d94eb8a")
+	)
 	(label "A8"
-		(at 72.39 104.14 0)
+		(at 62.23 152.4 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3416,7 +3305,7 @@
 		(uuid "ecfd3ec8-4b24-4a64-92d9-fd78d40304b2")
 	)
 	(label "A3"
-		(at 240.03 123.19 0)
+		(at 240.03 116.84 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3435,6 +3324,16 @@
 		)
 		(uuid "ef267332-8fa6-4396-bac3-38954ea635e6")
 	)
+	(label "VIN2"
+		(at 240.03 142.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f5b8a9d0-435a-4e57-b257-72a14b6d3b69")
+	)
 	(label "A9"
 		(at 186.69 62.23 0)
 		(effects
@@ -3445,6 +3344,16 @@
 		)
 		(uuid "f6edcb6a-8de5-4649-8d83-354df4028889")
 	)
+	(label "5V"
+		(at 234.95 78.74 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f879dc6d-c360-4621-a5c7-2d6859d4f400")
+	)
 	(label "A7"
 		(at 186.69 54.61 0)
 		(effects
@@ -3454,6 +3363,16 @@
 			(justify left bottom)
 		)
 		(uuid "f9caa84a-5435-448e-a2d4-a84b875e8aee")
+	)
+	(label "VIN1"
+		(at 62.23 139.7 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fece09e3-43e7-4ee3-83a5-794c405691bf")
 	)
 	(symbol
 		(lib_id "PheonixContact:1869237")
@@ -3613,33 +3532,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_02x03_Odd_Even")
-		(at 41.91 59.69 0)
+		(lib_id "Device:R")
+		(at 52.07 134.62 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "27b39e09-00ee-49ec-b063-b9bdf6318a65")
-		(property "Reference" "J1"
-			(at 43.18 50.8 0)
+		(uuid "1d7ed29d-f5d3-4db7-bbba-db3ef345fb0d")
+		(property "Reference" "R2"
+			(at 52.07 128.27 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Conn_02x03_Odd_Even"
-			(at 43.18 53.34 0)
+		(property "Value" "5.1k"
+			(at 52.07 130.81 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
-			(at 41.91 59.69 0)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 52.07 136.398 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3648,7 +3567,84 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 41.91 59.69 0)
+			(at 52.07 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 52.07 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 52.07 134.62 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "500e772d-f612-4bcd-8078-b78af8abfbf3")
+		)
+		(pin "1"
+			(uuid "e75e76ee-81e5-44dc-8c4e-01f548fc3d13")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_02x03_Odd_Even")
+		(at 62.23 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "27b39e09-00ee-49ec-b063-b9bdf6318a65")
+		(property "Reference" "J1"
+			(at 63.5 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_02x03_Odd_Even"
+			(at 63.5 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
+			(at 62.23 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 62.23 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3657,7 +3653,7 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x03, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 41.91 59.69 0)
+			(at 62.23 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3760,7 +3756,7 @@
 	)
 	(symbol
 		(lib_id "PheonixContact:1869237")
-		(at 250.19 147.32 0)
+		(at 248.92 134.62 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3769,7 +3765,7 @@
 		(fields_autoplaced yes)
 		(uuid "3364cd67-3dcd-4f3a-a095-898c20352c48")
 		(property "Reference" "J10"
-			(at 266.7 149.8599 0)
+			(at 265.43 137.1599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3778,7 +3774,7 @@
 			)
 		)
 		(property "Value" "1869237"
-			(at 266.7 152.3999 0)
+			(at 265.43 139.6999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3787,7 +3783,7 @@
 			)
 		)
 		(property "Footprint" "footprints:SMKDSN_15_4_508"
-			(at 266.7 242.24 0)
+			(at 265.43 229.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3797,7 +3793,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
-			(at 266.7 342.24 0)
+			(at 265.43 329.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3807,7 +3803,7 @@
 			)
 		)
 		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 250.19 147.32 0)
+			(at 248.92 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3816,7 +3812,7 @@
 			)
 		)
 		(property "Height" "11.15"
-			(at 266.7 542.24 0)
+			(at 265.43 529.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3826,7 +3822,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 266.7 642.24 0)
+			(at 265.43 629.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3836,7 +3832,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "1869237"
-			(at 266.7 742.24 0)
+			(at 265.43 729.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3846,7 +3842,7 @@
 			)
 		)
 		(property "Mouser Part Number" "651-1869237"
-			(at 266.7 842.24 0)
+			(at 265.43 829.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3856,7 +3852,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
-			(at 266.7 942.24 0)
+			(at 265.43 929.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3866,7 +3862,7 @@
 			)
 		)
 		(property "Arrow Part Number" "1869237"
-			(at 266.7 1042.24 0)
+			(at 265.43 1029.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3876,7 +3872,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
-			(at 266.7 1142.24 0)
+			(at 265.43 1129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3886,7 +3882,7 @@
 			)
 		)
 		(property "MPN" "1869237"
-			(at 250.19 147.32 0)
+			(at 248.92 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3916,8 +3912,165 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 232.41 101.6 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3e2184bf-7924-4c62-8efe-d38d056fd44c")
+		(property "Reference" "R8"
+			(at 232.41 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 97.79 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 232.41 103.378 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 232.41 101.6 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4675ec07-a876-42a9-8e77-099ab92f77c5")
+		)
+		(pin "1"
+			(uuid "2c9cb730-9467-46b9-92a8-23ba28c148f1")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_02x03_Odd_Even")
+		(at 246.38 78.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "41cf4b5a-e922-44fb-b10e-eff733eaa54b")
+		(property "Reference" "J2"
+			(at 247.65 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_02x03_Odd_Even"
+			(at 247.65 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
+			(at 246.38 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 246.38 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, double row, 02x03, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 246.38 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "24f91b72-4bcd-4e9d-806b-99aee18da033")
+		)
+		(pin "2"
+			(uuid "a3d1fceb-7b32-4ae2-b06b-478a2f6432f9")
+		)
+		(pin "1"
+			(uuid "bea5abbc-f520-432b-bc97-548e8459e29a")
+		)
+		(pin "4"
+			(uuid "f29e247f-b626-4795-8aef-a590bfe14417")
+		)
+		(pin "5"
+			(uuid "bfc96682-9c9c-49a6-9a60-e8728b683f41")
+		)
+		(pin "6"
+			(uuid "1c54bfb4-e3e6-4369-b210-b7c66e8d82b6")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PheonixContact:1869237")
-		(at 248.92 123.19 0)
+		(at 248.92 116.84 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3926,7 +4079,7 @@
 		(fields_autoplaced yes)
 		(uuid "46a1c0ed-3542-41cd-9d8e-5006a6b81625")
 		(property "Reference" "J7"
-			(at 265.43 125.7299 0)
+			(at 265.43 119.3799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3935,7 +4088,7 @@
 			)
 		)
 		(property "Value" "1869237"
-			(at 265.43 128.2699 0)
+			(at 265.43 121.9199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3944,7 +4097,7 @@
 			)
 		)
 		(property "Footprint" "footprints:SMKDSN_15_4_508"
-			(at 265.43 218.11 0)
+			(at 265.43 211.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3954,7 +4107,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
-			(at 265.43 318.11 0)
+			(at 265.43 311.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3964,7 +4117,7 @@
 			)
 		)
 		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 248.92 123.19 0)
+			(at 248.92 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3973,7 +4126,7 @@
 			)
 		)
 		(property "Height" "11.15"
-			(at 265.43 518.11 0)
+			(at 265.43 511.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3983,7 +4136,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 265.43 618.11 0)
+			(at 265.43 611.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3993,7 +4146,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "1869237"
-			(at 265.43 718.11 0)
+			(at 265.43 711.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4003,7 +4156,7 @@
 			)
 		)
 		(property "Mouser Part Number" "651-1869237"
-			(at 265.43 818.11 0)
+			(at 265.43 811.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4013,7 +4166,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
-			(at 265.43 918.11 0)
+			(at 265.43 911.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4023,7 +4176,7 @@
 			)
 		)
 		(property "Arrow Part Number" "1869237"
-			(at 265.43 1018.11 0)
+			(at 265.43 1011.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4033,7 +4186,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
-			(at 265.43 1118.11 0)
+			(at 265.43 1111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4043,7 +4196,7 @@
 			)
 		)
 		(property "MPN" "1869237"
-			(at 248.92 123.19 0)
+			(at 248.92 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4073,8 +4226,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 52.07 132.08 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "50cae4cc-dbc9-4c6f-9f98-08e650fbda60")
+		(property "Reference" "R1"
+			(at 52.07 125.73 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 52.07 128.27 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 52.07 133.858 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 52.07 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 52.07 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4221f29b-08b5-438a-acc9-8d93a43e33fc")
+		)
+		(pin "1"
+			(uuid "bb79bebb-008d-44c0-806d-b66d573b09b0")
+		)
+		(instances
+			(project ""
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PheonixContact:1869237")
-		(at 81.28 101.6 0)
+		(at 71.12 149.86 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4083,7 +4313,7 @@
 		(fields_autoplaced yes)
 		(uuid "6099eb7e-4775-47bb-af1d-2cb8cd82bea7")
 		(property "Reference" "J4"
-			(at 97.79 104.1399 0)
+			(at 87.63 152.3999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4092,7 +4322,7 @@
 			)
 		)
 		(property "Value" "1869237"
-			(at 97.79 106.6799 0)
+			(at 87.63 154.9399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4101,7 +4331,7 @@
 			)
 		)
 		(property "Footprint" "footprints:SMKDSN_15_4_508"
-			(at 97.79 196.52 0)
+			(at 87.63 244.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4111,7 +4341,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
-			(at 97.79 296.52 0)
+			(at 87.63 344.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4121,7 +4351,7 @@
 			)
 		)
 		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 81.28 101.6 0)
+			(at 71.12 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4130,7 +4360,7 @@
 			)
 		)
 		(property "Height" "11.15"
-			(at 97.79 496.52 0)
+			(at 87.63 544.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4140,7 +4370,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 97.79 596.52 0)
+			(at 87.63 644.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4150,7 +4380,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "1869237"
-			(at 97.79 696.52 0)
+			(at 87.63 744.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4160,7 +4390,7 @@
 			)
 		)
 		(property "Mouser Part Number" "651-1869237"
-			(at 97.79 796.52 0)
+			(at 87.63 844.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4170,7 +4400,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
-			(at 97.79 896.52 0)
+			(at 87.63 944.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4180,7 +4410,7 @@
 			)
 		)
 		(property "Arrow Part Number" "1869237"
-			(at 97.79 996.52 0)
+			(at 87.63 1044.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4190,7 +4420,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
-			(at 97.79 1096.52 0)
+			(at 87.63 1144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4200,7 +4430,7 @@
 			)
 		)
 		(property "MPN" "1869237"
-			(at 81.28 101.6 0)
+			(at 71.12 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4454,6 +4684,83 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 52.07 167.64 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6b69743f-ba16-4ec6-9f3b-877e41a1fe6f")
+		(property "Reference" "R5"
+			(at 52.07 161.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 52.07 163.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 52.07 169.418 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 52.07 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 52.07 167.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f9e3592a-54c0-4925-b434-f085c014a9da")
+		)
+		(pin "1"
+			(uuid "44f9f7c5-f693-48a7-94b5-586f871fbd25")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 36.83 36.83 270)
 		(unit 1)
@@ -4521,44 +4828,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Network06")
-		(at 227.33 87.63 0)
+		(lib_id "Device:R")
+		(at 232.41 119.38 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "7fb35e0b-b7b9-403f-b1fe-0712bdd0e7ee")
-		(property "Reference" "RN2"
-			(at 234.95 86.6139 0)
+		(uuid "7ce19395-bd81-4515-854c-26d925c6dbe6")
+		(property "Reference" "R10"
+			(at 232.41 113.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "5.1k"
-			(at 234.95 89.1539 0)
+			(at 232.41 115.57 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Array_SIP7"
-			(at 236.855 87.63 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.vishay.com/docs/31509/csc.pdf"
-			(at 227.33 87.63 0)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 232.41 121.158 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4566,8 +4862,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "6 resistor network, star topology, bussed resistors, small symbol"
-			(at 227.33 87.63 0)
+		(property "Datasheet" "~"
+			(at 232.41 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4575,8 +4871,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "4607X-101-512LF"
-			(at 227.33 87.63 0)
+		(property "Description" "Resistor"
+			(at 232.41 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4584,31 +4880,102 @@
 				(hide yes)
 			)
 		)
-		(pin "3"
-			(uuid "52d5295e-72e5-46af-ba8e-a3bb9e477aad")
-		)
-		(pin "5"
-			(uuid "586baa4e-931e-4321-b900-2654cc967b51")
-		)
-		(pin "1"
-			(uuid "4777dac0-d598-4f96-8218-65ea3268990d")
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 232.41 119.38 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
 		)
 		(pin "2"
-			(uuid "edc7a293-b5f4-480d-8707-2d54ccad2a51")
+			(uuid "48fccf13-574c-4414-9ab9-b7e03d48f632")
 		)
-		(pin "7"
-			(uuid "f49a95d5-221a-4e07-8e60-1afa227c4888")
-		)
-		(pin "6"
-			(uuid "34dd9e14-83f3-4635-9b79-de20dcad0b4d")
-		)
-		(pin "4"
-			(uuid "1fcf2969-4668-4405-910d-ba8b2b845381")
+		(pin "1"
+			(uuid "555515b6-8178-45b4-971c-9cfdc52c61be")
 		)
 		(instances
 			(project "AoQin"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "RN2")
+					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 137.16 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8ca1ca5b-55ba-4571-9d8e-e7740dcddaf2")
+		(property "Reference" "R12"
+			(at 232.41 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 133.35 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 232.41 138.938 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 232.41 137.16 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "40c83fc2-85af-4643-9a63-9f933eb2374e")
+		)
+		(pin "1"
+			(uuid "e57a83d2-0ba6-4a48-8c6d-5491acc93fa0")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -4616,7 +4983,7 @@
 	)
 	(symbol
 		(lib_id "PheonixContact:1869237")
-		(at 81.28 119.38 0)
+		(at 71.12 167.64 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4625,7 +4992,7 @@
 		(fields_autoplaced yes)
 		(uuid "a01f98f0-85f9-41d1-a63d-8bbc75a62a13")
 		(property "Reference" "J5"
-			(at 97.79 121.9199 0)
+			(at 87.63 170.1799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4634,7 +5001,7 @@
 			)
 		)
 		(property "Value" "1869237"
-			(at 97.79 124.4599 0)
+			(at 87.63 172.7199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4643,7 +5010,7 @@
 			)
 		)
 		(property "Footprint" "footprints:SMKDSN_15_4_508"
-			(at 97.79 214.3 0)
+			(at 87.63 262.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4653,7 +5020,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
-			(at 97.79 314.3 0)
+			(at 87.63 362.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4663,7 +5030,7 @@
 			)
 		)
 		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 81.28 119.38 0)
+			(at 71.12 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4672,7 +5039,7 @@
 			)
 		)
 		(property "Height" "11.15"
-			(at 97.79 514.3 0)
+			(at 87.63 562.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4682,7 +5049,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 97.79 614.3 0)
+			(at 87.63 662.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4692,7 +5059,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "1869237"
-			(at 97.79 714.3 0)
+			(at 87.63 762.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4702,7 +5069,7 @@
 			)
 		)
 		(property "Mouser Part Number" "651-1869237"
-			(at 97.79 814.3 0)
+			(at 87.63 862.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4712,7 +5079,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
-			(at 97.79 914.3 0)
+			(at 87.63 962.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4722,7 +5089,7 @@
 			)
 		)
 		(property "Arrow Part Number" "1869237"
-			(at 97.79 1014.3 0)
+			(at 87.63 1062.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4732,7 +5099,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
-			(at 97.79 1114.3 0)
+			(at 87.63 1162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4742,7 +5109,7 @@
 			)
 		)
 		(property "MPN" "1869237"
-			(at 81.28 119.38 0)
+			(at 71.12 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4845,44 +5212,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Network06")
-		(at 49.53 78.74 0)
+		(lib_id "Device:R")
+		(at 52.07 149.86 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "a8af02e5-6979-4ec7-b015-80c06fd9c180")
-		(property "Reference" "RN1"
-			(at 57.15 77.7239 0)
+		(uuid "ae00bb99-5011-4660-991c-3b49faf07410")
+		(property "Reference" "R3"
+			(at 52.07 143.51 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "5.1k"
-			(at 57.15 80.2639 0)
+			(at 52.07 146.05 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Array_SIP7"
-			(at 59.055 78.74 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.vishay.com/docs/31509/csc.pdf"
-			(at 49.53 78.74 0)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 52.07 151.638 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4890,8 +5246,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "6 resistor network, star topology, bussed resistors, small symbol"
-			(at 49.53 78.74 0)
+		(property "Datasheet" "~"
+			(at 52.07 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4899,8 +5255,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "4607X-101-512LF"
-			(at 49.53 78.74 0)
+		(property "Description" "Resistor"
+			(at 52.07 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4908,31 +5264,102 @@
 				(hide yes)
 			)
 		)
-		(pin "3"
-			(uuid "798471ac-a93c-4316-a0bf-47859b179d66")
-		)
-		(pin "5"
-			(uuid "a524aace-9afc-48da-a0da-4e39ce472950")
-		)
-		(pin "1"
-			(uuid "f62c8178-69ab-4f01-b806-c0d26f250beb")
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 52.07 149.86 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
 		)
 		(pin "2"
-			(uuid "417c71ab-ffac-48e1-aaac-2d998d1b427d")
+			(uuid "14dc4866-7b47-4696-9068-dd7426ed90d3")
 		)
-		(pin "7"
-			(uuid "8e47e883-aa25-4230-9129-f8f839d08542")
-		)
-		(pin "6"
-			(uuid "38f86c2f-871f-4ed0-9dd3-a23338448f1a")
-		)
-		(pin "4"
-			(uuid "27879046-7386-4b89-84dc-d510b791516e")
+		(pin "1"
+			(uuid "4da5be73-618c-4d24-87e3-6a08b6cdcbe3")
 		)
 		(instances
-			(project ""
+			(project "AoQin"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "RN1")
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 52.07 170.18 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b86e0921-bbc1-435c-8352-4e47bb3af418")
+		(property "Reference" "R6"
+			(at 52.07 163.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 52.07 166.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 52.07 171.958 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 52.07 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 52.07 170.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f5c24dc2-bf80-4d77-b2bb-86471c79e93a")
+		)
+		(pin "1"
+			(uuid "9d390962-0b12-477c-9404-d71b9c16ed6c")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -5007,7 +5434,7 @@
 	)
 	(symbol
 		(lib_id "PheonixContact:1869237")
-		(at 81.28 83.82 0)
+		(at 71.12 132.08 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5016,7 +5443,7 @@
 		(fields_autoplaced yes)
 		(uuid "cdb0a3ad-32d5-4a31-9b83-b20be90b2ff3")
 		(property "Reference" "J3"
-			(at 97.79 86.3599 0)
+			(at 87.63 134.6199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5025,7 +5452,7 @@
 			)
 		)
 		(property "Value" "1869237"
-			(at 97.79 88.8999 0)
+			(at 87.63 137.1599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5034,7 +5461,7 @@
 			)
 		)
 		(property "Footprint" "footprints:SMKDSN_15_4_508"
-			(at 97.79 178.74 0)
+			(at 87.63 227 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5044,7 +5471,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869237/pdf"
-			(at 97.79 278.74 0)
+			(at 87.63 327 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5054,7 +5481,7 @@
 			)
 		)
 		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 81.28 83.82 0)
+			(at 71.12 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5063,7 +5490,7 @@
 			)
 		)
 		(property "Height" "11.15"
-			(at 97.79 478.74 0)
+			(at 87.63 527 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5073,7 +5500,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 97.79 578.74 0)
+			(at 87.63 627 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5083,7 +5510,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "1869237"
-			(at 97.79 678.74 0)
+			(at 87.63 727 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5093,7 +5520,7 @@
 			)
 		)
 		(property "Mouser Part Number" "651-1869237"
-			(at 97.79 778.74 0)
+			(at 87.63 827 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5103,7 +5530,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869237?qs=8M15sSGRUn9rCp2zUK%2Fgyw%3D%3D"
-			(at 97.79 878.74 0)
+			(at 87.63 927 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5113,7 +5540,7 @@
 			)
 		)
 		(property "Arrow Part Number" "1869237"
-			(at 97.79 978.74 0)
+			(at 87.63 1027 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5123,7 +5550,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869237/phoenix-contact"
-			(at 97.79 1078.74 0)
+			(at 87.63 1127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5133,7 +5560,7 @@
 			)
 		)
 		(property "MPN" "1869237"
-			(at 81.28 83.82 0)
+			(at 71.12 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5157,6 +5584,314 @@
 			(project ""
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 99.06 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d71cc4f3-c3f4-4b29-ba31-b317b2d3a677")
+		(property "Reference" "R7"
+			(at 232.41 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 232.41 100.838 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 232.41 99.06 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "282a77b7-e138-480a-befb-b575a6c3602e")
+		)
+		(pin "1"
+			(uuid "aa0afd54-b686-4330-8d8b-8a3c8e334e8c")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 116.84 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e9e9401d-2c75-41ef-8ecf-b7f1ebe51403")
+		(property "Reference" "R9"
+			(at 232.41 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 113.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 232.41 118.618 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 232.41 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a0d2c086-2ea2-45a9-8493-ae7efee7b513")
+		)
+		(pin "1"
+			(uuid "d98e13f1-eae3-49a6-8a65-6cf38a366214")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 52.07 152.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f1642be7-26c5-4ece-ab14-f21b26ed9035")
+		(property "Reference" "R4"
+			(at 52.07 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 52.07 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 52.07 154.178 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 52.07 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 52.07 152.4 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "89709997-2607-48f0-8f07-63941b50608e")
+		)
+		(pin "1"
+			(uuid "618091c1-e4bc-4c86-9040-2a65aaddc813")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 134.62 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f5fe7196-55dd-4eda-84f7-46b076722f5b")
+		(property "Reference" "R11"
+			(at 232.41 128.27 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1k"
+			(at 232.41 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 232.41 136.398 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k DIN0204 7.62mm"
+			(at 232.41 134.62 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ff7694af-dadd-4a95-80f2-8c20414399ae")
+		)
+		(pin "1"
+			(uuid "b263db28-dde5-4474-b9d8-71cd6d945f6c")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R11")
 					(unit 1)
 				)
 			)
