@@ -7,10 +7,18 @@
 #define EE_ADDR 0
 #define NUM_CON 6
 
-struct Term {
-  char addr;
-  float u[2];
+struct Pin {
+  int8_t num;
+  bool active;
 };
+
+class Connector {
+  private:
+    char addr;
+    float u[2];
+    Pin pin[2];
+};
+
 
 Term term[NUM_CON];
 SDI12 socket(13);
@@ -44,9 +52,11 @@ int index(char a) {
 
 void measure(int i) {
   Term *c = &term[i];
+  analogRead(pin[i]);
+  analogRead(pin[i+6]);
   for (int j = 0; j < 3; j++) {
-    c->u[0] += analogRead(pin[k]);
-    c->u[1] += analogRead(pin[k+6]);
+    c->u[0] += analogRead(pin[i]);
+    c->u[1] += analogRead(pin[i+6]);
   }
   c->u[0] *= 0.001629;
   c->u[1] *= 0.001629;
@@ -117,7 +127,7 @@ void loop() {
         len = 0;
       }
       socket.forceListen();
-    } else if (len < CMD_LEN)
+    } else if (c > 0 && len < CMD_LEN)
       buf[len++] = c;
   }
 }
