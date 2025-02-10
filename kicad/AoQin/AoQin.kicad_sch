@@ -2066,6 +2066,16 @@
 	)
 	(wire
 		(pts
+			(xy 121.92 95.25) (xy 130.81 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e88159d-20cc-4ee5-8282-a66c443daa9f")
+	)
+	(wire
+		(pts
 			(xy 55.88 167.64) (xy 71.12 167.64)
 		)
 		(stroke
@@ -3073,6 +3083,16 @@
 			(justify left bottom)
 		)
 		(uuid "80a9ac89-a69c-4bd0-be62-28db3c65df25")
+	)
+	(label "GND"
+		(at 121.92 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8160161b-f624-43b0-a7be-bd08d3133150")
 	)
 	(label "VIN2"
 		(at 257.81 78.74 0)
@@ -4485,7 +4505,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_arduino-library:Arduino_Micro_Socket"
+		(property "Footprint" "footprints:Arduino_Micro_Socket"
 			(at 156.21 106.68 0)
 			(effects
 				(font
