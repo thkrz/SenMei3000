@@ -8,10 +8,18 @@
 #define NUM_CON 6
 #define BUS_PIN 9
 
-struct Term {
-  char addr;
-  float u[2];
+struct Pin {
+  int8_t num;
+  bool active;
 };
+
+class Connector {
+  private:
+    char addr;
+    float u[2];
+    Pin pin[2];
+};
+
 
 Term term[NUM_CON];
 SDI12 socket(BUS_PIN);
