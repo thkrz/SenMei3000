@@ -1,24 +1,42 @@
-void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
+#define VOLT(x) ((x) * 0.0048876)
+
+float
+temp(int v)
+{
+  float u = VOLT(v);
+  return (u - 1.2) * 100.0 / 3.0;
 }
 
-void loop() {
-  int a1 = (int)(analogRead(A0)*0.0048875);
-  int a2 = (int)(analogRead(A11)*0.0048875);
+float
+moist(int v)
+{
+  float u = VOLT(v);
+  return u * 100.0 / 3.0;
+}
 
-  for (int i = 0; i < a1; i++) {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(300);
-  }
+void
+setup()
+{
+  Serial.begin(9600);
+  while (!Serial)
+    ;
+  delay(1000);
+  Serial.println("Start...");
+}
 
-  for (int i = 0; i < a2; i++) {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(300);
-  }
+void
+loop()
+{
+  analogRead(A0);
+  analogRead(A1);
+  int a1 = analogRead(A0);
+  int a2 = analogRead(A1);
 
-  delay(3000);
+  Serial.print("A0: ");
+  Serial.println(temp(a1));
+
+  Serial.print("A1: ");
+  Serial.println(moist(a2));
+
+  delay(5000);
 }

@@ -79,7 +79,7 @@ void scan() {
     if (handshake(c))
       sid[n++] = c;
   }
-  for (char c = 'a'; c <= 'z'; c++) {
+  for (char c = 'a'; c <= 'b'; c++) {
     if (handshake(c))
       sid[n++] = c;
   }
@@ -88,23 +88,26 @@ void scan() {
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(9, INPUT);
-
-  enable();
-  scan();
-
+  delay(5000);
   Serial.begin(9600);
   while (!Serial);
+
+  Serial.print("Scanning...");
+  enable();
+  scan();
+  Serial.println("done");
 
   Serial.print("Devices: ");
   Serial.println(sid);
 }
 
 void loop() {
+  Serial.println("-- Send command --");
   for (char *p = sid; *p; p++) {
-    Serial.println("--");
     Serial.println(ident(*p));
+    delay(100);
     Serial.println(measure(*p));
+    delay(100);
   }
-  delay(5000);
+  delay(10000);
 }
