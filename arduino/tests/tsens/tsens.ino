@@ -4,14 +4,14 @@ float
 temp(int v)
 {
   float u = VOLT(v);
-  return (u - 1.2) * 100.0 / 3.0;
+  return (u - 1.26) * 100.0 / 3.15;
 }
 
 float
 moist(int v)
 {
   float u = VOLT(v);
-  return u * 100.0 / 3.0;
+  return u * 100.0 / 3.15;
 }
 
 void
@@ -32,11 +32,9 @@ loop()
   int a1 = analogRead(A0);
   int a2 = analogRead(A1);
 
-  Serial.print("A0: ");
-  Serial.println(temp(a1));
-
-  Serial.print("A1: ");
+  Serial.print(temp(a1));
+  Serial.print(" ");
   Serial.println(moist(a2));
 
-  delay(5000);
+  delay(500);
 }

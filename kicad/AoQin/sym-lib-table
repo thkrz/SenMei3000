@@ -4,4 +4,5 @@
   (lib (name "FFKDSA1_V_381")(type "KiCad")(uri "${KIPRJMOD}/symbols/FFKDSA1_V_381.kicad_sym")(options "")(descr ""))
   (lib (name "PheonixContact")(type "KiCad")(uri "${KIPRJMOD}/symbols/PheonixContact.kicad_sym")(options "")(descr ""))
   (lib (name "2454982-4")(type "KiCad")(uri "${KIPRJMOD}/wip/2454982-4/KiCad/2454982-4.kicad_sym")(options "")(descr ""))
+  (lib (name "TEConnectivity")(type "KiCad")(uri "${KIPRJMOD}/symbols/TEConnectivity.kicad_sym")(options "")(descr ""))
 )

@@ -1721,6 +1721,357 @@
 				)
 			)
 		)
+		(symbol "TEConnectivity:2454982-4"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "S"
+				(at 19.05 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "2454982-4"
+				(at 19.05 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "footprints:24549824"
+				(at 19.05 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F2454982%7F1%7Fpdf%7FEnglish%7FENG_CD_2454982_1.pdf%7F2454982-4"
+				(at 19.05 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "DIP & SIP Switches, Gold Flash, Black, PA9T, 6 Switch, -40  85 C, DIP, Extended Actuator Style, 24A Contact Current Rating, Alcoswitch DIP ADE "
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "4.51"
+				(at 19.05 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "TE Connectivity"
+				(at 19.05 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "2454982-4"
+				(at 19.05 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "655-2454982-4"
+				(at 19.05 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/TE-Connectivity-Alcoswitch/2454982-4?qs=1Kr7Jg1SGW%252Bz93jaadOVjQ%3D%3D"
+				(at 19.05 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Arrow Part Number" "2454982-4"
+				(at 19.05 -894.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Arrow Price/Stock" "https://www.arrow.com/en/products/2454982-4/te-connectivity?region=nac"
+				(at 19.05 -994.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "2454982-4_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 17.78 -15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "A2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "A3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 0)
+					(length 5.08)
+					(name "A4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -10.16 0)
+					(length 5.08)
+					(name "A5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -12.7 0)
+					(length 5.08)
+					(name "A6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 0 180)
+					(length 5.08)
+					(name "B1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -2.54 180)
+					(length 5.08)
+					(name "B2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -5.08 180)
+					(length 5.08)
+					(name "B3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -7.62 180)
+					(length 5.08)
+					(name "B4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -10.16 180)
+					(length 5.08)
+					(name "B5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -12.7 180)
+					(length 5.08)
+					(name "B6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:+12V"
 			(power)
 			(pin_numbers hide)
@@ -1939,16 +2290,40 @@
 		)
 	)
 	(junction
+		(at 158.75 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "42b4c0bd-92ff-4e42-ac95-175364c53419")
+	)
+	(junction
+		(at 158.75 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4560828b-cbeb-4614-ac7b-de168f067a7d")
+	)
+	(junction
 		(at 72.39 99.06)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "638d5172-11a7-4af0-a4d2-6f36f237c0a3")
 	)
 	(junction
+		(at 158.75 135.89)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "760b9573-f87c-4e8f-99c2-1c1ba1ef84e1")
+	)
+	(junction
 		(at 254 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "852db184-2341-4432-b5ee-e45a5522b290")
+	)
+	(junction
+		(at 158.75 138.43)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8acccd54-6a9c-4a76-8849-5b357624c16c")
 	)
 	(junction
 		(at 35.56 44.45)
@@ -2048,6 +2423,26 @@
 	)
 	(wire
 		(pts
+			(xy 173.99 133.35) (xy 181.61 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fe9035f-6e0d-43b3-b801-cc8663fa68a6")
+	)
+	(wire
+		(pts
+			(xy 158.75 130.81) (xy 158.75 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23bfc657-e440-4979-8db2-789a2a5883f5")
+	)
+	(wire
+		(pts
 			(xy 181.61 62.23) (xy 186.69 62.23)
 		)
 		(stroke
@@ -2055,6 +2450,16 @@
 			(type default)
 		)
 		(uuid "26cc0ef9-399a-4671-840d-5c2162bd34d9")
+	)
+	(wire
+		(pts
+			(xy 132.08 133.35) (xy 135.89 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c587c19-2d06-40e6-9a31-54ef5a3873c4")
 	)
 	(wire
 		(pts
@@ -2148,6 +2553,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 135.89) (xy 135.89 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4aedca01-9569-4abb-97de-a57abbd24695")
+	)
+	(wire
+		(pts
 			(xy 254 78.74) (xy 257.81 78.74)
 		)
 		(stroke
@@ -2198,6 +2613,16 @@
 	)
 	(wire
 		(pts
+			(xy 158.75 138.43) (xy 158.75 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6013d587-1121-4975-8718-516b360132bf")
+	)
+	(wire
+		(pts
 			(xy 31.75 25.4) (xy 45.72 25.4)
 		)
 		(stroke
@@ -2218,6 +2643,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 128.27) (xy 135.89 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6934cf15-ae51-4017-b192-fd2cfbce8150")
+	)
+	(wire
+		(pts
 			(xy 25.4 44.45) (xy 35.56 44.45)
 		)
 		(stroke
@@ -2225,6 +2660,16 @@
 			(type default)
 		)
 		(uuid "698875ad-fc7e-4648-b117-bc36f3457f08")
+	)
+	(wire
+		(pts
+			(xy 158.75 133.35) (xy 166.37 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b17363d-4a39-4da8-9ff4-bcf9b05704c0")
 	)
 	(wire
 		(pts
@@ -2248,6 +2693,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 140.97) (xy 135.89 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ebe8853-66a0-4a19-af6d-7584343f8d0b")
+	)
+	(wire
+		(pts
 			(xy 121.92 67.31) (xy 130.81 67.31)
 		)
 		(stroke
@@ -2265,6 +2720,16 @@
 			(type default)
 		)
 		(uuid "732c22e4-11c4-47bd-8187-869592c5639b")
+	)
+	(wire
+		(pts
+			(xy 158.75 133.35) (xy 158.75 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75240a36-a7a8-47c4-9a39-cdc12dddfc15")
 	)
 	(wire
 		(pts
@@ -2398,6 +2863,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 130.81) (xy 135.89 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5aaeb99-b5cb-4cd1-9a11-e2600f4dada2")
+	)
+	(wire
+		(pts
 			(xy 53.34 99.06) (xy 59.69 99.06)
 		)
 		(stroke
@@ -2405,6 +2880,16 @@
 			(type default)
 		)
 		(uuid "ac32bd98-1d3c-4fab-86b0-cdcd5fb95ca0")
+	)
+	(wire
+		(pts
+			(xy 132.08 138.43) (xy 135.89 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af793d25-5598-4088-9c58-0ad108bb15e0")
 	)
 	(wire
 		(pts
@@ -2558,6 +3043,16 @@
 	)
 	(wire
 		(pts
+			(xy 158.75 128.27) (xy 158.75 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9455fd9-acb4-4d2b-abab-a35552f62745")
+	)
+	(wire
+		(pts
 			(xy 95.25 167.64) (xy 101.6 167.64)
 		)
 		(stroke
@@ -2595,6 +3090,16 @@
 			(type default)
 		)
 		(uuid "f0773127-6878-4439-957c-bd7d0dfb3709")
+	)
+	(wire
+		(pts
+			(xy 158.75 135.89) (xy 158.75 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcf80f72-9c96-477c-bd6c-e8b5a72583c1")
 	)
 	(label "A10"
 		(at 186.69 64.77 0)
@@ -2766,6 +3271,16 @@
 		)
 		(uuid "5188b16b-4c2d-43b4-a793-add9cb7a406c")
 	)
+	(label "A2"
+		(at 132.08 130.81 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5462f485-6005-4d8b-9d3d-b21ac28116f9")
+	)
 	(label "VIN1"
 		(at 76.2 99.06 0)
 		(effects
@@ -2775,6 +3290,16 @@
 			(justify left bottom)
 		)
 		(uuid "54db0353-8ea2-45df-87ca-ba264585bb39")
+	)
+	(label "A4"
+		(at 132.08 133.35 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5c444b99-1f65-42e9-851e-1ad6efd01100")
 	)
 	(label "GND"
 		(at 66.04 132.08 0)
@@ -2916,6 +3441,26 @@
 		)
 		(uuid "8c0c07c0-a888-42f3-86e3-65cf68409067")
 	)
+	(label "A8"
+		(at 132.08 138.43 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8e94dbc7-8b10-4447-ba8b-e419f7fc3517")
+	)
+	(label "A0"
+		(at 132.08 128.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9c86d4d2-9b02-43ca-9819-27325756b102")
+	)
 	(label "GND"
 		(at 231.14 107.95 0)
 		(effects
@@ -3026,6 +3571,16 @@
 		)
 		(uuid "e2a73fd4-e290-4eaf-b0bd-ca9996b93988")
 	)
+	(label "A10"
+		(at 132.08 140.97 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ec1be4c8-be5b-49ed-85ae-636dc25d8cf3")
+	)
 	(label "VIN1"
 		(at 266.7 107.95 0)
 		(effects
@@ -3055,6 +3610,16 @@
 			(justify left bottom)
 		)
 		(uuid "ef267332-8fa6-4396-bac3-38954ea635e6")
+	)
+	(label "5V"
+		(at 181.61 133.35 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f32ade6a-9660-405e-b9f7-e48becc7c1de")
 	)
 	(label "VIN1"
 		(at 101.6 167.64 0)
@@ -3115,6 +3680,16 @@
 			(justify left bottom)
 		)
 		(uuid "f9caa84a-5435-448e-a2d4-a84b875e8aee")
+	)
+	(label "A6"
+		(at 132.08 135.89 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fc0ba01b-81a2-4662-a299-1aeae2720942")
 	)
 	(symbol
 		(lib_id "PheonixContact:1985218")
@@ -3629,6 +4204,83 @@
 			(project "AoQin"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 170.18 133.35 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "49979501-d7fe-4e06-a853-25c580cf3ea0")
+		(property "Reference" "R1"
+			(at 170.18 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "47k"
+			(at 170.18 129.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal"
+			(at 170.18 131.572 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 170.18 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "47k DIN0204 7.62mm"
+			(at 170.18 133.35 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "964fe024-4df8-4a2f-8768-809e00bf7aef")
+		)
+		(pin "1"
+			(uuid "9382d5c1-88fd-4379-9887-3df70dd188fe")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -4577,6 +5229,176 @@
 			(project ""
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TEConnectivity:2454982-4")
+		(at 135.89 128.27 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f70b5fda-1d48-4e6b-b4ec-85b800146e9d")
+		(property "Reference" "S1"
+			(at 147.32 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2454982-4"
+			(at 147.32 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:24549824"
+			(at 154.94 223.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F2454982%7F1%7Fpdf%7FEnglish%7FENG_CD_2454982_1.pdf%7F2454982-4"
+			(at 154.94 323.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "DIP & SIP Switches, Gold Flash, Black, PA9T, 6 Switch, -40  85 C, DIP, Extended Actuator Style, 24A Contact Current Rating, Alcoswitch DIP ADE"
+			(at 135.89 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "4.51"
+			(at 154.94 523.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "TE Connectivity"
+			(at 154.94 623.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "2454982-4"
+			(at 154.94 723.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "655-2454982-4"
+			(at 154.94 823.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/TE-Connectivity-Alcoswitch/2454982-4?qs=1Kr7Jg1SGW%252Bz93jaadOVjQ%3D%3D"
+			(at 154.94 923.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" "2454982-4"
+			(at 154.94 1023.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/2454982-4/te-connectivity?region=nac"
+			(at 154.94 1123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "B4"
+			(uuid "1b6777a5-86e9-4d2b-8330-dc45f175ca67")
+		)
+		(pin "B5"
+			(uuid "c7e6f0f3-d6a6-4185-a372-58e75f7a2d6d")
+		)
+		(pin "B6"
+			(uuid "5a6ebbc7-ab4d-4d1b-af59-23e0ad4a7300")
+		)
+		(pin "A3"
+			(uuid "2d4506e0-b291-4c7d-854c-653646fbb183")
+		)
+		(pin "B1"
+			(uuid "32af4645-a42c-49a2-8e37-691800769b31")
+		)
+		(pin "A4"
+			(uuid "2e42823b-3d60-4df5-88ea-7a1b4d7f1419")
+		)
+		(pin "B2"
+			(uuid "9e625fab-36c7-4e1b-ad02-e543b145dd37")
+		)
+		(pin "A1"
+			(uuid "f4f29278-60ff-4ade-b663-ea0711ada66d")
+		)
+		(pin "A6"
+			(uuid "44a511fb-cd48-4343-83bf-b3664789586a")
+		)
+		(pin "A5"
+			(uuid "b45e71f1-1348-49a3-9c72-50e03ffe88ee")
+		)
+		(pin "A2"
+			(uuid "3aaff7ef-93b8-4822-91ae-2170065f7658")
+		)
+		(pin "B3"
+			(uuid "6b490ecc-a77c-43a6-a755-9e079af1990e")
+		)
+		(instances
+			(project ""
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "S1")
 					(unit 1)
 				)
 			)
