@@ -8,8 +8,10 @@ class Block {
     int8_t dip;
     int8_t pin[2];
   protected:
-    float V[2];
+    float u[2];
   public:
+    static String CONCAT(float[2]);
+
     char addr;
 
     Block(int8_t, int8_t, int8_t);
@@ -17,9 +19,9 @@ class Block {
     bool isConnected();
     void readSample(int num = 1);
 
-    virtual String data();
-    virtual String identify();
-    virtual String wait();
+    virtual String data() {};
+    virtual String identify() {};
+    virtual String wait() {};
 };
 
 #endif /* _BLOCK_H */

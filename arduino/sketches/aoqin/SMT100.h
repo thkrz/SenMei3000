@@ -5,13 +5,22 @@
 
 class SMT100: public Block {
   public:
+    static const float A = 100.0 / 3.0;
+    static const float B = 100.0 / 3.0;
+
     using Block::Block;
 
-    String data();
-    String identify() {
+    String data() override {
+      float a[2] = {
+        u[0] * A,
+        (u[1] - B) * A
+      };
+      return CONCAT(a);
+    }
+    String identify() override {
       return "13TRUEBNERSMT100038241127102256";
     }
-    String wait() {
+    String wait() override {
       return "0022";
     }
 };

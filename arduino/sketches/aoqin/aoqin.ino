@@ -14,7 +14,7 @@ Block blk[NUM_CON] = {
   SMT100(2, A4, A5),
   SMT100(3, A6, A7),
   SMT100(5, A8, A9),
-  SMT100(6, A10, A11)
+  SMT100(7, A10, A11)
 };
 
 SDI12 socket(BUS_PIN);
