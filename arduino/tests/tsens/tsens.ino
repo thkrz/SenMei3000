@@ -4,14 +4,14 @@ float
 temp(int v)
 {
   float u = VOLT(v);
-  return (u - 1.26) * 100.0 / 3.15;
+  return (u - 1.8475) * 21.6508;
 }
 
 float
 moist(int v)
 {
   float u = VOLT(v);
-  return u * 100.0 / 3.15;
+  return u * 21.6508;
 }
 
 void
@@ -36,5 +36,5 @@ loop()
   Serial.print(" ");
   Serial.println(moist(a2));
 
-  delay(500);
+  delay(100);
 }
