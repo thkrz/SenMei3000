@@ -1,16 +1,11 @@
 #include <MKRNB.h>
-#include <RTCZero.h>
 #include <SDI12.h>
-#include <SHTC3.h>
 #include <SPI.h>
-#include <SPIMemory.h>
-#include <Wire.h>
 
 #include "config.h"
 #include "global.h"
 
 #define CS_PIN  7
-#define DBG_PIN 5
 #define FET_PIN 0
 //#define MUX_PIN 1
 #define BUS_PIN 2
@@ -21,23 +16,14 @@
 GPRS gprs;
 NBClient client;
 NB nbAccess;
-RTCZero rtc;
 SDI12 socket(BUS_PIN);
-SPIFlash flash;
 char sid[63];
-uint32_t addr = 0;
-uint32_t paddr = 0;
-
-float battery() {
-  int p = analogRead(A1);
-  return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
-}
 
 bool calibrate() {
   String s = "CALIBRATE\r\n";
   enable();
   for (char *p = sid; *p; p++)
-    s += info(*p);
+    s += ident(*p);
   disable();
   return post(s);
 }
@@ -54,36 +40,10 @@ void connect() {
   }
 }
 
-void debug() {
-  //Serial1.begin(9600);
-  //while (!Serial1);
-  // send GPS
-  //Serial1.close();
-
-  Serial.begin(9600);
-  while (!Serial);
-
-  for (;;) {
-    if (Serial.available()) {
-      char c = Serial.read();
-      if (c == '!') {
-        String s = load();
-        Serial.print(s + "#");
-      }
-    }
-    delay(100);
-  }
-}
-
 void disable() {
   socket.end();
   digitalWrite(FET_PIN, LOW);
   digitalWrite(LED_BUILTIN, LOW);
-}
-
-void dump(String s) {
-  flash.writeStr(addr, s);
-  addr += s.length();
 }
 
 void enable() {
@@ -128,14 +88,6 @@ void idle() {
   }
 }
 
-String load() {
-  static String s;
-
-  if (flash.readStr(paddr, s))
-    return s;
-  return "";
-}
-
 String measure(char i) {
   static char st[4] = "aM!";
   static char rd[5] = "aD0!";
@@ -162,16 +114,6 @@ String measure(char i) {
   delay(30);
   s = socket.readStringUntil('\n');
   return s;
-}
-
-void pullup() {
-  int8_t pin[12] = {
-    A0, A2, A3, A4, A5, A6,
-    3, 4, 5, 6, 13, 14
-  };
-
-  for (int i = 0; i < 12; i++)
-    pinMode(pin[i], INPUT_PULLUP);
 }
 
 void scan() {
@@ -212,21 +154,6 @@ bool post(String s) {
   return ok;
 }
 
-void schedule() {
-  uint8_t m = (rtc.getMinutes() / MIVL + 1) * MIVL;
-  if (m == 60)
-    m = 0;
-  rtc.setAlarmMinutes(m);
-}
-
-String sprint02d(uint8_t d) {
-  static String s;
-
-  s = d < 10 ? "0" : "";
-  s += String(d);
-  return s;
-}
-
 void verify() {
   //if (!client.connected())
   //  client.stop();
@@ -244,7 +171,7 @@ void setup() {
   //pullup();
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET_PIN, OUTPUT);
-  pinMode(MUX_PIN, OUTPUT);
+  //pinMode(MUX_PIN, OUTPUT);
 
   enable();
   scan();
@@ -253,65 +180,18 @@ void setup() {
   if (sid[0] == '\0')
     idle();
 
-  flash.begin(CS_PIN);
-
-  Wire.begin();
-  SHTC3.begin();
-
   connect();
+  delay(1000);
   calibrate();
-
-  rtc.begin();
-  rtc.setEpoch(nbAccess.getTime());
-
-  rtc.setAlarmSeconds(0);
-  schedule();
-  rtc.enableAlarm(rtc.MATCH_MMSS);
-  rtc.standbyMode();
 }
 
 void loop() {
-  String s = String(rtc.getYear() + 2000);
-  s += "-";
-  s += sprint02d(rtc.getMonth());
-  s += "-";
-  s += sprint02d(rtc.getDay());
-  s += "T";
-  s += sprint02d(rtc.getHours());
-  s += ":";
-  s += sprint02d(rtc.getMinutes());
-  s += LF;
-
-  float bat0 = battery();
-  s += String(bat0) + LF;
-
-  bool pm = bat0 < BAT_LOW;
-
-  SHTC3.readSample(low_power=pm);
-  s += String(SHTC3.getTemperature()) + LF;
-  s += String(SHTC3.getHumidity()) + LF;
-
+  delay(15000);
+  String s = "";
   enable();
   for (char *p = sid; *p; p++)
     s += measure(*p);
   disable();
-
-  if (pm) {
-    nbAccess.shutdown();
-    dump(s);
-  } else {
-    if (paddr < addr)
-      s += load();
-    verify();
-    if (!post(s)) {
-      addr = paddr;
-      dump(s);
-    } else {
-      paddr = addr;
-    }
-  }
-
-  if (!pm)
-    schedule();
-  rtc.standbyMode();
+  verify();
+  post(s);
 }

@@ -2,11 +2,11 @@
 
 #define VOLT(x) ((x)*5.0/1023.0)
 
-static String Block::CONCAT(float x[2]) {
+static String Block::CONCAT(float *x, int len) {
   static String s;
 
   s = "";
-  for (int i = 0; i < 2; i++) {
+  for (int i = 0; i < len; i++) {
     if (x[i] >= 0)
       s += '+';
     s += String(x[i]);

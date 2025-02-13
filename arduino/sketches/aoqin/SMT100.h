@@ -6,7 +6,7 @@
 class SMT100: public Block {
   public:
     static const float A = 100.0 / 3.0;
-    static const float B = 100.0 / 3.0;
+    static const float B = 1.2;
 
     using Block::Block;
 

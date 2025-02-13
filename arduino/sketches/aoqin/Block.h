@@ -10,7 +10,7 @@ class Block {
   protected:
     float u[2];
   public:
-    static String CONCAT(float[2]);
+    static String CONCAT(float*, int len = 2);
 
     char addr;
 

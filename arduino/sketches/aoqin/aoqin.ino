@@ -89,6 +89,7 @@ void loop() {
   if (socket.available()) {
     char c = socket.read();
     if (c == '!') {
+      digitalWrite(LED_BUILTIN, HIGH);
       socket.clearBuffer();
       socket.forceHold();
       if (len > 0) {
@@ -96,6 +97,7 @@ void loop() {
         len = 0;
       }
       socket.forceListen();
+      digitalWrite(LED_BUILTIN, LOW);
     } else if (c > 0 && len < CMD_LEN)
       buf[len++] = c;
   }
