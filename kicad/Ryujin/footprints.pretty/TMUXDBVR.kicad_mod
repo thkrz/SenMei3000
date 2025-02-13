@@ -1,4 +1,4 @@
-(footprint "DBV0006A"
+(footprint "TMUXDBVR"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -40,7 +40,7 @@
 			)
 		)
 	)
-	(property "Datasheet" ""
+	(property "Datasheet" "https://www.ti.com/document-viewer/tmux1119/datasheet"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -496,8 +496,8 @@
 		(layer "F.Fab")
 		(uuid "88d34e51-4d40-4b94-a1e2-558804a6d536")
 	)
-	(fp_text user "*"
-		(at -1.61925 -2.6518 0)
+	(fp_text user "·"
+		(at -1.61925 -2 0)
 		(layer "F.SilkS")
 		(uuid "020c6ca5-55f6-476e-9ee2-b2870c83866b")
 		(effects
@@ -507,8 +507,8 @@
 			)
 		)
 	)
-	(fp_text user "*"
-		(at -1.61925 -2.6518 0)
+	(fp_text user "·"
+		(at -1.61925 -2 0)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "153210f0-ac32-4b30-90fa-ed6e5868c8c8")
