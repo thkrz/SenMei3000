@@ -1,16 +1,11 @@
 #include <SDI12.h>
 #include <SPI.h>
 
-SDI12 socket(9);
+SDI12 socket(3);
 char sid[63];
 
-void disable() {
-  socket.end();
-  digitalWrite(LED_BUILTIN, LOW);
-}
-
 void enable() {
-  digitalWrite(LED_BUILTIN, HIGH);
+  Serial.println("Socket enabled");
   socket.begin();
   delay(500);
 }
@@ -18,55 +13,23 @@ void enable() {
 bool handshake(char i) {
   static char cmd[3] = "0!";
 
+  Serial.print("Handshake [");
+  Serial.print(i);
+  Serial.print("]: ");
+
   cmd[0] = i;
   for (int j = 0; j < 3; j++) {
     socket.sendCommand(cmd);
     socket.clearBuffer();
     delay(30);
-    if (socket.available())
-      return true;
-  }
-  socket.clearBuffer();
-  return false;
-}
-
-String ident(char i) {
-  static char cmd[4] = "aI!";
-  static String s;
-
-  cmd[0] = i;
-  socket.sendCommand(cmd);
-  delay(300);
-  s = socket.readStringUntil('\n');
-  return s;
-}
-
-String measure(char i) {
-  static char st[4] = "aM!";
-  static char rd[5] = "aD0!";
-  static String s;
-
-  socket.clearBuffer();
-  delay(10);
-  st[0] = i;
-  socket.sendCommand(st);
-  delay(30);
-  s = socket.readStringUntil('\n');
-  uint8_t wait = s.substring(1, 4).toInt();
-
-  for (int j = 0; j < wait; j++) {
     if (socket.available()) {
-      socket.clearBuffer();
-      break;
+      Serial.println("ACK");
+      return true;
     }
-    delay(1000);
   }
-
-  rd[0] = i;
-  socket.sendCommand(rd);
-  delay(30);
-  s = socket.readStringUntil('\n');
-  return s;
+  socket.clearBuffer();
+  Serial.println("no response");
+  return false;
 }
 
 void scan() {
@@ -74,14 +37,17 @@ void scan() {
   for (char c = '0'; c <= '9'; c++) {
     if (handshake(c))
       sid[n++] = c;
+    delay(500);
   }
   for (char c = 'A'; c <= 'Z'; c++) {
     if (handshake(c))
       sid[n++] = c;
+    delay(500);
   }
-  for (char c = 'a'; c <= 'b'; c++) {
+  for (char c = 'a'; c <= 'z'; c++) {
     if (handshake(c))
       sid[n++] = c;
+    delay(500);
   }
   sid[n] = '\0';
 }
@@ -92,22 +58,21 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-  Serial.print("Scanning...");
+  Serial.println("Scanning...");
   enable();
   scan();
-  Serial.println("done");
 
-  Serial.print("Devices: ");
-  Serial.println(sid);
+  Serial.println("done");
 }
 
 void loop() {
-  Serial.println("-- Send command --");
-  for (char *p = sid; *p; p++) {
-    Serial.println(ident(*p));
-    delay(100);
-    Serial.println(measure(*p));
-    delay(100);
-  }
-  delay(10000);
+  //Serial.println("-- Send command --");
+  //for (char *p = sid; *p; p++) {
+  //  Serial.println(ident(*p));
+  //  delay(100);
+  //  Serial.println(measure(*p));
+  //  delay(100);
+  //}
+  //delay(10000);
+  delay(100);
 }

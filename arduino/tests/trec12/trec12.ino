@@ -74,7 +74,7 @@ void loop() {
         len = 0;
       }
       socket.forceListen();
-    } else if (c > 0 && len < CMD_LEN)
+    } else if (len < CMD_LEN)
       buf[len++] = c;
   }
 }

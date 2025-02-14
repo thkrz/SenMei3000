@@ -4,16 +4,22 @@
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(MUX_PIN, OUTPUT);
+  pinMode(2, INPUT);
+  pinMode(3, OUTPUT);
 
   // WRITE
-  //digitalWrite(MUX_PIN, LOW);
-  //pinMode(2, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
+  digitalWrite(MUX_PIN, LOW);
 
   // READ
-  digitalWrite(MUX_PIN, HIGH);
-  pinMode(2, INPUT);
+  //digitalWrite(LED_BUILTIN, HIGH);
+  //digitalWrite(MUX_PIN, HIGH);
 }
 
 void loop() {
-  delay(100);
+  digitalWrite(3, HIGH);
+  delay(500);
+  digitalWrite(3, LOW);
+  delay(500);
+
 }
