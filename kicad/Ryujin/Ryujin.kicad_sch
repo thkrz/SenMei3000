@@ -3915,7 +3915,7 @@
 		(uuid "8aca1fd4-ddd2-4429-b75d-60a18702b45b")
 	)
 	(junction
-		(at 24.13 167.64)
+		(at 30.48 175.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "91c60fad-5365-423e-b66e-1a306744c3a5")
@@ -3987,8 +3987,52 @@
 		(uuid "fffd3481-b048-4642-a209-b9d9fccb6345")
 	)
 	(no_connect
-		(at 27.94 170.18)
+		(at 243.84 52.07)
+		(uuid "02da91fe-320f-4247-ba10-5f652d4224d8")
+	)
+	(no_connect
+		(at 44.45 27.94)
+		(uuid "193bb49a-54a8-4c01-b7ca-d6ec2f6a4450")
+	)
+	(no_connect
+		(at 243.84 29.21)
+		(uuid "2794dbda-883e-4804-a6c6-cebadad3d80e")
+	)
+	(no_connect
+		(at 34.29 177.8)
 		(uuid "2e739802-1569-4e67-b07f-3ad526744954")
+	)
+	(no_connect
+		(at 270.51 54.61)
+		(uuid "39c122ad-5e4b-4c26-b03b-fc18c2641033")
+	)
+	(no_connect
+		(at 243.84 21.59)
+		(uuid "3ba67468-afae-47c4-b499-3469e70f53a8")
+	)
+	(no_connect
+		(at 243.84 36.83)
+		(uuid "65d9664c-3a9a-417f-a89b-9b41d57ec6ec")
+	)
+	(no_connect
+		(at 31.75 27.94)
+		(uuid "715d085f-d991-4b82-ba11-c3d5a1a54c2e")
+	)
+	(no_connect
+		(at 243.84 39.37)
+		(uuid "948eb41c-4ab1-49ed-b73a-494ae8d0746a")
+	)
+	(no_connect
+		(at 243.84 24.13)
+		(uuid "94d9fc06-f635-4700-8bf4-319c75f8036b")
+	)
+	(no_connect
+		(at 243.84 34.29)
+		(uuid "c122c9b8-954d-4bbc-b540-9294e94e247f")
+	)
+	(no_connect
+		(at 243.84 31.75)
+		(uuid "c7d402e5-5018-475b-ac75-5bf64d09b9a7")
 	)
 	(wire
 		(pts
@@ -4082,7 +4126,7 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 177.8) (xy 27.94 177.8)
+			(xy 27.94 185.42) (xy 34.29 185.42)
 		)
 		(stroke
 			(width 0)
@@ -4132,7 +4176,7 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 175.26) (xy 27.94 175.26)
+			(xy 27.94 182.88) (xy 34.29 182.88)
 		)
 		(stroke
 			(width 0)
@@ -4392,7 +4436,7 @@
 	)
 	(wire
 		(pts
-			(xy 24.13 167.64) (xy 24.13 172.72)
+			(xy 30.48 175.26) (xy 30.48 180.34)
 		)
 		(stroke
 			(width 0)
@@ -4542,7 +4586,7 @@
 	)
 	(wire
 		(pts
-			(xy 24.13 172.72) (xy 27.94 172.72)
+			(xy 30.48 180.34) (xy 34.29 180.34)
 		)
 		(stroke
 			(width 0)
@@ -4562,7 +4606,7 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 165.1) (xy 27.94 165.1)
+			(xy 27.94 172.72) (xy 34.29 172.72)
 		)
 		(stroke
 			(width 0)
@@ -4592,7 +4636,7 @@
 	)
 	(wire
 		(pts
-			(xy 24.13 167.64) (xy 21.59 167.64)
+			(xy 30.48 175.26) (xy 27.94 175.26)
 		)
 		(stroke
 			(width 0)
@@ -4732,7 +4776,7 @@
 	)
 	(wire
 		(pts
-			(xy 24.13 167.64) (xy 27.94 167.64)
+			(xy 30.48 175.26) (xy 34.29 175.26)
 		)
 		(stroke
 			(width 0)
@@ -5223,7 +5267,7 @@
 		(uuid "4bdeb664-5820-4312-8e82-da9d1ba886f7")
 	)
 	(label "BUS"
-		(at 21.59 177.8 0)
+		(at 27.94 185.42 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5503,7 +5547,7 @@
 		(uuid "da143398-9080-4e5d-93e7-39615d819717")
 	)
 	(label "SDI-"
-		(at 21.59 175.26 0)
+		(at 27.94 182.88 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6066,7 +6110,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 21.59 165.1 270)
+		(at 27.94 172.72 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6075,7 +6119,7 @@
 		(fields_autoplaced yes)
 		(uuid "6edc20ec-9a22-4d28-9e48-c3a2a7768e24")
 		(property "Reference" "#PWR02"
-			(at 15.24 165.1 0)
+			(at 21.59 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6084,7 +6128,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 17.78 165.0999 90)
+			(at 24.13 172.7199 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6093,7 +6137,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 21.59 165.1 0)
+			(at 27.94 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6102,7 +6146,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 21.59 165.1 0)
+			(at 27.94 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6111,7 +6155,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 21.59 165.1 0)
+			(at 27.94 172.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7422,7 +7466,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x06")
-		(at 33.02 170.18 0)
+		(at 39.37 177.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7431,7 +7475,7 @@
 		(fields_autoplaced yes)
 		(uuid "e7583279-6e92-4b9b-8d8a-856d41c9aa47")
 		(property "Reference" "J1"
-			(at 35.56 170.1799 0)
+			(at 41.91 177.7999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7440,7 +7484,7 @@
 			)
 		)
 		(property "Value" "Screw_Terminal_01x06"
-			(at 35.56 172.7199 0)
+			(at 41.91 180.3399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7449,7 +7493,7 @@
 			)
 		)
 		(property "Footprint" "ThirdParty:SMKDSN-1-5-6-5-08_3D"
-			(at 33.02 170.18 0)
+			(at 39.37 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7458,7 +7502,7 @@
 			)
 		)
 		(property "Datasheet" "../../docs/1869253_04_en_01.pdf"
-			(at 33.02 170.18 0)
+			(at 39.37 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7467,7 +7511,7 @@
 			)
 		)
 		(property "Description" "Generic screw terminal, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 33.02 170.18 0)
+			(at 39.37 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7476,7 +7520,7 @@
 			)
 		)
 		(property "MPN" "1869253"
-			(at 33.02 170.18 0)
+			(at 39.37 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7597,7 +7641,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 21.59 167.64 90)
+		(at 27.94 175.26 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7606,7 +7650,7 @@
 		(fields_autoplaced yes)
 		(uuid "f2080418-d11f-41ab-9f30-ee429845f022")
 		(property "Reference" "#PWR01"
-			(at 25.4 167.64 0)
+			(at 31.75 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7615,7 +7659,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 17.78 167.6399 90)
+			(at 24.13 175.2599 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7624,7 +7668,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 21.59 167.64 0)
+			(at 27.94 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7633,7 +7677,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 21.59 167.64 0)
+			(at 27.94 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7642,7 +7686,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 21.59 167.64 0)
+			(at 27.94 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)

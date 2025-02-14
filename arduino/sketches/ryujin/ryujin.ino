@@ -144,12 +144,12 @@ String measure(char i) {
 }
 
 void pullup() {
-  int8_t pin[12] = {
+  int8_t pin[11] = {
     A0, A2, A3, A4, A5, A6,
-    3, 4, 5, 6, 13, 14
+    4, 5, 6, 13, 14
   };
 
-  for (int i = 0; i < 12; i++)
+  for (int i = 0; i < 11; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -232,14 +232,12 @@ void verify() {
 }
 
 void setup() {
-  //pinMode(DBG_PIN, INPUT_PULLUP);
-  //if (digitalRead(DBG_PIN) == HIGH)
-  //  debug();
-  //  /* not reached */
-  //pullup();
+  pullup();
+  if (digitalRead(MOD_PIN) == LOW)
+    switchmode();
+    /* not reached */
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET_PIN, OUTPUT);
-  pinMode(MUX_PIN, OUTPUT);
 
   enable();
   scan();
