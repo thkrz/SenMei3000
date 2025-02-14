@@ -1,8 +1,8 @@
 #ifndef _CONFIG_H
 #define _CONFIG_H
 
-//#define SIM_PIN "1234"
+#define BAT_LOW 11.6
+#define MIVL 15
 #define STAT_CTRL_ID "1"
-#define MIVL 2
 
 #endif // _CONFIG_H

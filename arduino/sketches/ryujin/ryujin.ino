@@ -10,19 +10,19 @@
 #include "global.h"
 
 #define CS_PIN  7
-#define DBG_PIN 5
+#define MOD_PIN 5
 #define FET_PIN 0
-//#define MUX_PIN 1
-#define BUS_PIN 2
+#define MUX_PIN 1
+#define SDI_R_PIN 2
+#define SDI_W_PIN 3
 
-#define BAT_LOW 11.6
 #define LF "\r\n"
 
 GPRS gprs;
 NBClient client;
 NB nbAccess;
 RTCZero rtc;
-SDI12 socket(BUS_PIN);
+SDI12 socket(MUX_PIN, SDI_R_PIN, SDI_W_PIN);
 SPIFlash flash;
 char sid[63];
 uint32_t addr = 0;
@@ -51,27 +51,6 @@ void connect() {
     } else {
       delay(1000);
     }
-  }
-}
-
-void debug() {
-  //Serial1.begin(9600);
-  //while (!Serial1);
-  // send GPS
-  //Serial1.close();
-
-  Serial.begin(9600);
-  while (!Serial);
-
-  for (;;) {
-    if (Serial.available()) {
-      char c = Serial.read();
-      if (c == '!') {
-        String s = load();
-        Serial.print(s + "#");
-      }
-    }
-    delay(100);
   }
 }
 
@@ -225,6 +204,22 @@ String sprint02d(uint8_t d) {
   s = d < 10 ? "0" : "";
   s += String(d);
   return s;
+}
+
+void switchmode() {
+  Serial.begin(9600);
+  while (!Serial);
+
+  for (;;) {
+    if (Serial.available()) {
+      char c = Serial.read();
+      if (c == '!') {
+        String s = load();
+        Serial.print(s + "#");
+      }
+    }
+    delay(100);
+  }
 }
 
 void verify() {

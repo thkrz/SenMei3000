@@ -1,0 +1,242 @@
+diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
+*** SDI-12/src/SDI12.cpp	2025-02-14 19:47:27.623555586 +0100
+--- SDI-12-MUX/src/SDI12.cpp	2025-02-14 20:29:18.906389248 +0100
+***************
+*** 200,220 ****
+  
+  /* ================ Constructor, Destructor, begin(), end(), and timeout ============*/
+  // Constructor
+! SDI12::SDI12() {
+!   // SDI-12 protocol says sensors must respond within 15 milliseconds
+!   // We'll bump that up to 150, just for good measure, but we don't want to
+!   // wait the whole stream default of 1s for a response.
+!   setTimeout(150);
+!   // Because SDI-12 is mostly used for environmental sensors, we want to be able
+!   // to distinguish between the '0' that parseInt and parseFloat usually return
+!   // on timeouts and a real measured 0 value.  So we force the timeout response
+!   // to be -9999, which is not a common value for most variables measured by
+!   // in-site environmental sensors.
+!   setTimeoutValue(-9999);
+! }
+! 
+! SDI12::SDI12(int8_t dataPin) {
+!   setDataPin(dataPin);
+    // SDI-12 protocol says sensors must respond within 15 milliseconds
+    // We'll bump that up to 150, just for good measure, but we don't want to
+    // wait the whole stream default of 1s for a response.
+--- 200,207 ----
+  
+  /* ================ Constructor, Destructor, begin(), end(), and timeout ============*/
+  // Constructor
+! SDI12::SDI12(int8_t muxPin, int8_t readPin, int8_t writePin) {
+!   setDataPin(muxPin, readPin, writePine);
+    // SDI-12 protocol says sensors must respond within 15 milliseconds
+    // We'll bump that up to 150, just for good measure, but we don't want to
+    // wait the whole stream default of 1s for a response.
+***************
+*** 250,260 ****
+    sdi12timer.configSDI12TimerPrescale();
+  }
+  
+- void SDI12::begin(int8_t dataPin) {
+-   setDataPin(dataPin);
+-   begin();
+- }
+- 
+  // End
+  void SDI12::end() {
+    setState(SDI12_DISABLED);
+--- 237,242 ----
+***************
+*** 269,276 ****
+  }
+  
+  // Set the data pin for the SDI-12 instance
+! void SDI12::setDataPin(int8_t dataPin) {
+!   _dataPin = dataPin;
+  }
+  
+  // Return the data pin for the SDI-12 instance
+--- 251,268 ----
+  }
+  
+  // Set the data pin for the SDI-12 instance
+! void SDI12::setDataPin(int8_t muxPin, int8_t readPin, int8_t writePin) {
+!   _muxPin = muxPin;
+!   pinMode(_muxPin, INPUT);      // Turn off the pull-up resistor
+!   pinMode(_muxPin, OUTPUT);     // Pin mode = output
+! 
+!   _readPin = readPin;
+!   digitalWrite(_readPin, LOW);  // Pin state = low (turns off pull-up)
+!   pinMode(_readPin, INPUT);     // Pin mode = input, pull-up resistor off
+! 
+!   _writePin = writePin;
+!   pinMode(_writePin, INPUT);    // Turn off the pull-up resistor
+!   pinMode(_writePin, OUTPUT);   // Pin mode = output
+  }
+  
+  // Return the data pin for the SDI-12 instance
+***************
+*** 354,369 ****
+    switch (state) {
+      case SDI12_HOLDING:
+        {
+!         pinMode(_dataPin, INPUT);     // Turn off the pull-up resistor
+!         pinMode(_dataPin, OUTPUT);    // Pin mode = output
+          digitalWrite(_dataPin, LOW);  // Pin state = low - marking
+          setPinInterrupts(false);      // Interrupts disabled on data pin
+          break;
+        }
+      case SDI12_TRANSMITTING:
+        {
+!         pinMode(_dataPin, INPUT);   // Turn off the pull-up resistor
+!         pinMode(_dataPin, OUTPUT);  // Pin mode = output
+          setPinInterrupts(false);    // Interrupts disabled on data pin
+  #ifdef SDI12_CHECK_PARITY
+          _parityFailure = false;  // reset the parity failure flag
+--- 346,361 ----
+    switch (state) {
+      case SDI12_HOLDING:
+        {
+!         digitalWrite(_muxPin, LOW);
+!         _dataPin = _writePin;
+          digitalWrite(_dataPin, LOW);  // Pin state = low - marking
+          setPinInterrupts(false);      // Interrupts disabled on data pin
+          break;
+        }
+      case SDI12_TRANSMITTING:
+        {
+!         digitalWrite(_muxPin, LOW);
+!         _dataPin = _writePin;
+          setPinInterrupts(false);    // Interrupts disabled on data pin
+  #ifdef SDI12_CHECK_PARITY
+          _parityFailure = false;  // reset the parity failure flag
+***************
+*** 372,379 ****
+        }
+      case SDI12_LISTENING:
+        {
+!         digitalWrite(_dataPin, LOW);  // Pin state = low (turns off pull-up)
+!         pinMode(_dataPin, INPUT);     // Pin mode = input, pull-up resistor off
+          interrupts();                 // Enable general interrupts
+          setPinInterrupts(true);       // Enable Rx interrupts on data pin
+          rxState = WAITING_FOR_START_BIT;
+--- 364,372 ----
+        }
+      case SDI12_LISTENING:
+        {
+!         digitalWrite(_muxPin, HIGH);
+!         digitalWrite(_writePin, LOW);
+!         _dataPin = _readPin;
+          interrupts();                 // Enable general interrupts
+          setPinInterrupts(true);       // Enable Rx interrupts on data pin
+          rxState = WAITING_FOR_START_BIT;
+***************
+*** 381,388 ****
+        }
+      default:  // SDI12_DISABLED or SDI12_ENABLED
+        {
+!         digitalWrite(_dataPin, LOW);  // Pin state = low (turns off pull-up)
+!         pinMode(_dataPin, INPUT);     // Pin mode = input, pull-up resistor off
+          setPinInterrupts(false);      // Interrupts disabled on data pin
+          break;
+        }
+--- 374,382 ----
+        }
+      default:  // SDI12_DISABLED or SDI12_ENABLED
+        {
+!         digitalWrite(_muxPin, HIGH);
+!         digitalWrite(_writePin, LOW);
+!         _dataPin = _readPin;
+          setPinInterrupts(false);      // Interrupts disabled on data pin
+          break;
+        }
+diff -crB SDI-12/src/SDI12.h SDI-12-MUX/src/SDI12.h
+*** SDI-12/src/SDI12.h	2025-02-14 19:47:27.627555590 +0100
+--- SDI-12-MUX/src/SDI12.h	2025-02-14 19:52:51.490753500 +0100
+***************
+*** 519,536 ****
+     */
+    int8_t _dataPin = -1;
+  
+   public:
+    /**
+-    * @brief Construct a new SDI12 instance with no data pin set.
+-    *
+-    * Before using the SDI-12 instance, the data pin must be set with
+-    * SDI12::setDataPin(dataPin) or SDI12::begin(dataPin). This empty constructor is
+-    * provided for easier integration with other Arduino libraries.
+-    *
+-    * When the constructor is called it resets the buffer overflow status to FALSE.
+-    */
+-   SDI12();
+-   /**
+     * @brief Construct a new SDI12 with the data pin set
+     *
+     * @param dataPin The data pin's digital pin number
+--- 519,530 ----
+     */
+    int8_t _dataPin = -1;
+  
++   int8_t _muxPin = -1;
++   int8_t _readPin = -1;
++   int8_t _writePin = -1;
++ 
+   public:
+    /**
+     * @brief Construct a new SDI12 with the data pin set
+     *
+     * @param dataPin The data pin's digital pin number
+***************
+*** 538,544 ****
+     * When the constructor is called it resets the buffer overflow status to FALSE and
+     * assigns the pin number "dataPin" to the private variable "_dataPin".
+     */
+!   explicit SDI12(int8_t dataPin);
+    /**
+     * @brief Destroy the SDI12 object.
+     *
+--- 532,538 ----
+     * When the constructor is called it resets the buffer overflow status to FALSE and
+     * assigns the pin number "dataPin" to the private variable "_dataPin".
+     */
+!   explicit SDI12(int8_t muxPin, int8_t readPin, int8_t writePin);
+    /**
+     * @brief Destroy the SDI12 object.
+     *
+***************
+*** 560,575 ****
+     */
+    void begin();
+    /**
+-    * @brief Set the SDI12::_datapin and begin the SDI-12 object.
+-    *
+-    * @copydetails SDI12::begin()
+-    * If the SDI-12 instance is created using the empty constuctor, this must be used
+-    * to set the data pin.
+-    *
+-    * @param dataPin The data pin's digital pin number
+-    */
+-   void begin(int8_t dataPin);
+-   /**
+     * @brief Disable the SDI-12 object (but do not destroy it).
+     *
+     * Set the SDI-12 state to disabled, set the pointer to the current active instance
+--- 554,559 ----
+***************
+*** 617,623 ****
+     *
+     * @param dataPin  The data pin's digital pin number
+     */
+!   void setDataPin(int8_t dataPin);
+  #ifdef SDI12_CHECK_PARITY
+    bool _parityFailure;
+  #endif
+--- 601,607 ----
+     *
+     * @param dataPin  The data pin's digital pin number
+     */
+!   void setDataPin(int8_t muxPin, int8_t readPin, int8_t writePin);
+  #ifdef SDI12_CHECK_PARITY
+    bool _parityFailure;
+  #endif
