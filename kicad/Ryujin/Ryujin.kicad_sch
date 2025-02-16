@@ -6201,7 +6201,7 @@
 				)
 			)
 		)
-		(property "Footprint" "footprints:HDRV4W85P254_2X2_508X500X970P"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical"
 			(at 36.83 25.4 0)
 			(effects
 				(font
