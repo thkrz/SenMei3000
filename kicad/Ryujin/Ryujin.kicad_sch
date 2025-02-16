@@ -5286,16 +5286,6 @@
 		)
 		(uuid "55187cff-1586-453b-9ffa-7b7e1de97e40")
 	)
-	(label "GND"
-		(at 256.54 107.95 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "5910bbce-048c-4069-894b-33bf3529de14")
-	)
 	(label "CIPO"
 		(at 274.32 44.45 180)
 		(effects
@@ -5879,6 +5869,72 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 256.54 107.95 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3531a491-7905-414f-b7be-013dc65cc337")
+		(property "Reference" "#PWR03"
+			(at 256.54 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 256.54 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 256.54 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 256.54 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 256.54 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a1de4805-65bb-41d7-b088-d46a73c79f86")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
