@@ -4509,6 +4509,12 @@
 		(uuid "af2e72cc-7678-4f4c-b54a-7b7c0013d4ba")
 	)
 	(junction
+		(at 256.54 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b3de443c-595b-43a9-aede-b1877370c22c")
+	)
+	(junction
 		(at 204.47 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4968,6 +4974,16 @@
 	)
 	(wire
 		(pts
+			(xy 237.49 73.66) (xy 256.54 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a8c22b7-40f9-495d-a71c-e37cbb09b0cb")
+	)
+	(wire
+		(pts
 			(xy 217.17 137.16) (xy 201.93 137.16)
 		)
 		(stroke
@@ -5028,7 +5044,7 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 76.2) (xy 256.54 77.47)
+			(xy 256.54 72.39) (xy 256.54 73.66)
 		)
 		(stroke
 			(width 0)
@@ -5075,6 +5091,16 @@
 			(type default)
 		)
 		(uuid "9573010b-5822-4aa3-91a2-77c663dfbfe5")
+	)
+	(wire
+		(pts
+			(xy 237.49 95.25) (xy 237.49 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "975bd0fd-cf21-4219-b25f-5b6f89670c86")
 	)
 	(wire
 		(pts
@@ -5215,6 +5241,16 @@
 			(type default)
 		)
 		(uuid "b802a51b-8a55-4081-959c-530d30be7ba1")
+	)
+	(wire
+		(pts
+			(xy 256.54 73.66) (xy 256.54 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b89711b9-27f9-4816-9d99-39d8bd36ac43")
 	)
 	(wire
 		(pts
@@ -6401,7 +6437,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 256.54 76.2 0)
+		(at 256.54 72.39 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6409,7 +6445,7 @@
 		(dnp no)
 		(uuid "31534090-41f6-44c4-a183-394fbe3de00f")
 		(property "Reference" "#PWR016"
-			(at 256.54 80.01 0)
+			(at 256.54 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6418,7 +6454,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 256.54 71.12 0)
+			(at 256.54 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6426,7 +6462,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 256.54 76.2 0)
+			(at 256.54 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6435,7 +6471,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 256.54 76.2 0)
+			(at 256.54 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6444,7 +6480,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 256.54 76.2 0)
+			(at 256.54 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7139,72 +7175,6 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 237.49 95.25 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6a6b6691-42df-4af0-8d77-4cddf4e7f276")
-		(property "Reference" "#PWR028"
-			(at 237.49 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 237.49 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 237.49 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 237.49 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 237.49 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "40f7e30b-5005-44c7-93e8-6921a5a8f3f2")
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR028")
 					(unit 1)
 				)
 			)
