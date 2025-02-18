@@ -9,12 +9,12 @@
 #include "config.h"
 #include "global.h"
 
-#define CS_PIN  7
-#define MOD_PIN 5
 #define FET_PIN 0
 #define MUX_PIN 1
-#define SDI_R_PIN 2
-#define SDI_W_PIN 3
+#define TX_PIN  3
+#define RX_PIN  4
+#define MOD_PIN 5
+#define CS_PIN  7
 
 #define LF "\r\n"
 
@@ -22,7 +22,7 @@ GPRS gprs;
 NBClient client;
 NB nbAccess;
 RTCZero rtc;
-SDI12 socket(MUX_PIN, SDI_R_PIN, SDI_W_PIN);
+SDI12 socket(MUX_PIN, RX_PIN, TX_PIN);
 SPIFlash flash;
 char sid[63];
 uint32_t addr = 0;
@@ -31,15 +31,6 @@ uint32_t paddr = 0;
 float battery() {
   int p = analogRead(A1);
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
-}
-
-bool calibrate() {
-  String s = "CALIBRATE\r\n";
-  enable();
-  for (char *p = sid; *p; p++)
-    s += info(*p);
-  disable();
-  return post(s);
 }
 
 void connect() {
@@ -120,14 +111,13 @@ String measure(char i) {
   static char rd[5] = "aD0!";
   static String s;
 
-  socket.clearBuffer();
-  delay(10);
   st[0] = i;
   socket.sendCommand(st);
   delay(30);
   s = socket.readStringUntil('\n');
   uint8_t wait = s.substring(1, 4).toInt();
 
+  socket.clearBuffer();
   for (int j = 0; j < wait; j++) {
     if (socket.available()) {
       socket.clearBuffer();
@@ -144,7 +134,7 @@ String measure(char i) {
 }
 
 void pullup() {
-  int8_t pin[11] = {
+  static int8_t pin[11] = {
     A0, A2, A3, A4, A5, A6,
     4, 5, 6, 13, 14
   };
@@ -222,6 +212,15 @@ void switchmode() {
   }
 }
 
+bool update() {
+  String s = "UPDATE\r\n";
+  enable();
+  for (char *p = sid; *p; p++)
+    s += info(*p);
+  disable();
+  return post(s);
+}
+
 void verify() {
   //if (!client.connected())
   //  client.stop();
@@ -232,12 +231,15 @@ void verify() {
 }
 
 void setup() {
+  //pinMode(MUX_PIN, OUTPUT);
+  //digitalWrite(MUX_PIN, HIGH);
   pullup();
   if (digitalRead(MOD_PIN) == LOW)
     switchmode();
     /* not reached */
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET_PIN, OUTPUT);
+  digitalWrite(FET_PIN, LOW);
 
   enable();
   scan();
@@ -252,7 +254,7 @@ void setup() {
   SHTC3.begin();
 
   connect();
-  calibrate();
+  update();
 
   rtc.begin();
   rtc.setEpoch(nbAccess.getTime());
