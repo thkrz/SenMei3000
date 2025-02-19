@@ -23,7 +23,7 @@ NBClient client;
 NB nbAccess;
 RTCZero rtc;
 SDI12 socket(MUX_PIN, RX_PIN, TX_PIN);
-SPIFlash flash;
+SPIFlash flash(CS_PIN);
 char sid[63];
 uint32_t addr = 0;
 uint32_t paddr = 0;

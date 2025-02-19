@@ -6,15 +6,15 @@
 #define CMD_LEN 8
 #define EE_ADDR 0
 #define NUM_CON 6
-#define BUS_PIN 9
+#define BUS_PIN 13
 
 Block blk[NUM_CON] = {
-  SMT100(0, A0, A1),
-  SMT100(1, A2, A3),
-  SMT100(2, A4, A5),
+  SMT100(7, A0, A1),
+  SMT100(5, A2, A3),
+  SMT100(4, A4, A5),
   SMT100(3, A6, A7),
-  SMT100(5, A8, A9),
-  SMT100(7, A10, A11)
+  SMT100(2, A8, A9),
+  SMT100(1, A10, A11)
 };
 
 SDI12 socket(BUS_PIN);
