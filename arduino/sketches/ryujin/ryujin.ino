@@ -10,7 +10,7 @@
 #include "global.h"
 
 #define FET_PIN 0
-#define MUX_PIN 1
+#define MX_PIN  1
 #define TX_PIN  3
 #define RX_PIN  4
 #define MOD_PIN 5
@@ -22,11 +22,10 @@ GPRS gprs;
 NBClient client;
 NB nbAccess;
 RTCZero rtc;
-SDI12 socket(MUX_PIN, RX_PIN, TX_PIN);
+SDI12 socket(MX_PIN, RX_PIN, TX_PIN);
 SPIFlash flash(CS_PIN);
 char sid[63];
-uint32_t addr = 0;
-uint32_t paddr = 0;
+uint32_t raddr, waddr;
 
 float battery() {
   int p = analogRead(A1);
@@ -52,8 +51,11 @@ void disable() {
 }
 
 void dump(String s) {
-  flash.writeStr(addr, s);
-  addr += s.length();
+  int len = s.length() + 1;
+  char buf[len];
+  s.toCharArray(buf, len);
+  flash.writeCharArray(waddr, buf, len);
+  waddr += len;
 }
 
 void enable() {
@@ -101,7 +103,7 @@ void idle() {
 String load() {
   static String s;
 
-  if (flash.readStr(paddr, s))
+  if (flash.readc(paddr, s))
     return s;
   return "";
 }
