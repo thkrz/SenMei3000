@@ -3,18 +3,21 @@
 #include <SDI12.h>
 #include <SHTC3.h>
 #include <SPI.h>
+#include <SPIMemory.h>
 #include <Wire.h>
 
-#include "Memory.h"
 #include "config.h"
 #include "global.h"
 
-#define FET_PIN 0
-#define MX_PIN  1
-#define RX_PIN  4
-#define TX_PIN  3
-#define MOD_PIN 5
-#define CS_PIN  7
+#define SIGN(x) (((x)>=0?'+':'\0')+String(x))
+
+#define BEG 4
+#define FET 0
+#define MX  1
+#define RX  4
+#define TX  3
+#define MOD 5
+#define CS  7
 
 #define LF "\r\n"
 
@@ -22,8 +25,9 @@ GPRS gprs;
 NBClient client;
 NB nbAccess;
 RTCZero rtc;
-SDI12 socket(MX_PIN, RX_PIN, TX_PIN);
-Flash flash();
+SDI12 socket(MX, RX, TX);
+SPIFlash flash(CS);
+size_t cap;
 char sid[63];
 
 float battery() {
@@ -45,15 +49,30 @@ void connect() {
 
 void disable() {
   socket.end();
-  digitalWrite(FET_PIN, LOW);
+  digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
+}
+
+void dump(String s) {
+  int n = s.length();
+  char buf[n];
+  s.toCharArray(buf, n);
+  uint32_t addr = flash.readULong(0);
+  if (addr + n > cap)
+    addr = BEG;
+  if (flash.writeCharArray(addr, buf, n))
+    flash.writeULong(0, addr + n);
 }
 
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
-  digitalWrite(FET_PIN, HIGH);
+  digitalWrite(FET, HIGH);
   socket.begin();
   delay(500);
+}
+
+void erase() {
+  flash.writeULong(0, BEG);
 }
 
 bool handshake(char i) {
@@ -77,7 +96,7 @@ String ident(char i) {
 
   cmd[0] = i;
   socket.sendCommand(cmd);
-  delay(300);
+  delay(30);
   s = socket.readStringUntil('\n');
   return s;
 }
@@ -89,6 +108,20 @@ void idle() {
     digitalWrite(LED_BUILTIN, LOW);
     delay(1000);
   }
+}
+
+String load() {
+  uint32_t addr = flash.readULong(0);
+  size_t n = addr - BEG;
+  String s = "";
+  if (n > 0) {
+    char buf[n+1];
+    if (flash.readCharArray(BEG, buf, n)) {
+      buf[n] = '\0';
+      s = String(buf);
+    }
+  }
+  return s;
 }
 
 String measure(char i) {
@@ -117,6 +150,30 @@ String measure(char i) {
   return s;
 }
 
+bool post(String s) {
+  int n = s.length();
+  if (n == 0)
+    return false;
+  bool ok = false;
+  if (client.connect(HOST, PORT)) {
+    client.println("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1");
+    client.println("Host: "HOST);
+    client.println("Connection: close");
+    client.println("Content-Type: text/plain");
+    client.print("Content-Length: ");
+    client.println(n);
+    client.println();
+    client.print(s);
+
+    String r = "";
+    while (!ok && client.available()) {
+      r += (char)client.read();
+      ok = r == "HTTP/1.1 201";
+    }
+  }
+  return ok;
+}
+
 void pullup() {
   static int8_t pin[11] = {
     A0, A2, A3, A4, A5, A6,
@@ -142,27 +199,6 @@ void scan() {
       sid[n++] = c;
   }
   sid[n] = '\0';
-}
-
-bool post(String s) {
-  bool ok = false;
-  if (client.connect(HOST, PORT)) {
-    client.println("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1");
-    client.println("Host: "HOST);
-    client.println("Connection: close");
-    client.println("Content-Type: text/plain");
-    client.print("Content-Length: ");
-    client.println(s.length());
-    client.println();
-    client.print(s);
-
-    String r = "";
-    while (!ok && client.available()) {
-      r += (char)client.read();
-      ok = r == "HTTP/1.1 201";
-    }
-  }
-  return ok;
 }
 
 void schedule() {
@@ -215,15 +251,13 @@ void verify() {
 }
 
 void setup() {
-  //pinMode(MUX_PIN, OUTPUT);
-  //digitalWrite(MUX_PIN, HIGH);
+  pinMode(FET, OUTPUT);
+  digitalWrite(FET, LOW);
+  pinMode(LED_BUILTIN, OUTPUT);
   pullup();
-  if (digitalRead(MOD_PIN) == LOW)
+  if (digitalRead(MOD) == LOW)
     switchmode();
     /* not reached */
-  pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(FET_PIN, OUTPUT);
-  digitalWrite(FET_PIN, LOW);
 
   enable();
   scan();
@@ -232,7 +266,8 @@ void setup() {
   if (sid[0] == '\0')
     idle();
 
-  flash.begin(CS_PIN);
+  flash.begin();
+  cap = flash.getCapacity();
 
   Wire.begin();
   SHTC3.begin();
@@ -262,13 +297,14 @@ void loop() {
   s += LF;
 
   float bat0 = battery();
-  s += String(bat0) + LF;
+  s += "_" + SIGN(bat0) + LF;
 
   bool pm = bat0 < BAT_LOW;
 
   SHTC3.readSample(low_power=pm);
-  s += String(SHTC3.getTemperature()) + LF;
-  s += String(SHTC3.getHumidity()) + LF;
+  float st = SHTC3.getTemperature();
+  float rh = SHTC3.getHumidity();
+  s += ";" + SIGN(st) + SIGN(rh) + LF;
 
   enable();
   for (char *p = sid; *p; p++)
@@ -277,15 +313,13 @@ void loop() {
 
   if (pm) {
     nbAccess.shutdown();
-    flash.push(s);
+    dump(s);
   } else {
-    if (paddr < addr)
-      s += load();
     verify();
+    if(post(load()))
+      erase();
     if (!post(s))
-      flash.push(s);
-    else
-      flash.erase();
+      dump(s);
   }
 
   if (!pm)
