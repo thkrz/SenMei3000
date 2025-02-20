@@ -3,16 +3,16 @@
 #include <SDI12.h>
 #include <SHTC3.h>
 #include <SPI.h>
-#include <SPIMemory.h>
 #include <Wire.h>
 
+#include "Memory.h"
 #include "config.h"
 #include "global.h"
 
 #define FET_PIN 0
 #define MX_PIN  1
-#define TX_PIN  3
 #define RX_PIN  4
+#define TX_PIN  3
 #define MOD_PIN 5
 #define CS_PIN  7
 
@@ -23,9 +23,8 @@ NBClient client;
 NB nbAccess;
 RTCZero rtc;
 SDI12 socket(MX_PIN, RX_PIN, TX_PIN);
-SPIFlash flash(CS_PIN);
+Flash flash();
 char sid[63];
-uint32_t raddr, waddr;
 
 float battery() {
   int p = analogRead(A1);
@@ -48,14 +47,6 @@ void disable() {
   socket.end();
   digitalWrite(FET_PIN, LOW);
   digitalWrite(LED_BUILTIN, LOW);
-}
-
-void dump(String s) {
-  int len = s.length() + 1;
-  char buf[len];
-  s.toCharArray(buf, len);
-  flash.writeCharArray(waddr, buf, len);
-  waddr += len;
 }
 
 void enable() {
@@ -100,14 +91,6 @@ void idle() {
   }
 }
 
-String load() {
-  static String s;
-
-  if (flash.readc(paddr, s))
-    return s;
-  return "";
-}
-
 String measure(char i) {
   static char st[4] = "aM!";
   static char rd[5] = "aD0!";
@@ -119,7 +102,6 @@ String measure(char i) {
   s = socket.readStringUntil('\n');
   uint8_t wait = s.substring(1, 4).toInt();
 
-  socket.clearBuffer();
   for (int j = 0; j < wait; j++) {
     if (socket.available()) {
       socket.clearBuffer();
@@ -138,7 +120,7 @@ String measure(char i) {
 void pullup() {
   static int8_t pin[11] = {
     A0, A2, A3, A4, A5, A6,
-    4, 5, 6, 13, 14
+    2, 5, 6, 13, 14
   };
 
   for (int i = 0; i < 11; i++)
@@ -295,17 +277,15 @@ void loop() {
 
   if (pm) {
     nbAccess.shutdown();
-    dump(s);
+    flash.push(s);
   } else {
     if (paddr < addr)
       s += load();
     verify();
-    if (!post(s)) {
-      addr = paddr;
-      dump(s);
-    } else {
-      paddr = addr;
-    }
+    if (!post(s))
+      flash.push(s);
+    else
+      flash.erase();
   }
 
   if (!pm)
