@@ -180,6 +180,7 @@
 	(net 37 "unconnected-(U2-NC-Pad1)")
 	(net 38 "unconnected-(J2-Pin_3-Pad3)")
 	(net 39 "unconnected-(J2-Pin_4-Pad4)")
+	(net 40 "unconnected-(J1-Pad4)")
 	(footprint "MountingHole:MountingHole_2.5mm"
 		(layer "F.Cu")
 		(uuid "0654f4ac-ff91-4dd0-b266-6e84427f1e02")
@@ -971,6 +972,386 @@
 			)
 		)
 	)
+	(footprint "footprints:SMKDSN_508_6"
+		(layer "F.Cu")
+		(uuid "2d6f3fc1-d952-4b90-a8f7-4966f3eb1215")
+		(at 176.4 78.4 90)
+		(descr "1869253")
+		(tags "Connector")
+		(property "Reference" "J1"
+			(at 0 0 90)
+			(layer "F.SilkS")
+			(uuid "d7573e3d-fd13-4ff4-b64f-ff2297902ee9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.254)
+				)
+			)
+		)
+		(property "Value" "SMKDSN_6_508"
+			(at 0 0 90)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "9c15621f-bf3d-4191-bd04-1da472d0dd4b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.254)
+				)
+			)
+		)
+		(property "Footprint" "footprints:SMKDSN_508_6"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "13bbd882-dac1-419e-a248-6a51b6af462f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869253/pdf"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c774a77b-2e16-4f0e-b0ae-279e2373210f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 6, Number of rows: 1, Number of positions per row: 6, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f61a9f49-a04f-4063-a0d3-05e182acb320")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Height" "11.15"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "556013ad-fe13-4764-86b3-45ee98ca457e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_Name" "Phoenix Contact"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1ecd3678-010c-441c-8b9e-066cb070528d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_Part_Number" "1869253"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cb4f8a6-6212-4268-8f59-fdb68f678e85")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Mouser Part Number" "651-1869253"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c629da67-8f89-48e2-a082-ff3ec69e6a13")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869253?qs=8M15sSGRUn%2F3QlropUH5wQ%3D%3D"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "89c8f8cd-05c8-49b4-8054-05df456f90b3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Arrow Part Number" "1869253"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8eba3492-1a55-48a8-ba91-6e1fe3c40e9e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869253/phoenix-contact"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c66ec180-670c-4108-b8e6-d13d71c24079")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(path "/e69f550e-192e-42ef-b05f-5a2d98c0bf02")
+		(sheetname "Root")
+		(sheetfile "Ryujin.kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start 28.44 -6)
+			(end 28.44 6)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "96df11e1-a175-40fe-aacc-3255939e50e6")
+		)
+		(fp_line
+			(start -3.04 -6)
+			(end 28.44 -6)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "626c8d4d-6684-4dc0-9ba6-c0d1797362b2")
+		)
+		(fp_line
+			(start 28.44 6)
+			(end -3.04 6)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "8407e132-4535-4cb6-a7e1-6764ab4d5ab8")
+		)
+		(fp_line
+			(start -3.04 6)
+			(end -3.04 -6)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "f71a54ad-1d6b-4d43-8c37-eaf51f6cddfa")
+		)
+		(fp_circle
+			(center -3.85 0)
+			(end -3.85 0.05)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(fill none)
+			(layer "F.SilkS")
+			(uuid "72f21866-cd1b-412c-83b0-fe0a6e2f5e52")
+		)
+		(fp_line
+			(start 29.44 -7)
+			(end 29.44 7)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "fdeb75b3-8baf-4612-8a77-2bc075440b34")
+		)
+		(fp_line
+			(start -4.75 -7)
+			(end 29.44 -7)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "787c2a94-ff21-4004-9bdf-e863c389543e")
+		)
+		(fp_line
+			(start 29.44 7)
+			(end -4.75 7)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "2ef71236-65bc-4055-b97e-5e3354218059")
+		)
+		(fp_line
+			(start -4.75 7)
+			(end -4.75 -7)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "dd27a797-ed12-4039-9d05-624c5020701f")
+		)
+		(fp_line
+			(start 28.44 -6)
+			(end 28.44 6)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "a8ee518b-0d53-4bac-8a38-7e470fc0f40f")
+		)
+		(fp_line
+			(start -3.04 -6)
+			(end 28.44 -6)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "448de3d5-4b35-48b3-8c69-506329e29b29")
+		)
+		(fp_line
+			(start 28.44 6)
+			(end -3.04 6)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "cf9203b5-67eb-41ef-aff8-f2c8cb42ba09")
+		)
+		(fp_line
+			(start -3.04 6)
+			(end -3.04 -6)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "df546eb8-b1ba-42d9-88ff-d3593e5980f5")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(uuid "bd1ac8e2-8837-443f-813b-2b45fc65de90")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.254)
+				)
+			)
+		)
+		(pad "1" thru_hole rect
+			(at 0 0 90)
+			(size 1.95 1.95)
+			(drill 1.3)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 18 "LINE")
+			(pinfunction "1")
+			(pintype "passive")
+			(uuid "d9e7a3b1-be28-46c1-a0d2-88f150a8cb11")
+		)
+		(pad "2" thru_hole circle
+			(at 5.08 0 90)
+			(size 1.95 1.95)
+			(drill 1.3)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 9 "-12V")
+			(pinfunction "2")
+			(pintype "passive")
+			(uuid "94fc255f-de61-47c6-b78c-95638709cbbb")
+		)
+		(pad "3" thru_hole circle
+			(at 10.16 0 90)
+			(size 1.95 1.95)
+			(drill 1.3)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "+12V")
+			(pinfunction "3")
+			(pintype "passive")
+			(uuid "dafca1bb-fccf-4bbf-9415-6f61fb1efb2a")
+		)
+		(pad "4" thru_hole circle
+			(at 15.24 0 90)
+			(size 1.95 1.95)
+			(drill 1.3)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 40 "unconnected-(J1-Pad4)")
+			(pinfunction "4")
+			(pintype "passive")
+			(uuid "a76f50e7-5fb2-4866-bb27-b2f3122ac856")
+		)
+		(pad "5" thru_hole circle
+			(at 20.32 0 90)
+			(size 1.95 1.95)
+			(drill 1.3)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 3 "+12V")
+			(pinfunction "5")
+			(pintype "passive")
+			(uuid "afa3a845-bf08-418e-b1ba-21570fc81e46")
+		)
+		(pad "6" thru_hole circle
+			(at 25.4 0 90)
+			(size 1.95 1.95)
+			(drill 1.3)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 4 "GND")
+			(pinfunction "6")
+			(pintype "passive")
+			(uuid "e1a67c3b-5378-4d14-856c-f0b04edaec6d")
+		)
+		(model "${KIPRJMOD}/3dmodels/SMKDSN_508_6.stp"
+			(offset
+				(xyz -3.039999916 -5.969999701 0.4699999917)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
 	(footprint "Package_TO_SOT_SMD:SOT-23-5"
 		(layer "F.Cu")
 		(uuid "2fbd510d-292e-4536-a597-2b0e59027a5f")
@@ -1696,7 +2077,7 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R2"
-			(at 0 -1.43 360)
+			(at 0 -1.43 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "628d9222-3616-4a3a-9e9f-2c539fced51b")
@@ -1708,7 +2089,7 @@
 			)
 		)
 		(property "Value" "100"
-			(at 0 1.43 360)
+			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "33e78eec-c498-41c0-9d87-224ce1d34f66")
 			(effects
@@ -1876,7 +2257,7 @@
 			(uuid "2c7bc249-0418-48e6-be9b-5461a3e56be3")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "9ed95ad1-efce-48ad-aceb-05760edf92b4")
 			(effects
@@ -2370,7 +2751,7 @@
 		(descr "SOT, 3 Pin (JEDEC TO-236 Var AB https://www.jedec.org/document_search?search_api_views_fulltext=TO-236), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "SOT TO_SOT_SMD")
 		(property "Reference" "Q1"
-			(at 0 -2.4 360)
+			(at 0 -2.4 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "f62009e9-47d7-4a3c-8821-615afefa13b6")
@@ -2382,7 +2763,7 @@
 			)
 		)
 		(property "Value" "IRLML6244"
-			(at 0 2.4 360)
+			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "47f9bcce-f42a-4f4e-a647-3f36cb09f28a")
 			(effects
@@ -2393,7 +2774,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1d676da2-9859-406f-9766-4b6a379b9620")
@@ -2405,7 +2786,7 @@
 			)
 		)
 		(property "Datasheet" "../../docs/Infineon-IRLML6244-DataSheet-v01_01-EN.pdf"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8f226743-81ae-4451-bfd9-83f2bdd3227c")
@@ -2417,7 +2798,7 @@
 			)
 		)
 		(property "Description" "6.3A Id, 20V Vds, 21mOhm Rds, N-Channel StrongIRFET Power MOSFET, SOT-23"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b411bf62-c6c8-4b2e-9f21-e5b7b76ae498")
@@ -2589,7 +2970,7 @@
 			(uuid "75651102-ffe5-437a-8e62-58bdd17cc25f")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "635d6b15-a3a0-4998-9a3c-037dab010ae7")
 			(effects
@@ -3549,353 +3930,6 @@
 			)
 		)
 	)
-	(footprint "footprints:SMKDSN_508_3"
-		(layer "F.Cu")
-		(uuid "85dfc2a8-905f-440f-9851-72891fe648b9")
-		(at 169.8975 55.52)
-		(descr "1869224")
-		(tags "Connector")
-		(property "Reference" "J5"
-			(at 0 0 360)
-			(layer "F.SilkS")
-			(uuid "bb44789d-7c69-4325-8ac9-10b3ce74d204")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.254)
-				)
-			)
-		)
-		(property "Value" "1869224"
-			(at 0 0 360)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "6da4242a-1327-4f40-b2cc-97b324a7daf7")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.254)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SMKDSN_508_3"
-			(at 0 0 360)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "82b562ea-703b-47d7-b3fa-6898ff203335")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869224/pdf"
-			(at 0 0 360)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5d133ef1-4d82-4b20-b2b8-a2863b957f55")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 3, Number of rows: 1, Number of positions per row: 3, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 0 0 360)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "1398a352-8096-4553-afa5-a5df2e970bfc")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Height" "11.15"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c3d31a46-bec8-45f8-b3f1-de4107751966")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4210ee28-cefa-4a5e-89fc-50af4a92e71f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "1869224"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "733bb88f-bf48-4ad2-aeea-bca7d9e7cb69")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser Part Number" "651-1869224"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5f0360d1-74c0-4ca9-b600-466daa1a2609")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869224?qs=8M15sSGRUn8TgueKdd9rCw%3D%3D"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "517c9b34-b918-4c2a-931b-7b37a78f52ec")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Arrow Part Number" ""
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c705b0b7-6562-41a8-b064-08760df7252d")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Arrow Price/Stock" ""
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2f616d9e-6468-42f1-8ba3-3d658511d28f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/2b3e15d4-64d4-4404-97e6-1f8fbfd34fbf")
-		(sheetname "Root")
-		(sheetfile "Ryujin.kicad_sch")
-		(attr through_hole)
-		(fp_line
-			(start -3.04 -6)
-			(end 13.2 -6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "ac206303-c70b-4a19-8190-7e6db84f763f")
-		)
-		(fp_line
-			(start -3.04 6)
-			(end -3.04 -6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "95075a0c-4550-41a1-adff-2a48393022a4")
-		)
-		(fp_line
-			(start 13.2 -6)
-			(end 13.2 6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "973cdf74-98c5-48c2-a910-4c331f8dc626")
-		)
-		(fp_line
-			(start 13.2 6)
-			(end -3.04 6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "092e2071-307d-4bd2-bc60-497f64279f36")
-		)
-		(fp_circle
-			(center -3.85 0)
-			(end -3.85 0.05)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(fill none)
-			(layer "F.SilkS")
-			(uuid "8c73bb4f-fb18-4e15-8fa7-a92d31c2fb62")
-		)
-		(fp_line
-			(start -4.75 -7)
-			(end 14.2 -7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "79cd162a-7681-4dda-9922-e65be0c2cc0e")
-		)
-		(fp_line
-			(start -4.75 7)
-			(end -4.75 -7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "a3192635-8e37-4b46-affa-7f82e4b45181")
-		)
-		(fp_line
-			(start 14.2 -7)
-			(end 14.2 7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "34dedd10-6a8b-460e-a292-99e84b5976bb")
-		)
-		(fp_line
-			(start 14.2 7)
-			(end -4.75 7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "a12c38f4-ee70-49e9-86c2-40c79b1c3e92")
-		)
-		(fp_line
-			(start -3.04 -6)
-			(end 13.2 -6)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "71b36964-5dcf-426b-84da-ac4dd9a72aed")
-		)
-		(fp_line
-			(start -3.04 6)
-			(end -3.04 -6)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "cec6d7f6-5cd9-425c-b817-f93c28d6b9fa")
-		)
-		(fp_line
-			(start 13.2 -6)
-			(end 13.2 6)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "cf006ccf-8cb9-40ee-9b44-ca2b626fe068")
-		)
-		(fp_line
-			(start 13.2 6)
-			(end -3.04 6)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "c3436d92-e9ff-400d-bf22-7c6e7e919913")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
-			(layer "F.Fab")
-			(uuid "f2633df0-8844-4002-8110-54112f071efb")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.254)
-				)
-			)
-		)
-		(pad "1" thru_hole rect
-			(at 0 0)
-			(size 1.95 1.95)
-			(drill 1.3)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net 18 "LINE")
-			(pinfunction "1")
-			(pintype "passive")
-			(uuid "f602d69e-86de-4342-a943-ebec57191afd")
-		)
-		(pad "2" thru_hole circle
-			(at 5.08 0)
-			(size 1.95 1.95)
-			(drill 1.3)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net 3 "+12V")
-			(pinfunction "2")
-			(pintype "passive")
-			(uuid "1b63d223-7ed3-4a34-969e-0e7dae0cd439")
-		)
-		(pad "3" thru_hole circle
-			(at 10.16 0)
-			(size 1.95 1.95)
-			(drill 1.3)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net 9 "-12V")
-			(pinfunction "3")
-			(pintype "passive")
-			(uuid "43c7ac77-5984-464b-a38a-f4b3cf8c9a40")
-		)
-		(model "${KIPRJMOD}/3dmodels/SMKDSN_508_3.stp"
-			(offset
-				(xyz -3.06 -6 0.04)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
 	(footprint "Custom:Arduino_MKR_NB_1500_Margin"
 		(layer "F.Cu")
 		(uuid "8aff1a16-a44e-4983-bfed-d3d39be8f39c")
@@ -4246,342 +4280,6 @@
 			(drill 2.2)
 			(layers "F&B.Cu" "*.Mask")
 			(uuid "e83ac1ea-1c89-435a-973e-703c072799b3")
-		)
-	)
-	(footprint "footprints:SMKDSN_508_2"
-		(layer "F.Cu")
-		(uuid "8c7ba6a0-7117-4ed7-8e4d-94e6cc577ec8")
-		(at 174.9775 75.84)
-		(descr "1869211")
-		(tags "Connector")
-		(property "Reference" "J1"
-			(at 0 0 360)
-			(layer "F.SilkS")
-			(uuid "d96b9cde-3ec3-4ed5-bf3c-cc729e010ec7")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.254)
-				)
-			)
-		)
-		(property "Value" "1869211"
-			(at 0 0 360)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "b168b2fe-a580-4a1e-93c6-5e47924f7f32")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.254)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SMKDSN_508_2"
-			(at 0 0 360)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8ee35509-a756-4178-97e4-905b9ab792f1")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1869211/pdf"
-			(at 0 0 360)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "1d1d4bae-3651-40f8-9025-06304857f939")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm?, Number of potentials: 2, Number of rows: 1, Number of positions per row: 2, product range: SMKDSN 1,5, pitch: 5.08 mm, connection method: Screw connection with tension sleeve, mounting: Wave soldering, conductor/PCB connection direction: 45 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 3.5 mm, type of packaging: packed in cardboard"
-			(at 0 0 360)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a19fcb8f-bf85-4423-937f-2fdb05bb4240")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Height" "11.15"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e4a49e3a-912c-498f-8c23-325e5ded6225")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "90a49528-ae95-4dbd-8bf4-600bf573c16d")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "1869211"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "75b06ed4-2650-4908-b953-cc7685f4681c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser Part Number" "651-1869211"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9543af34-3f4e-4e75-9dd9-da13a2ebe380")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1869211?qs=8M15sSGRUn9uIaAw90nKPw%3D%3D"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "189fae49-3dc9-4a8d-bcf2-0bc55b9ddbd8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Arrow Part Number" "1869211"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b18572c5-a6b4-442a-8af9-0378053f072c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1869211/phoenix-contact?region=nac"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8d13d66e-328a-4b6c-9016-7e6f23d8b4c8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/9559aade-a422-4c2e-851a-dfc96e8e6452")
-		(sheetname "Root")
-		(sheetfile "Ryujin.kicad_sch")
-		(attr through_hole)
-		(fp_line
-			(start -3.04 -6)
-			(end 8.12 -6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "4d23dc82-2cd3-4f0a-8ad7-4fcfbe6c6b78")
-		)
-		(fp_line
-			(start -3.04 6)
-			(end -3.04 -6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "63cb72d5-c94a-4aa1-80e3-473d5719c862")
-		)
-		(fp_line
-			(start 8.12 -6)
-			(end 8.12 6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "ab517df9-7911-448e-9e50-1de8a7d0e44f")
-		)
-		(fp_line
-			(start 8.12 6)
-			(end -3.04 6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "14a6860d-d1f2-416c-8564-16024767267e")
-		)
-		(fp_circle
-			(center -3.85 0)
-			(end -3.85 0.05)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(fill none)
-			(layer "F.SilkS")
-			(uuid "3a047d50-cd08-44e4-bb02-77adf63eb76b")
-		)
-		(fp_line
-			(start -4.75 -7)
-			(end 9.12 -7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "2a8fb7b4-93c3-472d-a8be-3aa1f42f9779")
-		)
-		(fp_line
-			(start -4.75 7)
-			(end -4.75 -7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "6e9aa4c3-1abb-4e74-8280-027c09a709a2")
-		)
-		(fp_line
-			(start 9.12 -7)
-			(end 9.12 7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "416ea1c6-946d-4f90-8719-016242627fb5")
-		)
-		(fp_line
-			(start 9.12 7)
-			(end -4.75 7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "33b11720-892f-4ee8-970d-3a01da7750ec")
-		)
-		(fp_line
-			(start -3.04 -6)
-			(end 8.12 -6)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "d771c6df-9033-471a-8a4a-46891efc95a8")
-		)
-		(fp_line
-			(start -3.04 6)
-			(end -3.04 -6)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "21924aac-5928-4510-9ac5-a3a2897abf2d")
-		)
-		(fp_line
-			(start 8.12 -6)
-			(end 8.12 6)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "53f00163-f9fd-4598-b6c1-2cedbf7e5900")
-		)
-		(fp_line
-			(start 8.12 6)
-			(end -3.04 6)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "379c547e-3c06-4144-b47e-5e194767ace9")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
-			(layer "F.Fab")
-			(uuid "c3c3d701-cbb9-424e-88a0-709c72e0d099")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.254)
-				)
-			)
-		)
-		(pad "1" thru_hole rect
-			(at 0 0)
-			(size 1.95 1.95)
-			(drill 1.3)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net 3 "+12V")
-			(pinfunction "1")
-			(pintype "passive")
-			(uuid "6c22003e-8326-47e0-be68-fdf82df24df5")
-		)
-		(pad "2" thru_hole circle
-			(at 5.08 0)
-			(size 1.95 1.95)
-			(drill 1.3)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net 4 "GND")
-			(pinfunction "2")
-			(pintype "passive")
-			(uuid "8271d074-9ccb-49f7-a5c2-bb29a8393905")
-		)
-		(model "${KIPRJMOD}/3dmodels/SMKDSN_508_2.stp"
-			(offset
-				(xyz -3.069999887 -5.99999991 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
 		)
 	)
 	(footprint "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm"
