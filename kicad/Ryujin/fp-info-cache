@@ -1,4 +1,4 @@
-24820788740934048
+24822529078300507
 Button_Switch_SMD
 SW_DIP_SPSTx01_Slide_6.7x4.1mm_W6.73mm_P2.54mm_LowProfile_JPin
 SMD 1x-dip-switch SPST , Slide, row spacing 6.73 mm (264 mils), body size 6.7x4.1mm (see e.g. https://www.ctscorp.com/wp-content/uploads/219.pdf), SMD, LowProfile, JPin
@@ -24004,6 +24004,13 @@ Connector
 14
 footprints
 Arduino_MKR_NB_1500_Margin
+https://docs.arduino.cc/hardware/mkr-fox-1200
+
+0
+0
+0
+footprints
+Arduino_MKR_NB_1500_Margin_NH
 https://docs.arduino.cc/hardware/mkr-fox-1200
 
 0
