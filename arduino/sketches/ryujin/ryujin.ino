@@ -11,7 +11,6 @@
 
 #define SIGN(x) (((x)>=0?'+':'\0')+String(x))
 
-#define BEG 4
 #define FET 0
 #define MX  1
 #define RX  4
@@ -27,7 +26,6 @@ NB nbAccess;
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
 SPIFlash flash(CS);
-size_t cap;
 char sid[63];
 
 float battery() {

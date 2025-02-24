@@ -1,48 +1,55 @@
+#include <SPI.h>
 #include <SPIMemory.h>
 
-SPIFlash flash(7);
-uint32_t addr, paddr;
+#define HSZ 2
+#define CS 7
 
 
-String load() {
-  static String s;
+SPIFlash flash(CS);
 
+int dump(String s) {
+  int i;
 
-  String q = "";
-  s = "";
-  for (uint32_t a = paddr; paddr < addr;) {
-    if (flash.readStr(a, q))
-      s += q;
-    a += q.length();
-  }
-  return s;
+  uint16_t k = flash.readWord(0);
+  size_t n = s.length();
+  for (i = 0; i < n; i++)
+    if (!flash.writeChar(i+k+HSZ, s.charAt(i)))
+      break;
+  flash.eraseSector(0);
+  flash.writeWord(0, k+i);
+  return i;
 }
 
-void dump(String s) {
-  flash.writeStr(addr, s);
-  addr += s.length() + 1;
+String load() {
+  uint16_t k = flash.readWord(0);
+  Serial.println(k);
+  char buf[k+1];
+  for (int i = 0; i < k; i++)
+    buf[i] = flash.readChar(i);
+  buf[k] = '\0';
+  Serial.println((char)buf[2]);
+  return String(buf);
 }
 
 void setup() {
-  Serial.begin(9600);
-  while (!Serial);
   delay(5000);
 
-  while (!flash.begin()) {
-    Serial.println("No Chip selected");
-    delay(10000);
-  }
+  Serial.begin(9600);
+  while (!Serial);
 
-  addr = 0;
-  paddr = 0;
-  String s = "This is a test\n";
-  dump(s);
-  dump(s);
-
-  String p = load();
-  Serial.print(p);
+  flash.begin();
+  //Serial.print("ERASE CHIP...");
+  //flash.eraseChip();
+  //flash.writeWord(0, 0);
+  //Serial.println("DONE");
+  //erase();
+  Serial.println(flash.getAddress(12));
+  //int n = dump("Hello World!");
+  //Serial.println(n);
+  String s = load();
+  //Serial.println(s);
 }
 
 void loop() {
-  delay(100);
+  delay(500);
 }
