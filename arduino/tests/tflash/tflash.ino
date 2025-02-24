@@ -1,30 +1,55 @@
 #include <SPI.h>
 #include <SPIMemory.h>
 
-#define HSZ 512
+#define BLK_SZ 4096
 #define CS 7
 
 
 SPIFlash flash(CS);
+char cache[BLK_SZ];
+int len = 0;
 
-bool dump(String s) {
-  uint32_t addr = flash.getAddress(flash.sizeofStr(s));
-
-  flash.eraseSector(i*4);
-  return flash.writeULong(i++*4, addr) && flash.writeStr(addr, s);
+void del(int j) {
+  for (; j > 0; j--)
+    cache[len--] = 0;
+  sync();
 }
 
-bool load(String &s) {
-  static int i = 0;
-
-  if (i >= 512)
+bool dump(String s) {
+  int n = s.length() + 1;
+  if (len + n > BLK_SZ)
     return false;
-  uint32_t addr = flash.readULong(i*sizeof(uint32_t));
-  if (addr > 512*4) {
-    i++;
-    return flash.readStr(addr, s);
+  s.toCharArray(&cache[len], n);
+  len += n;
+  sync();
+  return true;
+}
+
+void init() {
+  flash.readCharArray(0, cache, BLK_SZ);
+  len = BLK_SZ;
+  while (cache[len] == 0)
+    len--;
+}
+
+void sync() {
+  flash.eraseSector(0);
+  flash.writeCharArray(0, cache, BLK_SZ);
+}
+
+int load(String &s) {
+  static char rev[256];
+  int j;
+
+  int i = len;
+  while (i > 0 && cache[i] == 0)
+    i--;
+  for (j = 0; j < 255 && i > 0 && cache[i] != 0; j++) {
+    rev[j] = cache[i--];
   }
-  return false;
+  rev[j] = '\0';
+  s = String(rev);
+  return j;
 }
 
 void setup() {
@@ -37,12 +62,17 @@ void setup() {
   Serial.print("ERASE CHIP...");
   flash.eraseChip();
   Serial.println("DONE");
-  Serial.print("WRITE HEADER...");
-  for (int i = 0; i < HSZ; i++) {
-    if (!flash.writeULong(i*4, 0))
-      Serial.println("ERROR");
-  }
-  Serial.println("DONE");
+
+  init();
+  String s = "Hello World!\r\n";
+  dump(s);
+
+  s = "Uhhhhh\r\n";
+  dump(s);
+
+  String p;
+  while (load(p) > 0)
+    Serial.println(p);
 }
 
 void loop() {
