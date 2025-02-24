@@ -1,7 +1,7 @@
 (footprint "GROVE-HW4-2.0"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 1.7272 -3.4036 180)
@@ -26,18 +26,6 @@
 			)
 		)
 	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "6acaa132-7671-4804-9455-9bdf977569ba")
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-	)
 	(property "Datasheet" ""
 		(at 0 0 0)
 		(unlocked yes)
@@ -47,6 +35,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -59,6 +48,18 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MPN" "110990030"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "ac172228-ad32-46d5-90ab-989909c2321d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
 			)
 		)
 	)
@@ -349,4 +350,5 @@
 		(solder_mask_margin 0.1016)
 		(uuid "f867caea-2e9f-45ac-8adf-140539a1fc5c")
 	)
+	(embedded_fonts no)
 )

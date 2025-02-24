@@ -154,11 +154,11 @@ bool post(String s) {
     return false;
   bool ok = false;
   if (client.connect(HOST, PORT)) {
-    client.println("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1");
-    client.println("Host: "HOST);
-    client.println("Connection: close");
-    client.println("Content-Type: text/plain");
-    client.print("Content-Length: ");
+    client.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
+    client.println(F("Host: "HOST));
+    client.println(F("Connection: close"));
+    client.println(F("Content-Type: text/plain"));
+    client.print(F("Content-Length: "));
     client.println(n);
     client.println();
     client.print(s);
@@ -265,7 +265,6 @@ void setup() {
     idle();
 
   flash.begin();
-  cap = flash.getCapacity();
 
   Wire.begin();
   SHTC3.begin();
@@ -302,7 +301,7 @@ void loop() {
   SHTC3.readSample(low_power=pm);
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
-  s += ";" + SIGN(st) + SIGN(rh) + LF;
+  s += "." + SIGN(st) + SIGN(rh) + LF;
 
   enable();
   for (char *p = sid; *p; p++)
