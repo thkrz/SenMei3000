@@ -347,9 +347,9 @@ void loop() {
     if (!post(s))
       dump(s);
   }
+  flash.powerDown();
 
   if (!pm)
     schedule();
-  flash.powerDown();
   rtc.standbyMode();
 }
