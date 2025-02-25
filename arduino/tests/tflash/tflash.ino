@@ -1,55 +1,52 @@
 #include <SPI.h>
 #include <SPIMemory.h>
 
-#define BLK_SZ 4096
+#define CAP 1024
+#define LEN (addr[0])
+#define BSZ (sizeof(uint32_t))
+
 #define CS 7
 
 
 SPIFlash flash(CS);
-char cache[BLK_SZ];
-int len = 0;
+uint32_t addr[CAP];
 
-void del(int j) {
-  for (; j > 0; j--)
-    cache[len--] = 0;
-  sync();
+void dir() {
+  for (int i = 0; i < CAP; i++)
+    addr[i] = flash.readULong(i*BSZ);
 }
 
-bool dump(String s) {
-  int n = s.length() + 1;
-  if (len + n > BLK_SZ)
-    return false;
-  s.toCharArray(&cache[len], n);
-  len += n;
-  sync();
-  return true;
+void discard() {
+  if (LEN > 0)
+    LEN--;
 }
 
-void init() {
-  flash.readCharArray(0, cache, BLK_SZ);
-  len = BLK_SZ;
-  while (cache[len] == 0)
-    len--;
+bool push(String s) {
+  if (LEN < CAP) {
+    uint32_t a = flash.getAddress(flash.sizeofStr(s));
+    if (a == 0)
+      return false;
+    addr[LEN+1] = a;
+    if (flash.writeStr(a, s)) {
+      LEN++;
+      sync();
+      return true;
+    }
+  }
+  return false;
 }
 
 void sync() {
-  flash.eraseSector(0);
-  flash.writeCharArray(0, cache, BLK_SZ);
+  while (!flash.eraseSector(0));
+  for (int i = 0; i < CAP; i++)
+    flash.writeULong(i*BSZ, addr[i]);
 }
 
-int load(String &s) {
-  static char rev[256];
-  int j;
-
-  int i = len;
-  while (i > 0 && cache[i] == 0)
-    i--;
-  for (j = 0; j < 255 && i > 0 && cache[i] != 0; j++) {
-    rev[j] = cache[i--];
-  }
-  rev[j] = '\0';
-  s = String(rev);
-  return j;
+bool pop(String &s) {
+  if (LEN < 1)
+    return false;
+  uint32_t a = addr[LEN];
+  return flash.readStr(a, s);
 }
 
 void setup() {
@@ -59,20 +56,13 @@ void setup() {
   while (!Serial);
 
   flash.begin();
-  Serial.print("ERASE CHIP...");
-  flash.eraseChip();
-  Serial.println("DONE");
+  //Serial.print("ERASE CHIP...");
+  //flash.eraseChip();
+  //Serial.println("DONE");
 
-  init();
-  String s = "Hello World!\r\n";
-  dump(s);
+  //sync();
 
-  s = "Uhhhhh\r\n";
-  dump(s);
-
-  String p;
-  while (load(p) > 0)
-    Serial.println(p);
+  //Serial.println(test());
 }
 
 void loop() {

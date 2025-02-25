@@ -5178,7 +5178,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 81.28) (xy 35.56 81.28)
+			(xy 45.72 81.28) (xy 34.29 81.28)
 		)
 		(stroke
 			(width 0)
@@ -5548,7 +5548,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 83.82) (xy 35.56 83.82)
+			(xy 45.72 83.82) (xy 34.29 83.82)
 		)
 		(stroke
 			(width 0)
@@ -9305,7 +9305,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 30.48 83.82 180)
+		(at 29.21 83.82 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9314,7 +9314,7 @@
 		(fields_autoplaced yes)
 		(uuid "e4fa3003-3029-4e55-b5a2-79b34ed27f3e")
 		(property "Reference" "J1"
-			(at 30.48 74.93 0)
+			(at 29.21 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9322,7 +9322,7 @@
 			)
 		)
 		(property "Value" "Screw_Terminal_01x02"
-			(at 30.48 77.47 0)
+			(at 29.21 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9330,7 +9330,7 @@
 			)
 		)
 		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
-			(at 30.48 83.82 0)
+			(at 29.21 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9339,7 +9339,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 30.48 83.82 0)
+			(at 29.21 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9348,7 +9348,7 @@
 			)
 		)
 		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 30.48 83.82 0)
+			(at 29.21 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)

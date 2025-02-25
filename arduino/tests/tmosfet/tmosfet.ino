@@ -1,21 +1,24 @@
+#define FET 0
+
 void disable() {
-  digitalWrite(0, LOW);
+  digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 }
 
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
-  digitalWrite(0, HIGH);
+  digitalWrite(FET, HIGH);
 }
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(0, OUTPUT);
+  pinMode(FET, OUTPUT);
+  disable();
 }
 
 void loop() {
+  delay(10000);
   enable();
   delay(10000);
   disable();
-  delay(10000);
 }

@@ -1,8 +1,8 @@
 #ifndef _GLOBAL_H
 #define _GLOBAL_H
 
-#define HOST ""
-#define PATH ""
-#define PORT 80
+#define HOST "erdrutsch.com"
+#define PATH "/station"
+#define PORT 8000
 
 #endif // _GLOBAL_H

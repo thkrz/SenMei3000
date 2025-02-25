@@ -1,14 +1,9 @@
 #include <SDI12.h>
 #include <SPI.h>
 
-SDI12 socket(3);
+SDI12 socket(1, 4, 3);
+//SDI12 socket(9);
 char sid[63];
-
-void enable() {
-  Serial.println("Socket enabled");
-  socket.begin();
-  delay(500);
-}
 
 bool handshake(char i) {
   static char cmd[3] = "0!";
@@ -28,7 +23,7 @@ bool handshake(char i) {
     }
   }
   socket.clearBuffer();
-  Serial.println("no response");
+  Serial.println("NO");
   return false;
 }
 
@@ -37,17 +32,17 @@ void scan() {
   for (char c = '0'; c <= '9'; c++) {
     if (handshake(c))
       sid[n++] = c;
-    delay(500);
+    delay(30);
   }
   for (char c = 'A'; c <= 'Z'; c++) {
     if (handshake(c))
       sid[n++] = c;
-    delay(500);
+    delay(30);
   }
   for (char c = 'a'; c <= 'z'; c++) {
     if (handshake(c))
       sid[n++] = c;
-    delay(500);
+    delay(30);
   }
   sid[n] = '\0';
 }
@@ -58,21 +53,20 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-  Serial.println("Scanning...");
-  enable();
+  socket.begin();
+  delay(500);
   scan();
-
-  Serial.println("done");
 }
 
 void loop() {
-  //Serial.println("-- Send command --");
-  //for (char *p = sid; *p; p++) {
-  //  Serial.println(ident(*p));
-  //  delay(100);
-  //  Serial.println(measure(*p));
-  //  delay(100);
-  //}
-  //delay(10000);
-  delay(100);
+  char cmd[4] = "?I!";
+
+  for (char *p = sid; *p; p++) {
+    cmd[0] = *p;
+    socket.sendCommand(cmd);
+    delay(30);
+    String s = socket.readStringUntil('\n');
+    Serial.println(s);
+  }
+  delay(5000);
 }

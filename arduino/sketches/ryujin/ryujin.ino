@@ -9,8 +9,7 @@
 #include "config.h"
 #include "global.h"
 
-#define SIGN(x) (((x)>=0?'+':'\0')+String(x))
-
+#define CAP 1024
 #define FET 0
 #define MX  1
 #define RX  4
@@ -18,7 +17,11 @@
 #define MOD 5
 #define CS  7
 
+#define BSZ (sizeof(uint32_t))
 #define LF "\r\n"
+#define LEN (addr[0])
+#define SIGN(x) (((x)>=0?'+':'\0')+String(x))
+#define PRNT2(x) (((x)<10?'0':'\0')+String(x))
 
 GPRS gprs;
 NBClient client;
@@ -26,6 +29,7 @@ NB nbAccess;
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
 SPIFlash flash(CS);
+uint32_t addr[CAP];
 char sid[63];
 
 float battery() {
@@ -45,21 +49,37 @@ void connect() {
   }
 }
 
+void dir() {
+  for (int i = 0; i < CAP; i++)
+    addr[i] = flash.readULong(i*BSZ);
+}
+
+bool discard() {
+  if (LEN < 0)
+    return false;
+  LEN--;
+  return true;
+}
+
 void disable() {
   socket.end();
   digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 }
 
-void dump(String s) {
-  int n = s.length();
-  char buf[n];
-  s.toCharArray(buf, n);
-  uint32_t addr = flash.readULong(0);
-  if (addr + n > cap)
-    addr = BEG;
-  if (flash.writeCharArray(addr, buf, n))
-    flash.writeULong(0, addr + n);
+bool dump(String s) {
+  if (LEN < CAP) {
+    uint32_t a = flash.getAddress(flash.sizeofStr(s));
+    if (a == 0)
+      return false;
+    addr[LEN+1] = a;
+    if (flash.writeStr(a, s)) {
+      LEN++;
+      sync();
+      return true;
+    }
+  }
+  return false;
 }
 
 void enable() {
@@ -67,10 +87,6 @@ void enable() {
   digitalWrite(FET, HIGH);
   socket.begin();
   delay(500);
-}
-
-void erase() {
-  flash.writeULong(0, BEG);
 }
 
 bool handshake(char i) {
@@ -108,18 +124,11 @@ void idle() {
   }
 }
 
-String load() {
-  uint32_t addr = flash.readULong(0);
-  size_t n = addr - BEG;
-  String s = "";
-  if (n > 0) {
-    char buf[n+1];
-    if (flash.readCharArray(BEG, buf, n)) {
-      buf[n] = '\0';
-      s = String(buf);
-    }
-  }
-  return s;
+bool load(String &s) {
+  if (LEN < 1)
+    return false;
+  uint32_t a = addr[LEN];
+  return flash.readStr(a, s);
 }
 
 String measure(char i) {
@@ -174,8 +183,7 @@ bool post(String s) {
 
 void pullup() {
   static int8_t pin[11] = {
-    A0, A2, A3, A4, A5, A6,
-    2, 5, 6, 13, 14
+    A0, A2, A3, A4, A5, A6, 5
   };
 
   for (int i = 0; i < 11; i++)
@@ -187,14 +195,17 @@ void scan() {
   for (char c = '0'; c <= '9'; c++) {
     if (handshake(c))
       sid[n++] = c;
+    delay(30);
   }
   for (char c = 'A'; c <= 'Z'; c++) {
     if (handshake(c))
       sid[n++] = c;
+    delay(30);
   }
   for (char c = 'a'; c <= 'z'; c++) {
     if (handshake(c))
       sid[n++] = c;
+    delay(30);
   }
   sid[n] = '\0';
 }
@@ -206,14 +217,6 @@ void schedule() {
   rtc.setAlarmMinutes(m);
 }
 
-String sprint02d(uint8_t d) {
-  static String s;
-
-  s = d < 10 ? "0" : "";
-  s += String(d);
-  return s;
-}
-
 void switchmode() {
   Serial.begin(9600);
   while (!Serial);
@@ -222,19 +225,30 @@ void switchmode() {
     if (Serial.available()) {
       char c = Serial.read();
       if (c == '!') {
-        String s = load();
-        Serial.print(s + "#");
+        String s;
+        while(load(s)) {
+          Serial.print(s);
+          discard();
+        }
+        dir();
+        Serial.print("#");
       }
     }
     delay(100);
   }
 }
 
+void sync() {
+  while (!flash.eraseSector(0));
+  for (int i = 0; i < CAP; i++)
+    flash.writeULong(i*BSZ, addr[i]);
+}
+
 bool update() {
   String s = "UPDATE\r\n";
   enable();
   for (char *p = sid; *p; p++)
-    s += info(*p);
+    s += ident(*p);
   disable();
   return post(s);
 }
@@ -252,10 +266,15 @@ void setup() {
   pinMode(FET, OUTPUT);
   digitalWrite(FET, LOW);
   pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
+
   pullup();
+
   if (digitalRead(MOD) == LOW)
     switchmode();
     /* not reached */
+
+  delay(10000);
 
   enable();
   scan();
@@ -265,6 +284,8 @@ void setup() {
     idle();
 
   flash.begin();
+  dir();
+  flash.powerDown();
 
   Wire.begin();
   SHTC3.begin();
@@ -284,13 +305,13 @@ void setup() {
 void loop() {
   String s = String(rtc.getYear() + 2000);
   s += "-";
-  s += sprint02d(rtc.getMonth());
+  s += PRNT2(rtc.getMonth());
   s += "-";
-  s += sprint02d(rtc.getDay());
+  s += PRNT2(rtc.getDay());
   s += "T";
-  s += sprint02d(rtc.getHours());
+  s += PRNT2(rtc.getHours());
   s += ":";
-  s += sprint02d(rtc.getMinutes());
+  s += PRNT2(rtc.getMinutes());
   s += LF;
 
   float bat0 = battery();
@@ -298,7 +319,7 @@ void loop() {
 
   bool pm = bat0 < BAT_LOW;
 
-  SHTC3.readSample(low_power=pm);
+  SHTC3.readSample(true, pm);
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
   s += "." + SIGN(st) + SIGN(rh) + LF;
@@ -308,18 +329,27 @@ void loop() {
     s += measure(*p);
   disable();
 
+  flash.powerUp();
   if (pm) {
     nbAccess.shutdown();
     dump(s);
   } else {
     verify();
-    if(post(load()))
-      erase();
+    String p;
+    bool sent = false;
+    while(load(p)) {
+      if(!post(p))
+        break;
+      sent = discard();
+    }
+    if (sent)
+      sync();
     if (!post(s))
       dump(s);
   }
 
   if (!pm)
     schedule();
+  flash.powerDown();
   rtc.standbyMode();
 }
