@@ -182,11 +182,11 @@ bool post(String s) {
 }
 
 void pullup() {
-  static int8_t pin[11] = {
+  static int8_t pin[7] = {
     A0, A2, A3, A4, A5, A6, 5
   };
 
-  for (int i = 0; i < 11; i++)
+  for (int i = 0; i < 7; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -220,6 +220,7 @@ void schedule() {
 void switchmode() {
   Serial.begin(9600);
   while (!Serial);
+  bool format = false;
 
   for (;;) {
     if (Serial.available()) {
@@ -232,6 +233,17 @@ void switchmode() {
         }
         dir();
         Serial.print("#");
+      } else if (c == 'f') {
+        format = true;
+        Serial.print(F("Perform chip erase? [y/N]: "));
+      } else if (format) {
+        Serial.println();
+        if (c == 'y') {
+          Serial.print(F("ERASE..."));
+          flash.eraseChip();
+          Serial.println(F("DONE"));
+        }
+        format = false;
       }
     }
     delay(100);
@@ -315,14 +327,14 @@ void loop() {
   s += LF;
 
   float bat0 = battery();
-  s += "_" + SIGN(bat0) + LF;
+  s += "$" + SIGN(bat0) + LF;
 
   bool pm = bat0 < BAT_LOW;
 
   SHTC3.readSample(true, pm);
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
-  s += "." + SIGN(st) + SIGN(rh) + LF;
+  s += "#" + SIGN(st) + SIGN(rh) + LF;
 
   enable();
   for (char *p = sid; *p; p++)
