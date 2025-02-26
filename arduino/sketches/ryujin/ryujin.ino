@@ -38,7 +38,7 @@ float battery() {
 }
 
 void cmode() {
-  Serial.begin(115200);
+  Serial.begin(19200);
   while (!Serial);
   bool format = false;
 
@@ -234,8 +234,6 @@ void pullup() {
 void resend() {
   static String s;
 
-  if (LEN == 0)
-    return;
   while (load(s)) {
     if (!post(s))
       break;
@@ -363,7 +361,8 @@ void loop() {
     dump(s);
   } else {
     verify();
-    resend();
+    if (LEN > 0)
+      resend();
     if (!post(s))
       dump(s);
   }
