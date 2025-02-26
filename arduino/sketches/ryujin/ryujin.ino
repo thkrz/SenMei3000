@@ -37,6 +37,40 @@ float battery() {
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
+void cmode() {
+  Serial.begin(115200);
+  while (!Serial);
+  bool format = false;
+
+  for (;;) {
+    if (Serial.available()) {
+      char c = Serial.read();
+      if (format) {
+        Serial.println();
+        if (c == 'y') {
+          Serial.print(F("ERASE..."));
+          erase();
+          Serial.println(F("DONE"));
+        }
+        format = false;
+      } else if (c == 'd') {
+        String s;
+        uint32_t len = LEN;
+        while(load(s)) {
+          Serial.print(s);
+          discard();
+        }
+        LEN = len;
+        Serial.print("#");
+      } else if (c == 'f') {
+        format = true;
+        Serial.print(F("Perform chip erase? [y/N]: "));
+      }
+    }
+    delay(100);
+  }
+}
+
 void connect() {
   bool connected = false;
   while (!connected) {
@@ -234,40 +268,6 @@ void schedule() {
   rtc.setAlarmMinutes(m);
 }
 
-void switchmode() {
-  Serial.begin(9600);
-  while (!Serial);
-  bool format = false;
-
-  for (;;) {
-    if (Serial.available()) {
-      char c = Serial.read();
-      if (format) {
-        Serial.println();
-        if (c == 'y') {
-          Serial.print(F("ERASE..."));
-          erase();
-          Serial.println(F("DONE"));
-        }
-        format = false;
-      } else if (c == 'd') {
-        String s;
-        uint32_t len = LEN;
-        while(load(s)) {
-          Serial.print(s);
-          discard();
-        }
-        LEN = len;
-        Serial.print("#");
-      } else if (c == 'f') {
-        format = true;
-        Serial.print(F("Perform chip erase? [y/N]: "));
-      }
-    }
-    delay(100);
-  }
-}
-
 void sync() {
   while (!flash.eraseSector(0));
   for (int i = 0; i < CAP; i++)
@@ -301,7 +301,7 @@ void setup() {
   pullup();
 
   if (digitalRead(MOD) == LOW)
-    switchmode();
+    cmode();
     /* not reached */
 
   enable();
