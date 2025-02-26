@@ -1,7 +1,7 @@
 (kicad_pcb
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(general
 		(thickness 1.6)
 		(legacy_teardrops no)
@@ -12,42 +12,43 @@
 	)
 	(layers
 		(0 "F.Cu" signal)
-		(31 "B.Cu" signal)
-		(32 "B.Adhes" user "B.Adhesive")
-		(33 "F.Adhes" user "F.Adhesive")
-		(34 "B.Paste" user)
-		(35 "F.Paste" user)
-		(36 "B.SilkS" user "B.Silkscreen")
-		(37 "F.SilkS" user "F.Silkscreen")
-		(38 "B.Mask" user)
-		(39 "F.Mask" user)
-		(40 "Dwgs.User" user "User.Drawings")
-		(41 "Cmts.User" user "User.Comments")
-		(42 "Eco1.User" user "User.Eco1")
-		(43 "Eco2.User" user "User.Eco2")
-		(44 "Edge.Cuts" user)
-		(45 "Margin" user)
-		(46 "B.CrtYd" user "B.Courtyard")
-		(47 "F.CrtYd" user "F.Courtyard")
-		(48 "B.Fab" user)
-		(49 "F.Fab" user)
-		(50 "User.1" user)
-		(51 "User.2" user)
-		(52 "User.3" user)
-		(53 "User.4" user)
-		(54 "User.5" user)
-		(55 "User.6" user)
-		(56 "User.7" user)
-		(57 "User.8" user)
-		(58 "User.9" user)
+		(2 "B.Cu" signal)
+		(9 "F.Adhes" user "F.Adhesive")
+		(11 "B.Adhes" user "B.Adhesive")
+		(13 "F.Paste" user)
+		(15 "B.Paste" user)
+		(5 "F.SilkS" user "F.Silkscreen")
+		(7 "B.SilkS" user "B.Silkscreen")
+		(1 "F.Mask" user)
+		(3 "B.Mask" user)
+		(17 "Dwgs.User" user "User.Drawings")
+		(19 "Cmts.User" user "User.Comments")
+		(21 "Eco1.User" user "User.Eco1")
+		(23 "Eco2.User" user "User.Eco2")
+		(25 "Edge.Cuts" user)
+		(27 "Margin" user)
+		(31 "F.CrtYd" user "F.Courtyard")
+		(29 "B.CrtYd" user "B.Courtyard")
+		(35 "F.Fab" user)
+		(33 "B.Fab" user)
+		(39 "User.1" user)
+		(41 "User.2" user)
+		(43 "User.3" user)
+		(45 "User.4" user)
+		(47 "User.5" user)
+		(49 "User.6" user)
+		(51 "User.7" user)
+		(53 "User.8" user)
+		(55 "User.9" user)
 	)
 	(setup
 		(pad_to_mask_clearance 0)
 		(allow_soldermask_bridges_in_footprints no)
+		(tenting front back)
 		(grid_origin 75 65)
 		(pcbplotparams
-			(layerselection 0x00010fc_ffffffff)
-			(plot_on_all_layers_selection 0x0000000_00000000)
+			(layerselection 0x00000000_00000000_55555555_5755f5ff)
+			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions no)
 			(usegerberattributes yes)
@@ -57,7 +58,6 @@
 			(dashed_line_gap_ratio 3.000000)
 			(svgprecision 4)
 			(plotframeref no)
-			(viasonmask no)
 			(mode 1)
 			(useauxorigin no)
 			(hpglpennumber 1)
@@ -65,16 +65,20 @@
 			(hpglpendiameter 15.000000)
 			(pdf_front_fp_property_popups yes)
 			(pdf_back_fp_property_popups yes)
+			(pdf_metadata yes)
+			(pdf_single_document no)
 			(dxfpolygonmode yes)
 			(dxfimperialunits yes)
 			(dxfusepcbnewfont yes)
 			(psnegative no)
 			(psa4output no)
-			(plotreference yes)
-			(plotvalue yes)
-			(plotfptext yes)
+			(plot_black_and_white yes)
 			(plotinvisibletext no)
 			(sketchpadsonfab no)
+			(plotpadnumbers no)
+			(hidednponfab no)
+			(sketchdnponfab yes)
+			(crossoutdnponfab yes)
 			(subtractmaskfromsilk no)
 			(outputformat 1)
 			(mirror no)
@@ -106,19 +110,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "6cb10360-3336-4d34-9129-7433a15b0a6e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bce0c9fc-4620-4ba3-a242-4c146880ccad")
 			(effects
 				(font
 					(size 1 1)
@@ -160,7 +151,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "5060cf0f-f1d3-40e8-bebf-f40ef98c7cc4")
 		)
@@ -208,6 +199,7 @@
 			(remove_unused_layers no)
 			(uuid "8347cac1-1b5d-46f7-a4b6-c83e040b04a8")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -231,19 +223,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "0888c214-ff14-4179-b0f6-6b9bb84a2c87")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6ca152a4-836e-444f-b42f-514ffbeb8810")
 			(effects
 				(font
 					(size 1 1)
@@ -285,7 +264,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "ed42bc66-f17e-4d0a-8378-bf51c00ea28c")
 		)
@@ -333,6 +312,7 @@
 			(remove_unused_layers no)
 			(uuid "3b01fd2a-65d9-45e7-8673-07e15baf5086")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -356,19 +336,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "51d73cba-227f-4c7e-816e-f4625d48435b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "119980b2-0bfb-40e1-a168-87ba32151c8c")
 			(effects
 				(font
 					(size 1 1)
@@ -410,7 +377,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "42e05eec-01b4-4e15-a1ba-710bdc743fdf")
 		)
@@ -458,6 +425,7 @@
 			(remove_unused_layers no)
 			(uuid "c1f2dfc2-2a41-40ff-a18f-4f2a1d7295bf")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -481,19 +449,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "5b2784f3-4c2a-4aa8-b2e4-f704dd395fec")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5fea94f7-a001-4173-8aed-3045e2519907")
 			(effects
 				(font
 					(size 1 1)
@@ -535,7 +490,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "e7577d23-8e85-4c6d-9469-c6d03038f6fb")
 		)
@@ -583,6 +538,7 @@
 			(remove_unused_layers no)
 			(uuid "09b4f970-2a7d-4223-a1e1-1dacc0e9beeb")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -606,19 +562,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "418b330e-9d7e-41a8-ba82-106b18300ded")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "620c5a74-ef04-423b-9e06-bbee4d5a7ac6")
 			(effects
 				(font
 					(size 1 1)
@@ -660,7 +603,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "86998d12-32eb-4a70-83d7-65eec500e4ea")
 		)
@@ -708,6 +651,7 @@
 			(remove_unused_layers no)
 			(uuid "8dded42d-0ed6-41ca-b1b1-175d838a1997")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -731,19 +675,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "e62bacdb-192a-4003-b431-3d0e1b0f0a69")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "afc1ad35-1ba9-4473-a375-5a72a2953290")
 			(effects
 				(font
 					(size 1 1)
@@ -785,7 +716,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "212d8b5a-bf57-410b-a8b8-f3691f70f2af")
 		)
@@ -833,6 +764,7 @@
 			(remove_unused_layers no)
 			(uuid "10133ea1-655f-43dc-8756-964f135ee693")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -856,19 +788,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "e688a373-37f7-4911-bd4e-7c01f49c33bd")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "dc5200bb-72a3-4d63-9529-c7d4520fe2b0")
 			(effects
 				(font
 					(size 1 1)
@@ -910,7 +829,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "2ff4fc74-1876-4a6c-ae47-bddd7e8a6370")
 		)
@@ -958,6 +877,7 @@
 			(remove_unused_layers no)
 			(uuid "29d635b4-78d5-4ea7-bcf3-75bb787d47e7")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -981,19 +901,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "4dff4c83-3b01-4075-aafb-34e75e9adfbe")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d01bc5d7-2a31-47f5-812b-cea4fd3b0293")
 			(effects
 				(font
 					(size 1 1)
@@ -1035,7 +942,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "6f25b3d1-b445-4f1e-bc14-4e49cb5a0840")
 		)
@@ -1083,6 +990,7 @@
 			(remove_unused_layers no)
 			(uuid "e77403a5-6e67-4360-b242-8dbbbfb0127f")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -1106,19 +1014,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "456bcae7-c89a-43dd-9e2e-0e460cb23cc5")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "053c52e1-8513-49b9-8ca2-0301ffa662bb")
 			(effects
 				(font
 					(size 1 1)
@@ -1160,7 +1055,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "b413b1e5-6a10-4175-974e-7783ac9f221d")
 		)
@@ -1208,6 +1103,7 @@
 			(remove_unused_layers no)
 			(uuid "59a21308-bc84-4afc-b489-fee01b06ed6a")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -1231,19 +1127,6 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "ccc9a572-182c-4728-92ce-1fbdb016031f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bb24339e-6294-43b8-b44e-a0c757e220d7")
 			(effects
 				(font
 					(size 1 1)
@@ -1285,7 +1168,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "bcff30bd-3e24-4379-9888-3249264dcce6")
 		)
@@ -1333,6 +1216,7 @@
 			(remove_unused_layers no)
 			(uuid "b184683c-0da3-405f-a783-3da5339b825a")
 		)
+		(embedded_fonts no)
 	)
 	(footprint "footprints:SDI_Connector"
 		(layer "F.Cu")
@@ -1343,7 +1227,7 @@
 			(unlocked yes)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "c643e433-ba8c-4f7c-80bc-680f998fd438")
+			(uuid "2b43b52e-15f3-49b6-9a59-861000b8e1a1")
 			(effects
 				(font
 					(size 1 1)
@@ -1355,20 +1239,7 @@
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
-			(uuid "db3356d4-7c25-452d-873a-996b2d2c9295")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "footprints:SDI_Connector"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8c4fafc2-765c-40b9-8396-fbc2eb43e95a")
+			(uuid "0f95fbbd-c54b-427a-8ff3-2f35be62a123")
 			(effects
 				(font
 					(size 1 1)
@@ -1381,7 +1252,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "fea438e8-c664-42ac-8e47-223c07db5b55")
+			(uuid "2a84df95-fd1e-4cf7-b6da-3867598bdbc6")
 			(effects
 				(font
 					(size 1 1)
@@ -1394,7 +1265,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "bb943413-e498-4fde-a7ce-11325d81cdc9")
+			(uuid "59660ba1-2c64-4984-a934-a103a2a79249")
 			(effects
 				(font
 					(size 1 1)
@@ -1410,7 +1281,7 @@
 				(width 0.1)
 				(type default)
 			)
-			(fill none)
+			(fill no)
 			(layer "Margin")
 			(uuid "f2965638-2745-4c79-8d5a-3d3e175951a9")
 		)
@@ -1458,6 +1329,7 @@
 			(remove_unused_layers no)
 			(uuid "a45efeb8-7bba-4673-8e63-c322d20eb7ec")
 		)
+		(embedded_fonts no)
 	)
 	(gr_rect
 		(start 75 65)
@@ -1466,7 +1338,7 @@
 			(width 0.05)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "Edge.Cuts")
 		(uuid "f4db7b83-9fcc-4db2-ba59-237becfcf02c")
 	)
@@ -1894,4 +1766,5 @@
 		(net 0)
 		(uuid "e11e286a-b16b-4f1a-86a9-7bdbcd385fb2")
 	)
+	(embedded_fonts no)
 )
