@@ -3244,6 +3244,368 @@
 			)
 		)
 	)
+	(footprint "footprints:ISP452"
+		(layer "F.Cu")
+		(uuid "90751aab-3e11-452c-a047-c6e1d3f31f78")
+		(at 165.47 45.87)
+		(descr "PG-SOT223")
+		(tags "Integrated Circuit")
+		(property "Reference" "IC1"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1d08987d-2e1a-48b0-8d1b-98ffb9e0ba42")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.254)
+				)
+			)
+		)
+		(property "Value" "ISP452"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7d516833-6956-4cfd-810d-57f81dc9f19c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.254)
+				)
+			)
+		)
+		(property "Datasheet" "../../docs/DSA-257800.pdf"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8844a414-76b8-46d5-a1d3-e7d75844d111")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Smart High-Side Power Switch 40V SOT223 Infineon ISP452 Intelligent Power Switch, High Side, 0.7A, -5 ??? 40V, 4-Pin, SOT-223"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8043b19a-7dc3-40fe-9337-efb5b5ca551c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Height" "1.7"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "42ace1fb-d1d3-48a9-bb67-0047c7033e17")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_Name" "Infineon"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b7e09287-2518-435d-8ec7-44f764d50405")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_Part_Number" "ISP452"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ccfa5368-5757-4268-8a2b-58b0dab51e09")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Mouser Part Number" "726-ISP452"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7f5e50dc-6cfd-44ce-8466-956a6f739101")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Infineon-Technologies/ISP452?qs=xJhywenBp6b2hqtaJGCxEg%3D%3D"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9b477e6e-ea53-4b32-ae8c-dd7eb1d0d8de")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Arrow Part Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "81bf59b4-7aa9-47f6-98d3-34a674ca9890")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Arrow Price/Stock" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2300b8cf-b021-46c7-af2f-df2e84ca8858")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "ISP452"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f98cf096-cc46-4ecd-90a3-51e3fccc17aa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(path "/e3cd4fc2-3ef6-4ba7-b22c-7f4111ddd69a")
+		(sheetname "/")
+		(sheetfile "Ryujin.kicad_sch")
+		(attr smd)
+		(fp_line
+			(start -4 -3.1)
+			(end -2.5 -3.1)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "8c45067f-bdb7-4e22-b1ea-fd637d68a9f6")
+		)
+		(fp_line
+			(start -1.75 -3.25)
+			(end 1.75 -3.25)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "ab074a54-8b7d-4888-9b79-0238a25bf509")
+		)
+		(fp_line
+			(start -1.75 3.25)
+			(end -1.75 -3.25)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "8023a56f-d6c8-41a1-ae83-fe5db420ee52")
+		)
+		(fp_line
+			(start 1.75 -3.25)
+			(end 1.75 3.25)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "8bf0de1f-aa33-4c1d-917f-58478bb727f9")
+		)
+		(fp_line
+			(start 1.75 3.25)
+			(end -1.75 3.25)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "a1a41d07-1705-45e5-9865-21598411fa64")
+		)
+		(fp_line
+			(start -4.25 -3.6)
+			(end 4.25 -3.6)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "c9d59f28-47d1-4875-9541-206ccc4722b8")
+		)
+		(fp_line
+			(start -4.25 3.6)
+			(end -4.25 -3.6)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "fc7e36fe-cf44-493f-af2f-ee3310a6bf49")
+		)
+		(fp_line
+			(start 4.25 -3.6)
+			(end 4.25 3.6)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "a495483e-f105-4474-a734-bab5da16d3d4")
+		)
+		(fp_line
+			(start 4.25 3.6)
+			(end -4.25 3.6)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "a66f6153-202c-4145-82aa-569b4efc1979")
+		)
+		(fp_line
+			(start -1.75 -3.25)
+			(end 1.75 -3.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "c03c3ebe-b28a-47c7-b6e1-6920509482a8")
+		)
+		(fp_line
+			(start -1.75 -0.95)
+			(end 0.55 -3.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "b42eaf1b-d264-4f00-b830-8abd1db3698a")
+		)
+		(fp_line
+			(start -1.75 3.25)
+			(end -1.75 -3.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "c21de575-7ed6-4db9-8866-136cf6668711")
+		)
+		(fp_line
+			(start 1.75 -3.25)
+			(end 1.75 3.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "15a64c42-4ae0-40c0-965d-e410540711e8")
+		)
+		(fp_line
+			(start 1.75 3.25)
+			(end -1.75 3.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "1c67c11b-9418-4dc6-a2a5-229315765ba5")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "714f95b1-f3cc-46fe-ab18-ccb778a6ea78")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.254)
+				)
+			)
+		)
+		(pad "1" smd rect
+			(at -3.25 -2.3 90)
+			(size 0.9 1.5)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net 9 "/+SDI")
+			(pinfunction "OUT")
+			(pintype "output")
+			(uuid "de49bc71-1fb0-45ea-9f66-af09de351439")
+		)
+		(pad "2" smd rect
+			(at -3.25 0 90)
+			(size 0.9 1.5)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net 4 "GND")
+			(pinfunction "GND")
+			(pintype "power_in")
+			(uuid "dfb4341b-4ea0-4c72-82e6-e9740c96a800")
+		)
+		(pad "3" smd rect
+			(at -3.25 2.3 90)
+			(size 0.9 1.5)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net 15 "/D0")
+			(pinfunction "IN")
+			(pintype "input")
+			(uuid "8b0712b0-e8e9-42fd-9610-1533df622381")
+		)
+		(pad "4" smd rect
+			(at 3.25 0)
+			(size 1.5 3.2)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net 3 "+12V")
+			(pinfunction "VBB")
+			(pintype "passive")
+			(uuid "5f255f76-bfec-4ee3-af0f-8988057e1dc9")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/3dmodels/ISP452.stp"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
 	(footprint "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm"
 		(layer "F.Cu")
 		(uuid "93590f11-dc1f-46da-9f33-5f96124cc790")
@@ -6279,368 +6641,6 @@
 		)
 		(embedded_fonts no)
 		(model "${KICAD8_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
-	(footprint "footprints:ISP452"
-		(layer "F.Cu")
-		(uuid "daa228a9-941f-43cd-b1a1-ee1184fc9d3e")
-		(at 165.47 45.87)
-		(descr "PG-SOT223")
-		(tags "Integrated Circuit")
-		(property "Reference" "IC1"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "0c3a5d1c-9b88-40e4-8ce6-9a13787bf6e3")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.254)
-				)
-			)
-		)
-		(property "Value" "ISP452"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "76250351-a162-4de7-9c0b-c661d8ded9ad")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.254)
-				)
-			)
-		)
-		(property "Datasheet" "../../docs/DSA-257800.pdf"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "369e12b6-3804-4621-873a-9cef25372db2")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description" "Smart High-Side Power Switch 40V SOT223 Infineon ISP452 Intelligent Power Switch, High Side, 0.7A, -5 ??? 40V, 4-Pin, SOT-223"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ac6ac34f-2573-474f-8454-859788f558be")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Height" "1.7"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "884b534a-ca1b-437e-a3f9-ae7a23f2336e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer_Name" "Infineon"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e4482040-0f42-458e-a939-bf5c1e6e898a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "ISP452"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "21bdd507-2084-4afc-940c-9209ce32ad34")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser Part Number" "726-ISP452"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2e87f1a9-90de-4a2a-9ea0-be9d38f3d280")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Infineon-Technologies/ISP452?qs=xJhywenBp6b2hqtaJGCxEg%3D%3D"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b0082b7c-4877-42f0-b72e-37854e08c524")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Arrow Part Number" ""
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "04a7fa2c-33ca-4cb4-9829-ae5198506093")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Arrow Price/Stock" ""
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3dd00a24-15ab-4fce-8887-952cf49981ef")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MPN" "ISP452"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9386d313-f1ea-4ed5-a10d-937fc119d0e5")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/e3cd4fc2-3ef6-4ba7-b22c-7f4111ddd69a")
-		(sheetname "/")
-		(sheetfile "Ryujin.kicad_sch")
-		(attr smd)
-		(fp_line
-			(start -4 -3.1)
-			(end -2.5 -3.1)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "87a44c3c-e368-41fd-a401-9271c80d5a9d")
-		)
-		(fp_line
-			(start -1.75 -3.25)
-			(end 1.75 -3.25)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "08543041-4dd6-4b5f-a73f-e85f047e7e0a")
-		)
-		(fp_line
-			(start -1.75 3.25)
-			(end -1.75 -3.25)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "e7c86a67-9878-4e46-a017-f965443c8988")
-		)
-		(fp_line
-			(start 1.75 -3.25)
-			(end 1.75 3.25)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "84581a09-36ca-4024-8f81-59d3dee1a756")
-		)
-		(fp_line
-			(start 1.75 3.25)
-			(end -1.75 3.25)
-			(stroke
-				(width 0.2)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "1e8a899c-db42-4090-bcec-b092c34608ca")
-		)
-		(fp_line
-			(start -4.25 -3.6)
-			(end 4.25 -3.6)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "00bcf858-af5e-4c0a-8b6b-0cb1e8005789")
-		)
-		(fp_line
-			(start -4.25 3.6)
-			(end -4.25 -3.6)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "4e7e8805-a083-4d77-86fb-8170ad01fbee")
-		)
-		(fp_line
-			(start 4.25 -3.6)
-			(end 4.25 3.6)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "ecf64e76-01d9-4f60-9a31-f73462ec86d4")
-		)
-		(fp_line
-			(start 4.25 3.6)
-			(end -4.25 3.6)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "39110485-4dfe-4ab0-a776-cdb356698ed4")
-		)
-		(fp_line
-			(start -1.75 -3.25)
-			(end 1.75 -3.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "c1a1ba8e-77c1-4e69-9a72-3d3cc286c4be")
-		)
-		(fp_line
-			(start -1.75 -0.95)
-			(end 0.55 -3.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "3dedddfa-3140-4c0d-b84b-5d80411faa69")
-		)
-		(fp_line
-			(start -1.75 3.25)
-			(end -1.75 -3.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "e9052cb7-b86b-4f33-9b7e-2194ff14ec64")
-		)
-		(fp_line
-			(start 1.75 -3.25)
-			(end 1.75 3.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "26d0ef36-b98d-4fab-85f6-36d138d37f2b")
-		)
-		(fp_line
-			(start 1.75 3.25)
-			(end -1.75 3.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "4efa0577-dbf7-4c57-884b-fdbea6d55151")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(uuid "3cff5630-0e3c-418c-8945-21cc29bef266")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.254)
-				)
-			)
-		)
-		(pad "1" smd rect
-			(at -3.25 -2.3 90)
-			(size 0.9 1.5)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net 9 "/+SDI")
-			(pinfunction "OUT")
-			(pintype "output")
-			(uuid "f5986845-60b7-4142-9c17-6164bb3e83dc")
-		)
-		(pad "2" smd rect
-			(at -3.25 0 90)
-			(size 0.9 1.5)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net 4 "GND")
-			(pinfunction "GND")
-			(pintype "power_in")
-			(uuid "c6e183a3-f053-45f7-a726-0bd1dad8096a")
-		)
-		(pad "3" smd rect
-			(at -3.25 2.3 90)
-			(size 0.9 1.5)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net 15 "/D0")
-			(pinfunction "IN")
-			(pintype "input")
-			(uuid "3da5eb29-ed39-4643-9ae7-7de64cc4b084")
-		)
-		(pad "4" smd rect
-			(at 3.25 0)
-			(size 1.5 3.2)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net 3 "+12V")
-			(pinfunction "VBB")
-			(pintype "passive")
-			(uuid "b78074cf-87d4-4fa2-b3b0-50992cd8bbb0")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/3dmodels/ISP452.stp"
 			(offset
 				(xyz 0 0 0)
 			)
