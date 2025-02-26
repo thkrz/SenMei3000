@@ -5689,12 +5689,12 @@
 		(uuid "9e9252bc-18e1-46ba-bab7-4561dbd9f2de")
 	)
 	(label "LED"
-		(at 259.08 58.42 0)
+		(at 259.08 58.42 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "a540071b-7976-4f68-b8cd-24522d158611")
 	)

@@ -10,7 +10,7 @@
 #include "global.h"
 
 #define CAP 1024
-#define FET 0
+//#define FET 0
 #define MX  1
 #define RX  4
 #define TX  3
@@ -171,11 +171,11 @@ bool post(String s) {
     return false;
   bool ok = false;
   if (client.connect(HOST, PORT)) {
-    client.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
-    client.println(F("Host: "HOST));
-    client.println(F("Connection: close"));
-    client.println(F("Content-Type: text/plain"));
-    client.print(F("Content-Length: "));
+    client.println("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1");
+    client.println("Host: "HOST);
+    client.println("Connection: close");
+    client.println("Content-Type: text/plain");
+    client.print("Content-Length: ");
     client.println(n);
     client.println();
     client.print(s);
@@ -284,18 +284,16 @@ void verify() {
 }
 
 void setup() {
-  pinMode(FET, OUTPUT);
-  digitalWrite(FET, LOW);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
 
-  pullup();
+  //pullup();
 
-  if (digitalRead(MOD) == LOW)
-    switchmode();
+  //if (digitalRead(MOD) == LOW)
+  //  switchmode();
     /* not reached */
 
-  delay(10000);
+  delay(5000);
 
   enable();
   scan();
