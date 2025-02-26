@@ -54,11 +54,9 @@ void dir() {
     addr[i] = flash.readULong(i*BLK);
 }
 
-bool discard() {
-  if (LEN < 0)
-    return false;
-  LEN--;
-  return true;
+void discard() {
+  if (LEN > 0)
+    LEN--;
 }
 
 void disable() {
@@ -98,15 +96,16 @@ void erase() {
 }
 
 bool handshake(char i) {
-  static char cmd[3] = "0!";
+  static char cmd[3] = "a!";
 
   cmd[0] = i;
   for (int j = 0; j < 3; j++) {
     socket.sendCommand(cmd);
-    socket.clearBuffer();
     delay(30);
-    if (socket.available())
+    if (socket.available()) {
+      socket.clearBuffer();
       return true;
+    }
   }
   socket.clearBuffer();
   return false;
@@ -198,22 +197,32 @@ void pullup() {
     pinMode(pin[i], INPUT_PULLUP);
 }
 
+void resend() {
+  static String s;
+
+  if (LEN == 0)
+    return;
+  while (load(s)) {
+    if (!post(s))
+      break;
+    discard();
+    sync();
+  }
+}
+
 void scan() {
   int n = 0;
   for (char c = '0'; c <= '9'; c++) {
     if (handshake(c))
       sid[n++] = c;
-    delay(30);
   }
   for (char c = 'A'; c <= 'Z'; c++) {
     if (handshake(c))
       sid[n++] = c;
-    delay(30);
   }
   for (char c = 'a'; c <= 'z'; c++) {
     if (handshake(c))
       sid[n++] = c;
-    delay(30);
   }
   sid[n] = '\0';
 }
@@ -241,7 +250,7 @@ void switchmode() {
           Serial.println(F("DONE"));
         }
         format = false;
-      } else if (c == '!') {
+      } else if (c == 'd') {
         String s;
         uint32_t len = LEN;
         while(load(s)) {
@@ -294,8 +303,6 @@ void setup() {
   if (digitalRead(MOD) == LOW)
     switchmode();
     /* not reached */
-
-  delay(10000);
 
   enable();
   scan();
@@ -356,15 +363,7 @@ void loop() {
     dump(s);
   } else {
     verify();
-    String p;
-    bool sent = false;
-    while(load(p)) {
-      if(!post(p))
-        break;
-      sent = discard();
-    }
-    if (sent)
-      sync();
+    resend();
     if (!post(s))
       dump(s);
   }
