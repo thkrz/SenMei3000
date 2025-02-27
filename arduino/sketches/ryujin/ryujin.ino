@@ -11,7 +11,8 @@
 
 #define CAP 1024
 #define MSG 12
-//#define FET 0
+
+#define FET 0
 #define MX  1
 #define RX  4
 #define TX  3
@@ -64,12 +65,11 @@ void discard() {
 }
 
 void disable() {
-  //digitalWrite(FET, LOW);
+  digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 }
 
 bool dump(String &s) {
-  return true;
   if (LEN < CAP) {
     uint32_t a = flash.getAddress(flash.sizeofStr(s));
     if (a == 0)
@@ -86,7 +86,7 @@ bool dump(String &s) {
 
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
-  //digitalWrite(FET, HIGH);
+  digitalWrite(FET, HIGH);
   delay(500);
 }
 
