@@ -9577,7 +9577,7 @@
 		(uuid "9b0656f8-8a01-4bdb-859f-33fb86fd27c4")
 	)
 	(gr_text "SDI-12"
-		(at 167.8175 37.62 180)
+		(at 167.8175 30 0)
 		(layer "F.SilkS")
 		(uuid "5c38b874-b106-4606-8875-4b0e37446b4d")
 		(effects
