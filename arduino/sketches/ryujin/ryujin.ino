@@ -10,7 +10,8 @@
 #include "global.h"
 
 #define CAP 1024
-#define FET 0
+#define MSG 12
+//#define FET 0
 #define MX  1
 #define RX  4
 #define TX  3
@@ -37,38 +38,7 @@ float battery() {
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
-void cmode() {
-  Serial.begin(19200);
-  while (!Serial);
-  bool format = false;
-
-  for (;;) {
-    if (Serial.available()) {
-      char c = Serial.read();
-      if (format) {
-        Serial.println();
-        if (c == 'y') {
-          Serial.print(F("ERASE..."));
-          erase();
-          Serial.println(F("DONE"));
-        }
-        format = false;
-      } else if (c == 'd') {
-        String s;
-        uint32_t len = LEN;
-        while(load(s)) {
-          Serial.print(s);
-          discard();
-        }
-        LEN = len;
-        Serial.print("#");
-      } else if (c == 'f') {
-        format = true;
-        Serial.print(F("Perform chip erase? [y/N]: "));
-      }
-    }
-    delay(100);
-  }
+void comm() {
 }
 
 void connect() {
@@ -94,12 +64,12 @@ void discard() {
 }
 
 void disable() {
-  socket.end();
   //digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 }
 
-bool dump(String s) {
+bool dump(String &s) {
+  return true;
   if (LEN < CAP) {
     uint32_t a = flash.getAddress(flash.sizeofStr(s));
     if (a == 0)
@@ -117,7 +87,6 @@ bool dump(String s) {
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
   //digitalWrite(FET, HIGH);
-  socket.begin();
   delay(500);
 }
 
@@ -145,7 +114,7 @@ bool handshake(char i) {
   return false;
 }
 
-String ident(char i) {
+String& ident(char i) {
   static char cmd[4] = "aI!";
   static String s;
 
@@ -172,7 +141,7 @@ bool load(String &s) {
   return flash.readStr(a, s);
 }
 
-String measure(char i) {
+String& measure(char i) {
   static char st[4] = "aM!";
   static char rd[5] = "aD0!";
   static String s;
@@ -198,7 +167,7 @@ String measure(char i) {
   return s;
 }
 
-bool post(String s) {
+bool post(String &s) {
   int n = s.length();
   if (n == 0)
     return false;
@@ -213,11 +182,13 @@ bool post(String s) {
     client.println();
     client.print(s);
 
-    String r = "";
-    while (!ok && client.available()) {
-      r += (char)client.read();
-      ok = r == "HTTP/1.1 201";
+    char buf[MSG];
+    for (int i = 0; !ok && i < MSG; i++) {
+      while (!client.available())
+        delay(10);
+      buf[i] = client.read();
     }
+    ok = strncmp("HTTP/1.1 201", buf, MSG) == 0;
   }
   return ok;
 }
@@ -291,16 +262,22 @@ void verify() {
 }
 
 void setup() {
-  pinMode(FET, OUTPUT);
-  digitalWrite(FET, LOW);
+  //pinMode(FET, OUTPUT);
+  //digitalWrite(FET, LOW);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
 
   pullup();
 
+  flash.begin();
+  dir();
+
   if (digitalRead(MOD) == LOW)
-    cmode();
+    comm();
     /* not reached */
+
+  socket.begin();
+  delay(500);
 
   enable();
   scan();
@@ -309,15 +286,12 @@ void setup() {
   if (sid[0] == '\0')
     idle();
 
-  flash.begin();
-  dir();
-  flash.powerDown();
-
   Wire.begin();
   SHTC3.begin();
 
   connect();
-  update();
+  while (!update())
+    delay(1000);
 
   rtc.begin();
   rtc.setEpoch(nbAccess.getTime());
@@ -325,6 +299,8 @@ void setup() {
   rtc.setAlarmSeconds(0);
   schedule();
   rtc.enableAlarm(rtc.MATCH_MMSS);
+
+  flash.powerDown();
   rtc.standbyMode();
 }
 
@@ -341,14 +317,14 @@ void loop() {
   s += LF;
 
   float bat0 = battery();
-  s += "$" + SIGN(bat0) + LF;
+  s += '$' + SIGN(bat0) + LF;
 
   bool pm = bat0 < BAT_LOW;
 
   SHTC3.readSample(true, pm);
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
-  s += "#" + SIGN(st) + SIGN(rh) + LF;
+  s += '%' + SIGN(st) + SIGN(rh) + LF;
 
   enable();
   for (char *p = sid; *p; p++)

@@ -21,7 +21,7 @@ void discard() {
     LEN--;
 }
 
-bool push(String s) {
+bool dump(String s) {
   if (LEN < CAP) {
     uint32_t a = flash.getAddress(flash.sizeofStr(s));
     if (a == 0)
@@ -42,7 +42,7 @@ void sync() {
     flash.writeULong(i*BSZ, addr[i]);
 }
 
-bool pop(String &s) {
+bool load(String &s) {
   if (LEN < 1)
     return false;
   uint32_t a = addr[LEN];
@@ -62,7 +62,12 @@ void setup() {
 
   //sync();
 
-  //Serial.println(test());
+  dir();
+  for (int i = 1; i < CAP; i++) {
+    Serial.println(addr[i]);
+  }
+  Serial.print("LEN: ");
+  Serial.println(LEN);
 }
 
 void loop() {
