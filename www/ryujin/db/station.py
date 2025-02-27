@@ -47,7 +47,7 @@ def _parse(s):
     cfg = {}
     rows = iter(s.splitlines())
     for ln in rows:
-        if ln == "CALIBRATE":
+        if ln == "UPDATE":
             for ln in rows:
                 if not ln:
                     break
@@ -56,8 +56,6 @@ def _parse(s):
         else:
             dt = datetime.fromisoformat(ln)
             x["time"].append(dt.timestamp())  # must be first key in dict
-            x["bat"].append(float(next(rows)))
-            x["sht"].append([float(next(rows)), float(next(rows))])
             for ln in rows:
                 if not ln:
                     break

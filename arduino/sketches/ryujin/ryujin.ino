@@ -183,7 +183,7 @@ bool post(String &s) {
     client.print(s);
 
     char buf[MSG];
-    for (int i = 0; !ok && i < MSG; i++) {
+    for (int i = 0; i < MSG; i++) {
       while (!client.available())
         delay(10);
       buf[i] = client.read();
@@ -262,8 +262,8 @@ void verify() {
 }
 
 void setup() {
-  //pinMode(FET, OUTPUT);
-  //digitalWrite(FET, LOW);
+  pinMode(FET, OUTPUT);
+  digitalWrite(FET, LOW);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
 
@@ -277,7 +277,6 @@ void setup() {
     /* not reached */
 
   socket.begin();
-  delay(500);
 
   enable();
   scan();
