@@ -70,7 +70,10 @@ void rc() {
       break;
     }
 
-  String s = String(addr) + r + "\r\n";
+  String s;
+  s += addr;
+  s += r;
+  s += "\r\n";
   socket.sendResponse(s);
   if (rs)
     b->readSample();
@@ -81,7 +84,6 @@ void setup() {
   for (int i = 0; i < NUM_CON; i++)
     blk[i].addr = peekaddr(i);
   socket.begin();
-  delay(500);
   socket.forceListen();
 }
 

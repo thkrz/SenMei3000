@@ -101,5 +101,5 @@ routes = [
 app = Starlette(routes=routes)
 
 if __name__ == "__main__":
-    # uvicorn.run("ryujin:app", host="0.0.0.0", log_level="info")
-    uvicorn.run("ryujin:app", host="127.0.0.1", log_level="info")
+    # uvicorn.run("hoori:app", host="0.0.0.0", log_level="info")
+    uvicorn.run("hoori:app", host="127.0.0.1", log_level="info")
