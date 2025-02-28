@@ -22,8 +22,7 @@
 #define BLK (sizeof(uint32_t))
 #define LF "\r\n"
 #define LEN (addr[0])
-#define SIGN(x) (((x)>=0?'+':'\0')+String(x))
-#define PRNT2(x) (((x)<10?'0':'\0')+String(x))
+#define SIGN(x) ((x)>=0?'+':'\0')
 
 GPRS gprs;
 NBClient client;
@@ -167,6 +166,13 @@ String& measure(char i) {
   return s;
 }
 
+char *prnt2(uint8_t n) {
+  static char buf[3];
+
+  sprintf(buf, "%02d", n);
+  return buf;
+}
+
 bool post(String &s) {
   int n = s.length();
   if (n == 0)
@@ -277,7 +283,6 @@ void setup() {
     /* not reached */
 
   socket.begin();
-
   enable();
   scan();
   disable();
@@ -304,26 +309,38 @@ void setup() {
 }
 
 void loop() {
-  String s = String(rtc.getYear() + 2000);
-  s += "-";
-  s += PRNT2(rtc.getMonth());
-  s += "-";
-  s += PRNT2(rtc.getDay());
-  s += "T";
-  s += PRNT2(rtc.getHours());
-  s += ":";
-  s += PRNT2(rtc.getMinutes());
+  String s;
+  s.reserve(256);
+
+  s += rtc.getYear() + 2000;
+  s += '-';
+  s += prnt2(rtc.getMonth());
+  s += '-';
+  s += prnt2(rtc.getDay());
+  s += 'T';
+  s += prnt2(rtc.getHours());
+  s += ':';
+  s += prnt2(rtc.getMinutes());
   s += LF;
 
   float bat0 = battery();
-  s += '$' + SIGN(bat0) + LF;
+  s += '%';
+  s += SIGN(bat0);
+  s += bat0;
+  s += LF;
+
 
   bool pm = bat0 < BAT_LOW;
 
   SHTC3.readSample(true, pm);
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
-  s += '%' + SIGN(st) + SIGN(rh) + LF;
+  s += '!';
+  s += SIGN(st);
+  s += st;
+  s += SIGN(rh);
+  s += rh;
+  s += LF;
 
   enable();
   for (char *p = sid; *p; p++)
