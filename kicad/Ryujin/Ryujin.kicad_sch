@@ -4555,6 +4555,10 @@
 		(uuid "65d9664c-3a9a-417f-a89b-9b41d57ec6ec")
 	)
 	(no_connect
+		(at 232.41 45.72)
+		(uuid "8c3f7912-67cb-4421-892b-5e43dc2f8c57")
+	)
+	(no_connect
 		(at 259.08 40.64)
 		(uuid "9485ebe5-db07-426d-ad5d-57408633e8fe")
 	)
@@ -4815,16 +4819,6 @@
 			(type default)
 		)
 		(uuid "50b29103-864c-4467-b535-c6dfe43a17a6")
-	)
-	(wire
-		(pts
-			(xy 228.6 45.72) (xy 232.41 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "51fdfeba-34aa-45b1-aa94-ecf01157d07a")
 	)
 	(wire
 		(pts
@@ -5576,7 +5570,7 @@
 		)
 		(uuid "15d5283d-d980-495f-9044-09b2a9251ec2")
 	)
-	(label "D0"
+	(label "LED"
 		(at 19.05 190.5 0)
 		(effects
 			(font
@@ -5665,16 +5659,6 @@
 			(justify right bottom)
 		)
 		(uuid "5a80fc01-a836-4656-b278-0e417941dc5e")
-	)
-	(label "D0"
-		(at 228.6 45.72 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6571ad24-e711-440b-8bc2-1b9fa2c4ebf7")
 	)
 	(label "TX"
 		(at 228.6 53.34 0)
