@@ -209,8 +209,7 @@ void pullup() {
 }
 
 void resend() {
-  static String s;
-
+  String s;
   while (load(s)) {
     if (!post(s))
       break;
@@ -251,10 +250,8 @@ void sync() {
 
 bool update() {
   String s = "UPDATE\r\n";
-  enable();
   for (char *p = sid; *p; p++)
     s += ident(*p);
-  disable();
   return post(s);
 }
 
@@ -294,8 +291,10 @@ void setup() {
   SHTC3.begin();
 
   connect();
+  enable();
   while (!update())
     delay(1000);
+  disable();
 
   rtc.begin();
   rtc.setEpoch(nbAccess.getTime());
