@@ -12,7 +12,7 @@
 #define CAP 1024
 #define MSG 12
 
-#define FET 0
+#define FET 6 /* LED_BUILTIN */
 #define MX  1
 #define RX  4
 #define TX  3
@@ -39,6 +39,27 @@ float battery() {
 }
 
 void comm() {
+  Serial.begin(19200);
+  while(!Serial);
+
+  for (;;) {
+    if (Serial.available()) {
+      char c = Serial.read();
+      if (c == 'f')
+        erase();
+      else if (c == 'd') {
+        uint32_t len = LEN;
+        String s;
+        while (load(s)) {
+          Serial.print(s);
+          discard();
+        }
+        LEN = len;
+        Serial.print('#');
+      }
+    }
+    delay(10);
+  }
 }
 
 void connect() {
@@ -65,7 +86,6 @@ void discard() {
 
 void disable() {
   digitalWrite(FET, LOW);
-  digitalWrite(LED_BUILTIN, LOW);
 }
 
 bool dump(String &s) {
@@ -84,7 +104,6 @@ bool dump(String &s) {
 }
 
 void enable() {
-  digitalWrite(LED_BUILTIN, HIGH);
   digitalWrite(FET, HIGH);
   delay(500);
 }
@@ -189,9 +208,12 @@ bool post(String &s) {
     client.print(s);
 
     char buf[MSG];
+    unsigned long t = 0;
     for (int i = 0; i < MSG; i++) {
-      while (!client.available())
+      while (!client.available() && t < TIMEOUT) {
         delay(10);
+        t += 10;
+      }
       buf[i] = client.read();
     }
     ok = strncmp("HTTP/1.1 201", buf, MSG) == 0;
@@ -200,11 +222,11 @@ bool post(String &s) {
 }
 
 void pullup() {
-  static int8_t pin[7] = {
-    A0, A2, A3, A4, A5, A6, 5
+  static int8_t pin[8] = {
+    A0, A2, A3, A4, A5, A6, 0, 5
   };
 
-  for (int i = 0; i < 7; i++)
+  for (int i = 0; i < 8; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -267,8 +289,6 @@ void verify() {
 void setup() {
   pinMode(FET, OUTPUT);
   digitalWrite(FET, LOW);
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
 
   pullup();
 
