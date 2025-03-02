@@ -329,7 +329,7 @@ void setup() {
 
 void loop() {
   String s;
-  s.reserve(256);
+  s.reserve(128);
 
   s += rtc.getYear() + 2000;
   s += '-';
