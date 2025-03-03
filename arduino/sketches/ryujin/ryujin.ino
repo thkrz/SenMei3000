@@ -347,15 +347,12 @@ void loop() {
   q += '%';
   q += SIGN(bat0);
   q += bat0;
-  q += LF;
-
 
   bool pm = bat0 < BAT_LOW;
 
   SHTC3.readSample(true, pm);
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
-  q += '!';
   q += SIGN(st);
   q += st;
   q += SIGN(rh);
