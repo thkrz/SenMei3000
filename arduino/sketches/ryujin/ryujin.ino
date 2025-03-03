@@ -32,6 +32,7 @@ SDI12 socket(MX, RX, TX);
 SPIFlash flash(CS);
 uint32_t addr[CAP];
 char sid[63];
+String q;
 
 float battery() {
   int p = analogRead(A1);
@@ -89,7 +90,7 @@ void disable() {
   digitalWrite(FET, LOW);
 }
 
-bool dump(String &s) {
+bool dump(const String &s) {
   if (LEN < CAP) {
     uint32_t a = flash.getAddress(flash.sizeofStr(s));
     if (a == 0)
@@ -153,7 +154,7 @@ void idle() {
   }
 }
 
-bool load(String &s) {
+bool load(const String &s) {
   if (LEN < 1)
     return false;
   uint32_t a = addr[LEN];
@@ -193,7 +194,7 @@ char *prnt2(uint8_t n) {
   return buf;
 }
 
-bool post(String &s) {
+bool post(const String &s) {
   int n = s.length();
   if (n == 0)
     return false;
@@ -296,6 +297,8 @@ void setup() {
   flash.begin();
   dir();
 
+  q.reserve(256);
+
   if (digitalRead(MOD) == LOW)
     comm();
     /* not reached */
@@ -329,25 +332,22 @@ void setup() {
 }
 
 void loop() {
-  String s;
-  s.reserve(128);
-
-  s += rtc.getYear() + 2000;
-  s += '-';
-  s += prnt2(rtc.getMonth());
-  s += '-';
-  s += prnt2(rtc.getDay());
-  s += 'T';
-  s += prnt2(rtc.getHours());
-  s += ':';
-  s += prnt2(rtc.getMinutes());
-  s += LF;
+  q = rtc.getYear() + 2000;
+  q += '-';
+  q += prnt2(rtc.getMonth());
+  q += '-';
+  q += prnt2(rtc.getDay());
+  q += 'T';
+  q += prnt2(rtc.getHours());
+  q += ':';
+  q += prnt2(rtc.getMinutes());
+  q += LF;
 
   float bat0 = battery();
-  s += '%';
-  s += SIGN(bat0);
-  s += bat0;
-  s += LF;
+  q += '%';
+  q += SIGN(bat0);
+  q += bat0;
+  q += LF;
 
 
   bool pm = bat0 < BAT_LOW;
@@ -355,28 +355,28 @@ void loop() {
   SHTC3.readSample(true, pm);
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
-  s += '!';
-  s += SIGN(st);
-  s += st;
-  s += SIGN(rh);
-  s += rh;
-  s += LF;
+  q += '!';
+  q += SIGN(st);
+  q += st;
+  q += SIGN(rh);
+  q += rh;
+  q += LF;
 
   enable();
   for (char *p = sid; *p; p++)
-    s += measure(*p);
+    q += measure(*p);
   disable();
 
   flash.powerUp();
   if (pm) {
     nbAccess.shutdown();
-    dump(s);
+    dump(q);
   } else {
     verify();
     if (LEN > 0)
       resend();
-    if (!post(s))
-      dump(s);
+    if (!post(q))
+      dump(q);
   }
   flash.powerDown();
 
