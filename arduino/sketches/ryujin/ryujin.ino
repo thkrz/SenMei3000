@@ -45,9 +45,10 @@ void comm() {
   for (;;) {
     if (Serial.available()) {
       char c = Serial.read();
-      if (c == 'f')
+      if (c == 'f') {
         erase();
-      else if (c == 'd') {
+        Serial.println("#ERASE");
+      } else if (c == 'd') {
         uint32_t len = LEN;
         String s;
         while (load(s)) {
@@ -55,7 +56,7 @@ void comm() {
           discard();
         }
         LEN = len;
-        Serial.print('#');
+        Serial.println("#DUMP");
       }
     }
     delay(10);
@@ -105,7 +106,7 @@ bool dump(String &s) {
 
 void enable() {
   digitalWrite(FET, HIGH);
-  delay(1000);
+  delay(WAKE_TIME);
 }
 
 void erase() {
