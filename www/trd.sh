@@ -1,2 +1,3 @@
 #!/bin/bash
-curl -X POST -H "Content-Type: text/plain" --data-binary @data.txt "http://127.0.0.1:8000/station/1"
+curl -X POST -H "Content-Type: text/plain" --data-binary @data.txt "http://erdrutsch.com:8000/station/LAB2" \
+  --trace-ascii -

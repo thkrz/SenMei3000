@@ -105,7 +105,7 @@ bool dump(String &s) {
 
 void enable() {
   digitalWrite(FET, HIGH);
-  delay(600);
+  delay(1000);
 }
 
 void erase() {
