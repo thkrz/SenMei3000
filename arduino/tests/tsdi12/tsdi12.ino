@@ -32,17 +32,6 @@ void scan() {
   for (char c = '0'; c <= '9'; c++) {
     if (handshake(c))
       sid[n++] = c;
-    delay(30);
-  }
-  for (char c = 'A'; c <= 'Z'; c++) {
-    if (handshake(c))
-      sid[n++] = c;
-    delay(30);
-  }
-  for (char c = 'a'; c <= 'z'; c++) {
-    if (handshake(c))
-      sid[n++] = c;
-    delay(30);
   }
   sid[n] = '\0';
 }

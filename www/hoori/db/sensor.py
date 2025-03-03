@@ -3,8 +3,8 @@ from pathlib import Path
 
 database = Path("./db/sensor.json")
 builtin = {
-    "bat": {"sensor": "BAT", "label": "Battery"},
-    "sht": {"sensor": "SHTC3", "label": "Station climate"},
+    "%": {"sensor": "BAT", "label": "Battery"},
+    "!": {"sensor": "SHTC3", "label": "Station climate"},
 }
 
 
