@@ -19,8 +19,12 @@ async def download(request):
     sid = request.path_params["sid"]
     k = request.path_params["k"]
     meta, arr = db.station.select(sid, key=k)
+    cfg = meta["config"]
     schema = db.sensor.catalogue()
-    nam = meta["config"][k]["sensor"]
+    if k in cfg.keys():
+        nam = cfg[k]["sensor"]
+    else:
+        nam = "PCB"
     hdr = ",".join(["Time"] + schema[nam])
     name = f"{sid}_{k}.csv"
     path = "data/" + name

@@ -23,6 +23,7 @@
 #define LF "\r\n"
 #define LEN (addr[0])
 #define SIGN(x) ((x)>=0?'+':'\0')
+#define WAKE 100
 
 GPRS gprs;
 NBClient client;
@@ -96,7 +97,7 @@ void disable() {
   digitalWrite(FET, LOW);
 }
 
-bool dump(const String &s) {
+bool dump(String &s) {
   if (LEN < CAP) {
     uint32_t a = flash.getAddress(flash.sizeofStr(s));
     if (a == 0)
@@ -113,7 +114,7 @@ bool dump(const String &s) {
 
 void enable() {
   digitalWrite(FET, HIGH);
-  delay(WAKE_TIME);
+  delay(500);
 }
 
 void erase() {
@@ -129,7 +130,7 @@ bool handshake(char i) {
 
   cmd[0] = i;
   for (int j = 0; j < 3; j++) {
-    socket.sendCommand(cmd);
+    socket.sendCommand(cmd, WAKE);
     delay(30);
     if (socket.available()) {
       socket.clearBuffer();
@@ -145,13 +146,13 @@ String& ident(char i) {
   static String s;
 
   cmd[0] = i;
-  socket.sendCommand(cmd);
+  socket.sendCommand(cmd, WAKE);
   delay(30);
   s = socket.readStringUntil('\n');
   return s;
 }
 
-bool load(const String &s) {
+bool load(String &s) {
   if (LEN < 1)
     return false;
   uint32_t a = addr[LEN];
@@ -164,7 +165,7 @@ String& measure(char i) {
   static String s;
 
   st[0] = i;
-  socket.sendCommand(st);
+  socket.sendCommand(st, WAKE);
   delay(30);
   s = socket.readStringUntil('\n');
   uint8_t wait = s.substring(1, 4).toInt();
@@ -178,7 +179,7 @@ String& measure(char i) {
   }
 
   rd[0] = i;
-  socket.sendCommand(rd);
+  socket.sendCommand(rd, WAKE);
   delay(30);
   s = socket.readStringUntil('\n');
   return s;
@@ -191,7 +192,7 @@ char *prnt2(uint8_t n) {
   return buf;
 }
 
-bool post(const String &s) {
+bool post(String &s) {
   int n = s.length();
   if (n == 0)
     return false;
@@ -306,7 +307,7 @@ void setup() {
   disable();
 
   if (sid[0] == '\0')
-    idle();
+    die();
 
   Wire.begin();
   SHTC3.begin();
@@ -329,7 +330,8 @@ void setup() {
 }
 
 void loop() {
-  q = rtc.getYear() + 2000;
+  q = "";
+  q += rtc.getYear() + 2000;
   q += '-';
   q += prnt2(rtc.getMonth());
   q += '-';
