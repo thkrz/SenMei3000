@@ -11,11 +11,10 @@ class SMT100: public Block {
     using Block::Block;
 
     String& data() override {
-      float a[2] = {
+      return CONCAT({
         u[0] * A,
         (u[1] - B) * A
-      };
-      return CONCAT(a);
+      });
     }
     String& identify() override {
       return "13TRUEBNERSMT100038241127102256";

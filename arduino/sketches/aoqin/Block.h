@@ -5,10 +5,10 @@
 
 class Block {
   private:
-    int8_t dip;
-    int8_t pin[2];
+    int8_t _dip;
+    int8_t _pin[2];
   protected:
-    float u[2];
+    float _u[2];
   public:
     static String& CONCAT(float*, int len = 2);
 

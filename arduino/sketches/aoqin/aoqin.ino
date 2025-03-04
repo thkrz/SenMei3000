@@ -32,9 +32,7 @@ char peekaddr(int a) {
   static const char i = '0';
 
   char c = EEPROM.read(EE_ADDR + a);
-  if (!((c >= '0' && c <= '9') ||
-    (c >= 'a' && c <= 'z') ||
-    (c >= 'A' && c <= 'Z'))) {
+  if (!isAlphaNumeric(c)) {
     c = i + a;
     EEPROM.write(EE_ADDR + a, c);
   }
@@ -49,7 +47,7 @@ void rc() {
   Block *b = &blk[i];
   if (!b->isConnected())
     return;
-  String r = "";
+  String r;
   bool rs = false;
   if (len > 1)
     switch (buf[1]) {
@@ -80,7 +78,6 @@ void rc() {
 }
 
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
   for (int i = 0; i < NUM_CON; i++)
     blk[i].addr = peekaddr(i);
   socket.begin();
@@ -91,7 +88,6 @@ void loop() {
   if (socket.available()) {
     char c = socket.read();
     if (c == '!') {
-      digitalWrite(LED_BUILTIN, HIGH);
       socket.clearBuffer();
       socket.forceHold();
       if (len > 0) {
@@ -99,7 +95,6 @@ void loop() {
         len = 0;
       }
       socket.forceListen();
-      digitalWrite(LED_BUILTIN, LOW);
     } else if (c > 0 && len < CMD_LEN)
       buf[len++] = c;
   }
