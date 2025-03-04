@@ -98,7 +98,7 @@ void disable() {
 }
 
 bool dump(String &s) {
-  if (LEN < CAP) {
+  if (LEN < CAP-1) {
     uint32_t a = flash.getAddress(flash.sizeofStr(s));
     if (a == 0)
       return false;
@@ -114,7 +114,7 @@ bool dump(String &s) {
 
 void enable() {
   digitalWrite(FET, HIGH);
-  delay(500);
+  delay(600);
 }
 
 void erase() {
@@ -169,6 +169,7 @@ String& measure(char i) {
   delay(30);
   s = socket.readStringUntil('\n');
   uint8_t wait = s.substring(1, 4).toInt();
+  //uint8_t num = s.charAt(4) - '0';
 
   for (int j = 0; j < wait; j++) {
     if (socket.available()) {
@@ -184,6 +185,14 @@ String& measure(char i) {
   s = socket.readStringUntil('\n');
   return s;
 }
+
+//int nval(String &s) {
+//  int n = 0;
+//  for (char *p = s.c_str(); *p; p++)
+//    if (*p == '+' || *p == '-')
+//      n++;
+//  return n;
+//}
 
 char *prnt2(uint8_t n) {
   static char buf[3];
@@ -294,8 +303,7 @@ void setup() {
 
   flash.begin();
   dir();
-
-  q.reserve(256);
+  flash.powerDown();
 
   if (digitalRead(MOD) == LOW)
     comm();
@@ -305,27 +313,27 @@ void setup() {
   enable();
   scan();
   disable();
-
   if (sid[0] == '\0')
     die();
+
+  connect();
+
+  enable();
+  update();
+  disable();
 
   Wire.begin();
   SHTC3.begin();
 
-  connect();
-  enable();
-  while (!update())
-    delay(1000);
-  disable();
+  q.reserve(256);
 
   rtc.begin();
   rtc.setEpoch(nbAccess.getTime());
 
   rtc.setAlarmSeconds(0);
-  schedule();
   rtc.enableAlarm(rtc.MATCH_MMSS);
+  schedule();
 
-  flash.powerDown();
   rtc.standbyMode();
 }
 
