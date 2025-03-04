@@ -1,4 +1,4 @@
-24826419835054137
+24828167084823373
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -99809,6 +99809,13 @@ footprints
 ISP452
 PG-SOT223
 Integrated Circuit
+0
+4
+4
+footprints
+L-154A4SUREQBFZGEC
+T-1 3/4 (5mm) FULL COLOR LED LAMP
+Capacitor Polarised
 0
 4
 4

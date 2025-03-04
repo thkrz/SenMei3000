@@ -35,6 +35,7 @@ char sid[63];
 String q;
 
 float battery() {
+  analogRead(A1);
   int p = analogRead(A1);
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
@@ -74,6 +75,11 @@ void connect() {
       delay(1000);
     }
   }
+}
+
+void die() {
+  for(;;)
+    delay(1000);
 }
 
 void dir() {
@@ -143,15 +149,6 @@ String& ident(char i) {
   delay(30);
   s = socket.readStringUntil('\n');
   return s;
-}
-
-void idle() {
-  for(;;) {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(1000);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(1000);
-  }
 }
 
 bool load(const String &s) {
