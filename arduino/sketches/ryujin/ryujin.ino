@@ -22,7 +22,7 @@
 #define BLK (sizeof(uint32_t))
 #define LF "\r\n"
 #define LEN (addr[0])
-#define WAKE 0
+#define WAKE_DELAY 0
 #define SIGN(x) ((x)>=0?'+':'\0')
 
 GPRS gprs;
@@ -41,43 +41,6 @@ float battery() {
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
-void comm() {
-  Serial.begin(19200);
-  while(!Serial);
-  delay(3000);
-
-  Serial.print("M IN BUFFER: ");
-  Serial.println(LEN);
-  int n = 0;
-  for (int i = 1; i < CAP; i++)
-    if (addr[i] > 0)
-      n++;
-    else
-      break;
-  Serial.print("M ON FLASH: ");
-  Serial.println(n);
-
-  for (;;) {
-    if (Serial.available()) {
-      char c = Serial.read();
-      if (c == 'f') {
-        erase();
-        Serial.println("#ERASE");
-      } else if (c == 'd') {
-        uint32_t len = LEN;
-        String s;
-        while (load(s)) {
-          Serial.print(s);
-          discard();
-        }
-        LEN = len;
-        Serial.println("#DUMP");
-      }
-    }
-    delay(10);
-  }
-}
-
 void connect() {
   bool connected = false;
   while (!connected) {
@@ -87,6 +50,47 @@ void connect() {
     } else {
       delay(1000);
     }
+  }
+}
+
+void ctrl() {
+  Serial.begin(19200);
+  while(!Serial);
+
+  for (;;) {
+    if (Serial.available()) {
+      char c = Serial.read();
+      switch (c) {
+      case 'd':
+        uint32_t len = LEN;
+        String s;
+        while (load(s)) {
+          Serial.print(s);
+          discard();
+        }
+        LEN = len;
+        Serial.println("#DUMP");
+        break;
+      case 'f':
+        erase();
+        Serial.println("#ERASE");
+        break;
+      case 'i':
+        Serial.print("M IN BUFFER: ");
+        Serial.println(LEN);
+        int n = 0;
+        for (int i = 1; i < CAP; i++)
+          if (addr[i] > 0)
+            n++;
+          else
+            break;
+        Serial.print("M ON FLASH: ");
+        Serial.println(n);
+        Serial.println("#INFO");
+        break;
+      }
+    }
+    delay(10);
   }
 }
 
@@ -143,7 +147,7 @@ bool handshake(char i) {
 
   cmd[0] = i;
   for (int j = 0; j < 3; j++) {
-    socket.sendCommand(cmd, WAKE);
+    socket.sendCommand(cmd, WAKE_DELAY);
     delay(30);
     if (socket.available()) {
       socket.clearBuffer();
@@ -158,8 +162,7 @@ String& ident(char i) {
   static char cmd[4] = "aI!";
 
   cmd[0] = i;
-  socket.sendCommand(cmd, WAKE);
-  delay(30);
+  socket.sendCommand(cmd, WAKE_DELAY);
   return readline();
 }
 
@@ -175,8 +178,7 @@ String& measure(char i) {
   static char rd[5] = "aD0!";
 
   st[0] = i;
-  socket.sendCommand(st, WAKE);
-  delay(30);
+  socket.sendCommand(st, WAKE_DELAY);
   String s = readline();
   uint8_t wait = s.substring(1, 4).toInt();
   //uint8_t num = s.charAt(4) - '0';
@@ -190,8 +192,7 @@ String& measure(char i) {
   }
 
   rd[0] = i;
-  socket.sendCommand(rd, WAKE);
-  delay(30);
+  socket.sendCommand(rd, WAKE_DELAY);
   return readline();
 }
 
@@ -226,12 +227,10 @@ bool post(String &s) {
     client.print(s);
 
     char buf[MSG];
-    unsigned long t = 0;
+    uint32_t st = millis();
     for (int i = 0; i < MSG; i++) {
-      while (!client.available() && t < TIMEOUT) {
+      while (client.available() < 0 && (millis() - st) < HTTP_TIMEOUT)
         delay(10);
-        t += 10;
-      }
       buf[i] = client.read();
     }
     ok = strncmp("HTTP/1.1 201", buf, MSG) == 0;
@@ -252,11 +251,15 @@ String& readline() {
   static String s;
 
   s = "";
-  while (socket.available() > 0) {
-    char c = socket.read();
-    s += c;
-    if (c == '\n')
-      break;
+  uint32_t st = millis();
+  while ((millis() - st) < SDI_TIMEOUT) {
+    if (socket.available()) {
+      char c = socket.read();
+      s += c;
+      if (c == '\n')
+        break;
+    } else
+      delay(7);
   }
   socket.clearBuffer();
   return s;
@@ -328,7 +331,7 @@ void setup() {
   dir();
 
   if (digitalRead(MOD) == LOW)
-    comm();
+    ctrl();
     /* not reached */
 
   flash.powerDown();
