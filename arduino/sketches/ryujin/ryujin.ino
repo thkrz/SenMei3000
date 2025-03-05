@@ -105,13 +105,13 @@ void dir() {
     addr[i] = flash.readULong(i*BLK);
 }
 
+void disable() {
+  digitalWrite(FET, LOW);
+}
+
 void discard() {
   if (LEN > 0)
     LEN--;
-}
-
-void disable() {
-  digitalWrite(FET, LOW);
 }
 
 bool dump(String &s) {
