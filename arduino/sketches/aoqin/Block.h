@@ -19,9 +19,9 @@ class Block {
     bool isConnected();
     void readSample(int num = 1);
 
-    virtual String data() {};
-    virtual String identify() {};
-    virtual String wait() {};
+    virtual String& data() {};
+    virtual const char *identify() {};
+    virtual const char *wait() {};
 };
 
 #endif /* _BLOCK_H */

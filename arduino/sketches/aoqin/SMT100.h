@@ -11,15 +11,16 @@ class SMT100: public Block {
     using Block::Block;
 
     String& data() override {
-      return CONCAT({
-        u[0] * A,
-        (u[1] - B) * A
-      });
+      float v[2] = {
+        _u[0] * A,
+        (_u[1] - B) * A
+      };
+      return CONCAT(v);
     }
-    String& identify() override {
+    const char *identify() override {
       return "13TRUEBNERSMT100038241127102256";
     }
-    String& wait() override {
+    const char *wait() override {
       return "0022";
     }
 };

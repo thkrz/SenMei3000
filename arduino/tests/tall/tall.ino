@@ -1,10 +1,6 @@
-#include <MKRNB.h>
 #include <RTCZero.h>
 #include <SDI12.h>
-#include <SHTC3.h>
 #include <SPI.h>
-#include <SPIMemory.h>
-#include <Wire.h>
 
 #include "config.h"
 #include "global.h"
@@ -25,12 +21,8 @@
 #define WAKE 0
 #define SIGN(x) ((x)>=0?'+':'\0')
 
-GPRS gprs;
-NBClient client;
-NB nbAccess;
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
-SPIFlash flash(CS);
 uint32_t addr[CAP];
 char sid[63];
 String q;
@@ -41,101 +33,19 @@ float battery() {
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
-void comm() {
-  Serial.begin(19200);
-  while(!Serial);
-  delay(3000);
-
-  Serial.print("M IN BUFFER: ");
-  Serial.println(LEN);
-  int n = 0;
-  for (int i = 1; i < CAP; i++)
-    if (addr[i] > 0)
-      n++;
-    else
-      break;
-  Serial.print("M ON FLASH: ");
-  Serial.println(n);
-
-  for (;;) {
-    if (Serial.available()) {
-      char c = Serial.read();
-      if (c == 'f') {
-        erase();
-        Serial.println("#ERASE");
-      } else if (c == 'd') {
-        uint32_t len = LEN;
-        String s;
-        while (load(s)) {
-          Serial.print(s);
-          discard();
-        }
-        LEN = len;
-        Serial.println("#DUMP");
-      }
-    }
-    delay(10);
-  }
-}
-
-void connect() {
-  bool connected = false;
-  while (!connected) {
-    if ((nbAccess.begin() == NB_READY)
-        && (gprs.attachGPRS() == GPRS_READY)) {
-      connected = true;
-    } else {
-      delay(1000);
-    }
-  }
-}
-
 void die() {
   disable();
   for(;;)
     delay(1000);
 }
 
-void dir() {
-  for (int i = 0; i < CAP; i++)
-    addr[i] = flash.readULong(i*BLK);
-}
-
-void discard() {
-  if (LEN > 0)
-    LEN--;
-}
-
 void disable() {
   digitalWrite(FET, LOW);
-}
-
-bool dump(String &s) {
-  if (LEN < CAP-1) {
-    uint32_t a = flash.getAddress(flash.sizeofStr(s));
-    if (a == 0)
-      return false;
-    addr[LEN+1] = a;
-    if (flash.writeStr(a, s)) {
-      LEN++;
-      sync();
-      return true;
-    }
-  }
-  return false;
 }
 
 void enable() {
   digitalWrite(FET, HIGH);
   delay(650);
-}
-
-void erase() {
-  flash.eraseChip();
-  for (int i = 0; i < CAP; i++) {
-    flash.writeULong(i*BLK, 0);
-    addr[i] = 0;
-  }
 }
 
 bool handshake(char i) {
@@ -161,13 +71,6 @@ String& ident(char i) {
   socket.sendCommand(cmd, WAKE);
   delay(30);
   return readline();
-}
-
-bool load(String &s) {
-  if (LEN < 1)
-    return false;
-  uint32_t a = addr[LEN];
-  return flash.readStr(a, s);
 }
 
 String& measure(char i) {
@@ -214,29 +117,15 @@ bool post(String &s) {
   int n = s.length();
   if (n == 0)
     return false;
-  bool ok = false;
-  if (client.connect(HOST, PORT)) {
-    client.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
-    client.println(F("Host: "HOST));
-    client.println(F("Connection: close"));
-    client.println(F("Content-Type: text/plain"));
-    client.print(F("Content-Length: "));
-    client.println(n);
-    client.println();
-    client.print(s);
-
-    char buf[MSG];
-    unsigned long t = 0;
-    for (int i = 0; i < MSG; i++) {
-      while (!client.available() && t < TIMEOUT) {
-        delay(10);
-        t += 10;
-      }
-      buf[i] = client.read();
-    }
-    ok = strncmp("HTTP/1.1 201", buf, MSG) == 0;
-  }
-  return ok;
+  Serial.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
+  Serial.println(F("Host: "HOST));
+  Serial.println(F("Connection: close"));
+  Serial.println(F("Content-Type: text/plain"));
+  Serial.print(F("Content-Length: "));
+  Serial.println(n);
+  Serial.println();
+  Serial.print(s);
+  return true;
 }
 
 void pullup() {
@@ -257,19 +146,10 @@ String& readline() {
     s += c;
     if (c == '\n')
       break;
+    delay(7);
   }
   socket.clearBuffer();
   return s;
-}
-
-void resend() {
-  String s;
-  while (load(s)) {
-    if (!post(s))
-      break;
-    discard();
-    sync();
-  }
 }
 
 void scan() {
@@ -296,12 +176,6 @@ void schedule() {
   rtc.setAlarmMinutes(m);
 }
 
-void sync() {
-  while (!flash.eraseSector(0));
-  for (int i = 0; i < CAP; i++)
-    flash.writeULong(i*BLK, addr[i]);
-}
-
 bool update() {
   String s = "UPDATE\r\n";
   for (char *p = sid; *p; p++)
@@ -309,54 +183,38 @@ bool update() {
   return post(s);
 }
 
-void verify() {
-  //if (!client.connected())
-  //  client.stop();
-  if (!nbAccess.isAccessAlive()) {
-    nbAccess.shutdown();
-    connect();
-  }
-}
-
 void setup() {
   pinMode(FET, OUTPUT);
   digitalWrite(FET, LOW);
 
-  pullup();
+  Serial.begin(9600);
+  while (!Serial);
+  delay(3000);
 
-  flash.begin();
-  dir();
+  //pullup();
 
-  if (digitalRead(MOD) == LOW)
-    comm();
-    /* not reached */
-
-  flash.powerDown();
-
-  connect();
-
+  Serial.print("SCAN...");
   socket.begin();
   enable();
   scan();
+  Serial.println("DONE");
+  Serial.print("FOUND: ");
+  Serial.println(sid);
   if (sid[0] == '\0')
     die();
 
   update();
   disable();
 
-  Wire.begin();
-  SHTC3.begin();
-
   q.reserve(256);
 
   rtc.begin();
-  rtc.setEpoch(nbAccess.getTime());
 
-  rtc.setAlarmSeconds(0);
-  rtc.enableAlarm(rtc.MATCH_MMSS);
-  schedule();
+  //rtc.setAlarmSeconds(0);
+  //rtc.enableAlarm(rtc.MATCH_MMSS);
+  //schedule();
 
-  rtc.standbyMode();
+  //rtc.standbyMode();
 }
 
 void loop() {
@@ -376,16 +234,6 @@ void loop() {
   q += '%';
   q += SIGN(bat0);
   q += bat0;
-
-  bool pm = bat0 < BAT_LOW;
-
-  SHTC3.readSample(true, pm);
-  float st = SHTC3.getTemperature();
-  float rh = SHTC3.getHumidity();
-  q += SIGN(st);
-  q += st;
-  q += SIGN(rh);
-  q += rh;
   q += LF;
 
   enable();
@@ -393,20 +241,9 @@ void loop() {
     q += measure(*p);
   disable();
 
-  flash.powerUp();
-  if (pm) {
-    nbAccess.shutdown();
-    dump(q);
-  } else {
-    verify();
-    if (LEN > 0)
-      resend();
-    if (!post(q))
-      dump(q);
-  }
-  flash.powerDown();
+  post(q);
 
-  if (!pm)
-    schedule();
-  rtc.standbyMode();
+  //schedule();
+  //rtc.standbyMode();
+  delay(10000);
 }

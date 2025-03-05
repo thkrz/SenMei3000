@@ -1,9 +1,23 @@
 #include <SDI12.h>
 #include <SPI.h>
 
+#define FET 6
+#define WAKE 100
+
 SDI12 socket(1, 4, 3);
 //SDI12 socket(9);
 char sid[63];
+int num = 3;
+
+void enable() {
+  digitalWrite(FET, HIGH);
+  delay(600);
+}
+
+void disable() {
+  digitalWrite(FET, LOW);
+}
+
 
 bool handshake(char i) {
   static char cmd[3] = "0!";
@@ -14,7 +28,7 @@ bool handshake(char i) {
 
   cmd[0] = i;
   for (int j = 0; j < 3; j++) {
-    socket.sendCommand(cmd);
+    socket.sendCommand(cmd, WAKE);
     delay(30);
     if (socket.available()) {
       socket.clearBuffer();
@@ -33,12 +47,14 @@ String& measure(char i) {
   static String s;
 
   st[0] = i;
-  socket.sendCommand(st);
+  socket.sendCommand(st, WAKE);
   delay(30);
   s = socket.readStringUntil('\n');
+  Serial.print("DUR: ");
+  Serial.println(s);
   uint8_t wait = s.substring(1, 4).toInt();
 
-  for (int j = 0; j < wait; j++) {
+  for (int j = 0; j <= wait; j++) {
     if (socket.available()) {
       socket.clearBuffer();
       break;
@@ -47,7 +63,7 @@ String& measure(char i) {
   }
 
   rd[0] = i;
-  socket.sendCommand(rd);
+  socket.sendCommand(rd, WAKE);
   delay(30);
   s = socket.readStringUntil('\n');
   return s;
@@ -55,11 +71,11 @@ String& measure(char i) {
 
 void scan() {
   int n = 0;
-  for (char c = '0'; c <= '9'; c++) {
+  for (char c = '0'; c <= '2'; c++) {
     if (handshake(c))
       sid[n++] = c;
   }
-  for (char c = 'a'; c <= 'z'; c++) {
+  for (char c = 'a'; c <= 'c'; c++) {
     if (handshake(c))
       sid[n++] = c;
   }
@@ -67,28 +83,37 @@ void scan() {
 }
 
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(FET, OUTPUT);
+  digitalWrite(FET, LOW);
   delay(5000);
+
   Serial.begin(9600);
   while (!Serial);
 
   socket.begin();
-  delay(1000);
+  enable();
   scan();
+  disable();
 }
 
 void loop() {
   static char cmd[4] = "?I!";
 
-  for (char *p = sid; *p; p++) {
-    cmd[0] = *p;
-    socket.sendCommand(cmd);
-    delay(30);
-    String s = socket.readStringUntil('\n');
-    Serial.println(s);
-    delay(1000);
-    Serial.println(measure(*p));
-    Serial.println();
+  if (num > 0) {
+    enable();
+    for (char *p = sid; *p; p++) {
+      cmd[0] = *p;
+      socket.sendCommand(cmd, WAKE);
+      delay(30);
+      String s = socket.readStringUntil('\n');
+      Serial.print("IDENT: ");
+      Serial.println(s);
+      delay(1000);
+      Serial.println(measure(*p));
+      Serial.println();
+    }
+    disable();
+    num--;
   }
-  delay(5000);
+  delay(15000);
 }
