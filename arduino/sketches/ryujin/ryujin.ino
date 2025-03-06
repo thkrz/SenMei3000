@@ -54,6 +54,10 @@ void connect() {
 }
 
 void ctrl() {
+  uint32_t len;
+  int n;
+  String s;
+
   Serial.begin(19200);
   while(!Serial);
 
@@ -62,31 +66,30 @@ void ctrl() {
       char c = Serial.read();
       switch (c) {
       case 'd':
-        uint32_t len = LEN;
-        String s;
+        len = LEN;
         while (load(s)) {
           Serial.print(s);
           discard();
         }
         LEN = len;
-        Serial.println("#DUMP");
+        Serial.println(F("#DUMP"));
         break;
       case 'f':
         erase();
-        Serial.println("#ERASE");
+        Serial.println(F("#ERASE"));
         break;
       case 'i':
-        Serial.print("M IN BUFFER: ");
+        Serial.print(F("M IN BUFFER: "));
         Serial.println(LEN);
-        int n = 0;
+        n = 0;
         for (int i = 1; i < CAP; i++)
           if (addr[i] > 0)
             n++;
           else
             break;
-        Serial.print("M ON FLASH: ");
+        Serial.print(F("M ON FLASH: "));
         Serial.println(n);
-        Serial.println("#INFO");
+        Serial.println(F("#INFO"));
         break;
       }
     }
@@ -131,7 +134,7 @@ bool dump(String &s) {
 
 void enable() {
   digitalWrite(FET, HIGH);
-  delay(650);
+  delay(600);
 }
 
 void erase() {
@@ -259,7 +262,7 @@ String& readline() {
       if (c == '\n')
         break;
     } else
-      delay(7);
+      delay(10);
   }
   socket.clearBuffer();
   return s;

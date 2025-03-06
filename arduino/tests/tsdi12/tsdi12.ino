@@ -1,119 +1,86 @@
 #include <SDI12.h>
 #include <SPI.h>
 
-#define FET 6
-#define WAKE 100
+#define FET 6 /* LED_BUILTIN */
+#define MX  1
+#define RX  4
+#define TX  3
 
-SDI12 socket(1, 4, 3);
-//SDI12 socket(9);
-char sid[63];
-int num = 3;
+#define LF "\r\n"
+#define WAKE_DELAY 0
+#define SDI_TIMEOUT 3000
+
+SDI12 socket(MX, RX, TX);
+char cmd[128];
+int len;
+
+void disable() {
+  digitalWrite(FET, LOW);
+}
 
 void enable() {
   digitalWrite(FET, HIGH);
   delay(600);
 }
 
-void disable() {
-  digitalWrite(FET, LOW);
-}
+//int nval(String &s) {
+//  int n = 0;
+//  for (char *p = s.c_str(); *p; p++)
+//    if (*p == '+' || *p == '-')
+//      n++;
+//  return n;
+//}
 
-
-bool handshake(char i) {
-  static char cmd[3] = "0!";
-
-  Serial.print("Handshake [");
-  Serial.print(i);
-  Serial.print("]: ");
-
-  cmd[0] = i;
-  for (int j = 0; j < 3; j++) {
-    socket.sendCommand(cmd, WAKE);
-    delay(30);
-    if (socket.available()) {
-      socket.clearBuffer();
-      Serial.println("ACK");
-      return true;
-    }
-  }
-  socket.clearBuffer();
-  Serial.println("NO");
-  return false;
-}
-
-String& measure(char i) {
-  static char st[4] = "aM!";
-  static char rd[5] = "aD0!";
+String& readline() {
   static String s;
 
-  st[0] = i;
-  socket.sendCommand(st, WAKE);
-  delay(30);
-  s = socket.readStringUntil('\n');
-  Serial.print("DUR: ");
-  Serial.println(s);
-  uint8_t wait = s.substring(1, 4).toInt();
-
-  for (int j = 0; j <= wait; j++) {
+  s = "";
+  uint32_t st = millis();
+  while ((millis() - st) < SDI_TIMEOUT) {
     if (socket.available()) {
-      socket.clearBuffer();
-      break;
-    }
-    delay(1000);
+      char c = socket.read();
+      s += c;
+      if (c == '\n')
+        break;
+    } else
+      delay(10);
   }
-
-  rd[0] = i;
-  socket.sendCommand(rd, WAKE);
-  delay(30);
-  s = socket.readStringUntil('\n');
+  socket.clearBuffer();
   return s;
-}
-
-void scan() {
-  int n = 0;
-  for (char c = '0'; c <= '2'; c++) {
-    if (handshake(c))
-      sid[n++] = c;
-  }
-  for (char c = 'a'; c <= 'c'; c++) {
-    if (handshake(c))
-      sid[n++] = c;
-  }
-  sid[n] = '\0';
 }
 
 void setup() {
   pinMode(FET, OUTPUT);
   digitalWrite(FET, LOW);
-  delay(5000);
 
-  Serial.begin(9600);
+  Serial.begin(19200);
   while (!Serial);
-
+  delay(3000);
   socket.begin();
-  enable();
-  scan();
-  disable();
+  len = 0;
 }
 
 void loop() {
-  static char cmd[4] = "?I!";
-
-  if (num > 0) {
-    enable();
-    for (char *p = sid; *p; p++) {
-      cmd[0] = *p;
-      socket.sendCommand(cmd, WAKE);
-      delay(30);
-      String s = socket.readStringUntil('\n');
-      Serial.print("IDENT: ");
-      Serial.println(s);
-      delay(1000);
-      Serial.println(measure(*p));
+  if (Serial.available()) {
+    char c = Serial.read();
+    switch (c) {
+    case '\r':
       Serial.println();
+      if (len > 1 && cmd[len-1] == '!') {
+        cmd[len] = '\0';
+        enable();
+        socket.sendCommand(cmd, WAKE_DELAY);
+        String s = readline();
+        disable();
+        Serial.print(s);
+      }
+      len = 0;
+      break;
+    default:
+      Serial.print(c);
+      if (len < 127)
+        cmd[len++] = c;
+      break;
     }
-    disable();
-    num--;
   }
-  delay(15000);
 }
