@@ -3408,6 +3408,211 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Transistor_BJT:MMBT3904"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "MMBT3904"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3904-d.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "NPN Transistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MMBT3904_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy 0.635 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MMBT3904_1_1"
+				(polyline
+					(pts
+						(xy 0.635 0.635) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Transistor_FET:IRLML6401"
 			(pin_numbers
 				(hide yes)
@@ -4513,6 +4718,12 @@
 		(uuid "a05a2d95-2096-49d1-96c3-b21dc82e4a13")
 	)
 	(junction
+		(at 57.15 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "09d835ef-f140-4634-86cb-47b1ac11fcd1")
+	)
+	(junction
 		(at 137.16 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4523,6 +4734,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1858e2d0-b2ba-460a-b056-2817c44e0531")
+	)
+	(junction
+		(at 45.72 149.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1d553454-fbd9-4adc-b045-33c507a8922e")
 	)
 	(junction
 		(at 129.54 30.48)
@@ -4579,12 +4796,6 @@
 		(uuid "b3de443c-595b-43a9-aede-b1877370c22c")
 	)
 	(junction
-		(at 57.15 158.75)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b7eedf22-96c7-4c43-9ade-0228a9cbdafd")
-	)
-	(junction
 		(at 204.47 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4601,12 +4812,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cb93e0d7-728f-47e0-987f-b64c93a27fc0")
-	)
-	(junction
-		(at 49.53 149.86)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d818b2c4-534d-4f77-ae56-cfa32d649d41")
 	)
 	(junction
 		(at 214.63 144.78)
@@ -4740,6 +4945,16 @@
 	)
 	(wire
 		(pts
+			(xy 35.56 168.91) (xy 35.56 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18ddfcbd-4649-4d5f-b56b-7e8103a8c3cc")
+	)
+	(wire
+		(pts
 			(xy 195.58 137.16) (xy 200.66 137.16)
 		)
 		(stroke
@@ -4767,6 +4982,16 @@
 			(type default)
 		)
 		(uuid "1da0ece7-f0b8-4fa6-aa58-dd153e9318e2")
+	)
+	(wire
+		(pts
+			(xy 35.56 160.02) (xy 35.56 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f6acb76-4c8d-482a-8ddf-f2b54a5b19e9")
 	)
 	(wire
 		(pts
@@ -4810,7 +5035,27 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 149.86) (xy 49.53 149.86)
+			(xy 22.86 171.45) (xy 35.56 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3340d8ae-7ba0-4bcb-89fd-1b39e68488ed")
+	)
+	(wire
+		(pts
+			(xy 45.72 149.86) (xy 49.53 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39678653-b0b4-4d85-958e-673819764f39")
+	)
+	(wire
+		(pts
+			(xy 35.56 149.86) (xy 45.72 149.86)
 		)
 		(stroke
 			(width 0)
@@ -5020,6 +5265,16 @@
 	)
 	(wire
 		(pts
+			(xy 22.86 154.94) (xy 27.94 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84d01107-2a67-429e-a59c-05da06503a5d")
+	)
+	(wire
+		(pts
 			(xy 95.25 74.93) (xy 137.16 74.93)
 		)
 		(stroke
@@ -5210,7 +5465,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 139.7) (xy 57.15 144.78)
+			(xy 57.15 132.08) (xy 57.15 139.7)
 		)
 		(stroke
 			(width 0)
@@ -5267,6 +5522,16 @@
 			(type default)
 		)
 		(uuid "b802a51b-8a55-4081-959c-530d30be7ba1")
+	)
+	(wire
+		(pts
+			(xy 45.72 147.32) (xy 45.72 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b880e225-d1bf-4d4b-be9a-4bbaab0ec474")
 	)
 	(wire
 		(pts
@@ -5350,13 +5615,13 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 158.75) (xy 60.96 158.75)
+			(xy 45.72 139.7) (xy 57.15 139.7)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "cbbfea91-4fe1-4c0a-930d-c536c46d4cd9")
+		(uuid "cc200fad-31a6-47ce-b15b-a090e6b4f1f7")
 	)
 	(wire
 		(pts
@@ -5397,6 +5662,16 @@
 			(type default)
 		)
 		(uuid "d6a5f19a-609c-4e33-a888-d63a322258a6")
+	)
+	(wire
+		(pts
+			(xy 57.15 139.7) (xy 57.15 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d76be40d-6c7c-435c-8233-8ee4e71071e5")
 	)
 	(wire
 		(pts
@@ -5487,16 +5762,6 @@
 			(type default)
 		)
 		(uuid "e64ae906-e355-40e9-a5b7-c1b178398381")
-	)
-	(wire
-		(pts
-			(xy 49.53 149.86) (xy 49.53 158.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e9440770-9288-4610-b415-a6bfbaad5b41")
 	)
 	(wire
 		(pts
@@ -5618,6 +5883,16 @@
 		)
 		(uuid "ffd59344-8aae-4f72-9047-3de6a11ca010")
 	)
+	(label "LED"
+		(at 22.86 171.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "09e6db2c-a06d-4e57-a02a-6873b35fd6a5")
+	)
 	(label "SCK"
 		(at 262.89 50.8 180)
 		(effects
@@ -5647,6 +5922,16 @@
 			(justify left bottom)
 		)
 		(uuid "15d5283d-d980-495f-9044-09b2a9251ec2")
+	)
+	(label "+SDI"
+		(at 57.15 158.75 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1665ede0-f677-4e8e-8aa4-7d0d6ad8ff77")
 	)
 	(label "COPI"
 		(at 242.57 87.63 0)
@@ -5738,16 +6023,6 @@
 		)
 		(uuid "67c087fe-ded8-4703-8a96-548d17ff5e9e")
 	)
-	(label "+SDI"
-		(at 57.15 139.7 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "732c8089-c97d-4a0f-8dee-18480b1c6b53")
-	)
 	(label "COPI"
 		(at 262.89 53.34 180)
 		(effects
@@ -5828,16 +6103,6 @@
 		)
 		(uuid "b6c9e40d-f978-4bd9-9a13-88ab69a62b63")
 	)
-	(label "LED"
-		(at 44.45 149.86 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d0c15ae3-288e-4d79-8abc-275ef5fcf598")
-	)
 	(label "TX"
 		(at 105.41 88.9 0)
 		(effects
@@ -5910,7 +6175,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 60.96 158.75 0)
+		(at 57.15 132.08 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5919,7 +6184,7 @@
 		(fields_autoplaced yes)
 		(uuid "02a1224e-7324-4fad-959d-a035fc5dfffc")
 		(property "Reference" "#PWR030"
-			(at 60.96 162.56 0)
+			(at 57.15 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5928,7 +6193,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 60.96 153.67 0)
+			(at 57.15 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5936,7 +6201,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 158.75 0)
+			(at 57.15 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5945,7 +6210,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 158.75 0)
+			(at 57.15 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5954,7 +6219,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 60.96 158.75 0)
+			(at 57.15 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6189,6 +6454,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 22.86 154.94 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "15c82250-2c41-4e3a-a311-6753a315cb60")
+		(property "Reference" "#PWR023"
+			(at 22.86 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 22.86 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 22.86 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 22.86 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 22.86 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c1c3df0c-0fc2-4320-85f8-c7a88bfa4d9b")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR023")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 195.58 154.94 0)
 		(unit 1)
@@ -6256,7 +6587,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 53.34 158.75 90)
+		(at 45.72 143.51 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6264,15 +6595,15 @@
 		(dnp no)
 		(uuid "1b494253-af82-4844-b14e-3f042f06e2ad")
 		(property "Reference" "R1"
-			(at 53.34 156.21 90)
+			(at 43.18 143.51 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "33k"
-			(at 53.34 158.75 90)
+		(property "Value" "10k"
+			(at 45.72 143.51 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6280,7 +6611,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 53.34 160.528 90)
+			(at 47.498 143.51 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6289,7 +6620,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 53.34 158.75 0)
+			(at 45.72 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6298,7 +6629,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 53.34 158.75 0)
+			(at 45.72 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6306,8 +6637,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "33k 0603"
-			(at 53.34 158.75 0)
+		(property "MPN" "10k 0603"
+			(at 45.72 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6846,6 +7177,82 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_BJT:MMBT3904")
+		(at 33.02 154.94 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3b63c750-7acc-47c7-8836-c6e2baadd8cb")
+		(property "Reference" "Q2"
+			(at 38.1 153.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MMBT3904"
+			(at 38.1 156.2099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 38.1 156.845 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3904-d.pdf"
+			(at 33.02 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"
+			(at 33.02 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e4aa4aa7-d84b-4b10-908a-ea6931f3a086")
+		)
+		(pin "1"
+			(uuid "5d2c351a-57f1-4f2c-9519-c2098e850b9d")
+		)
+		(pin "3"
+			(uuid "2518a463-8d3a-45c2-b01c-b62ebd0e1369")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "Q2")
 					(unit 1)
 				)
 			)
@@ -8855,6 +9262,82 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 35.56 165.1 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d2721002-06d3-46ce-81ea-958fe6ac02f2")
+		(property "Reference" "R2"
+			(at 33.02 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 35.56 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 37.338 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 35.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 35.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1k 0603"
+			(at 35.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "7cc4db1d-4909-43f4-a0e8-5f13c09e6c7a")
+		)
+		(pin "1"
+			(uuid "38d3bfad-ceaa-4f93-be12-7c924296a8ad")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R2")
 					(unit 1)
 				)
 			)
