@@ -25,6 +25,31 @@
 #define WAKE_DELAY 0
 #define SIGN(x) ((x)>=0?'+':'\0')
 
+float battery();
+void connect();
+void ctrl();
+void die();
+void dir();
+void disable();
+void discard();
+bool dump(String&);
+void enable();
+void erase();
+bool handshake(char);
+String& ident(char);
+bool load(String&);
+String& measure(char);
+char *prnt2(uint8_t);
+bool post(String&);
+void pullup();
+String& readline(uint32_t timeout = SDI_TIMEOUT);
+void resend();
+void scan();
+void schedule();
+void sync();
+bool update();
+void verify();
+
 GPRS gprs;
 NBClient client;
 NB nbAccess;
@@ -98,7 +123,6 @@ void ctrl() {
 }
 
 void die() {
-  disable();
   for(;;)
     delay(1000);
 }
@@ -151,11 +175,9 @@ bool handshake(char i) {
   cmd[0] = i;
   for (int j = 0; j < 3; j++) {
     socket.sendCommand(cmd, WAKE_DELAY);
-    delay(30);
-    if (socket.available()) {
-      socket.clearBuffer();
+    String s = readline(150);
+    if (s.charAt(0) == i)
       return true;
-    }
   }
   socket.clearBuffer();
   return false;
@@ -186,7 +208,7 @@ String& measure(char i) {
   uint8_t wait = s.substring(1, 4).toInt();
   //uint8_t num = s.charAt(4) - '0';
 
-  for (int j = 0; j <= wait; j++) {
+  for (int j = 0; j < wait; j++) {
     if (socket.available()) {
       socket.clearBuffer();
       break;
@@ -250,19 +272,19 @@ void pullup() {
     pinMode(pin[i], INPUT_PULLUP);
 }
 
-String& readline() {
+String& readline(uint32_t timeout) {
   static String s;
 
   s = "";
   uint32_t st = millis();
-  while ((millis() - st) < SDI_TIMEOUT) {
+  while ((millis() - st) < timeout) {
     if (socket.available()) {
       char c = socket.read();
       s += c;
       if (c == '\n')
         break;
     } else
-      delay(10);
+      delay(7);
   }
   socket.clearBuffer();
   return s;
@@ -310,8 +332,10 @@ void sync() {
 
 bool update() {
   String s = "UPDATE\r\n";
+  enable();
   for (char *p = sid; *p; p++)
     s += ident(*p);
+  disable();
   return post(s);
 }
 
@@ -339,16 +363,15 @@ void setup() {
 
   flash.powerDown();
 
-  connect();
-
   socket.begin();
   enable();
   scan();
+  disable();
   if (sid[0] == '\0')
     die();
 
+  connect();
   update();
-  disable();
 
   Wire.begin();
   SHTC3.begin();

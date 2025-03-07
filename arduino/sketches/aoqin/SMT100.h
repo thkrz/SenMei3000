@@ -18,7 +18,7 @@ class SMT100: public Block {
       return CONCAT(v);
     }
     const char *identify() override {
-      return "13TRUEBNERSMT100038241127102256";
+      return "13TRUEBNERSMT100038241127";
     }
     const char *wait() override {
       return "0022";
