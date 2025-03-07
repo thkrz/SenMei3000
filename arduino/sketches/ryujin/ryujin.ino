@@ -12,7 +12,7 @@
 #define CAP 1024
 #define MSG 12
 
-#define FET 6 /* LED_BUILTIN */
+#define FET 0 /* LED_BUILTIN */
 #define MX  1
 #define RX  4
 #define TX  3
@@ -301,6 +301,8 @@ void resend() {
 }
 
 void scan() {
+  strcpy(sid, "01c");
+  return;
   int n = 0;
   for (char c = '0'; c <= '9'; c++) {
     if (handshake(c))
