@@ -44,13 +44,12 @@ bool handshake(char i) {
   cmd[0] = i;
   for (int j = 0; j < 3; j++) {
     socket.sendCommand(cmd, WAKE_DELAY);
-    String s = readline(250);
+    String s = readline(50);
     if (s.charAt(0) == i) {
       Serial.println("ACK");
       return true;
     }
   }
-  socket.clearBuffer();
   Serial.println("NA");
   return false;
 }

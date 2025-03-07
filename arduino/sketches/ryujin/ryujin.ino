@@ -12,14 +12,14 @@
 #define CAP 1024
 #define MSG 12
 
-#define FET 0 /* LED_BUILTIN */
+#define FET 6 /* LED_BUILTIN */
 #define MX  1
 #define RX  4
 #define TX  3
 #define MOD 5
 #define CS  7
 
-#define BLK (sizeof(uint32_t))
+#define BSZ (sizeof(uint32_t))
 #define LF "\r\n"
 #define LEN (addr[0])
 #define WAKE_DELAY 0
@@ -129,7 +129,7 @@ void die() {
 
 void dir() {
   for (int i = 0; i < CAP; i++)
-    addr[i] = flash.readULong(i*BLK);
+    addr[i] = flash.readULong(i*BSZ);
 }
 
 void disable() {
@@ -164,7 +164,7 @@ void enable() {
 void erase() {
   flash.eraseChip();
   for (int i = 0; i < CAP; i++) {
-    flash.writeULong(i*BLK, 0);
+    flash.writeULong(i*BSZ, 0);
     addr[i] = 0;
   }
 }
@@ -175,11 +175,10 @@ bool handshake(char i) {
   cmd[0] = i;
   for (int j = 0; j < 3; j++) {
     socket.sendCommand(cmd, WAKE_DELAY);
-    String s = readline(150);
+    String s = readline(50);
     if (s.charAt(0) == i)
       return true;
   }
-  socket.clearBuffer();
   return false;
 }
 
@@ -264,11 +263,11 @@ bool post(String &s) {
 }
 
 void pullup() {
-  static int8_t pin[8] = {
-    A0, A2, A3, A4, A5, A6, 0, 5
+  int8_t pin[9] = {
+    A0, A2, A3, A4, A5, A6, 0, 2, 5
   };
 
-  for (int i = 0; i < 8; i++)
+  for (int i = 0; i < 9; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -301,8 +300,6 @@ void resend() {
 }
 
 void scan() {
-  strcpy(sid, "01c");
-  return;
   int n = 0;
   for (char c = '0'; c <= '9'; c++) {
     if (handshake(c))
@@ -329,7 +326,7 @@ void schedule() {
 void sync() {
   while (!flash.eraseSector(0));
   for (int i = 0; i < CAP; i++)
-    flash.writeULong(i*BLK, addr[i]);
+    flash.writeULong(i*BSZ, addr[i]);
 }
 
 bool update() {
