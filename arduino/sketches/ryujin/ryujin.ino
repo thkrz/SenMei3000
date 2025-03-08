@@ -193,8 +193,7 @@ String& ident(char i) {
 bool load(String &s) {
   if (LEN < 1)
     return false;
-  uint32_t a = addr[LEN];
-  return flash.readStr(a, s);
+  return flash.readStr(addr[LEN], s);
 }
 
 String& measure(char i) {
