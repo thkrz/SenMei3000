@@ -21,11 +21,11 @@ SDI12 socket(BUS_PIN);
 char buf[CMD_LEN];
 int len = 0;
 
-int index(char a) {
+Block& index(char a) {
   for (int i = 0; i < NUM_CON; i++)
     if (blk[i].addr == a)
-      return i;
-  return -1;
+      return &blk[i];
+  return nullptr;
 }
 
 char peekaddr(int a) {
@@ -41,11 +41,8 @@ char peekaddr(int a) {
 
 void rc() {
   char addr = buf[0];
-  int i = index(addr);
-  if (i < 0)
-    return;
-  Block *b = &blk[i];
-  if (!b->isConnected())
+  Block *b = index(addr);
+  if (b == nullptr || !b->isConnected())
     return;
   String r;
   bool rs = false;
