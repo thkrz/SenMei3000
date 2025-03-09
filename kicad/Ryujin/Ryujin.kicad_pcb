@@ -2833,15 +2833,15 @@
 			(uuid "d81cdc7b-c739-4061-bff6-4ad81751e4bc")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_SPOX_5267-04A_1x04_P2.50mm_Vertical.wrl"
+		(model "${KIPRJMOD}/3dmodels/22-03-5045.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 3.7 0.6 3)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 -0 180)
 			)
 		)
 	)
