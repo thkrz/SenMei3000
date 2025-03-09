@@ -29,11 +29,9 @@ Block& index(char a) {
 }
 
 char peekaddr(int a) {
-  static const char i = '0';
-
   char c = EEPROM.read(EE_ADDR + a);
   if (!isAlphaNumeric(c)) {
-    c = i + a;
+    c = '0' + a;
     EEPROM.write(EE_ADDR + a, c);
   }
   return c;
@@ -86,12 +84,12 @@ void loop() {
     char c = socket.read();
     if (c == '!') {
       socket.clearBuffer();
-      socket.forceHold();
       if (len > 0) {
+        socket.forceHold();
         rc();
         len = 0;
+        socket.forceListen();
       }
-      socket.forceListen();
     } else if (c > 0 && len < CMD_LEN)
       buf[len++] = c;
   }
