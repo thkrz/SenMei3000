@@ -25,30 +25,30 @@
 #define WAKE_DELAY 0
 #define SIGN(x) ((x)>=0?'+':'\0')
 
-float battery();
-void connect();
-void ctrl();
-void die();
-void dir();
-void disable();
-void discard();
-bool dump(String&);
-void enable();
-void erase();
-bool handshake(char);
-String& ident(char);
-bool load(String&);
-String& measure(char);
-char *prnt2(uint8_t);
-bool post(String&);
-void pullup();
-String& readline(uint32_t timeout = SDI_TIMEOUT);
-void resend();
-void scan();
-void schedule();
-void sync();
-bool update();
-void verify();
+static float battery();
+static void connect();
+static void ctrl();
+static void die();
+static void dir();
+static void disable();
+static void discard();
+static bool dump(String&);
+static void enable();
+static void erase();
+static bool handshake(char);
+static String& ident(char);
+static bool load(String&);
+static String& measure(char);
+static char *prnt2(uint8_t);
+static bool post(String&);
+static void pullup();
+static String& readline(uint32_t timeout = SDI_TIMEOUT);
+static void resend();
+static void scan();
+static void schedule();
+static void sync();
+static bool update();
+static void verify();
 
 GPRS gprs;
 NBClient client;
@@ -56,9 +56,9 @@ NB nbAccess;
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
 SPIFlash flash(CS);
-uint32_t addr[CAP];
 char sid[63];
 String q;
+uint32_t addr[CAP];
 
 float battery() {
   analogRead(A1);
