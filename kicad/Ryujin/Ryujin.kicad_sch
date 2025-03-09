@@ -6922,7 +6922,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "../../docs/987651-8703.pdf"
 			(at 31.75 33.02 0)
 			(effects
 				(font
