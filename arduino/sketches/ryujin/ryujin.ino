@@ -12,7 +12,7 @@
 #define CAP 1024
 #define MSG 12
 
-#define FET 6 /* LED_BUILTIN */
+#define FET 0 /* LED_BUILTIN */
 #define MX  1
 #define RX  4
 #define TX  3
@@ -350,13 +350,13 @@ void setup() {
   pinMode(FET, OUTPUT);
   digitalWrite(FET, LOW);
 
-  pullup();
+  //pullup();
 
   flash.begin();
   dir();
 
-  if (digitalRead(MOD) == LOW)
-    ctrl();
+  //if (digitalRead(MOD) == LOW)
+  //  ctrl();
     /* not reached */
 
   flash.powerDown();

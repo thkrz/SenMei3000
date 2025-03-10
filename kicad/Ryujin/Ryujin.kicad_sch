@@ -3110,7 +3110,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Regulator_Switching:R-78E5.0-0.5"
+		(symbol "Regulator_Switching:R-78E5.0-1.0"
 			(pin_names
 				(offset 0.254)
 			)
@@ -3125,7 +3125,7 @@
 					)
 				)
 			)
-			(property "Value" "R-78E5.0-0.5"
+			(property "Value" "R-78E5.0-1.0"
 				(at 0 3.175 0)
 				(effects
 					(font
@@ -3145,7 +3145,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://www.recom-power.com/pdf/Innoline/R-78Exx-0.5.pdf"
+			(property "Datasheet" "https://www.recom-power.com/pdf/Innoline/R-78Exx-1.0.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3154,7 +3154,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "500mA Step-Down DC/DC-Regulator, 7-28V input, 5V fixed Output Voltage, LM78xx replacement, -40°C to +85°C, SIP3"
+			(property "Description" "1A Step-Down DC/DC-Regulator, 7-28V input, 5V fixed Output Voltage, LM78xx replacement, -40°C to +85°C, SIP3"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3181,7 +3181,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "R-78E5.0-0.5_0_1"
+			(symbol "R-78E5.0-1.0_0_1"
 				(rectangle
 					(start -5.08 1.905)
 					(end 5.08 -5.08)
@@ -3194,7 +3194,7 @@
 					)
 				)
 			)
-			(symbol "R-78E5.0-0.5_1_1"
+			(symbol "R-78E5.0-1.0_1_1"
 				(pin power_in line
 					(at -7.62 0 0)
 					(length 2.54)
@@ -4328,6 +4328,12 @@
 		(uuid "51414378-ddcc-4644-a90b-c24f291e505c")
 	)
 	(junction
+		(at 191.77 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5e5cb4f2-d576-443e-9794-1c779f893f86")
+	)
+	(junction
 		(at 173.99 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4340,10 +4346,10 @@
 		(uuid "755d141a-361e-41e5-9313-354ec758541d")
 	)
 	(junction
-		(at 191.77 38.1)
+		(at 204.47 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8013cc14-b64d-47a8-9de5-1c709938e94f")
+		(uuid "76b1f37b-4462-4ab2-b077-4c6efc986117")
 	)
 	(junction
 		(at 95.25 104.14)
@@ -4368,12 +4374,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b3de443c-595b-43a9-aede-b1877370c22c")
-	)
-	(junction
-		(at 204.47 30.48)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c2798640-8499-487a-99ef-e2a7602ce2c9")
 	)
 	(junction
 		(at 200.66 137.16)
@@ -4418,6 +4418,10 @@
 		(uuid "fffd3481-b048-4642-a209-b9d9fccb6345")
 	)
 	(no_connect
+		(at 232.41 50.8)
+		(uuid "02b21540-f159-463a-abca-0570e21c4c3b")
+	)
+	(no_connect
 		(at 232.41 33.02)
 		(uuid "2794dbda-883e-4804-a6c6-cebadad3d80e")
 	)
@@ -4434,10 +4438,6 @@
 		(uuid "65d9664c-3a9a-417f-a89b-9b41d57ec6ec")
 	)
 	(no_connect
-		(at 232.41 50.8)
-		(uuid "86571ba7-3186-437c-aa6f-c0dbe190089e")
-	)
-	(no_connect
 		(at 259.08 40.64)
 		(uuid "9485ebe5-db07-426d-ad5d-57408633e8fe")
 	)
@@ -4450,16 +4450,16 @@
 		(uuid "94d9fc06-f635-4700-8bf4-319c75f8036b")
 	)
 	(no_connect
-		(at 232.41 58.42)
-		(uuid "b033caa9-cd47-4af3-995a-7abbd6802ea0")
-	)
-	(no_connect
 		(at 259.08 38.1)
 		(uuid "b12b0669-17d9-4fd6-800a-12614df5d501")
 	)
 	(no_connect
 		(at 232.41 35.56)
 		(uuid "c74670cd-4f83-4699-b2ca-9cd0d3496a89")
+	)
+	(no_connect
+		(at 259.08 58.42)
+		(uuid "d714bb0c-b115-4629-b568-8e0dd7b8569f")
 	)
 	(no_connect
 		(at 259.08 35.56)
@@ -4478,16 +4478,6 @@
 			(type default)
 		)
 		(uuid "03976f1d-c7fa-45d8-aceb-ad1e358856d7")
-	)
-	(wire
-		(pts
-			(xy 199.39 30.48) (xy 204.47 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "05c5d728-e23f-42e5-aac8-b3bab580017c")
 	)
 	(wire
 		(pts
@@ -4521,7 +4511,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 30.48) (xy 219.71 30.48)
+			(xy 199.39 30.48) (xy 204.47 30.48)
 		)
 		(stroke
 			(width 0)
@@ -4638,16 +4628,6 @@
 			(type default)
 		)
 		(uuid "41b1cf89-84a6-4f25-8b06-cafa9ce88c32")
-	)
-	(wire
-		(pts
-			(xy 173.99 38.1) (xy 191.77 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4258b394-7629-4ce7-bab7-5bca1ec89f9d")
 	)
 	(wire
 		(pts
@@ -4971,6 +4951,16 @@
 	)
 	(wire
 		(pts
+			(xy 204.47 30.48) (xy 219.71 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aaac890d-ad43-4e06-a50e-4f1e586b7d67")
+	)
+	(wire
+		(pts
 			(xy 36.83 35.56) (xy 53.34 35.56)
 		)
 		(stroke
@@ -5141,6 +5131,16 @@
 	)
 	(wire
 		(pts
+			(xy 228.6 58.42) (xy 232.41 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2879b2f-756f-46ff-bdbd-834ccc6358f2")
+	)
+	(wire
+		(pts
 			(xy 86.36 74.93) (xy 95.25 74.93)
 		)
 		(stroke
@@ -5201,7 +5201,7 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 38.1) (xy 204.47 38.1)
+			(xy 173.99 38.1) (xy 191.77 38.1)
 		)
 		(stroke
 			(width 0)
@@ -5298,6 +5298,16 @@
 			(type default)
 		)
 		(uuid "e2a359c6-3cd8-4cb4-9aaf-33e95418f109")
+	)
+	(wire
+		(pts
+			(xy 191.77 38.1) (xy 204.47 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e30ae4cc-ed66-4222-bd71-08a70a2b34a1")
 	)
 	(wire
 		(pts
@@ -5401,16 +5411,6 @@
 	)
 	(wire
 		(pts
-			(xy 262.89 58.42) (xy 259.08 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f85a2f73-4c6a-4152-a59f-10c2bfa8ec10")
-	)
-	(wire
-		(pts
 			(xy 200.66 137.16) (xy 214.63 137.16)
 		)
 		(stroke
@@ -5469,7 +5469,7 @@
 		)
 		(uuid "1f5f3cec-a73e-490e-9a24-11a4ff32aaa6")
 	)
-	(label "D0"
+	(label "D5"
 		(at 26.67 67.31 180)
 		(effects
 			(font
@@ -5498,16 +5498,6 @@
 			(justify left bottom)
 		)
 		(uuid "3b99e200-d5c6-40ec-9c77-aa00c9a60b00")
-	)
-	(label "LED"
-		(at 262.89 58.42 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "3e0e01a6-84c0-4809-92fe-d80f87acb16f")
 	)
 	(label "+SDI"
 		(at 49.53 33.02 180)
@@ -5639,6 +5629,16 @@
 		)
 		(uuid "da143398-9080-4e5d-93e7-39615d819717")
 	)
+	(label "D5"
+		(at 228.6 58.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "debe6c40-9e0b-4239-8a6f-d6a5bd7d630a")
+	)
 	(label "RX"
 		(at 105.41 116.84 0)
 		(effects
@@ -5679,7 +5679,7 @@
 		)
 		(uuid "f6441807-7991-43bd-a8cf-c570b3e02112")
 	)
-	(label "LED"
+	(label "D0"
 		(at 36.83 176.53 0)
 		(effects
 			(font
@@ -7619,88 +7619,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Regulator_Switching:R-78E5.0-0.5")
-		(at 191.77 30.48 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9ca66ae8-1fa7-42ac-9a46-b252fada6685")
-		(property "Reference" "U6"
-			(at 191.77 24.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "R-78E5.0-0.5"
-			(at 191.77 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Converter_DCDC:Converter_DCDC_RECOM_R-78E-0.5_THT"
-			(at 193.04 36.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "../../docs/R-78E-0.5.pdf"
-			(at 191.77 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "500mA Step-Down DC/DC-Regulator, 7-28V input, 5V fixed Output Voltage, LM78xx replacement, -40°C to +85°C, SIP3"
-			(at 191.77 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "R-78E5.0-0.5"
-			(at 191.77 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e79d4acd-1bed-420e-b39a-b68bfae38f6b")
-		)
-		(pin "3"
-			(uuid "deebd072-fca4-42df-b925-69c01fb0243f")
-		)
-		(pin "2"
-			(uuid "392ccc84-864a-4041-8191-c5d910f552f5")
-		)
-		(instances
-			(project ""
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "U6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 200.66 143.51 180)
 		(unit 1)
@@ -7773,6 +7691,79 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Regulator_Switching:R-78E5.0-1.0")
+		(at 191.77 30.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9de18948-12ae-4e2b-ad01-7ac335c4bc55")
+		(property "Reference" "U7"
+			(at 191.77 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R-78E5.0-1.0"
+			(at 191.77 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Converter_DCDC:Converter_DCDC_RECOM_R-78E-0.5_THT"
+			(at 193.04 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.recom-power.com/pdf/Innoline/R-78Exx-1.0.pdf"
+			(at 191.77 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1A Step-Down DC/DC-Regulator, 7-28V input, 5V fixed Output Voltage, LM78xx replacement, -40°C to +85°C, SIP3"
+			(at 191.77 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6a8c3689-1f74-4bd8-874e-9c81b011fb3a")
+		)
+		(pin "2"
+			(uuid "797ef9e0-7e64-438a-b684-ba6bc8ffcd55")
+		)
+		(pin "3"
+			(uuid "fcbf61a6-314a-4902-89b3-3b3cd8af4601")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "U7")
 					(unit 1)
 				)
 			)
@@ -8162,7 +8153,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100uF"
+		(property "Value" "10uF"
 			(at 177.8 35.5599 0)
 			(effects
 				(font
@@ -8171,7 +8162,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 174.9552 38.1 0)
 			(effects
 				(font
@@ -8198,7 +8189,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "C1210C107M4PACTU"
+		(property "MPN" "10uF 16V 1206"
 			(at 173.99 34.29 0)
 			(effects
 				(font
@@ -8487,85 +8478,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 204.47 34.29 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c6609c7a-6084-4c43-b74d-8bfd5fc6eb97")
-		(property "Reference" "C2"
-			(at 208.28 33.0199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100uF"
-			(at 208.28 35.5599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric"
-			(at 205.4352 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 204.47 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 204.47 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "C1210C107M9PACTU"
-			(at 204.47 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "72d03c69-967b-449e-8026-cfe3d6b3d190")
-		)
-		(pin "2"
-			(uuid "14d4a175-f0cd-44ed-9c98-5cf806531422")
-		)
-		(instances
-			(project "hoori"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "C2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 109.22 30.48 90)
 		(unit 1)
@@ -8636,6 +8548,85 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 204.47 34.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c9cb1686-5c62-485e-8136-43456fd4c79b")
+		(property "Reference" "C2"
+			(at 208.28 33.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uF"
+			(at 208.28 35.5599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 205.4352 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 204.47 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 204.47 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10uF 6.3V 0805"
+			(at 204.47 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a6ea876f-abed-4b79-b863-df86958999c2")
+		)
+		(pin "2"
+			(uuid "805a3dd2-fafe-4359-bda2-951c58e7adec")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "C2")
 					(unit 1)
 				)
 			)

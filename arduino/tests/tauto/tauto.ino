@@ -1,6 +1,7 @@
 #include <SDI12.h>
 #include <SPI.h>
 
+#define FET 0 /* LED_BUILTIN */
 #define MX  1
 #define RX  4
 #define TX  3
@@ -14,33 +15,28 @@ void enable();
 String& readline(uint32_t timeout = SDI_TIMEOUT);
 
 SDI12 socket(MX, RX, TX);
-char cmd[128];
-int len = 0;
 char sid[63];
 
-//int nval(String &s) {
-//  int n = 0;
-//  for (char *p = s.c_str(); *p; p++)
-//    if (*p == '+' || *p == '-')
-//      n++;
-//  return n;
-//}
+void disable() {
+  digitalWrite(FET, LOW);
+}
+
+void enable() {
+  digitalWrite(FET, HIGH);
+  delay(600);
+}
+
 bool handshake(char i) {
   static char cmd[3] = "a!";
 
-  Serial.print("HANDSHAKE [");
-  Serial.print(i);
-  Serial.print("]: ");
   cmd[0] = i;
   for (int j = 0; j < 3; j++) {
     socket.sendCommand(cmd, WAKE_DELAY);
     String s = readline(50);
     if (s.charAt(0) == i) {
-      Serial.println("ACK");
       return true;
     }
   }
-  Serial.println("NA");
   return false;
 }
 
@@ -51,7 +47,6 @@ String& measure(char i) {
   st[0] = i;
   socket.sendCommand(st, WAKE_DELAY);
   String s = readline();
-  Serial.print(s);
   uint8_t wait = s.substring(1, 4).toInt();
   //uint8_t num = s.charAt(4) - '0';
 
@@ -88,11 +83,11 @@ String& readline(uint32_t timeout) {
 
 void scan() {
   int n = 0;
-  for (char c = '0'; c <= '3'; c++) {
+  for (char c = '0'; c <= '1'; c++) {
     if (handshake(c))
       sid[n++] = c;
   }
-  for (char c = 'a'; c <= 'd'; c++) {
+  for (char c = 'c'; c <= 'd'; c++) {
     if (handshake(c))
       sid[n++] = c;
   }
@@ -100,44 +95,26 @@ void scan() {
 }
 
 void setup() {
-  Serial.begin(19200);
-  while (!Serial);
+  pinMode(FET, OUTPUT);
+  disable();
 
   socket.begin();
   delay(500);
+  scan();
 }
 
 void loop() {
   String s;
+  static char cmd[4] = "aI!";
 
-  if (Serial.available()) {
-    char c = Serial.read();
-    switch (c) {
-    case '\r':
-      Serial.println();
-      if (len > 1 && cmd[len-1] == '!') {
-        cmd[len] = '\0';
-        if (cmd[1] == 'M')
-          s = measure(cmd[0]);
-        else if (strncmp(cmd, "scan", 4) == 0)
-          scan();
-        else {
-          socket.sendCommand(cmd, WAKE_DELAY);
-          s = readline();
-          if (s == "")
-            Serial.println(F("ERROR"));
-          else
-            Serial.print(s);
-        }
-      } else
-          Serial.println(F("UNKNOWN COMMAND"));
-      len = 0;
-      break;
-    default:
-      Serial.write(c);
-      if (len < 127)
-        cmd[len++] = c;
-      break;
-    }
+  enable();
+  for (char *p = sid; *p; p++) {
+    cmd[0] = *p;
+    socket.sendCommand(cmd);
+    s = readline();
+    delay(1000);
   }
+  disable();
+
+  delay(10000);
 }

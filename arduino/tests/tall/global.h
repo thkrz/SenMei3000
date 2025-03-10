@@ -9,6 +9,6 @@
 
 #define SDI_TIMEOUT 3000
 
-#define BAT_LOW 12.2
+#define BAT_LOW 10.5
 
 #endif // _GLOBAL_H
