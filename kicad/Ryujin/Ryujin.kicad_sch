@@ -2676,214 +2676,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Infineon:ISP452"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "IC"
-				(at 21.59 7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Value" "ISP452"
-				(at 21.59 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Footprint" "footprints:ISP452"
-				(at 21.59 -94.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-13/DSA-257800.pdf"
-				(at 21.59 -194.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Description" "Smart High-Side Power Switch 40V SOT223 Infineon ISP452 Intelligent Power Switch, High Side, 0.7A, -5 ??? 40V, 4-Pin, SOT-223"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Height" "1.7"
-				(at 21.59 -394.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Name" "Infineon"
-				(at 21.59 -494.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Part_Number" "ISP452"
-				(at 21.59 -594.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Mouser Part Number" "726-ISP452"
-				(at 21.59 -694.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Infineon-Technologies/ISP452?qs=xJhywenBp6b2hqtaJGCxEg%3D%3D"
-				(at 21.59 -794.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Arrow Part Number" ""
-				(at 21.59 -894.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Arrow Price/Stock" ""
-				(at 21.59 -994.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(symbol "ISP452_1_1"
-				(rectangle
-					(start 5.08 2.54)
-					(end 20.32 -7.62)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin output line
-					(at 0 0 0)
-					(length 5.08)
-					(name "OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -2.54 0)
-					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 0 -5.08 0)
-					(length 5.08)
-					(name "IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 0 180)
-					(length 5.08)
-					(name "VBB"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Memory_Flash:W25Q32JVSS"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3616,6 +3408,804 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Transistor_BJT:MMBT3904"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "MMBT3904"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3904-d.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "NPN Transistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MMBT3904_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy 0.635 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MMBT3904_1_1"
+				(polyline
+					(pts
+						(xy 0.635 0.635) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Transistor_FET:IRLML5203"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "IRLML5203"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d"
+				(at 5.08 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "P-Channel HEXFET MOSFET"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "IRLML5203_0_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 -0.508) (xy 2.921 -0.381) (xy 3.683 -0.381) (xy 3.81 -0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "IRLML5203_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Transistor_FET:IRLML6244"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "IRLML6244"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.infineon.com/dgdl/Infineon-IRLML6244-DataSheet-v01_01-EN.pdf?fileId=5546d462533600a4015356686fed261f"
+				(at 5.08 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "6.3A Id, 20V Vds, 21mOhm Rds, N-Channel StrongIRFET Power MOSFET, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "N-Channel StrongIRFET MOSFET Load switch"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "IRLML6244_0_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "IRLML6244_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:+12V"
 			(power)
 			(pin_numbers
@@ -4298,22 +4888,34 @@
 		(uuid "a05a2d95-2096-49d1-96c3-b21dc82e4a13")
 	)
 	(junction
-		(at 44.45 176.53)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0339cb5d-7d83-4917-94da-327965961cc5")
-	)
-	(junction
 		(at 137.16 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0dc8ea1e-bce7-43a9-8e41-72701c0eabc0")
 	)
 	(junction
+		(at 35.56 171.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1826d7c3-2a85-4492-afd2-b88203cc69de")
+	)
+	(junction
 		(at 242.57 95.25)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1858e2d0-b2ba-460a-b056-2817c44e0531")
+	)
+	(junction
+		(at 96.52 176.53)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3d5915fb-c2c8-40cc-9171-dc3fc9cfc127")
+	)
+	(junction
+		(at 121.92 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3db9c9b9-f992-462c-bc3f-3410ca69ea24")
 	)
 	(junction
 		(at 129.54 30.48)
@@ -4358,6 +4960,12 @@
 		(uuid "86510ad4-c8c4-43ed-9c56-dc60d905bebc")
 	)
 	(junction
+		(at 107.95 161.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "937a98a8-0ec1-4477-b0c6-7ca0933ac5e2")
+	)
+	(junction
 		(at 116.84 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4388,10 +4996,22 @@
 		(uuid "cb93e0d7-728f-47e0-987f-b64c93a27fc0")
 	)
 	(junction
-		(at 44.45 163.83)
+		(at 121.92 171.45)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "d6187d66-d8d6-4c68-a537-24817d3072cf")
+		(uuid "d0e1d7cb-a000-4a56-84b9-71d58efd26c9")
+	)
+	(junction
+		(at 53.34 171.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d23f2a16-e789-4e02-a427-2a712cbd058a")
+	)
+	(junction
+		(at 107.95 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dab5a9e0-b668-480d-a6c9-659c12880335")
 	)
 	(junction
 		(at 214.63 144.78)
@@ -4481,6 +5101,16 @@
 	)
 	(wire
 		(pts
+			(xy 121.92 185.42) (xy 121.92 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0517987d-3d97-4b90-9640-e9cf662c738e")
+	)
+	(wire
+		(pts
 			(xy 137.16 104.14) (xy 149.86 104.14)
 		)
 		(stroke
@@ -4488,6 +5118,16 @@
 			(type default)
 		)
 		(uuid "05c9727f-2d95-454a-9295-a5e024aafd9e")
+	)
+	(wire
+		(pts
+			(xy 107.95 171.45) (xy 107.95 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "080e1ce4-3d9c-47cf-b785-6c3360d0afdd")
 	)
 	(wire
 		(pts
@@ -4511,6 +5151,36 @@
 	)
 	(wire
 		(pts
+			(xy 121.92 148.59) (xy 121.92 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b11c686-ff74-4b05-8129-187e0b0930e8")
+	)
+	(wire
+		(pts
+			(xy 121.92 171.45) (xy 132.08 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c278f11-151e-4288-be17-4f797d2314be")
+	)
+	(wire
+		(pts
+			(xy 35.56 184.15) (xy 35.56 189.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d1e7abe-4bc2-4fe2-ae5f-c5a320cdeffa")
+	)
+	(wire
+		(pts
 			(xy 199.39 30.48) (xy 204.47 30.48)
 		)
 		(stroke
@@ -4528,6 +5198,26 @@
 			(type default)
 		)
 		(uuid "16edeba7-74d4-47b2-8229-34e85f49daa0")
+	)
+	(wire
+		(pts
+			(xy 121.92 166.37) (xy 121.92 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "179ab046-e896-49b0-9339-f34b3b727ae5")
+	)
+	(wire
+		(pts
+			(xy 26.67 189.23) (xy 21.59 189.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "188e6773-b8a7-4823-b508-f58ea3b3cfac")
 	)
 	(wire
 		(pts
@@ -4601,6 +5291,26 @@
 	)
 	(wire
 		(pts
+			(xy 107.95 152.4) (xy 121.92 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34aeed69-e0d1-4784-a816-d49cb77339ea")
+	)
+	(wire
+		(pts
+			(xy 35.56 171.45) (xy 40.64 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34e48071-8fa3-4c68-8b7a-e71df137b7cc")
+	)
+	(wire
+		(pts
 			(xy 262.89 50.8) (xy 259.08 50.8)
 		)
 		(stroke
@@ -4621,13 +5331,13 @@
 	)
 	(wire
 		(pts
-			(xy 38.1 161.29) (xy 48.26 161.29)
+			(xy 35.56 165.1) (xy 35.56 171.45)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "41b1cf89-84a6-4f25-8b06-cafa9ce88c32")
+		(uuid "42f856aa-91ec-4e6d-a0d1-259a6113c67f")
 	)
 	(wire
 		(pts
@@ -4661,6 +5371,16 @@
 	)
 	(wire
 		(pts
+			(xy 96.52 176.53) (xy 100.33 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51619ac8-246c-4910-8c1d-0df2df9246d6")
+	)
+	(wire
+		(pts
 			(xy 137.16 127) (xy 137.16 130.81)
 		)
 		(stroke
@@ -4671,6 +5391,16 @@
 	)
 	(wire
 		(pts
+			(xy 53.34 171.45) (xy 53.34 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54aed833-c93c-4cc2-b184-9a2d24a8bdf1")
+	)
+	(wire
+		(pts
 			(xy 113.03 30.48) (xy 116.84 30.48)
 		)
 		(stroke
@@ -4678,6 +5408,16 @@
 			(type default)
 		)
 		(uuid "56a7a0b1-712d-498f-9c9f-af318fc3062a")
+	)
+	(wire
+		(pts
+			(xy 21.59 179.07) (xy 27.94 179.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57ca5559-b62c-4d40-a657-e7806dfa4567")
 	)
 	(wire
 		(pts
@@ -4701,6 +5441,16 @@
 	)
 	(wire
 		(pts
+			(xy 107.95 187.96) (xy 96.52 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c9ca546-f4b3-4f85-bae3-cacba7f04aaf")
+	)
+	(wire
+		(pts
 			(xy 242.57 90.17) (xy 246.38 90.17)
 		)
 		(stroke
@@ -4711,13 +5461,13 @@
 	)
 	(wire
 		(pts
-			(xy 38.1 163.83) (xy 44.45 163.83)
+			(xy 107.95 153.67) (xy 107.95 152.4)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5db19523-2469-4fc0-8f61-698ff98c3af4")
+		(uuid "6372aa72-6d7f-4de5-b00b-4f242dd58318")
 	)
 	(wire
 		(pts
@@ -4728,16 +5478,6 @@
 			(type default)
 		)
 		(uuid "64cc5b57-1c24-4a29-9bd9-0a26d2e3bcab")
-	)
-	(wire
-		(pts
-			(xy 44.45 173.99) (xy 44.45 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "66cc5617-87c5-4b6f-8965-318cc1ddca4f")
 	)
 	(wire
 		(pts
@@ -4781,6 +5521,16 @@
 	)
 	(wire
 		(pts
+			(xy 121.92 171.45) (xy 121.92 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6fd0c5d2-997d-40ee-9252-a1978c15c92a")
+	)
+	(wire
+		(pts
 			(xy 200.66 147.32) (xy 200.66 149.86)
 		)
 		(stroke
@@ -4788,6 +5538,16 @@
 			(type default)
 		)
 		(uuid "7720f336-4ee7-4ddc-8d11-39583e608d2b")
+	)
+	(wire
+		(pts
+			(xy 86.36 176.53) (xy 96.52 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "788230d5-78e4-47c2-9d50-ffbeffa438cd")
 	)
 	(wire
 		(pts
@@ -4841,6 +5601,26 @@
 	)
 	(wire
 		(pts
+			(xy 96.52 187.96) (xy 96.52 186.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "883b6cb4-9e6c-42b7-9d73-f4f59a444d5c")
+	)
+	(wire
+		(pts
+			(xy 35.56 171.45) (xy 35.56 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8a97cb04-94d5-4df2-9ebf-67ecfc19b27d")
+	)
+	(wire
+		(pts
 			(xy 43.18 24.13) (xy 43.18 30.48)
 		)
 		(stroke
@@ -4871,6 +5651,16 @@
 	)
 	(wire
 		(pts
+			(xy 35.56 189.23) (xy 34.29 189.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "95022916-6eba-42fc-ad94-d249f332dd98")
+	)
+	(wire
+		(pts
 			(xy 237.49 95.25) (xy 237.49 73.66)
 		)
 		(stroke
@@ -4881,13 +5671,13 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 163.83) (xy 48.26 163.83)
+			(xy 45.72 165.1) (xy 35.56 165.1)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a2809a05-9272-44dc-9a2b-f551da77757d")
+		(uuid "a2e9fcb5-1a63-4d2b-8cd0-45abc5922945")
 	)
 	(wire
 		(pts
@@ -4921,6 +5711,16 @@
 	)
 	(wire
 		(pts
+			(xy 48.26 171.45) (xy 53.34 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5bc0fee-ae2f-4e06-bd3c-f76e9d9eee53")
+	)
+	(wire
+		(pts
 			(xy 26.67 64.77) (xy 26.67 67.31)
 		)
 		(stroke
@@ -4938,16 +5738,6 @@
 			(type default)
 		)
 		(uuid "a91f7111-24f5-4389-bba0-1b3734254f5b")
-	)
-	(wire
-		(pts
-			(xy 44.45 163.83) (xy 44.45 166.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aa4f6bd0-af0f-4ce7-abf2-4f1363e0d298")
 	)
 	(wire
 		(pts
@@ -4981,6 +5771,16 @@
 	)
 	(wire
 		(pts
+			(xy 121.92 152.4) (xy 121.92 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b05df7d4-885a-45b0-8ac8-6cc581dc4bb7")
+	)
+	(wire
+		(pts
 			(xy 237.49 95.25) (xy 242.57 95.25)
 		)
 		(stroke
@@ -5001,16 +5801,6 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 161.29) (xy 80.01 161.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b372918b-04ac-4a6f-8564-5365f3ef9f09")
-	)
-	(wire
-		(pts
 			(xy 214.63 137.16) (xy 232.41 137.16)
 		)
 		(stroke
@@ -5021,6 +5811,16 @@
 	)
 	(wire
 		(pts
+			(xy 53.34 170.18) (xy 53.34 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b47e1f3c-6a82-43b1-913c-09888d1b3303")
+	)
+	(wire
+		(pts
 			(xy 242.57 87.63) (xy 246.38 87.63)
 		)
 		(stroke
@@ -5028,16 +5828,6 @@
 			(type default)
 		)
 		(uuid "b64b532e-f254-4d0c-8d93-573ee7740830")
-	)
-	(wire
-		(pts
-			(xy 44.45 176.53) (xy 48.26 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b67ff268-b1d6-417c-84ce-04efaa1f80d1")
 	)
 	(wire
 		(pts
@@ -5101,16 +5891,6 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 176.53) (xy 44.45 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bc6157c1-d416-4e66-8878-72cb0f4c09a3")
-	)
-	(wire
-		(pts
 			(xy 162.56 38.1) (xy 173.99 38.1)
 		)
 		(stroke
@@ -5158,6 +5938,16 @@
 			(type default)
 		)
 		(uuid "c753ffe5-6c77-4a40-b0aa-c987a7099f42")
+	)
+	(wire
+		(pts
+			(xy 107.95 181.61) (xy 107.95 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7c784d5-6d37-42e9-80ff-c21a708406ca")
 	)
 	(wire
 		(pts
@@ -5251,16 +6041,6 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 176.53) (xy 48.26 166.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ddd8f3ea-c757-49f2-a5b8-6712b7f90713")
-	)
-	(wire
-		(pts
 			(xy 154.94 88.9) (xy 177.8 88.9)
 		)
 		(stroke
@@ -5321,6 +6101,16 @@
 	)
 	(wire
 		(pts
+			(xy 96.52 176.53) (xy 96.52 179.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5d66a77-0abe-404f-a5ce-1d8628dfff56")
+	)
+	(wire
+		(pts
 			(xy 177.8 101.6) (xy 186.69 101.6)
 		)
 		(stroke
@@ -5328,6 +6118,16 @@
 			(type default)
 		)
 		(uuid "e64ae906-e355-40e9-a5b7-c1b178398381")
+	)
+	(wire
+		(pts
+			(xy 121.92 187.96) (xy 107.95 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e902ff39-c5f6-4380-8f8f-61775da2d7e6")
 	)
 	(wire
 		(pts
@@ -5358,6 +6158,16 @@
 			(type default)
 		)
 		(uuid "ec370678-175a-4e0b-ae46-2e1cbd6d6ed6")
+	)
+	(wire
+		(pts
+			(xy 107.95 161.29) (xy 114.3 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eca5213e-f070-4e06-86ca-0df4af972e01")
 	)
 	(wire
 		(pts
@@ -5408,6 +6218,16 @@
 			(type default)
 		)
 		(uuid "f5e689d7-135a-46e6-9054-94a83010d1cc")
+	)
+	(wire
+		(pts
+			(xy 53.34 151.13) (xy 53.34 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6769b9c-c6c1-4f51-a74e-ac2da3ae8fb3")
 	)
 	(wire
 		(pts
@@ -5469,6 +6289,16 @@
 		)
 		(uuid "1f5f3cec-a73e-490e-9a24-11a4ff32aaa6")
 	)
+	(label "D0"
+		(at 21.59 189.23 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "25e8f406-2334-43a2-8842-6e282e254fc8")
+	)
 	(label "D5"
 		(at 26.67 67.31 180)
 		(effects
@@ -5529,6 +6359,26 @@
 		)
 		(uuid "5a80fc01-a836-4656-b278-0e417941dc5e")
 	)
+	(label "+SDI"
+		(at 132.08 171.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5f331bf2-3d78-40c8-aa01-845bf1df8ff0")
+	)
+	(label "+SDI"
+		(at 53.34 151.13 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "60064b9a-9d7f-4645-8dba-5ebe23692d41")
+	)
 	(label "TX"
 		(at 228.6 53.34 0)
 		(effects
@@ -5539,15 +6389,15 @@
 		)
 		(uuid "67c087fe-ded8-4703-8a96-548d17ff5e9e")
 	)
-	(label "+SDI"
-		(at 38.1 161.29 0)
+	(label "D0"
+		(at 86.36 176.53 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "6b674d58-3e5d-4024-a39f-a4258b1d7535")
+		(uuid "6d75959f-797a-426f-8c94-bd19593af51d")
 	)
 	(label "COPI"
 		(at 262.89 53.34 180)
@@ -5678,16 +6528,6 @@
 			(justify right bottom)
 		)
 		(uuid "f6441807-7991-43bd-a8cf-c570b3e02112")
-	)
-	(label "D0"
-		(at 36.83 176.53 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "feec87ad-14a5-4564-b3dc-d3036158d021")
 	)
 	(symbol
 		(lib_id "power:+12V")
@@ -5838,6 +6678,82 @@
 		)
 	)
 	(symbol
+		(lib_id "Transistor_FET:IRLML6244")
+		(at 105.41 176.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0ee83839-5cca-40f2-adaf-f25f39ad4e2f")
+		(property "Reference" "Q4"
+			(at 111.76 175.2599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRLML6244"
+			(at 111.76 177.7999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 110.49 178.435 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/Infineon-IRLML6244-DataSheet-v01_01-EN.pdf?fileId=5546d462533600a4015356686fed261f"
+			(at 110.49 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "6.3A Id, 20V Vds, 21mOhm Rds, N-Channel StrongIRFET Power MOSFET, SOT-23"
+			(at 105.41 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "3d9f0326-6fd4-45ac-b6e8-38160c608900")
+		)
+		(pin "3"
+			(uuid "194b6a2c-065e-4600-893d-69d9a179f875")
+		)
+		(pin "1"
+			(uuid "60e3c4d8-38cf-4e83-8956-f65e40e0b764")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "Q4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 86.36 74.93 0)
 		(unit 1)
@@ -5904,72 +6820,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 38.1 163.83 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1346fd9d-0e7b-4ea5-9b30-2ae885df0110")
-		(property "Reference" "#PWR012"
-			(at 38.1 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 38.1 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 38.1 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 38.1 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 38.1 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d70b5671-cf31-409a-9a20-7168b6743454")
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR012")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+5V")
 		(at 266.7 25.4 0)
 		(unit 1)
@@ -6030,6 +6880,73 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 53.34 177.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "16f36a99-343e-42cb-a6cd-9a064f0f898f")
+		(property "Reference" "#PWR023"
+			(at 49.53 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 57.15 177.7999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 53.34 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 53.34 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 53.34 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6d48a8d5-5bed-4449-992a-0af22818759c")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -6317,17 +7234,34 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+12V")
-		(at 80.01 161.29 0)
+		(lib_id "Device:R")
+		(at 107.95 157.48 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2b44ce45-e1fd-45f5-b9b4-666f04e705c1")
-		(property "Reference" "#PWR023"
-			(at 80.01 165.1 0)
+		(uuid "258bce3b-79aa-479c-ab57-a2b795ba5350")
+		(property "Reference" "R10"
+			(at 105.41 155.702 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at 107.95 155.702 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 106.172 157.48 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6335,16 +7269,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+12V"
-			(at 80.01 156.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 80.01 161.29 0)
+		(property "Datasheet" "~"
+			(at 107.95 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6352,8 +7278,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 80.01 161.29 0)
+		(property "Description" "Resistor"
+			(at 107.95 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6361,22 +7287,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 80.01 161.29 0)
+		(property "MPN" "10k 0603"
+			(at 107.95 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
+		)
+		(pin "2"
+			(uuid "02df5f46-e092-4788-9828-bd96df00c919")
 		)
 		(pin "1"
-			(uuid "75c7d6a3-bc7e-4192-9e65-39abba165115")
+			(uuid "b2757f49-5a7e-462e-a174-fed60c8a43f9")
 		)
 		(instances
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR023")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -6683,6 +7612,228 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 30.48 189.23 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "360ec1e7-886e-4adb-8b6e-dd3c29e9e5a5")
+		(property "Reference" "R9"
+			(at 32.258 186.69 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1k"
+			(at 32.258 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 30.48 187.452 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 30.48 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 30.48 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1k 0603"
+			(at 30.48 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "315b1623-fde7-4082-ba7a-ae7478cde3d6")
+		)
+		(pin "1"
+			(uuid "762529df-32f2-4c39-ad02-80587dd0adf4")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 121.92 148.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3a2cb70e-5684-449e-862c-1e99881aa40d")
+		(property "Reference" "#PWR028"
+			(at 121.92 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 121.92 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 121.92 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 121.92 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f577f600-ac6e-4fda-80c9-aaec16b79cc1")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR028")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 121.92 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "407a4e3e-9a2a-4ba4-9064-4d6a44f9f07b")
+		(property "Reference" "R12"
+			(at 124.46 183.388 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at 121.92 183.388 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 123.698 181.61 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 121.92 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 121.92 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10k 0603"
+			(at 121.92 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f2b04aaf-2c38-442b-a551-6973da996686")
+		)
+		(pin "1"
+			(uuid "b67cccad-2eba-476b-af67-de071a7b207c")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -7037,6 +8188,91 @@
 		)
 	)
 	(symbol
+		(lib_id "Transistor_FET:IRLML5203")
+		(at 119.38 161.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "50dedd5a-56e7-4d30-b0b2-62ce1fdd7b1a")
+		(property "Reference" "Q3"
+			(at 125.73 160.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRLML5203"
+			(at 125.73 162.5599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 124.46 163.195 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d"
+			(at 124.46 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
+			(at 119.38 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRLML5203TRPBF"
+			(at 119.38 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e700f179-cf32-4808-886b-e41e66a9ad41")
+		)
+		(pin "3"
+			(uuid "e006dabd-5810-481f-9b91-0695eff2ce4e")
+		)
+		(pin "2"
+			(uuid "42d2250e-8dbe-4a32-9896-4feb68003bdf")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "Q3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 97.79 38.1 0)
 		(unit 1)
@@ -7247,6 +8483,84 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 44.45 171.45 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "784eb970-2d66-44fc-bc69-9f82fb7ec277")
+		(property "Reference" "R8"
+			(at 46.228 168.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at 46.228 171.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 44.45 169.672 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 44.45 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 44.45 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10k 0603"
+			(at 44.45 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0c730b3b-27a5-4eff-a794-8ccc9a145f20")
+		)
+		(pin "1"
+			(uuid "2d6cbe57-dba4-41b2-b610-4fb539be348a")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "74xGxx:74LVC1G17")
 		(at 132.08 116.84 180)
 		(unit 1)
@@ -7327,6 +8641,91 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_BJT:MMBT3904")
+		(at 33.02 179.07 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "80f1388a-2145-433c-9119-b233d81ee91d")
+		(property "Reference" "Q2"
+			(at 38.1 177.7999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MMBT3904"
+			(at 38.1 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 38.1 180.975 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3904-d.pdf"
+			(at 33.02 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"
+			(at 33.02 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" " MMBT3904LT1HTSA1"
+			(at 33.02 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d72bdcc1-24aa-46d2-95e3-bcbae604f3af")
+		)
+		(pin "3"
+			(uuid "f11e5383-ae69-4a48-8a2e-a0d1cec54b42")
+		)
+		(pin "2"
+			(uuid "7b57decf-950a-4dda-b235-d99f23d3fdb7")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "Q2")
 					(unit 1)
 				)
 			)
@@ -7487,6 +8886,91 @@
 		)
 	)
 	(symbol
+		(lib_id "Transistor_FET:IRLML5203")
+		(at 50.8 165.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8fd11fce-0aad-4179-af3a-2ebd5fe979f0")
+		(property "Reference" "Q1"
+			(at 57.15 163.8299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRLML5203"
+			(at 57.15 166.3699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 55.88 167.005 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d"
+			(at 55.88 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
+			(at 50.8 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRLML5203TRPBF"
+			(at 50.8 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "05023d16-5d13-49df-8979-eb303d51589d")
+		)
+		(pin "3"
+			(uuid "0c8d518a-0064-4622-913c-ffb0dd86ef06")
+		)
+		(pin "2"
+			(uuid "62b66966-591c-42dd-99ae-caa9d6af716a")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "Q1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+12V")
 		(at 43.18 97.79 0)
 		(unit 1)
@@ -7613,6 +9097,84 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 96.52 182.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "99e1f84a-55e3-4dad-85cb-517e8f07dd93")
+		(property "Reference" "R11"
+			(at 93.98 181.102 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at 96.52 181.102 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 94.742 182.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 96.52 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 96.52 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10k 0603"
+			(at 96.52 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "bb89177b-1364-4783-a661-fb5f4077956e")
+		)
+		(pin "1"
+			(uuid "cd80d39a-0057-4076-9dda-401f694530b8")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -8214,152 +9776,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Infineon:ISP452")
-		(at 48.26 161.29 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c4a63216-ff1c-4492-a59e-bb2782dc897c")
-		(property "Reference" "IC1"
-			(at 60.96 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ISP452"
-			(at 60.96 156.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "footprints:ISP452"
-			(at 69.85 256.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "../../docs/DSA-257800.pdf"
-			(at 69.85 356.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "Smart High-Side Power Switch 40V SOT223 Infineon ISP452 Intelligent Power Switch, High Side, 0.7A, -5 ??? 40V, 4-Pin, SOT-223"
-			(at 48.26 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" "1.7"
-			(at 69.85 556.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "Infineon"
-			(at 69.85 656.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "ISP452"
-			(at 69.85 756.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "726-ISP452"
-			(at 69.85 856.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Infineon-Technologies/ISP452?qs=xJhywenBp6b2hqtaJGCxEg%3D%3D"
-			(at 69.85 956.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Part Number" ""
-			(at 69.85 1056.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Price/Stock" ""
-			(at 69.85 1156.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "f0aa2161-1a51-4ded-9844-3d60536f7b41")
-		)
-		(pin "4"
-			(uuid "23cb2653-2fc0-47c0-be21-81cac89e4cb2")
-		)
-		(pin "1"
-			(uuid "3f956a1e-d33f-4f71-8c06-9b88d4b91225")
-		)
-		(pin "2"
-			(uuid "bdd29904-c899-470e-b281-460b09016329")
-		)
-		(instances
-			(project ""
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "IC1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_name "Conn_01x14_Socket_1")
 		(lib_id "Connector:Conn_01x14_Socket")
 		(at 237.49 40.64 0)
@@ -8627,6 +10043,72 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 21.59 179.07 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cef79b4c-6298-45d7-82bf-0af0d54d68c9")
+		(property "Reference" "#PWR027"
+			(at 21.59 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 21.59 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 21.59 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 21.59 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 21.59 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e528e565-f38b-4ddf-b34b-739c4cb145f4")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR027")
 					(unit 1)
 				)
 			)
@@ -9174,34 +10656,17 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 44.45 170.18 180)
+		(lib_id "power:GND")
+		(at 107.95 187.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f371fbcf-4c1d-44be-a1bc-4f54e47f1961")
-		(property "Reference" "R8"
-			(at 46.99 171.958 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "33k"
-			(at 44.45 171.958 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 46.228 170.18 90)
+		(fields_autoplaced yes)
+		(uuid "f54cc7da-ac40-48da-829c-a363d55d0cbc")
+		(property "Reference" "#PWR012"
+			(at 107.95 194.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9209,8 +10674,16 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 44.45 170.18 0)
+		(property "Value" "GND"
+			(at 107.95 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 107.95 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9218,8 +10691,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
-			(at 44.45 170.18 0)
+		(property "Datasheet" ""
+			(at 107.95 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9227,25 +10700,22 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "33k 0603"
-			(at 44.45 170.18 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 107.95 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(pin "2"
-			(uuid "e5caf2d8-9626-4ecc-bc75-2c8029aa7e54")
 		)
 		(pin "1"
-			(uuid "98650fa3-e130-4746-8f57-c0479595e210")
+			(uuid "a89ba55a-83f0-4dcc-a07f-902d278fd329")
 		)
 		(instances
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "R8")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
