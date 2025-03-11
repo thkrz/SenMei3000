@@ -1,4 +1,4 @@
-24827758896685624
+24831655039226348
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -99756,6 +99756,13 @@ Varistor VF
 0
 2
 2
+footprints
+2X3_SMT
+4UCON 15881{return}Male .1" spaced SMT{return}Keying posts into board
+
+0
+6
+6
 footprints
 5236CDB
 5236CDB-1

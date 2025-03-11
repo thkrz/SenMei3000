@@ -12,7 +12,7 @@
 #define CAP 1024
 #define MSG 12
 
-#define FET 0 /* LED_BUILTIN */
+#define FET 0
 #define MX  1
 #define RX  4
 #define TX  3
@@ -123,8 +123,12 @@ void ctrl() {
 }
 
 void die() {
-  for(;;)
+  for(;;) {
+    digitalWrite(LED_BUILTIN, HIGH);
     delay(1000);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(1000);
+  }
 }
 
 void dir() {
@@ -134,6 +138,7 @@ void dir() {
 
 void disable() {
   digitalWrite(FET, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
 }
 
 void discard() {
@@ -157,6 +162,7 @@ bool dump(String &s) {
 }
 
 void enable() {
+  digitalWrite(LED_BUILTIN, HIGH);
   digitalWrite(FET, HIGH);
   delay(600);
 }
@@ -206,13 +212,12 @@ String& measure(char i) {
   uint8_t wait = s.substring(1, 4).toInt();
   //uint8_t num = s.charAt(4) - '0';
 
-  for (int j = 0; j < wait; j++) {
-    if (socket.available()) {
-      socket.clearBuffer();
+  for (int j = 0; j <= wait; j++) {
+    if (socket.available())
       break;
-    }
     delay(1000);
   }
+  socket.clearBuffer();
 
   rd[0] = i;
   socket.sendCommand(rd, WAKE_DELAY);
@@ -251,19 +256,19 @@ bool post(String &s) {
 
     char buf[MSG];
     uint32_t st = millis();
-    for (int i = 0; i < MSG; i++) {
+    for (n = 0; n < MSG; n++) {
       while (client.available() < 0 && (millis() - st) < HTTP_TIMEOUT)
         delay(10);
-      buf[i] = client.read();
+      buf[n] = client.read();
     }
-    ok = strncmp("HTTP/1.1 201", buf, MSG) == 0;
+    ok = strncmp("HTTP/1.1 201", buf, n) == 0;
   }
   return ok;
 }
 
 void pullup() {
   int8_t pin[9] = {
-    A0, A2, A3, A4, A5, A6, 0, 2, 5
+    A0, A2, A3, A4, A5, A6, 5, 13, 14
   };
 
   for (int i = 0; i < 9; i++)
@@ -347,16 +352,17 @@ void verify() {
 }
 
 void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET, OUTPUT);
-  digitalWrite(FET, LOW);
+  disable();
 
-  //pullup();
+  pullup();
 
   flash.begin();
   dir();
 
-  //if (digitalRead(MOD) == LOW)
-  //  ctrl();
+  if (digitalRead(MOD) == LOW)
+    ctrl();
     /* not reached */
 
   flash.powerDown();
@@ -420,18 +426,19 @@ void loop() {
     q += measure(*p);
   disable();
 
-  flash.powerUp();
-  if (pm) {
-    nbAccess.shutdown();
-    dump(q);
-  } else {
+  //flash.powerUp();
+  //if (pm) {
+  //  nbAccess.shutdown();
+  //  dump(q);
+  //} else {
     verify();
-    if (LEN > 0)
-      resend();
-    if (!post(q))
-      dump(q);
-  }
-  flash.powerDown();
+  //  if (LEN > 0)
+  //    resend();
+  //  if (!post(q))
+  //    dump(q);
+  //}
+  //flash.powerDown();
+    post(q);
 
   if (!pm)
     schedule();
