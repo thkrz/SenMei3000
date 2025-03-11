@@ -4855,6 +4855,16 @@
 	)
 	(wire
 		(pts
+			(xy 44.45 35.56) (xy 36.83 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18184dd4-2f7c-456c-8c59-4ab75afa1d7b")
+	)
+	(wire
+		(pts
 			(xy 36.83 38.1) (xy 44.45 38.1)
 		)
 		(stroke
@@ -4972,16 +4982,6 @@
 			(type default)
 		)
 		(uuid "445b264f-538d-4e0b-abb3-9a7f3f40bde9")
-	)
-	(wire
-		(pts
-			(xy 44.45 33.02) (xy 36.83 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4efd9f72-f2e6-4f3e-b6d3-e6e97d71c174")
 	)
 	(wire
 		(pts
@@ -5195,16 +5195,6 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 30.48) (xy 36.83 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "98bfd363-a0d0-43b5-8e28-7ba824c7ff0e")
-	)
-	(wire
-		(pts
 			(xy 270.51 33.02) (xy 259.08 33.02)
 		)
 		(stroke
@@ -5212,6 +5202,16 @@
 			(type default)
 		)
 		(uuid "a35e8f84-559d-4808-8f52-20c4c513407d")
+	)
+	(wire
+		(pts
+			(xy 44.45 30.48) (xy 36.83 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4a35245-b203-4ebe-bfc4-30891babbd92")
 	)
 	(wire
 		(pts
@@ -5232,6 +5232,16 @@
 			(type default)
 		)
 		(uuid "a53ced1c-26d4-4a46-8eed-7c46e0f2e0bd")
+	)
+	(wire
+		(pts
+			(xy 36.83 33.02) (xy 44.45 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7111423-6fe1-48c0-be8a-cfeba2492c2a")
 	)
 	(wire
 		(pts
@@ -5262,16 +5272,6 @@
 			(type default)
 		)
 		(uuid "aaac890d-ad43-4e06-a50e-4f1e586b7d67")
-	)
-	(wire
-		(pts
-			(xy 36.83 35.56) (xy 44.45 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ad30650e-9749-4cd6-a9bf-b1321c252c74")
 	)
 	(wire
 		(pts
@@ -5955,7 +5955,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 44.45 33.02 270)
+		(at 44.45 30.48 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5964,7 +5964,7 @@
 		(fields_autoplaced yes)
 		(uuid "01c2f030-51ac-44ab-8863-46e712cdd6d1")
 		(property "Reference" "#PWR026"
-			(at 40.64 33.02 0)
+			(at 40.64 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5973,7 +5973,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 48.26 33.0199 90)
+			(at 48.26 30.4799 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5982,7 +5982,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 44.45 33.02 0)
+			(at 44.45 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5991,7 +5991,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 44.45 33.02 0)
+			(at 44.45 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6000,7 +6000,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 44.45 33.02 0)
+			(at 44.45 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6446,7 +6446,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 44.45 30.48 90)
+		(at 44.45 35.56 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6455,7 +6455,7 @@
 		(fields_autoplaced yes)
 		(uuid "23af64a2-db39-4073-b79a-5352306b7e97")
 		(property "Reference" "#PWR020"
-			(at 50.8 30.48 0)
+			(at 50.8 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6464,7 +6464,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 48.26 30.4799 90)
+			(at 48.26 35.5599 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6473,7 +6473,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 44.45 30.48 0)
+			(at 44.45 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6482,7 +6482,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 44.45 30.48 0)
+			(at 44.45 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6491,7 +6491,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 44.45 30.48 0)
+			(at 44.45 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7751,7 +7751,7 @@
 	)
 	(symbol
 		(lib_id "power:VBUS")
-		(at 44.45 35.56 270)
+		(at 44.45 33.02 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7760,7 +7760,7 @@
 		(fields_autoplaced yes)
 		(uuid "781f57f7-5a7d-472f-bcf4-f4e24f6a3efa")
 		(property "Reference" "#PWR027"
-			(at 40.64 35.56 0)
+			(at 40.64 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7769,7 +7769,7 @@
 			)
 		)
 		(property "Value" "VBUS"
-			(at 48.26 35.5599 90)
+			(at 48.26 33.0199 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7778,7 +7778,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 44.45 35.56 0)
+			(at 44.45 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7787,7 +7787,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 44.45 35.56 0)
+			(at 44.45 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7796,7 +7796,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VBUS\""
-			(at 44.45 35.56 0)
+			(at 44.45 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
