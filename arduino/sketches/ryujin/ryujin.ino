@@ -116,6 +116,12 @@ void ctrl() {
         Serial.println(n);
         Serial.println(F("#INFO"));
         break;
+      case '?':
+        Serial.println(F("d: dump"));
+        Serial.println(F("i: info"));
+        Serial.println(F("f: erase"));
+        Serial.println(F("?: help"));
+        break;
       }
     }
     delay(10);
@@ -137,6 +143,7 @@ void dir() {
 }
 
 void disable() {
+  socket.end();
   digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 }
@@ -164,6 +171,7 @@ bool dump(String &s) {
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
   digitalWrite(FET, HIGH);
+  socket.begin();
   delay(600);
 }
 
@@ -248,7 +256,7 @@ bool post(String &s) {
     client.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
     client.println(F("Host: "HOST));
     client.println(F("Connection: close"));
-    client.println(F("Content-Type: text/plain"));
+    client.println(F("Content-Type: text/plain; charset=utf-8"));
     client.print(F("Content-Length: "));
     client.println(n);
     client.println();
@@ -257,8 +265,8 @@ bool post(String &s) {
     char buf[MSG];
     uint32_t st = millis();
     for (n = 0; n < MSG; n++) {
-      while (client.available() < 0 && (millis() - st) < HTTP_TIMEOUT)
-        delay(10);
+      while (!client.available() && (millis() - st) < HTTP_TIMEOUT)
+        delay(100);
       buf[n] = client.read();
     }
     ok = strncmp("HTTP/1.1 201", buf, n) == 0;
@@ -268,7 +276,7 @@ bool post(String &s) {
 
 void pullup() {
   int8_t pin[9] = {
-    A0, A2, A3, A4, A5, A6, 5, 13, 14
+    A0, A2, A3, A4, A5, A6, 5, 13, 14 // 2
   };
 
   for (int i = 0; i < 9; i++)
@@ -367,7 +375,6 @@ void setup() {
 
   flash.powerDown();
 
-  socket.begin();
   enable();
   scan();
   disable();

@@ -82,7 +82,7 @@ async def station(request):
         try:
             db.station.insert(sid, b.decode("utf-8"))
         except Exception as ex:
-            return PlainTextResponse(str(ex) + "\r\n", status_code=401)
+            return PlainTextResponse(str(ex) + "\r\n", status_code=501)
         return PlainTextResponse("success.\r\n", status_code=201)
     meta, data_ = db.station.select(sid)
     data = {"time": [], "series": [], "health": []}
@@ -105,5 +105,5 @@ routes = [
 app = Starlette(routes=routes)
 
 if __name__ == "__main__":
-    # uvicorn.run("hoori:app", host="0.0.0.0", log_level="info")
-    uvicorn.run("hoori:app", host="127.0.0.1", log_level="info")
+    # uvicorn.run("hoori:app", host="0.0.0.0", log_level="trace")
+    uvicorn.run("hoori:app", host="127.0.0.1", log_level="trace")
