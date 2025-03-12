@@ -19,7 +19,7 @@
 #define MOD 5
 #define CS  7
 
-#define BSZ (sizeof(uint32_t))
+#define BSZ 4 /* (sizeof(uint32_t)) */
 #define LF "\r\n"
 #define LEN (addr[0])
 #define WAKE_DELAY 0
@@ -104,7 +104,7 @@ void ctrl() {
         Serial.println(F("#ERASE"));
         break;
       case 'i':
-        Serial.print(F("M IN BUFFER: "));
+        Serial.print(F("M IN CACHE: "));
         Serial.println(LEN);
         n = 0;
         for (int i = 1; i < CAP; i++)
@@ -221,11 +221,12 @@ String& measure(char i) {
   //uint8_t num = s.charAt(4) - '0';
 
   for (int j = 0; j <= wait; j++) {
-    if (socket.available())
+    if (socket.available()) {
+      socket.clearBuffer();
       break;
+    }
     delay(1000);
   }
-  socket.clearBuffer();
 
   rd[0] = i;
   socket.sendCommand(rd, WAKE_DELAY);
@@ -433,19 +434,18 @@ void loop() {
     q += measure(*p);
   disable();
 
-  //flash.powerUp();
-  //if (pm) {
-  //  nbAccess.shutdown();
-  //  dump(q);
-  //} else {
+  flash.powerUp();
+  if (pm) {
+    nbAccess.shutdown();
+    dump(q);
+  } else {
     verify();
-  //  if (LEN > 0)
-  //    resend();
-  //  if (!post(q))
-  //    dump(q);
-  //}
-  //flash.powerDown();
-    post(q);
+    if (LEN > 0)
+      resend();
+    if (!post(q))
+      dump(q);
+  }
+  flash.powerDown();
 
   if (!pm)
     schedule();
