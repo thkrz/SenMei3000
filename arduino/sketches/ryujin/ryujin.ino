@@ -7,9 +7,6 @@
 #include <Wire.h>
 
 #include "config.h"
-#include "global.h"
-
-#define CAP 1024
 
 #define FET 0
 #define MX  1
@@ -19,6 +16,7 @@
 #define CS  7
 
 #define BSZ 4 /* (sizeof(uint32_t)) */
+#define CAP 1024
 #define LF "\r\n"
 #define LEN (addr[0])
 #define WAKE_DELAY 0
@@ -222,8 +220,8 @@ String& measure(char i) {
       break;
     delay(1000);
   }
-  rd[0] = i;
   socket.clearBuffer();
+  rd[0] = i;
   socket.sendCommand(rd, WAKE_DELAY);
   return readline();
 }
@@ -324,9 +322,7 @@ void scan() {
 
 void schedule() {
   uint8_t m = (rtc.getMinutes() / MIVL + 1) * MIVL;
-  if (m == 60)
-    m = 0;
-  rtc.setAlarmMinutes(m);
+  rtc.setAlarmMinutes(m % 60);
 }
 
 void sync() {
