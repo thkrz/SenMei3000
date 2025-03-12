@@ -10,7 +10,6 @@
 #include "global.h"
 
 #define CAP 1024
-#define MSG 12
 
 #define FET 0
 #define MX  1
@@ -143,7 +142,6 @@ void dir() {
 }
 
 void disable() {
-  socket.end();
   digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
 }
@@ -171,7 +169,6 @@ bool dump(String &s) {
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
   digitalWrite(FET, HIGH);
-  socket.begin();
   delay(600);
 }
 
@@ -221,14 +218,12 @@ String& measure(char i) {
   //uint8_t num = s.charAt(4) - '0';
 
   for (int j = 0; j <= wait; j++) {
-    if (socket.available()) {
-      socket.clearBuffer();
+    if (socket.available() && socket.read() == i)
       break;
-    }
     delay(1000);
   }
-
   rd[0] = i;
+  socket.clearBuffer();
   socket.sendCommand(rd, WAKE_DELAY);
   return readline();
 }
@@ -250,9 +245,6 @@ char *prnt2(uint8_t n) {
 
 bool post(String &s) {
   int n = s.length();
-  if (n == 0)
-    return false;
-  bool ok = false;
   if (client.connect(HOST, PORT)) {
     client.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
     client.println(F("Host: "HOST));
@@ -263,16 +255,17 @@ bool post(String &s) {
     client.println();
     client.print(s);
 
-    char buf[MSG];
+    char buf[HTTP_MSG_LEN];
     uint32_t st = millis();
-    for (n = 0; n < MSG; n++) {
-      while (!client.available() && (millis() - st) < HTTP_TIMEOUT)
+    for (n = 0; n < HTTP_MSG_LEN && (millis() - st) < HTTP_TIMEOUT; )
+      if (client.available())
+        buf[n++] = client.read();
+      else
         delay(100);
-      buf[n] = client.read();
-    }
-    ok = strncmp("HTTP/1.1 201", buf, n) == 0;
+    if (n == HTTP_MSG_LEN && HTTP_MSG_OK(buf))
+      return true;
   }
-  return ok;
+  return false;
 }
 
 void pullup() {
@@ -296,7 +289,7 @@ String& readline(uint32_t timeout) {
       if (c == '\n')
         break;
     } else
-      delay(7);
+      delay(10);
   }
   socket.clearBuffer();
   return s;
@@ -376,6 +369,7 @@ void setup() {
 
   flash.powerDown();
 
+  socket.begin();
   enable();
   scan();
   disable();
@@ -435,6 +429,7 @@ void loop() {
   disable();
 
   flash.powerUp();
+  delay(1);
   if (pm) {
     nbAccess.shutdown();
     dump(q);
