@@ -9286,7 +9286,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.infineon.com/dgdl/Infineon-IRLML6244-DataSheet-v01_01-EN.pdf?fileId=5546d462533600a4015356686fed261f"
+		(property "Datasheet" "../../docs/Infineon-IRLML6244-DataSheet-v01_01-EN.pdf"
 			(at 45.72 168.91 0)
 			(effects
 				(font
@@ -9789,7 +9789,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d"
+		(property "Datasheet" "../../docs/Infineon-IRLML5203-DataSheet-v01_01-EN.pdf"
 			(at 66.04 153.67 0)
 			(effects
 				(font
