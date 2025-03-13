@@ -321,7 +321,7 @@ void scan() {
 }
 
 void schedule() {
-  uint8_t m = (rtc.getMinutes() / MIVL + 1) * MIVL;
+  uint8_t m = (rtc.getMinutes() / MI + 1) * MI;
   rtc.setAlarmMinutes(m % 60);
 }
 
@@ -384,7 +384,12 @@ void setup() {
   rtc.setEpoch(nbAccess.getTime());
 
   rtc.setAlarmSeconds(0);
+#if defined(MI_MINUTE)
   rtc.enableAlarm(rtc.MATCH_MMSS);
+#elif defined(MI_HOUR)
+  rtc.setAlarmMinutes(0);
+  rtc.enableAlarm(rtc.MATCH_HHMMSS);
+#endif
   schedule();
 
   rtc.standbyMode();
