@@ -8,6 +8,39 @@ from pathlib import Path
 database = Path("./db/station")
 
 
+def _config(sid, sensors):
+    root = database / sid
+    root.mkdir(exist_ok=True)
+
+    cfg = {}
+    for s in sensors:
+        k, ident = s[0], s[1:]
+        cfg[k] = {"sensor": ident[11:17], "label": ""}
+    p = root / "meta.json"
+    if not p.exists():
+        m = {
+            "id": sid,
+            "name": "",
+            "lat": 0.0,
+            "lng": 0.0,
+            "config": cfg,
+        }
+        with p.open("w") as fod:
+            json.dump(m, fod)
+        return
+        # not reached
+
+    with p.open() as fid:
+        m = json.load(fid)
+    for k, v in m["config"].items():
+        if k not in cfg.keys() or v["sensor"] != cfg[k]["sensor"]:
+            f = root / (k + ".bin")
+            f.unlink()
+    m["config"] = cfg
+    with p.open("w") as fod:
+        json.dump(m, fod)
+
+
 def _dump(p, a, idx=None):
     a = np.asarray(a)
     if p.exists():
@@ -42,26 +75,17 @@ def _num(s):
     return n
 
 
-def _parse(s):
+def _parse(rows):
     x = defaultdict(list)
-    cfg = {}
-    rows = iter(s.splitlines())
     for ln in rows:
-        if ln == "UPDATE":
-            for ln in rows:
-                if not ln:
-                    break
-                k, sens = ln[0], ln[11:17]
-                cfg[k] = {"sensor": sens, "label": ""}
-        else:
-            dt = datetime.fromisoformat(ln)
-            x["time"].append(dt.timestamp())  # must be first key in dict
-            for ln in rows:
-                if not ln:
-                    break
-                k, n = _lex(ln)
-                x[k].append(n)
-    return cfg, x
+        dt = datetime.fromisoformat(ln)
+        x["time"].append(dt.timestamp())  # must be first key in dict
+        for ln in rows:
+            if not ln:
+                break
+            k, n = _lex(ln)
+            x[k].append(n)
+    return x
 
 
 def _upd(o, n, exclude=[]):
@@ -85,33 +109,14 @@ def catalogue():
 
 
 def insert(sid, item):
+    rows = item.splitlines()
+    if rows[0] == "UPDATE":
+        _config(sid, rows[1:])
+        return
+        # not reached
     root = database / sid
-    root.mkdir(exist_ok=True)
-
-    cfg, x = _parse(item)
-    p = root / "meta.json"
-    if not p.exists():
-        assert len(cfg) > 0
-        m = {
-            "id": sid,
-            "name": "",
-            "lat": 0.0,
-            "lng": 0.0,
-            "config": cfg,
-        }
-        with p.open("w") as fod:
-            json.dump(m, fod)
-    elif len(cfg) > 0:
-        with p.open() as fid:
-            m = json.load(fid)
-        for k, v in m["config"].items():
-            if k not in cfg.keys() or v["sensor"] != cfg[k]["sensor"]:
-                f = root / (k + ".bin")
-                f.unlink()
-        m["config"] = cfg
-        with p.open("w") as fod:
-            json.dump(m, fod)
-
+    assert root.exists(), "database missing"
+    x = _parse(rows)
     idx = None
     for k, v in x.items():
         idx = _dump(root / (k + ".bin"), v, idx)

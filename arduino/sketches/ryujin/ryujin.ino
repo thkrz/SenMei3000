@@ -448,7 +448,9 @@ void loop() {
   }
   flash.powerDown();
 
+#if defined(MI_MINUTE)
   if (!pm)
+#endif
     schedule();
   rtc.standbyMode();
 }

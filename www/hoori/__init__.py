@@ -15,6 +15,10 @@ def errmsg(s):
     return {"length": 0, "title": s}
 
 
+async def catalogue(request):
+    return JSONResponse(db.station.catalogue())
+
+
 async def download(request):
     sid = request.path_params["sid"]
     k = request.path_params["k"]
@@ -39,6 +43,9 @@ async def prepare(data, config):
         nam = cfg["sensor"]
         if nam not in schema.keys():
             s[k] = errmsg(f"{k}: sensor {nam} is not configured yet")
+            continue
+        if k not in data.keys():
+            s[k] = errmsg(f"{k}: no data available")
             continue
         y = data[k]
         if len(y.shape) == 1:
@@ -65,18 +72,8 @@ async def sensor(request):
     return JSONResponse(db.sensor.catalogue())
 
 
-async def update(request):
-    sid = request.path_params["sid"]
-    o = await request.json()
-    db.station.update(sid, **o)
-    return PlainTextResponse("success.\r\n", status_code=201)
-
-
 async def station(request):
-    try:
-        sid = request.path_params["sid"]
-    except KeyError:
-        return JSONResponse(db.station.catalogue())
+    sid = request.path_params["sid"]
     if request.method == "POST":
         b = await request.body()
         try:
@@ -93,17 +90,24 @@ async def station(request):
     return JSONResponse({"meta": meta, "data": data})
 
 
+async def update(request):
+    sid = request.path_params["sid"]
+    o = await request.json()
+    db.station.update(sid, **o)
+    return PlainTextResponse("success.\r\n", status_code=201)
+
+
 routes = [
     Route("/sensor", sensor, methods=["GET", "POST"]),
     Route("/station/{sid}/{k}/download", download, methods=["GET"]),
     Route("/station/{sid}/update", update, methods=["POST"]),
     Route("/station/{sid}", station, methods=["GET", "POST"]),
-    Route("/station", station, methods=["GET"]),
+    Route("/station", catalogue, methods=["GET"]),
     # DEBUG
     Mount("/", app=StaticFiles(directory="html", html=True), name="static"),
 ]
 app = Starlette(routes=routes)
 
 if __name__ == "__main__":
-    # uvicorn.run("hoori:app", host="0.0.0.0", log_level="trace")
-    uvicorn.run("hoori:app", host="127.0.0.1", log_level="trace")
+    # uvicorn.run("hoori:app", host="0.0.0.0", log_level="info")
+    uvicorn.run("hoori:app", host="127.0.0.1", log_level="info")
