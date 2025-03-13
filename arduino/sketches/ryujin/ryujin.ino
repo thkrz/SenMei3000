@@ -321,8 +321,13 @@ void scan() {
 }
 
 void schedule() {
+#if defined(MI_MINUTE)
   uint8_t m = (rtc.getMinutes() / MI + 1) * MI;
   rtc.setAlarmMinutes(m % 60);
+#elif defined(MI_HOUR)
+  uint8_t m = (rtc.getHours() / MI + 1) * MI;
+  rtc.setAlarmHours(m % 24);
+#endif
 }
 
 void sync() {

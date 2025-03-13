@@ -13,7 +13,8 @@ void disable();
 void enable();
 String& readline(uint32_t timeout = SDI_TIMEOUT);
 
-SDI12 socket(MX, RX, TX);
+//SDI12 socket(MX, RX, TX);
+SDI12 socket(9);
 char cmd[128];
 int len = 0;
 char sid[63];
@@ -56,13 +57,12 @@ String& measure(char i) {
   //uint8_t num = s.charAt(4) - '0';
 
   for (int j = 0; j < wait; j++) {
-    if (socket.available()) {
-      socket.clearBuffer();
+    if (socket.available())
       break;
-    }
     delay(1000);
   }
 
+  socket.clearBuffer();
   rd[0] = i;
   socket.sendCommand(rd, WAKE_DELAY);
   return readline();
@@ -88,11 +88,7 @@ String& readline(uint32_t timeout) {
 
 void scan() {
   int n = 0;
-  for (char c = '0'; c <= '3'; c++) {
-    if (handshake(c))
-      sid[n++] = c;
-  }
-  for (char c = 'a'; c <= 'd'; c++) {
+  for (char c = '0'; c <= '5'; c++) {
     if (handshake(c))
       sid[n++] = c;
   }

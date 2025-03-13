@@ -3558,16 +3558,6 @@
 		)
 		(uuid "0f26a716-f2b7-49c8-b674-49c8705661fb")
 	)
-	(label "GND"
-		(at 228.6 132.08 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "13f3bd3b-4ab1-4c78-897a-6e48ef82dd6e")
-	)
 	(label "D1"
 		(at 121.92 52.07 0)
 		(effects
@@ -3587,6 +3577,16 @@
 			(justify left bottom)
 		)
 		(uuid "191cde5c-9f53-4eab-82a5-1f0cabc00e45")
+	)
+	(label "D4"
+		(at 130.81 127 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "19c4e12d-336d-4d19-bfd1-2f58cf14904f")
 	)
 	(label "A5"
 		(at 121.92 64.77 0)
@@ -3618,7 +3618,7 @@
 		)
 		(uuid "2663b68e-4101-4bef-a183-4e64596d3407")
 	)
-	(label "D5"
+	(label "D6"
 		(at 130.81 132.08 0)
 		(effects
 			(font
@@ -3648,6 +3648,16 @@
 		)
 		(uuid "2ed04760-a350-48bc-803d-d4e282623707")
 	)
+	(label "GND"
+		(at 266.7 132.08 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "310424f5-0cc3-4044-9255-dc94d21109fc")
+	)
 	(label "VIN2"
 		(at 266.7 93.98 180)
 		(effects
@@ -3657,16 +3667,6 @@
 			(justify right bottom)
 		)
 		(uuid "4033bd5c-47cf-4daf-b26f-62857434eb6f")
-	)
-	(label "A4"
-		(at 266.7 134.62 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "40ff3c52-ef81-4ed5-9c34-bfae5d53b92c")
 	)
 	(label "VCC"
 		(at 121.92 85.09 0)
@@ -3728,6 +3728,16 @@
 		)
 		(uuid "5188b16b-4c2d-43b4-a793-add9cb7a406c")
 	)
+	(label "D5"
+		(at 130.81 129.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5198537c-74e9-4320-bcdd-e65769682bb6")
+	)
 	(label "VIN1"
 		(at 82.55 124.46 180)
 		(effects
@@ -3747,16 +3757,6 @@
 			(justify right bottom)
 		)
 		(uuid "54db0353-8ea2-45df-87ca-ba264585bb39")
-	)
-	(label "A5"
-		(at 228.6 134.62 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "590ed8ae-ef3a-4b63-9aa5-5e16950f8894")
 	)
 	(label "GND"
 		(at 44.45 124.46 0)
@@ -3919,6 +3919,16 @@
 		(uuid "93f7cf42-d63b-4936-a1c5-6ba00940cf60")
 	)
 	(label "GND"
+		(at 266.7 134.62 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "94996374-2a9a-4e0e-a53d-c9e7c70ede33")
+	)
+	(label "GND"
 		(at 44.45 157.48 0)
 		(effects
 			(font
@@ -3927,6 +3937,16 @@
 			(justify left bottom)
 		)
 		(uuid "9749dce5-2d88-4403-957e-708268b09086")
+	)
+	(label "D2"
+		(at 228.6 132.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "97927224-4ff3-42a8-afdd-0e17d5ece15e")
 	)
 	(label "D5"
 		(at 190.5 52.07 180)
@@ -4008,7 +4028,7 @@
 		)
 		(uuid "c27c5fb5-d56a-423c-82ea-e47594bf9f8e")
 	)
-	(label "A7"
+	(label "A5"
 		(at 44.45 127 0)
 		(effects
 			(font
@@ -4058,16 +4078,6 @@
 		)
 		(uuid "d22d5d1f-8578-4281-800d-919cca60e794")
 	)
-	(label "VIN2"
-		(at 266.7 132.08 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "d562c1e5-7dc2-465a-813a-09532c40c3b3")
-	)
 	(label "5V"
 		(at 234.95 76.2 0)
 		(effects
@@ -4088,16 +4098,6 @@
 		)
 		(uuid "dc681053-015a-4c6b-9b93-43da3c269e29")
 	)
-	(label "D2"
-		(at 130.81 127 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "dc831969-372a-46bf-96a3-6de6dcdd7820")
-	)
 	(label "3V3"
 		(at 50.8 111.76 0)
 		(effects
@@ -4109,16 +4109,16 @@
 		(uuid "e2a73fd4-e290-4eaf-b0bd-ca9996b93988")
 	)
 	(label "D3"
-		(at 130.81 129.54 0)
+		(at 228.6 134.62 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "ed591d16-fe20-4f75-abff-dc166bfeb5db")
+		(uuid "ebb55cf5-008a-4f11-8670-d5f1ecaa917e")
 	)
-	(label "A6"
+	(label "D4"
 		(at 190.5 49.53 180)
 		(effects
 			(font
@@ -4148,7 +4148,7 @@
 		)
 		(uuid "f80f18f8-d09d-46f5-bf5a-cbc0cde3edad")
 	)
-	(label "A7"
+	(label "D6"
 		(at 190.5 54.61 180)
 		(effects
 			(font
@@ -4188,7 +4188,7 @@
 		)
 		(uuid "fa400673-698e-4177-8ca5-1ffbb1a13294")
 	)
-	(label "A6"
+	(label "A4"
 		(at 82.55 127 180)
 		(effects
 			(font
