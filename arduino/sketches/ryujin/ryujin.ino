@@ -322,10 +322,10 @@ void scan() {
 
 void schedule() {
 #if defined(MI_MINUTE)
-  uint8_t m = (rtc.getMinutes() / MI + 1) * MI;
+  uint8_t m = (rtc.getMinutes() / MI_MINUTE + 1) * MI_MINUTE;
   rtc.setAlarmMinutes(m % 60);
 #elif defined(MI_HOUR)
-  uint8_t m = (rtc.getHours() / MI + 1) * MI;
+  uint8_t m = (rtc.getHours() / MI_HOUR + 1) * MI_HOUR;
   rtc.setAlarmHours(m % 24);
 #endif
 }
@@ -396,7 +396,6 @@ void setup() {
   rtc.enableAlarm(rtc.MATCH_HHMMSS);
 #endif
   schedule();
-
   rtc.standbyMode();
 }
 

@@ -1,0 +1,456 @@
+diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
+*** SDI-12/src/SDI12.cpp	2025-03-14 10:47:26.073955661 +0100
+--- SDI-12-MUX/src/SDI12.cpp	2025-03-14 10:45:01.400419571 +0100
+***************
+*** 182,189 ****
+    setTimeoutValue(-9999);
+  }
+  
+! SDI12::SDI12(int8_t dataPin) {
+!   setDataPin(dataPin);
+    // SDI-12 protocol says sensors must respond within 15 milliseconds
+    // We'll bump that up to 150, just for good measure, but we don't want to
+    // wait the whole stream default of 1s for a response.
+--- 182,189 ----
+    setTimeoutValue(-9999);
+  }
+  
+! SDI12::SDI12(int8_t mxPin, int8_t rxPin, int8_t txPin) {
+!   setDataPins(mxPin, rxPin, txPin);
+    // SDI-12 protocol says sensors must respond within 15 milliseconds
+    // We'll bump that up to 150, just for good measure, but we don't want to
+    // wait the whole stream default of 1s for a response.
+***************
+*** 205,212 ****
+  void SDI12::begin() {
+  #if defined(ESP32) || defined(ESP8266)
+    // Add and remove a fake interrupt to avoid errors with gpio_install_isr_service
+!   attachInterrupt(digitalPinToInterrupt(_dataPin), nullptr, CHANGE);
+!   detachInterrupt(digitalPinToInterrupt(_dataPin));
+  #endif
+    // setState(SDI12_HOLDING);
+    setActive();
+--- 205,212 ----
+  void SDI12::begin() {
+  #if defined(ESP32) || defined(ESP8266)
+    // Add and remove a fake interrupt to avoid errors with gpio_install_isr_service
+!   attachInterrupt(digitalPinToInterrupt(_rxPin), nullptr, CHANGE);
+!   detachInterrupt(digitalPinToInterrupt(_rxPin));
+  #endif
+    // setState(SDI12_HOLDING);
+    setActive();
+***************
+*** 215,222 ****
+    sdi12timer.configSDI12TimerPrescale();
+  }
+  
+! void SDI12::begin(int8_t dataPin) {
+!   setDataPin(dataPin);
+    begin();
+  }
+  
+--- 215,222 ----
+    sdi12timer.configSDI12TimerPrescale();
+  }
+  
+! void SDI12::begin(int8_t mxPin, int8_t rxPin, int8_t txPin) {
+!   setDataPins(mxPin, rxPin, txPin);
+    begin();
+  }
+  
+***************
+*** 234,246 ****
+  }
+  
+  // Set the data pin for the SDI-12 instance
+! void SDI12::setDataPin(int8_t dataPin) {
+!   _dataPin = dataPin;
+! }
+  
+! // Return the data pin for the SDI-12 instance
+! int8_t SDI12::getDataPin() {
+!   return _dataPin;
+  }
+  
+  /* ================ Using more than one SDI-12 object ===============================*/
+--- 234,248 ----
+  }
+  
+  // Set the data pin for the SDI-12 instance
+! void SDI12::setDataPins(int8_t mxPin, int8_t rxPin, int8_t txPin) {
+!   pinMode(mxPin, OUTPUT);
+!   _mxPin = mxPin;
+! 
+!   pinMode(rxPin, INPUT);
+!   _rxPin = rxPin;
+  
+!   pinMode(txPin, OUTPUT);
+!   _txPin = txPin;
+  }
+  
+  /* ================ Using more than one SDI-12 object ===============================*/
+***************
+*** 282,299 ****
+  #if defined(__AVR__) && not defined(SDI12_EXTERNAL_PCINT)
+    if (enable) {
+      // Enable interrupts on the register with the pin of interest
+!     *digitalPinToPCICR(_dataPin) |= (1 << digitalPinToPCICRbit(_dataPin));
+      // Enable interrupts on the specific pin of interest
+      // The interrupt function is actually attached to the interrupt way down in
+      // section 7.5
+!     *digitalPinToPCMSK(_dataPin) |= (1 << digitalPinToPCMSKbit(_dataPin));
+    } else {
+      // Disable interrupts on the specific pin of interest
+!     *digitalPinToPCMSK(_dataPin) &= ~(1 << digitalPinToPCMSKbit(_dataPin));
+!     if (!*digitalPinToPCMSK(_dataPin)) {
+        // If there are no other pins on the register left with enabled interrupts,
+        // disable the whole register
+!       *digitalPinToPCICR(_dataPin) &= ~(1 << digitalPinToPCICRbit(_dataPin));
+      }
+      // We don't detach the function from the interrupt for AVR processors
+    }
+--- 284,301 ----
+  #if defined(__AVR__) && not defined(SDI12_EXTERNAL_PCINT)
+    if (enable) {
+      // Enable interrupts on the register with the pin of interest
+!     *digitalPinToPCICR(_rxPin) |= (1 << digitalPinToPCICRbit(_rxPin));
+      // Enable interrupts on the specific pin of interest
+      // The interrupt function is actually attached to the interrupt way down in
+      // section 7.5
+!     *digitalPinToPCMSK(_rxPin) |= (1 << digitalPinToPCMSKbit(_rxPin));
+    } else {
+      // Disable interrupts on the specific pin of interest
+!     *digitalPinToPCMSK(_rxPin) &= ~(1 << digitalPinToPCMSKbit(_rxPin));
+!     if (!*digitalPinToPCMSK(_rxPin)) {
+        // If there are no other pins on the register left with enabled interrupts,
+        // disable the whole register
+!       *digitalPinToPCICR(_rxPin) &= ~(1 << digitalPinToPCICRbit(_rxPin));
+      }
+      // We don't detach the function from the interrupt for AVR processors
+    }
+***************
+*** 308,325 ****
+  // attachInterrupt and detachInterrupt functions
+  #elif defined(PARTICLE) || !defined(digitalPinToInterrupt)
+    // Merely need to attach the interrupt function to the pin
+!   if (enable) attachInterrupt(_dataPin, handleInterrupt, CHANGE);
+    // Merely need to detach the interrupt function from the pin
+    else
+!     detachInterrupt(_dataPin);
+  // for other boards (SAMD/Espressif/??) use attachInterrupt and detachInterrupt
+  // functions with digitalPinToInterrupt
+  #else
+    // Merely need to attach the interrupt function to the pin
+!   if (enable) attachInterrupt(digitalPinToInterrupt(_dataPin), handleInterrupt, CHANGE);
+    // Merely need to detach the interrupt function from the pin
+    else
+!     detachInterrupt(digitalPinToInterrupt(_dataPin));
+  #endif
+  }
+  
+--- 310,327 ----
+  // attachInterrupt and detachInterrupt functions
+  #elif defined(PARTICLE) || !defined(digitalPinToInterrupt)
+    // Merely need to attach the interrupt function to the pin
+!   if (enable) attachInterrupt(_rxPin, handleInterrupt, CHANGE);
+    // Merely need to detach the interrupt function from the pin
+    else
+!     detachInterrupt(_rxPin);
+  // for other boards (SAMD/Espressif/??) use attachInterrupt and detachInterrupt
+  // functions with digitalPinToInterrupt
+  #else
+    // Merely need to attach the interrupt function to the pin
+!   if (enable) attachInterrupt(digitalPinToInterrupt(_rxPin), handleInterrupt, CHANGE);
+    // Merely need to detach the interrupt function from the pin
+    else
+!     detachInterrupt(digitalPinToInterrupt(_rxPin));
+  #endif
+  }
+  
+***************
+*** 328,343 ****
+    switch (state) {
+      case SDI12_HOLDING:
+        {
+!         pinMode(_dataPin, INPUT);     // Turn off the pull-up resistor
+!         pinMode(_dataPin, OUTPUT);    // Pin mode = output
+!         digitalWrite(_dataPin, LOW);  // Pin state = low - marking
+          setPinInterrupts(false);      // Interrupts disabled on data pin
+          break;
+        }
+      case SDI12_TRANSMITTING:
+        {
+!         pinMode(_dataPin, INPUT);   // Turn off the pull-up resistor
+!         pinMode(_dataPin, OUTPUT);  // Pin mode = output
+          setPinInterrupts(false);    // Interrupts disabled on data pin
+  #ifdef SDI12_CHECK_PARITY
+          _parityFailure = false;  // reset the parity failure flag
+--- 330,343 ----
+    switch (state) {
+      case SDI12_HOLDING:
+        {
+!         digitalWrite(_mxPin, LOW);
+!         digitalWrite(_txPin, LOW);    // Pin state = low - marking
+          setPinInterrupts(false);      // Interrupts disabled on data pin
+          break;
+        }
+      case SDI12_TRANSMITTING:
+        {
+!         digitalWrite(_mxPin, LOW);
+          setPinInterrupts(false);    // Interrupts disabled on data pin
+  #ifdef SDI12_CHECK_PARITY
+          _parityFailure = false;  // reset the parity failure flag
+***************
+*** 346,353 ****
+        }
+      case SDI12_LISTENING:
+        {
+!         digitalWrite(_dataPin, LOW);          // Pin state = low (turns off pull-up)
+!         pinMode(_dataPin, INPUT);             // Pin mode = input, pull-up resistor off
+          interrupts();                         // Enable general interrupts
+          setPinInterrupts(true);               // Enable Rx interrupts on data pin
+          prevBitTCNT = READTIME;               // Set the last interrupt time to now
+--- 346,352 ----
+        }
+      case SDI12_LISTENING:
+        {
+!         digitalWrite(_mxPin, HIGH);
+          interrupts();                         // Enable general interrupts
+          setPinInterrupts(true);               // Enable Rx interrupts on data pin
+          prevBitTCNT = READTIME;               // Set the last interrupt time to now
+***************
+*** 356,363 ****
+        }
+      default:  // SDI12_DISABLED or SDI12_ENABLED
+        {
+!         digitalWrite(_dataPin, LOW);  // Pin state = low (turns off pull-up)
+!         pinMode(_dataPin, INPUT);     // Pin mode = input, pull-up resistor off
+          setPinInterrupts(false);      // Interrupts disabled on data pin
+          break;
+        }
+--- 355,361 ----
+        }
+      default:  // SDI12_DISABLED or SDI12_ENABLED
+        {
+!         digitalWrite(_mxPin, HIGH);
+          setPinInterrupts(false);      // Interrupts disabled on data pin
+          break;
+        }
+***************
+*** 382,392 ****
+    // Universal interrupts can be on while the break and marking happen because
+    // timings for break and from the recorder are not critical.
+    // Interrupts on the pin are disabled for the entire transmitting state
+!   digitalWrite(_dataPin, HIGH);  // break is HIGH
+    delayMicroseconds(
+      SDI12_LINE_BREAK_MICROS);   // Required break of 12 milliseconds (12,000 µs)
+    delayMicroseconds(extraWakeTime * 1000);  // allow the sensors to wake
+!   digitalWrite(_dataPin, LOW);  // marking is LOW
+    delayMicroseconds(
+      SDI12_LINE_MARK_MICROS);  // Required marking of 8.33 milliseconds(8,333 µs)
+  }
+--- 380,390 ----
+    // Universal interrupts can be on while the break and marking happen because
+    // timings for break and from the recorder are not critical.
+    // Interrupts on the pin are disabled for the entire transmitting state
+!   digitalWrite(_txPin, HIGH);  // break is HIGH
+    delayMicroseconds(
+      SDI12_LINE_BREAK_MICROS);   // Required break of 12 milliseconds (12,000 µs)
+    delayMicroseconds(extraWakeTime * 1000);  // allow the sensors to wake
+!   digitalWrite(_txPin, LOW);  // marking is LOW
+    delayMicroseconds(
+      SDI12_LINE_MARK_MICROS);  // Required marking of 8.33 milliseconds(8,333 µs)
+  }
+***************
+*** 421,427 ****
+    sdi12timer_t t0 = READTIME;  // start time
+  
+    digitalWrite(
+!     _dataPin,
+      HIGH);  // immediately get going on the start bit
+              // this gives us 833µs to calculate parity and position of last high bit
+    currentTxBitNum++;
+--- 419,425 ----
+    sdi12timer_t t0 = READTIME;  // start time
+  
+    digitalWrite(
+!     _txPin,
+      HIGH);  // immediately get going on the start bit
+              // this gives us 833µs to calculate parity and position of last high bit
+    currentTxBitNum++;
+***************
+*** 459,467 ****
+    while (currentTxBitNum++ < lastHighBit) {
+      bitValue = outChar & 0x01;  // get next bit in the character to send
+      if (bitValue) {
+!       digitalWrite(_dataPin, LOW);  // set the pin state to LOW for 1's
+      } else {
+!       digitalWrite(_dataPin, HIGH);  // set the pin state to HIGH for 0's
+      }
+      // Hold the line for this bit duration
+      while (static_cast<sdi12timer_t>(READTIME - t0) <
+--- 457,465 ----
+    while (currentTxBitNum++ < lastHighBit) {
+      bitValue = outChar & 0x01;  // get next bit in the character to send
+      if (bitValue) {
+!       digitalWrite(_txPin, LOW);  // set the pin state to LOW for 1's
+      } else {
+!       digitalWrite(_txPin, HIGH);  // set the pin state to HIGH for 0's
+      }
+      // Hold the line for this bit duration
+      while (static_cast<sdi12timer_t>(READTIME - t0) <
+***************
+*** 472,478 ****
+    }
+  
+    // Set the line low for the all remaining 1's and the stop bit
+!   digitalWrite(_dataPin, LOW);
+  
+  #if F_CPU < 48000000UL
+    interrupts();  // Re-enable universal interrupts as soon as critical timing is past
+--- 470,476 ----
+    }
+  
+    // Set the line low for the all remaining 1's and the stop bit
+!   digitalWrite(_txPin, LOW);
+  
+  #if F_CPU < 48000000UL
+    interrupts();  // Re-enable universal interrupts as soon as critical timing is past
+***************
+*** 526,532 ****
+  
+  void SDI12::sendResponse(const char* resp, bool addCRC) {
+    setState(SDI12_TRANSMITTING);               // Get ready to send data to the recorder
+!   digitalWrite(_dataPin, LOW);                // marking is LOW
+    delayMicroseconds(SDI12_LINE_MARK_MICROS);  // 8.33 ms marking before response
+    for (int unsigned i = 0; i < strlen(resp); i++) {
+      writeChar(resp[i]);  // write each character
+--- 524,530 ----
+  
+  void SDI12::sendResponse(const char* resp, bool addCRC) {
+    setState(SDI12_TRANSMITTING);               // Get ready to send data to the recorder
+!   digitalWrite(_txPin, LOW);                // marking is LOW
+    delayMicroseconds(SDI12_LINE_MARK_MICROS);  // 8.33 ms marking before response
+    for (int unsigned i = 0; i < strlen(resp); i++) {
+      writeChar(resp[i]);  // write each character
+***************
+*** 543,549 ****
+  
+  void SDI12::sendResponse(FlashString resp, bool addCRC) {
+    setState(SDI12_TRANSMITTING);               // Get ready to send data to the recorder
+!   digitalWrite(_dataPin, LOW);                // marking is LOW
+    delayMicroseconds(SDI12_LINE_MARK_MICROS);  // 8.33 ms marking before response
+    for (int unsigned i = 0; i < strlen_P((PGM_P)resp); i++) {
+      // write each character
+--- 541,547 ----
+  
+  void SDI12::sendResponse(FlashString resp, bool addCRC) {
+    setState(SDI12_TRANSMITTING);               // Get ready to send data to the recorder
+!   digitalWrite(_txPin, LOW);                // marking is LOW
+    delayMicroseconds(SDI12_LINE_MARK_MICROS);  // 8.33 ms marking before response
+    for (int unsigned i = 0; i < strlen_P((PGM_P)resp); i++) {
+      // write each character
+***************
+*** 659,665 ****
+    sdi12timer_t thisBitTCNT =
+      READTIME;  // time of this data transition (plus ISR latency)
+  
+!   uint8_t pinLevel = digitalRead(_dataPin);  // current RX data level
+  
+    // Check how many bit times have passed since the last change
+    uint16_t rxBits = SDI12Timer::bitTimes(thisBitTCNT - prevBitTCNT);
+--- 657,663 ----
+    sdi12timer_t thisBitTCNT =
+      READTIME;  // time of this data transition (plus ISR latency)
+  
+!   uint8_t pinLevel = digitalRead(_rxPin);  // current RX data level
+  
+    // Check how many bit times have passed since the last change
+    uint16_t rxBits = SDI12Timer::bitTimes(thisBitTCNT - prevBitTCNT);
+diff -crB SDI-12/src/SDI12.h SDI-12-MUX/src/SDI12.h
+*** SDI-12/src/SDI12.h	2025-03-14 10:47:26.073955661 +0100
+--- SDI-12-MUX/src/SDI12.h	2025-03-14 10:32:04.301373293 +0100
+***************
+*** 614,620 ****
+    /**
+     * @brief reference to the data pin
+     */
+!   int8_t _dataPin = -1;
+  
+   public:
+    /**
+--- 614,622 ----
+    /**
+     * @brief reference to the data pin
+     */
+!   int8_t _mxPin = -1;
+!   int8_t _rxPin = -1;
+!   int8_t _txPin = -1;
+  
+   public:
+    /**
+***************
+*** 635,641 ****
+     * When the constructor is called it resets the buffer overflow status to FALSE and
+     * assigns the pin number "dataPin" to the private variable "_dataPin".
+     */
+!   explicit SDI12(int8_t dataPin);
+    /**
+     * @brief Destroy the SDI12 object.
+     *
+--- 637,643 ----
+     * When the constructor is called it resets the buffer overflow status to FALSE and
+     * assigns the pin number "dataPin" to the private variable "_dataPin".
+     */
+!   explicit SDI12(int8_t mxPin, int8_t rxPin, int8_t txPin);
+    /**
+     * @brief Destroy the SDI12 object.
+     *
+***************
+*** 665,671 ****
+     *
+     * @param dataPin The data pin's digital pin number
+     */
+!   void begin(int8_t dataPin);
+    /**
+     * @brief Disable the SDI-12 object (but do not destroy it).
+     *
+--- 667,673 ----
+     *
+     * @param dataPin The data pin's digital pin number
+     */
+!   void begin(int8_t mxPin, int8_t rxPin, int8_t txPin);
+    /**
+     * @brief Disable the SDI-12 object (but do not destroy it).
+     *
+***************
+*** 704,720 ****
+     */
+    void setTimeoutValue(int16_t value);
+    /**
+-    * @brief Get the data pin for the current SDI-12 instance
+-    *
+-    * @return The data pin number
+-    */
+-   int8_t getDataPin();
+-   /**
+     * @brief Set the data pin for the current SDI-12 instance
+     *
+     * @param dataPin  The data pin's digital pin number
+     */
+!   void setDataPin(int8_t dataPin);
+  #ifdef SDI12_CHECK_PARITY
+    bool _parityFailure;
+  #endif
+--- 706,716 ----
+     */
+    void setTimeoutValue(int16_t value);
+    /**
+     * @brief Set the data pin for the current SDI-12 instance
+     *
+     * @param dataPin  The data pin's digital pin number
+     */
+!   void setDataPins(int8_t mxPin, int8_t rxPin, int8_t txPin);
+  #ifdef SDI12_CHECK_PARITY
+    bool _parityFailure;
+  #endif
