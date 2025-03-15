@@ -2023,196 +2023,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector:Screw_Terminal_01x02"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Screw_Terminal_01x02"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "screw terminal"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TerminalBlock*:*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Screw_Terminal_01x02_1_1"
-				(rectangle
-					(start -1.27 1.27)
-					(end 1.27 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.5334 0.3302) (xy 0.3302 -0.508)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.5334 -2.2098) (xy 0.3302 -3.048)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.3556 0.508) (xy 0.508 -0.3302)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.3556 -2.032) (xy 0.508 -2.8702)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0)
-					(radius 0.635)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 -2.54)
-					(radius 0.635)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Connector_Generic:Conn_02x02_Odd_Even"
 			(pin_names
 				(offset 1.016)
@@ -3068,6 +2878,214 @@
 					(at 0 -12.7 90)
 					(length 2.54)
 					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PhoenixContact:1987973"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 16.51 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "1987973"
+				(at 16.51 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "footprints:PT_25_4_75_V"
+				(at 16.51 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.phoenixcontact.com/online/portal/us/?uri=pxc-oc-itemdetail:pid=1987973&library=usen&pcck=P-11-01-05&tab=1&selectedCategory=ALL"
+				(at 16.51 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "PCB terminal block, nominal current: 32 A, rated voltage (III/2): 800 V, nominal cross section: 2.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: PT 2,5/..-V, pitch: 7.5 mm, connection method: Screw connection with wire protector, mounting: Wave soldering, conductor/PCB connection direction: 90 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 4.1 mm, type of packaging: packed in cardboard"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "9.15"
+				(at 16.51 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Phoenix Contact"
+				(at 16.51 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "1987973"
+				(at 16.51 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "651-1987973"
+				(at 16.51 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1987973?qs=gjk32EaArKJ9KMkRMee0ng%3D%3D"
+				(at 16.51 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Arrow Part Number" ""
+				(at 16.51 -894.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Arrow Price/Stock" ""
+				(at 16.51 -994.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "1987973_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 15.24 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 0)
+					(length 5.08)
+					(name "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5010,6 +5028,12 @@
 		(uuid "4bcd33f3-c9e1-42a7-9267-6388df9fd293")
 	)
 	(junction
+		(at 50.8 26.67)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4f0ed49e-3070-4f1a-a437-2493f82c7b3a")
+	)
+	(junction
 		(at 157.48 134.62)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5178,10 +5202,6 @@
 		(uuid "fffd3481-b048-4642-a209-b9d9fccb6345")
 	)
 	(no_connect
-		(at 232.41 50.8)
-		(uuid "02b21540-f159-463a-abca-0570e21c4c3b")
-	)
-	(no_connect
 		(at 232.41 33.02)
 		(uuid "2794dbda-883e-4804-a6c6-cebadad3d80e")
 	)
@@ -5192,10 +5212,6 @@
 	(no_connect
 		(at 232.41 25.4)
 		(uuid "3ba67468-afae-47c4-b499-3469e70f53a8")
-	)
-	(no_connect
-		(at 270.51 58.42)
-		(uuid "46f20a26-10a6-46fc-9709-3aa4d2c7ecdb")
 	)
 	(no_connect
 		(at 232.41 40.64)
@@ -5238,6 +5254,16 @@
 			(type default)
 		)
 		(uuid "01f0b7fc-0369-417a-b8a1-35418d6d389a")
+	)
+	(wire
+		(pts
+			(xy 39.37 26.67) (xy 50.8 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "035abe7a-635d-4ba8-8d9b-0692e3201766")
 	)
 	(wire
 		(pts
@@ -5371,6 +5397,16 @@
 	)
 	(wire
 		(pts
+			(xy 50.8 26.67) (xy 62.23 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27939060-b45e-4efc-a191-e4669f60b517")
+	)
+	(wire
+		(pts
 			(xy 26.67 106.68) (xy 34.29 106.68)
 		)
 		(stroke
@@ -5448,6 +5484,16 @@
 			(type default)
 		)
 		(uuid "4166e198-9068-47e0-9c3e-069dcc7461d8")
+	)
+	(wire
+		(pts
+			(xy 20.32 25.4) (xy 25.4 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "43e96fad-b858-49ef-ba46-de9427ae5e86")
 	)
 	(wire
 		(pts
@@ -5618,26 +5664,6 @@
 			(type default)
 		)
 		(uuid "6a8c22b7-40f9-495d-a71c-e37cbb09b0cb")
-	)
-	(wire
-		(pts
-			(xy 107.95 168.91) (xy 119.38 168.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e1869bc-b3b0-45c2-90a3-b9ccf06471c1")
-	)
-	(wire
-		(pts
-			(xy 119.38 166.37) (xy 107.95 166.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "753f041d-9133-462e-8fac-c3858177cd04")
 	)
 	(wire
 		(pts
@@ -5981,6 +6007,16 @@
 	)
 	(wire
 		(pts
+			(xy 228.6 50.8) (xy 232.41 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af0fe54d-fd72-4eb4-ab28-2555049b39bb")
+	)
+	(wire
+		(pts
 			(xy 33.02 144.78) (xy 29.21 144.78)
 		)
 		(stroke
@@ -6228,6 +6264,16 @@
 			(type default)
 		)
 		(uuid "cc48ae7f-7bf4-47f0-a54e-62b9406a1f80")
+	)
+	(wire
+		(pts
+			(xy 39.37 21.59) (xy 62.23 21.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cdc73728-f13a-4564-b0a4-84f4c78bbadf")
 	)
 	(wire
 		(pts
@@ -6569,6 +6615,16 @@
 		)
 		(uuid "3b99e200-d5c6-40ec-9c77-aa00c9a60b00")
 	)
+	(label "D2"
+		(at 20.32 25.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "49b0ca50-7029-4d9e-9106-866898133ad9")
+	)
 	(label "CIPO"
 		(at 262.89 48.26 180)
 		(effects
@@ -6608,6 +6664,16 @@
 			(justify left bottom)
 		)
 		(uuid "67c087fe-ded8-4703-8a96-548d17ff5e9e")
+	)
+	(label "D2"
+		(at 228.6 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "718deba4-b20e-4897-816f-9b330bf46549")
 	)
 	(label "COPI"
 		(at 262.89 53.34 180)
@@ -6728,6 +6794,73 @@
 			(justify right bottom)
 		)
 		(uuid "f6441807-7991-43bd-a8cf-c570b3e02112")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 62.23 24.13 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "039bed04-85fd-4592-93e1-8928fd500126")
+		(property "Reference" "#PWR022"
+			(at 55.88 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 58.42 24.1299 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 62.23 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 62.23 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 62.23 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "adbb7c1d-a7e5-4718-bb7c-6e057d55248c")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR022")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "TMUXDBV:TMUX1119DBVR")
@@ -7939,72 +8072,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 119.38 168.91 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4c706a83-2c07-45d0-817c-241b8a74840b")
-		(property "Reference" "#PWR02"
-			(at 119.38 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 119.38 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 119.38 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 119.38 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 119.38 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "f25f6996-70f0-43bb-ba6a-38629ec5c1d9")
-		)
-		(instances
-			(project "Ryujin_v2"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:Conn_01x04_Pin")
 		(at 152.4 134.62 0)
 		(unit 1)
@@ -8454,7 +8521,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
 			(at 266.7 58.42 0)
 			(effects
 				(font
@@ -9315,72 +9382,6 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "U4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 119.38 166.37 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "93013b66-f197-4b57-8ffc-d4b1478c3a27")
-		(property "Reference" "#PWR022"
-			(at 119.38 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 119.38 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 119.38 166.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 119.38 166.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 119.38 166.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ae37b562-f4f1-409a-af0a-25b32095dd44")
-		)
-		(instances
-			(project "Ryujin_v2"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -10330,6 +10331,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+12V")
+		(at 50.8 26.67 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c009c857-8a33-4a60-a1fa-9d4e7047ae67")
+		(property "Reference" "#PWR048"
+			(at 50.8 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 50.8 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 50.8 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1f2641a2-3817-4cbd-96c3-1508ab2899e3")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR048")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Transistor_FET:IRLML6244")
 		(at 175.26 81.28 0)
 		(unit 1)
@@ -10749,6 +10816,73 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR037")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 62.23 19.05 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cd8f7d3a-5ba7-4132-a475-2791cfee3e2e")
+		(property "Reference" "#PWR049"
+			(at 55.88 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 58.42 19.0499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 62.23 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 62.23 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 62.23 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fa568b19-075a-4c4b-a700-581b12a5b37f")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -11209,33 +11343,55 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 102.87 168.91 180)
+		(lib_id "PhoenixContact:1987973")
+		(at 62.23 19.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "e4fa3003-3029-4e55-b5a2-79b34ed27f3e")
-		(property "Reference" "J1"
-			(at 102.87 160.02 0)
+		(uuid "e01a73d9-26b0-47cf-8e90-2373e065e6ef")
+		(property "Reference" "J5"
+			(at 78.74 21.5899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "Screw_Terminal_01x02"
-			(at 102.87 162.56 0)
+		(property "Value" "1987973"
+			(at 78.74 24.1299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
-			(at 102.87 168.91 0)
+		(property "Footprint" "footprints:PT_25_4_75_V"
+			(at 78.74 113.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.phoenixcontact.com/online/portal/us/?uri=pxc-oc-itemdetail:pid=1987973&library=usen&pcck=P-11-01-05&tab=1&selectedCategory=ALL"
+			(at 78.74 213.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "PCB terminal block, nominal current: 32 A, rated voltage (III/2): 800 V, nominal cross section: 2.5 mm?, Number of potentials: 4, Number of rows: 1, Number of positions per row: 4, product range: PT 2,5/..-V, pitch: 7.5 mm, connection method: Screw connection with wire protector, mounting: Wave soldering, conductor/PCB connection direction: 90 ?, color: green, Pin layout: Linear pinning, Solder pin [P]: 4.1 mm, type of packaging: packed in cardboard"
+			(at 62.23 19.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11243,34 +11399,92 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 102.87 168.91 0)
+		(property "Height" "9.15"
+			(at 78.74 413.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left top)
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 102.87 168.91 0)
+		(property "Manufacturer_Name" "Phoenix Contact"
+			(at 78.74 513.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "1987973"
+			(at 78.74 613.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "651-1987973"
+			(at 78.74 713.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1987973?qs=gjk32EaArKJ9KMkRMee0ng%3D%3D"
+			(at 78.74 813.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" ""
+			(at 78.74 913.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" ""
+			(at 78.74 1013.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
 				(hide yes)
 			)
 		)
 		(pin "1"
-			(uuid "b8be79ce-8181-4f4e-b295-bb29449f5355")
+			(uuid "1357fdde-e16c-4178-8527-b097a6055d63")
 		)
 		(pin "2"
-			(uuid "d1c84f85-647a-4299-b3eb-859f910c05b6")
+			(uuid "b4ec21da-e2cd-4c2a-b132-b0fea6283060")
+		)
+		(pin "3"
+			(uuid "186377b3-22d9-4979-9dfb-a5144f8b005c")
+		)
+		(pin "4"
+			(uuid "21eb6e71-e4e8-4093-b42b-410c9028878b")
 		)
 		(instances
-			(project "Ryujin_v2"
+			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "J1")
+					(reference "J5")
 					(unit 1)
 				)
 			)
@@ -11742,7 +11956,7 @@
 		(size 13.97 10.16)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
@@ -11769,10 +11983,11 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+				(hide yes)
 			)
 		)
 		(pin "BAT+" output
-			(at 39.37 21.59 0)
+			(at 39.37 26.67 0)
 			(uuid "6ae0f210-c754-418a-a4d6-873acabc8f42")
 			(effects
 				(font
@@ -11782,33 +11997,33 @@
 			)
 		)
 		(pin "CE" input
-			(at 39.37 24.13 0)
+			(at 25.4 25.4 180)
 			(uuid "cb0a0bab-5a86-4d61-be05-d12651e7f0e7")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(pin "TERM" input
-			(at 39.37 26.67 0)
+			(at 25.4 27.94 180)
 			(uuid "c2ae3397-d8af-4fa4-94b6-395c6f90dde3")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(pin "VIN" input
-			(at 25.4 21.59 180)
+			(at 39.37 21.59 0)
 			(uuid "d12a9a8b-e94e-47d1-81b7-045e5f2dd9f1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(instances
