@@ -1,4 +1,6 @@
 (sym_lib_table
   (version 7)
   (lib (name "PhoenixContact")(type "KiCad")(uri "${KIPRJMOD}/symbols/PhoenixContact.kicad_sym")(options "")(descr ""))
+  (lib (name "DiodesIncorporated")(type "KiCad")(uri "${KIPRJMOD}/symbols/DiodesIncorporated.kicad_sym")(options "")(descr ""))
+  (lib (name "Infineon")(type "KiCad")(uri "${KIPRJMOD}/symbols/Infineon.kicad_sym")(options "")(descr ""))
 )

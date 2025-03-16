@@ -1,4 +1,4 @@
-24817328186119277
+24820812454087244
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -99792,12 +99792,26 @@ https://docs.arduino.cc/hardware/mkr-fox-1200
 28
 28
 footprints
+INF-PG-TDSON-8-FL
+SON,1.27mm pitch;8 pin,6.15mm W X 5.15mm L X 1.10mm H body
+
+0
+16
+8
+footprints
 L-154A4SUREQBFZGEC
 T-1 3/4 (5mm) FULL COLOR LED LAMP
 Capacitor Polarised
 0
 4
 4
+footprints
+PDS104013
+PDS1040-13-2
+Diode
+0
+3
+3
 footprints
 PT_25_4_75_V
 1987973-2
