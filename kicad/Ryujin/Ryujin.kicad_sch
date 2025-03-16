@@ -5202,6 +5202,10 @@
 		(uuid "fffd3481-b048-4642-a209-b9d9fccb6345")
 	)
 	(no_connect
+		(at 232.41 50.8)
+		(uuid "1f805b31-75c9-4659-9405-99d79a567e48")
+	)
+	(no_connect
 		(at 232.41 33.02)
 		(uuid "2794dbda-883e-4804-a6c6-cebadad3d80e")
 	)
@@ -5474,16 +5478,6 @@
 			(type default)
 		)
 		(uuid "3f11b014-a826-4591-8291-a217fd3915ce")
-	)
-	(wire
-		(pts
-			(xy 20.32 25.4) (xy 25.4 25.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "43e96fad-b858-49ef-ba46-de9427ae5e86")
 	)
 	(wire
 		(pts
@@ -6014,16 +6008,6 @@
 			(type default)
 		)
 		(uuid "aea29c27-bc07-4bf5-9201-6e1e4b8d7ec5")
-	)
-	(wire
-		(pts
-			(xy 228.6 50.8) (xy 232.41 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "af0fe54d-fd72-4eb4-ab28-2555049b39bb")
 	)
 	(wire
 		(pts
@@ -6615,16 +6599,6 @@
 		)
 		(uuid "3b99e200-d5c6-40ec-9c77-aa00c9a60b00")
 	)
-	(label "D2"
-		(at 20.32 25.4 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "49b0ca50-7029-4d9e-9106-866898133ad9")
-	)
 	(label "CIPO"
 		(at 262.89 48.26 180)
 		(effects
@@ -6664,16 +6638,6 @@
 			(justify left bottom)
 		)
 		(uuid "67c087fe-ded8-4703-8a96-548d17ff5e9e")
-	)
-	(label "D2"
-		(at 228.6 50.8 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "718deba4-b20e-4897-816f-9b330bf46549")
 	)
 	(label "COPI"
 		(at 262.89 53.34 180)
@@ -12066,26 +12030,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-		(pin "CE" input
-			(at 25.4 25.4 180)
-			(uuid "cb0a0bab-5a86-4d61-be05-d12651e7f0e7")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "TERM" input
-			(at 25.4 27.94 180)
-			(uuid "c2ae3397-d8af-4fa4-94b6-395c6f90dde3")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 		(pin "VIN" input
