@@ -5107,7 +5107,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq24650.pdf"
+		(property "Datasheet" "../../docs/bq24650.pdf"
 			(at 129.54 90.17 0)
 			(effects
 				(font
@@ -5118,6 +5118,15 @@
 		)
 		(property "Description" "10A, 28V max voltage, Battery Charger w/600kHz NMOS-NMOS Synchronous Buck Converter for Solar, VQFN-16"
 			(at 129.54 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "BQ24650RVAR"
+			(at 129.54 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
