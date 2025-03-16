@@ -3039,6 +3039,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "IRLML6244TRPBF"
+			(at 196.85 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "73902867-a513-4266-abc5-072d0e883fad")
 		)
@@ -3726,6 +3735,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "IRLML6244TRPBF"
+			(at 196.85 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c42218ea-a6dd-49f8-a128-f1daa239ae4f")
 		)
@@ -4270,6 +4288,15 @@
 			)
 		)
 		(property "Description" "6.3A Id, 20V Vds, 21mOhm Rds, N-Channel StrongIRFET Power MOSFET, SOT-23"
+			(at 64.77 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRLML6244TRPBF"
 			(at 64.77 95.25 0)
 			(effects
 				(font
