@@ -20,8 +20,8 @@ class Block {
     void readSample(int num = 1);
 
     virtual String& data() {};
-    virtual const char *identify() {};
-    virtual const char *wait() {};
+    virtual String& identify() {};
+    virtual String& wait() {};
 };
 
 #endif /* _BLOCK_H */

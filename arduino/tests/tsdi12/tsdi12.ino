@@ -33,7 +33,8 @@ String& readline(uint32_t timeout) {
   while ((millis() - st) < SDI_TIMEOUT) {
     if (socket.available()) {
       char c = socket.read();
-      s += c;
+      if (c > 0)
+        s += c;
       if (c == '\n')
         break;
     } else
@@ -60,8 +61,8 @@ void loop() {
       if (len > 1 && cmd[len-1] == '!') {
         cmd[len] = '\0';
         socket.sendCommand(cmd, WAKE_DELAY);
-        delay(30);
-        Serial.println("COMMAND SENT");
+        String s = readline();
+        Serial.println(s);
       }
       len = 0;
       break;
