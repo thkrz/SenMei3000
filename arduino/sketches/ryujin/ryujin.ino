@@ -12,7 +12,6 @@
 #define MX  1
 #define RX  4
 #define TX  3
-#define MOD 5
 #define CS  7
 
 #define BSZ 4 /* (sizeof(uint32_t)) */
@@ -364,7 +363,7 @@ void setup() {
   flash.begin();
   dir();
 
-  if (digitalRead(MOD) == LOW)
+  if (battery() == 0)
     ctrl();
     /* not reached */
 

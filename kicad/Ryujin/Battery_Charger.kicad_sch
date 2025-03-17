@@ -869,186 +869,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:LED"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LED"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Light emitting diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Pins" "1=K 2=A"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "LED diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "LED_0_1"
-				(polyline
-					(pts
-						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "LED_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -1339,195 +1159,15 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "LED_1"
+		(symbol "Transistor_FET:IRF7403"
 			(pin_names
-				(offset 1.016)
 				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LED"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Light emitting diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Pins" "1=K 2=A"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "LED diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "LED_1_0_1"
-				(polyline
-					(pts
-						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "LED_1_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "SQJQ100E_1"
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
 			(property "Reference" "Q"
-				(at 5.08 1.27 0)
+				(at 5.08 1.905 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1535,8 +1175,8 @@
 					(justify left)
 				)
 			)
-			(property "Value" "SQJQ100E"
-				(at 5.08 -1.27 0)
+			(property "Value" "IRF7403"
+				(at 5.08 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1544,7 +1184,18 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Package_TO_SOT_SMD:LFPAK88"
+			(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.infineon.com/dgdl/irf7403pbf.pdf?fileId=5546d462533600a4015355fa23541b9c"
 				(at 5.08 -3.81 0)
 				(effects
 					(font
@@ -1554,17 +1205,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://www.vishay.com/docs/71828/sqjq100e.pdf"
-				(at 5.08 -6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Description" "200A Id, 40V Vds, N-Channel TrenchFET MOSFET, 1.5mOhm Ron, 13nC Qqd, -55 to 175 °C, LFPAK88"
+			(property "Description" "9.7A Id, 30V Vds, N-Channel HEXFET Power MOSFET, SO-8"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1573,7 +1214,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "Power MOSFET N-MOS Automotive AEC-Q101 PowerPAK 8x8L"
+			(property "ki_keywords" "N-Channel MOSFET"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1582,7 +1223,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "LFPAK88*"
+			(property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1591,7 +1232,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "SQJQ100E_1_0_1"
+			(symbol "IRF7403_0_1"
 				(polyline
 					(pts
 						(xy 0.254 1.905) (xy 0.254 -1.905)
@@ -1758,7 +1399,7 @@
 					)
 				)
 			)
-			(symbol "SQJQ100E_1_1_1"
+			(symbol "IRF7403_1_1"
 				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
@@ -1769,7 +1410,7 @@
 							)
 						)
 					)
-					(number "1"
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1796,8 +1437,84 @@
 					)
 				)
 				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(hide yes)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(hide yes)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(hide yes)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
 					(at 2.54 -5.08 90)
 					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(hide yes)
 					(name "S"
 						(effects
 							(font
@@ -1825,360 +1542,6 @@
 						)
 					)
 					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(hide yes)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Transistor_FET:SQJQ100E"
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Q"
-				(at 5.08 1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "SQJQ100E"
-				(at 5.08 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Package_TO_SOT_SMD:LFPAK88"
-				(at 5.08 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.vishay.com/docs/71828/sqjq100e.pdf"
-				(at 5.08 -6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Description" "200A Id, 40V Vds, N-Channel TrenchFET MOSFET, 1.5mOhm Ron, 13nC Qqd, -55 to 175 °C, LFPAK88"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Power MOSFET N-MOS Automotive AEC-Q101 PowerPAK 8x8L"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "LFPAK88*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SQJQ100E_0_1"
-				(polyline
-					(pts
-						(xy 0.254 1.905) (xy 0.254 -1.905)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 2.286) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 0.508) (xy 0.762 -0.508)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.27) (xy 0.762 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 1.651 0)
-					(radius 2.794)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 2.54 -1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SQJQ100E_1_1"
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "G"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(hide yes)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(hide yes)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2310,12 +1673,6 @@
 		(uuid "19223924-4d9d-49e2-b377-2dd45b8539a0")
 	)
 	(junction
-		(at 157.48 109.22)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "207e9292-3b27-42d3-97a4-58bce48bdd35")
-	)
-	(junction
 		(at 63.5 82.55)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2435,6 +1792,14 @@
 		(color 0 0 0 0)
 		(uuid "f92949f7-35be-4f65-8f48-e6a5cd5fc296")
 	)
+	(no_connect
+		(at 129.54 100.33)
+		(uuid "9e73df77-adb7-4234-82e8-2b6327cf379a")
+	)
+	(no_connect
+		(at 129.54 102.87)
+		(uuid "dd59710d-4c65-4b84-8e6c-047a4ae3d3d1")
+	)
 	(wire
 		(pts
 			(xy 219.71 78.74) (xy 231.14 78.74)
@@ -2454,16 +1819,6 @@
 			(type default)
 		)
 		(uuid "05a2145c-c0e4-4532-8640-d83cd6329d37")
-	)
-	(wire
-		(pts
-			(xy 144.78 100.33) (xy 149.86 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "07e5c386-1c47-4c43-8534-9b496906634e")
 	)
 	(wire
 		(pts
@@ -2517,16 +1872,6 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 100.33) (xy 157.48 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1efa3fe8-b5b8-4baa-95e0-fd45e2e797b7")
-	)
-	(wire
-		(pts
 			(xy 129.54 74.93) (xy 139.7 74.93)
 		)
 		(stroke
@@ -2534,16 +1879,6 @@
 			(type default)
 		)
 		(uuid "1fad1c15-1fe9-41ce-8dda-3c52deca5ddd")
-	)
-	(wire
-		(pts
-			(xy 129.54 102.87) (xy 129.54 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "212850ca-12d9-4c3a-b4b0-862a81aeb165")
 	)
 	(wire
 		(pts
@@ -2777,16 +2112,6 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 100.33) (xy 137.16 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "576d88b9-cbfb-44a9-9008-1b7aedb4f298")
-	)
-	(wire
-		(pts
 			(xy 148.59 69.85) (xy 172.72 69.85)
 		)
 		(stroke
@@ -2897,16 +2222,6 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 109.22) (xy 137.16 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "88f5713c-34df-48be-9d19-eeb19ad2ca7f")
-	)
-	(wire
-		(pts
 			(xy 186.69 78.74) (xy 186.69 86.36)
 		)
 		(stroke
@@ -2947,16 +2262,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 109.22) (xy 149.86 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "983d39ab-e8dd-47d9-901c-fd4906ff8776")
-	)
-	(wire
-		(pts
 			(xy 248.92 95.25) (xy 248.92 97.79)
 		)
 		(stroke
@@ -2974,16 +2279,6 @@
 			(type default)
 		)
 		(uuid "9d0751b4-5e5a-49f1-af86-2b30f4b0bd26")
-	)
-	(wire
-		(pts
-			(xy 157.48 109.22) (xy 157.48 115.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9f7cc700-929c-4ba2-92d1-89e629d358d2")
 	)
 	(wire
 		(pts
@@ -3275,17 +2570,6 @@
 			(justify right)
 		)
 		(uuid "970c0594-453f-4c0d-bb60-e7eabb6916c2")
-	)
-	(hierarchical_label "VIN"
-		(shape input)
-		(at 157.48 115.57 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "a5831138-06d2-4ef0-827d-2dc3223550a2")
 	)
 	(hierarchical_label "TS"
 		(shape output)
@@ -3709,84 +2993,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 153.67 100.33 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2cc8eebb-3cc1-4b84-8dcd-106503774c47")
-		(property "Reference" "R11"
-			(at 153.67 93.98 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "R7"
-			(at 153.67 96.52 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 153.67 102.108 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 153.67 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 153.67 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "10k 0402"
-			(at 153.67 100.33 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "7487011e-9604-4005-900d-65cd0e5c9448")
-		)
-		(pin "1"
-			(uuid "e60ac254-a1e3-4ad9-9729-3f5cdf905742")
-		)
-		(instances
-			(project "Ryujin_v2"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
-					(reference "R11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 219.71 86.36 0)
 		(unit 1)
@@ -4166,98 +3372,6 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
 					(reference "C10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "SQJQ100E_1")
-		(lib_id "Transistor_FET:SQJQ100E")
-		(at 184.15 67.31 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "505aebd8-d8ea-4617-b12a-65a83ecab44b")
-		(property "Reference" "Q3"
-			(at 190.5 66.0399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "Q1"
-			(at 190.5 68.5799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:LFPAK88"
-			(at 189.23 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.vishay.com/docs/71828/sqjq100e.pdf"
-			(at 189.23 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "200A Id, 40V Vds, N-Channel TrenchFET MOSFET, 1.5mOhm Ron, 13nC Qqd, -55 to 175 °C, LFPAK88"
-			(at 184.15 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SQJQ100E-T1_GE3"
-			(at 184.15 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a5d6f038-f4d4-4fef-901e-5c33b42a0d6f")
-		)
-		(pin "2"
-			(uuid "b0100b1c-fd15-476f-9093-7df645e853de")
-		)
-		(pin "4"
-			(uuid "a80580bc-d328-4275-a857-41571ede7afb")
-		)
-		(pin "3"
-			(uuid "11ed6fd5-738a-4c68-bc99-b9f258dc2715")
-		)
-		(pin "5"
-			(uuid "5955bce1-0962-4471-b83d-f8bad740bd9c")
-		)
-		(instances
-			(project ""
-				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
-					(reference "Q3")
 					(unit 1)
 				)
 			)
@@ -4754,94 +3868,6 @@
 		)
 	)
 	(symbol
-		(lib_name "LED_1")
-		(lib_id "Device:LED")
-		(at 140.97 100.33 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "873b0572-5aa5-4159-bde9-c51859ae59c2")
-		(property "Reference" "D3"
-			(at 139.3825 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "LED"
-			(at 139.3825 96.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 140.97 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 140.97 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Light emitting diode"
-			(at 140.97 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 140.97 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "LTST-C190GKT"
-			(at 140.97 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "16db75d3-8de9-443b-a85b-b9b9c805cc5d")
-		)
-		(pin "1"
-			(uuid "b97daca3-e977-4424-95f5-f150b852b4cb")
-		)
-		(instances
-			(project ""
-				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
-					(reference "D3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 63.5 107.95 0)
 		(unit 1)
@@ -5128,6 +4154,106 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
 					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRF7403")
+		(at 184.15 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a1435374-43b3-4380-a536-fd965e265db7")
+		(property "Reference" "Q6"
+			(at 190.5 90.1699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRF7403"
+			(at 190.5 92.7099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 189.23 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irf7403pbf.pdf?fileId=5546d462533600a4015355fa23541b9c"
+			(at 189.23 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "9.7A Id, 30V Vds, N-Channel HEXFET Power MOSFET, SO-8"
+			(at 184.15 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRF7403TRPBF"
+			(at 184.15 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ea7e359d-9e41-473f-a33b-d5a1d729e0fb")
+		)
+		(pin "7"
+			(uuid "c922d279-59d5-4eeb-a40d-9b8f7fab413e")
+		)
+		(pin "4"
+			(uuid "c3a99515-7d88-45bd-8660-1e29eae764cd")
+		)
+		(pin "3"
+			(uuid "8f1d56a9-3b8b-4561-9775-188b15db952b")
+		)
+		(pin "6"
+			(uuid "380b85b8-3582-4df4-af04-2d04e10c47aa")
+		)
+		(pin "2"
+			(uuid "df4a20fa-b8fc-4262-92e2-1547b91004cc")
+		)
+		(pin "8"
+			(uuid "25b31edb-9fee-4c7a-8c29-3131e663ad47")
+		)
+		(pin "5"
+			(uuid "fe1fd6d2-f9cd-4c1d-8794-f9ec4c60608a")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
+					(reference "Q6")
 					(unit 1)
 				)
 			)
@@ -5663,84 +4789,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 153.67 109.22 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ce89d582-a645-4e6f-8c3a-34fb9d0015f5")
-		(property "Reference" "R12"
-			(at 153.67 102.87 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "R8"
-			(at 153.67 105.41 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 153.67 110.998 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 153.67 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 153.67 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "10k 0402"
-			(at 153.67 109.22 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "0f447989-677b-4233-8c40-38bee29e6c70")
-		)
-		(pin "1"
-			(uuid "a3c27363-0bce-4850-86c0-f1fa0b9ee955")
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
-					(reference "R12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Battery_Management:BQ24650")
 		(at 116.84 85.09 0)
 		(unit 1)
@@ -5859,93 +4907,6 @@
 			(project ""
 				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
 					(reference "U6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:LED")
-		(at 140.97 109.22 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d3696ed5-fa15-4c93-92dd-a6e2983b074e")
-		(property "Reference" "D4"
-			(at 139.3825 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "LED"
-			(at 139.3825 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 140.97 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 140.97 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Light emitting diode"
-			(at 140.97 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 140.97 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "LTST-C190GKT"
-			(at 140.97 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "10913e16-5798-4813-b0e2-6b0901874747")
-		)
-		(pin "1"
-			(uuid "5dcee53e-3dd4-421c-ae0e-c43c6934e99e")
-		)
-		(instances
-			(project "Ryujin_v2"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
-					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -6245,17 +5206,46 @@
 		)
 	)
 	(symbol
-		(lib_id "Transistor_FET:SQJQ100E")
-		(at 184.15 91.44 0)
+		(lib_id "Transistor_FET:IRF7403")
+		(at 184.15 67.31 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "ef9bf362-5a9d-4850-8872-496ee0a9564b")
-		(property "Reference" "Q4"
-			(at 190.5 90.1699 0)
+		(uuid "f04d0493-5aaa-4acf-96c6-b7f6cdca597e")
+		(property "Reference" "Q5"
+			(at 190.5 66.0399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRF7403"
+			(at 190.5 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 189.23 69.215 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irf7403pbf.pdf?fileId=5546d462533600a4015355fa23541b9c"
+			(at 189.23 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6264,37 +5254,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "Q2"
-			(at 190.5 92.7099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:LFPAK88"
-			(at 189.23 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.vishay.com/docs/71828/sqjq100e.pdf"
-			(at 189.23 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "200A Id, 40V Vds, N-Channel TrenchFET MOSFET, 1.5mOhm Ron, 13nC Qqd, -55 to 175 °C, LFPAK88"
-			(at 184.15 91.44 0)
+		(property "Description" "9.7A Id, 30V Vds, N-Channel HEXFET Power MOSFET, SO-8"
+			(at 184.15 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6302,8 +5263,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "SQJQ100E-T1_GE3"
-			(at 184.15 91.44 0)
+		(property "MPN" "IRF7403TRPBF"
+			(at 184.15 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6312,24 +5273,33 @@
 			)
 		)
 		(pin "1"
-			(uuid "e1b243e1-543d-452f-920c-3d034d618b02")
+			(uuid "7b82b545-a052-4195-9de6-833ee759c998")
 		)
-		(pin "2"
-			(uuid "a32e0c1b-7f88-45d0-a4df-1ba5123231fd")
+		(pin "7"
+			(uuid "f0b807ef-901e-434b-92c7-fb6a7aa9ef33")
 		)
 		(pin "4"
-			(uuid "1c19c8b3-4f9f-4766-908b-6a01b5a04a14")
+			(uuid "a5470136-badb-48a3-a045-4aa0d0453ff3")
 		)
 		(pin "3"
-			(uuid "a1401b29-94c9-43cd-89da-c4bce035c91d")
+			(uuid "862067f5-9b10-4458-8302-8430bc765ae0")
+		)
+		(pin "6"
+			(uuid "32616125-4bb0-4532-863a-9caf040abb2e")
+		)
+		(pin "2"
+			(uuid "8bee6828-c759-498a-b0a2-00d423492217")
+		)
+		(pin "8"
+			(uuid "06459978-122f-4d8d-9f9f-36c3aae4f035")
 		)
 		(pin "5"
-			(uuid "21d9691b-89a6-4fae-badf-3198fefa1d41")
+			(uuid "e805d280-67f1-4c7c-a1f4-6d909152aa32")
 		)
 		(instances
-			(project "Ryujin"
+			(project ""
 				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
-					(reference "Q4")
+					(reference "Q5")
 					(unit 1)
 				)
 			)
