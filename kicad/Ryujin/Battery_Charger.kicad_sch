@@ -3883,7 +3883,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 110.49 109.982 90)
 			(effects
 				(font
@@ -3910,7 +3910,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0 0805"
+		(property "MPN" "0 0402"
 			(at 110.49 111.76 90)
 			(effects
 				(font
