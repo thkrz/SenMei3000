@@ -4987,12 +4987,6 @@
 		(uuid "4bcd33f3-c9e1-42a7-9267-6388df9fd293")
 	)
 	(junction
-		(at 50.8 26.67)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4f0ed49e-3070-4f1a-a437-2493f82c7b3a")
-	)
-	(junction
 		(at 177.8 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5149,6 +5143,12 @@
 		(uuid "efa60f4b-8b39-4ded-8876-8e264e6305ef")
 	)
 	(junction
+		(at 50.8 26.67)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f3477c4a-9fb4-4b8e-a894-7bda0069d4ae")
+	)
+	(junction
 		(at 129.54 151.13)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5231,16 +5231,6 @@
 			(type default)
 		)
 		(uuid "01f0b7fc-0369-417a-b8a1-35418d6d389a")
-	)
-	(wire
-		(pts
-			(xy 39.37 26.67) (xy 50.8 26.67)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "035abe7a-635d-4ba8-8d9b-0692e3201766")
 	)
 	(wire
 		(pts
@@ -5404,7 +5394,7 @@
 	)
 	(wire
 		(pts
-			(xy 50.8 26.67) (xy 62.23 26.67)
+			(xy 39.37 26.67) (xy 50.8 26.67)
 		)
 		(stroke
 			(width 0)
@@ -5481,6 +5471,16 @@
 			(type default)
 		)
 		(uuid "44645da3-c5f3-4116-933f-777038625fda")
+	)
+	(wire
+		(pts
+			(xy 50.8 26.67) (xy 62.23 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46b42303-a40f-46d1-8abe-599b9b4d35ea")
 	)
 	(wire
 		(pts
@@ -6692,16 +6692,6 @@
 		)
 		(uuid "da143398-9080-4e5d-93e7-39615d819717")
 	)
-	(label "SOL"
-		(at 48.26 21.59 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ea384844-0aaa-4101-9b21-0e9697b6d780")
-	)
 	(label "CIPO"
 		(at 29.21 152.4 0)
 		(effects
@@ -6721,6 +6711,99 @@
 			(justify right bottom)
 		)
 		(uuid "f6441807-7991-43bd-a8cf-c570b3e02112")
+	)
+	(netclass_flag ""
+		(length 2.54)
+		(shape round)
+		(at 43.18 21.59 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "35089198-7b5e-4b1c-9139-8285e44015e9")
+		(property "Netclass" "PWR"
+			(at 43.8785 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Component Class" ""
+			(at -55.88 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+	)
+	(netclass_flag ""
+		(length 2.54)
+		(shape round)
+		(at 43.18 26.67 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "49030d6a-8ccf-4c88-ae24-d028d328a4ec")
+		(property "Netclass" "PWR"
+			(at 43.8785 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Component Class" ""
+			(at -55.88 1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+	)
+	(netclass_flag ""
+		(length 2.54)
+		(shape round)
+		(at 198.12 81.28 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6feb9f03-0c08-43ad-99ed-8ac4b773a0ea")
+		(property "Netclass" "PWR"
+			(at 198.8185 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Component Class" ""
+			(at -52.07 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x02_Socket")
@@ -10383,72 +10466,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+12V")
-		(at 50.8 26.67 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c009c857-8a33-4a60-a1fa-9d4e7047ae67")
-		(property "Reference" "#PWR048"
-			(at 50.8 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 50.8 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 50.8 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 50.8 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 50.8 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1f2641a2-3817-4cbd-96c3-1508ab2899e3")
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR048")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Transistor_FET:IRLML6244")
 		(at 175.26 81.28 0)
 		(unit 1)
@@ -11940,6 +11957,72 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 50.8 26.67 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f9c69514-b002-4c71-a5d8-50c82ac410bb")
+		(property "Reference" "#PWR011"
+			(at 50.8 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 50.8 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 50.8 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "084e7f07-ff2c-45c9-a7c0-c051b2f8d817")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
