@@ -17,13 +17,11 @@ class SMT100: public Block {
       };
       return CONCAT(v);
     }
-    String& identify() override {
-      static String s = "13TRUEBNERSMT100038241127";
-      return s;
+    const char *identify() override {
+      return "13TRUEBNERSMT100038241127";
     }
-    String& wait() override {
-      static String s = "0022";
-      return s;
+    const char *wait() override {
+      return "0022";
     }
 };
 

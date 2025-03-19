@@ -60,8 +60,11 @@ void loop() {
       Serial.println();
       if (len > 1 && cmd[len-1] == '!') {
         cmd[len] = '\0';
+        Serial.print("CMD: ");
+        Serial.println(cmd);
         socket.sendCommand(cmd, WAKE_DELAY);
         String s = readline();
+        Serial.print("RESP: ");
         Serial.println(s);
       }
       len = 0;

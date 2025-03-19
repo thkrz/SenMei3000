@@ -3,25 +3,26 @@
 
 #include <Arduino.h>
 
+#include "Sensor.h"
+
 class Block {
   private:
+    Sensor _sen;
     int8_t _dip;
     int8_t _pin[2];
-  protected:
     float _u[2];
+
   public:
-    static String& CONCAT(float*, int len = 2);
+    char addr = -1;
 
-    char addr;
-
-    Block(int8_t, int8_t, int8_t);
+    Block(Sensor&, int8_t, int8_t, int8_t);
 
     bool isConnected();
     void readSample(int num = 1);
 
-    virtual String& data() {};
-    virtual String& identify() {};
-    virtual String& wait() {};
+    String& data();
+    String& identify();
+    String& wait();
 };
 
 #endif /* _BLOCK_H */
