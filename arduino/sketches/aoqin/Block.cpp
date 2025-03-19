@@ -2,7 +2,9 @@
 
 #define VOLT(x) ((x)*5.0/1023.0)
 
-static String& Block::CONCAT(float *x, int len) {
+static String& CONCAT(float*, int);
+
+String& CONCAT(float *x, int len) {
   static String s;
 
   s = "";
@@ -14,11 +16,23 @@ static String& Block::CONCAT(float *x, int len) {
   return s;
 }
 
-Block::Block(int8_t d, int8_t a, int8_t b) {
+Block::Block(Sensor *sen, int8_t d, int8_t a, int8_t b) {
   pinMode(d, INPUT_PULLUP);
   _dip = d;
   _pin[0] = a;
   _pin[1] = b;
+  _sen = sen;
+}
+
+String& Block::data() {
+  int len;
+  float *w;
+  _sen->conv(_u, &w, &len);
+  return CONCAT(w, len);
+}
+
+String& Block::identify() {
+  return _sen->id;
 }
 
 bool Block::isConnected() {
@@ -33,4 +47,8 @@ void Block::readSample(int num) {
       _u[i] += VOLT(analogRead(_pin[i]));
     _u[i] /= num;
   }
+}
+
+String& Block::wait() {
+  return _sen->wait;
 }

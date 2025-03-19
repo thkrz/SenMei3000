@@ -1,25 +1,27 @@
 #include <EEPROM.h>
 #include <SDI12.h>
 
-#include "SMT100.h"
-#include "RAIN.h"
+#include "Block.h"
 
-#define CMD_LEN 8
+#define CMD_LEN 4
 #define EE_ADDR 0
 #define NUM_CON 6
-#define BUS_PIN 13
+#define BUS_PIN 11
+
+static int index(char);
+static char peekaddr(int);
+static void rc();
 
 Block blk[NUM_CON] = {
-  SMT100(7, A0, A1), // 1
-  SMT100(5, A2, A3), // 2
-  SMT100(4, A4, A5), // 3
-  RAIN(3, 7),        // 4
-  SMT100(2, A8, A9), // 5
-  SMT100(1, A10, A11)// 6
+  Block(&SMT100, 7, A0, A1), // 1
+  Block(&SMT100, 5, A2, A3), // 2
+  Block(&SMT100, 3, A4, A5), // 3
+  Block(&SMT100, 2, A4, A5), // 3
+  Block(&SMT100, 1, A8, A9), // 5
+  Block(&SMT100, 0, A10, A11)// 6
 };
-
 SDI12 socket(BUS_PIN);
-char buf[CMD_LEN];
+char cmd[CMD_LEN];
 int len = 0;
 
 int index(char a) {
@@ -39,17 +41,17 @@ char peekaddr(int a) {
 }
 
 void rc() {
-  char addr = buf[0];
+  char addr = cmd[0];
   int i = index(addr);
   if (i < 0)
     return;
   Block *b = &blk[i];
   if (!b->isConnected())
     return;
-  String r;
+  String r = "";
   bool rs = false;
   if (len > 1)
-    switch (buf[1]) {
+    switch (cmd[1]) {
     case 'I':
       r = b->identify();
       break;
@@ -61,7 +63,7 @@ void rc() {
       r = b->data();
       break;
     case 'A':
-      addr = buf[2];
+      addr = cmd[2];
       b->addr = addr;
       EEPROM.write(EE_ADDR+i, addr);
       break;
@@ -81,6 +83,7 @@ void setup() {
     blk[i].addr = peekaddr(i);
   socket.begin();
   socket.forceListen();
+
 }
 
 void loop() {
@@ -88,13 +91,13 @@ void loop() {
     char c = socket.read();
     if (c == '!') {
       socket.clearBuffer();
+      socket.forceHold();
       if (len > 0) {
-        socket.forceHold();
         rc();
         len = 0;
-        socket.forceListen();
       }
+      socket.forceListen();
     } else if (c > 0 && len < CMD_LEN)
-      buf[len++] = c;
+      cmd[len++] = c;
   }
 }
