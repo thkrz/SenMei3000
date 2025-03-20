@@ -10,5 +10,6 @@ struct Sensor {
 };
 
 extern Sensor SMT100;
+extern Sensor SMT50;
 
 #endif /* _SENSOR_H */

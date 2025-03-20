@@ -60,7 +60,7 @@ void rc() {
       r = b->wait();
       break;
     case 'D':
-      r = b->data();
+      r = b->measurement();
       break;
     case 'A':
       addr = cmd[2];

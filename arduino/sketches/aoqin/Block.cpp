@@ -24,13 +24,6 @@ Block::Block(Sensor *sen, int8_t d, int8_t a, int8_t b) {
   _sen = sen;
 }
 
-String& Block::data() {
-  int len;
-  float *w;
-  _sen->conv(_u, &w, &len);
-  return CONCAT(w, len);
-}
-
 String& Block::identify() {
   return _sen->id;
 }
@@ -39,13 +32,17 @@ bool Block::isConnected() {
   return digitalRead(_dip) == LOW;
 }
 
-void Block::readSample(int num) {
+String& Block::measurement() {
+  int len;
+  float *w;
+  _sen->conv(_u, &w, &len);
+  return CONCAT(w, len);
+}
+
+void Block::readSample() {
   for (int i = 0; i < 2; i++) {
-    _u[i] = 0;
     analogRead(_pin[i]);
-    for (int n = 0; n < num; n++)
-      _u[i] += VOLT(analogRead(_pin[i]));
-    _u[i] /= num;
+    _u[i] = VOLT(analogRead(_pin[i]));
   }
 }
 

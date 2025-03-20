@@ -17,10 +17,10 @@ class Block {
 
     Block(Sensor*, int8_t, int8_t, int8_t);
 
-    String& data();
     String& identify();
     bool isConnected();
-    void readSample(int num = 1);
+    String& measurement();
+    void readSample();
     String& wait();
 };
 
