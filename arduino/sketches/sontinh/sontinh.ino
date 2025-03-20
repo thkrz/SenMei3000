@@ -1,3 +1,5 @@
+#include <avr/interrupt.h>
+#include <avr/sleep.h>
 #include <EEPROM.h>
 #include <SDI12.h>
 
@@ -78,12 +80,25 @@ void rc() {
     b->readSample();
 }
 
+void sleep() {
+  pinMode(BUS_PIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(BUS_PIN), wake, LOW);
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  sleep_enable();
+  sleep_mode();
+  sleep_disable();
+}
+
+void wake() {
+  detachInterrupt(0);
+  socket.begin();
+  socket.forceListen();
+}
+
 void setup() {
   for (int i = 0; i < NUM_CON; i++)
     blk[i].addr = peekaddr(i);
-  socket.begin();
-  socket.forceListen();
-
+  sleep();
 }
 
 void loop() {
