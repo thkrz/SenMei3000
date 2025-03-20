@@ -1,0 +1,242 @@
+(footprint "1822972"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "1822972")
+	(tags "Connector")
+	(property "Reference" "J**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "f010a638-6758-4dbd-a02d-9ed70106bfa0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "1822972"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "85fca6ce-3082-401a-8406-5bccabf2a503")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "dbe31012-84aa-4e2f-b332-ecf352b54b7d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4d847db3-77af-462c-9a85-34cf81987396")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -2 -8.35)
+		(end 7 -8.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4498977e-77e8-4e8b-b348-ec5aa9b355bf")
+	)
+	(fp_line
+		(start -2 5.35)
+		(end -2 -8.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "1d6e91e6-660d-48a3-9cf7-8e72f93b04ff")
+	)
+	(fp_line
+		(start 7 -8.35)
+		(end 7 5.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "cd8126bf-e84e-4e7e-9da9-5211aa114f4a")
+	)
+	(fp_line
+		(start 7 5.35)
+		(end -2 5.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "fdad458b-3d59-4885-ad42-24f91926de11")
+	)
+	(fp_circle
+		(center -3.35 0)
+		(end -3.35 0.05)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "e594f409-33c4-4ae9-95a1-3112fa08ecf1")
+	)
+	(fp_line
+		(start -4.25 -9.35)
+		(end 8 -9.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "08a800be-cd6f-4d44-8b7f-5356b8277dc9")
+	)
+	(fp_line
+		(start -4.25 6.35)
+		(end -4.25 -9.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "e01a2d8d-4584-4e05-8f7a-56d027d636c5")
+	)
+	(fp_line
+		(start 8 -9.35)
+		(end 8 6.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6145b4b9-f936-4ba6-9d07-f69bfc71a574")
+	)
+	(fp_line
+		(start 8 6.35)
+		(end -4.25 6.35)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "738d99c8-ac1e-4c03-93a5-d79716a13387")
+	)
+	(fp_line
+		(start -2 -8.35)
+		(end 7 -8.35)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "dfef8244-f6f6-4c5a-9ee1-7aa743e0ce0f")
+	)
+	(fp_line
+		(start -2 5.35)
+		(end -2 -8.35)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f783ac29-897f-4c22-b595-8a52588bf69d")
+	)
+	(fp_line
+		(start 7 -8.35)
+		(end 7 5.35)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c310f6f9-3a8d-4421-9c3a-f3cfdd433264")
+	)
+	(fp_line
+		(start 7 5.35)
+		(end -2 5.35)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b96e4148-ad98-4ce3-8c6f-20f79ae49718")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "0df606a7-d3d2-4d79-9fea-95ae59675967")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 1.65 1.65)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "50f9e4a1-3d67-4ebf-aad5-1351addd01d7")
+	)
+	(pad "2" thru_hole circle
+		(at 0 -7)
+		(size 1.65 1.65)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "97c79eb6-9c54-4bd5-aeb5-11d7e796fd7d")
+	)
+	(pad "3" thru_hole circle
+		(at 5 0)
+		(size 1.65 1.65)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7f6251a7-93d6-41ee-b42e-e71f61a52b6f")
+	)
+	(pad "4" thru_hole circle
+		(at 5 -7)
+		(size 1.65 1.65)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f24e9351-bd6e-4bc9-a2eb-14812d10aec6")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3dmodels/1822972.stp"
+		(offset
+			(xyz -2.029999941 8.310000295 0.4900000022)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 90)
+		)
+	)
+)

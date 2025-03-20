@@ -3391,7 +3391,7 @@
 		)
 		(uuid "4d3f2a55-6e6a-4f55-8b1c-3eea28c0a997")
 	)
-	(label "D11"
+	(label "D7"
 		(at 24.13 25.4 0)
 		(effects
 			(font
@@ -3501,7 +3501,7 @@
 		)
 		(uuid "7882e81a-b9ee-427b-812f-e7f0d2de051a")
 	)
-	(label "D11"
+	(label "D7"
 		(at 20.32 44.45 0)
 		(effects
 			(font
@@ -3651,7 +3651,7 @@
 		)
 		(uuid "c8559460-0667-46f2-85de-4ed6f03ca6fe")
 	)
-	(label "D7"
+	(label "D11"
 		(at 130.81 121.92 0)
 		(effects
 			(font
