@@ -3,71 +3,55 @@
 #include <EEPROM.h>
 #include <SDI12.h>
 
-#include "Block.h"
+#define SLEEP_TIMEOUT 10000
 
 #define CMD_LEN 4
 #define EE_ADDR 0
 #define NUM_CON 6
 #define BUS_PIN 7
 
-static int index(char);
-static char peekaddr(int);
+static String& measurement();
+static char peekaddr();
+static void readSample();
 static void rc();
 
-Block blk[NUM_CON] = {
-  Block(&SMT100, 7, A0, A1), // 1
-  Block(&SMT100, 5, A2, A3), // 2
-  Block(&SMT100, 3, A4, A5), // 3
-  Block(&SMT100, 2, A4, A5), // 3
-  Block(&SMT100, 1, A8, A9), // 5
-  Block(&SMT100, 0, A10, A11)// 6
-};
 SDI12 socket(BUS_PIN);
+char addr;
 char cmd[CMD_LEN];
 int len = 0;
+uint32_t wait;
 
-int index(char a) {
-  for (int i = 0; i < NUM_CON; i++)
-    if (blk[i].addr == a)
-      return i;
-  return -1;
-}
-
-char peekaddr(int a) {
-  char c = EEPROM.read(EE_ADDR + a);
+char peekaddr() {
+  char c = EEPROM.read(EE_ADDR);
   if (!isAlphaNumeric(c)) {
     c = '0' + a;
-    EEPROM.write(EE_ADDR + a, c);
+    EEPROM.write(EE_ADDR, c);
   }
   return c;
 }
 
 void rc() {
-  char addr = cmd[0];
-  int i = index(addr);
-  if (i < 0)
-    return;
-  Block *b = &blk[i];
-  if (!b->isConnected())
+  char a = cmd[0];
+  if (addr != a)
     return;
   String r = "";
   bool rs = false;
   if (len > 1)
     switch (cmd[1]) {
     case 'I':
-      r = b->identify();
+      r = "13JMUWUERZKLIM100001";
       break;
     case 'M':
       rs = true;
-      r = b->wait();
+      r = "0026";
       break;
     case 'D':
-      r = b->measurement();
+      r = measurement();
       break;
     case 'A':
-      addr = cmd[2];
-      b->addr = addr;
-      EEPROM.write(EE_ADDR+i, addr);
+      a = cmd[2];
+      addr = a;
+      EEPROM.write(EE_ADDR, addr);
       break;
     }
 
@@ -77,12 +61,12 @@ void rc() {
   s += "\r\n";
   socket.sendResponse(s);
   if (rs)
-    b->readSample();
+    readSample();
 }
 
 void sleep() {
   pinMode(BUS_PIN, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(BUS_PIN), wake, LOW);
+  attachInterrupt(digitalPinToInterrupt(BUS_PIN), wake, RISING);
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);
   sleep_enable();
   sleep_mode();
@@ -91,13 +75,13 @@ void sleep() {
 
 void wake() {
   detachInterrupt(0);
-  socket.begin();
   socket.forceListen();
+  wait = millis();
 }
 
 void setup() {
-  for (int i = 0; i < NUM_CON; i++)
-    blk[i].addr = peekaddr(i);
+  addr = peekaddr();
+  socket.begin();
   sleep();
 }
 
@@ -112,7 +96,10 @@ void loop() {
         len = 0;
       }
       socket.forceListen();
+      wait = millis();
     } else if (c > 0 && len < CMD_LEN)
       cmd[len++] = c;
   }
+  if (millis() - wait > SLEEP_TIMEOUT)
+    sleep();
 }
