@@ -533,17 +533,7 @@
       "version": 4
     },
     "net_colors": null,
-    "netclass_assignments": {
-      "+12V": [
-        "PWR"
-      ],
-      "/VIN": [
-        "PWR"
-      ],
-      "GND": [
-        "PWR"
-      ]
-    },
+    "netclass_assignments": null,
     "netclass_patterns": []
   },
   "pcbnew": {
