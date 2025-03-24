@@ -3795,6 +3795,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "SI7288DP-T1-GE3"
+			(at 184.15 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "7"
 			(uuid "c4216e08-c7ef-4d48-ba5e-4ace678fdaeb")
 		)
@@ -4153,6 +4162,15 @@
 			)
 		)
 		(property "Description" "Dual NMOS transistor, 12 pin package"
+			(at 184.15 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SI7288DP-T1-GE3"
 			(at 184.15 67.31 0)
 			(effects
 				(font

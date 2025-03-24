@@ -780,6 +780,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "SI7288DP-T1-GE3"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "ki_keywords" "transistor NMOS N-MOS N-MOSFET"
 			(at 0 0 0)
 			(effects

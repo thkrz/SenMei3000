@@ -9962,6 +9962,19 @@
 				)
 			)
 		)
+		(property "MPN" "SI7288DP-T1-GE3"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "07dc410f-1f33-460a-8a38-c1c5173d7fa3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc/7558b888-aaf7-4587-b5f9-3ae952db8285")
 		(sheetname "/Battery Charger/")
 		(sheetfile "Battery_Charger.kicad_sch")
