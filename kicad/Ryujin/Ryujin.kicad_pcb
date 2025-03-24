@@ -1331,17 +1331,6 @@
 			(uuid "5922ccc5-2599-49eb-ba64-d426f79b00c0")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/3dmodels/Sensirion_DFN-4-1EP_2x2mm_P1mm_EP0.7x1.6mm.step"
-			(offset
-				(xyz 0 0 100)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz -0 -90 90)
-			)
-		)
 	)
 	(footprint "footprints:65342372"
 		(layer "F.Cu")
