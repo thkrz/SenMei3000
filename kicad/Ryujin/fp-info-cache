@@ -1,4 +1,4 @@
-24824302357628188
+24828178978486581
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -99833,6 +99833,13 @@ Connector
 0
 4
 4
+footprints
+SI7288DPT1GE3
+PowerPAK® SO-8 Dual
+MOSFET (N-Channel)
+0
+12
+12
 footprints
 TMUXDBVR
 

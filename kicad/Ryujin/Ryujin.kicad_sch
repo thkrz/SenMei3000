@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Ryujin")
-		(date "2024-12-21")
-		(rev "17")
+		(date "2025-03-24")
+		(rev "44")
 		(company "Julius-Maximilians-Universität Würzburg")
 	)
 	(lib_symbols

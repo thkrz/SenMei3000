@@ -4,6 +4,12 @@
 	(generator_version "9.0")
 	(uuid "f95602b7-ccbc-41c8-aa3d-4c0f452f01dc")
 	(paper "A4")
+	(title_block
+		(title "Ryujin")
+		(date "2025-03-24")
+		(rev "44")
+		(company "Julius-Maximilians-Universität Würzburg")
+	)
 	(lib_symbols
 		(symbol "Battery_Management:BQ24650"
 			(exclude_from_sim no)
@@ -1170,8 +1176,9 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Transistor_FET:IRF7403"
+		(symbol "Vishay:Si7288"
 			(pin_names
+				(offset 0)
 				(hide yes)
 			)
 			(exclude_from_sim no)
@@ -1186,7 +1193,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "IRF7403"
+			(property "Value" "Si7288"
 				(at 5.08 0 0)
 				(effects
 					(font
@@ -1195,28 +1202,25 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-				(at 5.08 -1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-						(italic yes)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.infineon.com/dgdl/irf7403pbf.pdf?fileId=5546d462533600a4015355fa23541b9c"
-				(at 5.08 -3.81 0)
+			(property "Footprint" "footprints:SI7288DPT1GE3"
+				(at 5.08 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 					(hide yes)
 				)
 			)
-			(property "Description" "9.7A Id, 30V Vds, N-Channel HEXFET Power MOSFET, SO-8"
+			(property "Datasheet" "https://www.vishay.com/docs/65366/si7288dp.pdf"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Dual NMOS transistor, 12 pin package"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1225,7 +1229,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "N-Channel MOSFET"
+			(property "ki_keywords" "transistor NMOS N-MOS N-MOSFET"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1234,16 +1238,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "IRF7403_0_1"
+			(symbol "Si7288_0_1"
 				(polyline
 					(pts
 						(xy 0.254 1.905) (xy 0.254 -1.905)
@@ -1352,6 +1347,17 @@
 					)
 				)
 				(circle
+					(center 2.54 2.54)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
 					(center 2.54 1.778)
 					(radius 0.254)
 					(stroke
@@ -1387,7 +1393,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+						(xy 2.921 0.381) (xy 3.683 0.381)
 					)
 					(stroke
 						(width 0)
@@ -1409,8 +1415,143 @@
 						(type none)
 					)
 				)
+				(polyline
+					(pts
+						(xy 5.08 2.54) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 5.08 2.54)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
 			)
-			(symbol "IRF7403_1_1"
+			(symbol "Si7288_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 5.08 270)
+					(length 2.54)
+					(hide yes)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 5.08 270)
+					(length 2.54)
+					(hide yes)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "Si7288_2_1"
 				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
@@ -1448,103 +1589,8 @@
 					)
 				)
 				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(hide yes)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(hide yes)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(hide yes)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at 2.54 -5.08 90)
 					(length 2.54)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(hide yes)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(hide yes)
 					(name "S"
 						(effects
 							(font
@@ -1553,6 +1599,62 @@
 						)
 					)
 					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 5.08 270)
+					(length 2.54)
+					(hide yes)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 5.08 270)
+					(length 2.54)
+					(hide yes)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1780,6 +1882,12 @@
 		(uuid "ae5f1da7-2b96-4348-9cd6-42a0aac34ba0")
 	)
 	(junction
+		(at 186.69 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "afe52bef-d60b-4017-b17d-744607ca22c3")
+	)
+	(junction
 		(at 219.71 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1790,6 +1898,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d0d48c74-6402-410f-8e74-6e60058656e7")
+	)
+	(junction
+		(at 186.69 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dcff7178-8be4-4899-8178-36b58999475e")
 	)
 	(junction
 		(at 205.74 93.98)
@@ -1824,6 +1938,16 @@
 			(type default)
 		)
 		(uuid "02755806-6f19-46d5-87b9-669d95104261")
+	)
+	(wire
+		(pts
+			(xy 186.69 86.36) (xy 189.23 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0531e4d8-204c-4400-9c64-7d47f5fae8b5")
 	)
 	(wire
 		(pts
@@ -2264,6 +2388,16 @@
 			(type default)
 		)
 		(uuid "9222bbf2-fd61-4fb5-b5cc-347034d849a7")
+	)
+	(wire
+		(pts
+			(xy 186.69 62.23) (xy 189.23 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "944f2439-80e2-474b-9545-158e060ceb7b")
 	)
 	(wire
 		(pts
@@ -3607,6 +3741,106 @@
 		)
 	)
 	(symbol
+		(lib_id "Vishay:Si7288")
+		(at 184.15 91.44 0)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "57dd9c27-ffe4-4be2-86c0-8288d91c6ae6")
+		(property "Reference" "Q3"
+			(at 190.5 90.1699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Si7288"
+			(at 190.5 92.7099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:SI7288DPT1GE3"
+			(at 189.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/65366/si7288dp.pdf"
+			(at 189.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual NMOS transistor, 12 pin package"
+			(at 184.15 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "c4216e08-c7ef-4d48-ba5e-4ace678fdaeb")
+		)
+		(pin "6"
+			(uuid "639b8c38-6e0c-4b14-b8bb-4b6cc0c6c313")
+		)
+		(pin "3"
+			(uuid "baa252d2-0cc3-4298-ae72-c65868ce5c09")
+		)
+		(pin "8"
+			(uuid "157836f3-a5c8-48bb-a7d8-2e82f1fa0a76")
+		)
+		(pin "4"
+			(uuid "fce2dfe1-bf1a-4b2c-85a9-4d3b28f62f7c")
+		)
+		(pin "9"
+			(uuid "6e59300d-e57e-4614-971a-16598342153d")
+		)
+		(pin "10"
+			(uuid "7307df64-18b0-48b7-945e-5534b4ce827b")
+		)
+		(pin "12"
+			(uuid "fc2c2326-264b-4cae-be8a-7d0c64fe8fa5")
+		)
+		(pin "5"
+			(uuid "77044529-09b1-4d65-ad8c-074001dc873b")
+		)
+		(pin "1"
+			(uuid "fd7cceaf-0eca-4da8-b91c-e6593631ecbf")
+		)
+		(pin "2"
+			(uuid "f4379e6c-83ed-4ee1-b0ff-80210964c361")
+		)
+		(pin "11"
+			(uuid "64d643f5-c019-4bf9-a467-9039a4941fd3")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
+					(reference "Q3")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 46.99 77.47 0)
 		(unit 1)
@@ -3867,6 +4101,106 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
 					(reference "#PWR027")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Vishay:Si7288")
+		(at 184.15 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7558b888-aaf7-4587-b5f9-3ae952db8285")
+		(property "Reference" "Q3"
+			(at 190.5 66.0399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Si7288"
+			(at 190.5 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:SI7288DPT1GE3"
+			(at 189.23 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/65366/si7288dp.pdf"
+			(at 189.23 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual NMOS transistor, 12 pin package"
+			(at 184.15 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "9"
+			(uuid "03ae8b5b-7a42-44bb-9296-009274d15d96")
+		)
+		(pin "8"
+			(uuid "f3e48415-d79f-43fe-8ba7-1aace92f703d")
+		)
+		(pin "4"
+			(uuid "c94157e1-cfed-4fa3-b4cf-637294c7e4a7")
+		)
+		(pin "1"
+			(uuid "4f6ca832-c551-4b97-90d3-606a550bd6d2")
+		)
+		(pin "11"
+			(uuid "70ee040f-e603-4257-9bc7-3dd430470637")
+		)
+		(pin "3"
+			(uuid "d2974695-2b24-4f0b-acf3-9b62dc41090d")
+		)
+		(pin "10"
+			(uuid "d1e10c23-26fc-44bd-89ea-ec41aab04678")
+		)
+		(pin "2"
+			(uuid "7d3f8c54-cecd-4973-bdd1-b7ecf6e88863")
+		)
+		(pin "12"
+			(uuid "e4ddce3a-179f-4d60-8d74-8efada302c48")
+		)
+		(pin "7"
+			(uuid "90449cba-de3a-4d14-870a-39afdb35d797")
+		)
+		(pin "5"
+			(uuid "cffd865e-ae43-462c-b13d-49bdd9013920")
+		)
+		(pin "6"
+			(uuid "aa7b5aac-61a0-44a4-907e-c7866cbc10bf")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
+					(reference "Q3")
 					(unit 1)
 				)
 			)
@@ -4238,106 +4572,6 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
 					(reference "R2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Transistor_FET:IRF7403")
-		(at 184.15 91.44 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a1435374-43b3-4380-a536-fd965e265db7")
-		(property "Reference" "Q6"
-			(at 190.5 90.1699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "IRF7403"
-			(at 190.5 92.7099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 189.23 93.345 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.infineon.com/dgdl/irf7403pbf.pdf?fileId=5546d462533600a4015355fa23541b9c"
-			(at 189.23 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "9.7A Id, 30V Vds, N-Channel HEXFET Power MOSFET, SO-8"
-			(at 184.15 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "IRF7469TRPBF"
-			(at 184.15 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ea7e359d-9e41-473f-a33b-d5a1d729e0fb")
-		)
-		(pin "7"
-			(uuid "c922d279-59d5-4eeb-a40d-9b8f7fab413e")
-		)
-		(pin "4"
-			(uuid "c3a99515-7d88-45bd-8660-1e29eae764cd")
-		)
-		(pin "3"
-			(uuid "8f1d56a9-3b8b-4561-9775-188b15db952b")
-		)
-		(pin "6"
-			(uuid "380b85b8-3582-4df4-af04-2d04e10c47aa")
-		)
-		(pin "2"
-			(uuid "df4a20fa-b8fc-4262-92e2-1547b91004cc")
-		)
-		(pin "8"
-			(uuid "25b31edb-9fee-4c7a-8c29-3131e663ad47")
-		)
-		(pin "5"
-			(uuid "fe1fd6d2-f9cd-4c1d-8794-f9ec4c60608a")
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
-					(reference "Q6")
 					(unit 1)
 				)
 			)
@@ -5349,106 +5583,6 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
 					(reference "R17")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Transistor_FET:IRF7403")
-		(at 184.15 67.31 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f04d0493-5aaa-4acf-96c6-b7f6cdca597e")
-		(property "Reference" "Q5"
-			(at 190.5 66.0399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "IRF7403"
-			(at 190.5 68.5799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 189.23 69.215 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.infineon.com/dgdl/irf7403pbf.pdf?fileId=5546d462533600a4015355fa23541b9c"
-			(at 189.23 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "9.7A Id, 30V Vds, N-Channel HEXFET Power MOSFET, SO-8"
-			(at 184.15 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "IRF7469TRPBF"
-			(at 184.15 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7b82b545-a052-4195-9de6-833ee759c998")
-		)
-		(pin "7"
-			(uuid "f0b807ef-901e-434b-92c7-fb6a7aa9ef33")
-		)
-		(pin "4"
-			(uuid "a5470136-badb-48a3-a045-4aa0d0453ff3")
-		)
-		(pin "3"
-			(uuid "862067f5-9b10-4458-8302-8430bc765ae0")
-		)
-		(pin "6"
-			(uuid "32616125-4bb0-4532-863a-9caf040abb2e")
-		)
-		(pin "2"
-			(uuid "8bee6828-c759-498a-b0a2-00d423492217")
-		)
-		(pin "8"
-			(uuid "06459978-122f-4d8d-9f9f-36c3aae4f035")
-		)
-		(pin "5"
-			(uuid "e805d280-67f1-4c7c-a1f4-6d909152aa32")
-		)
-		(instances
-			(project ""
-				(path "/a03941d3-2006-4bae-a82d-663063c77238/5d8fcbd7-e8f6-4322-b7f5-743508fec2cc"
-					(reference "Q5")
 					(unit 1)
 				)
 			)
