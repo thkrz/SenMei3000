@@ -1331,15 +1331,15 @@
 			(uuid "5922ccc5-2599-49eb-ba64-d426f79b00c0")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Sensor_Humidity.3dshapes/Sensirion_DFN-4-1EP_2x2mm_P1mm_EP0.7x1.6mm.wrl"
+		(model "${KIPRJMOD}/3dmodels/Sensirion_DFN-4-1EP_2x2mm_P1mm_EP0.7x1.6mm.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 0 100)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -90 90)
 			)
 		)
 	)
