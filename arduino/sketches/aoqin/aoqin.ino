@@ -6,14 +6,14 @@
 #define CMD_LEN 4
 #define EE_ADDR 0
 #define NUM_CON 6
-#define BUS_PIN 11
+#define BUS_PIN 7
 
 static int index(char);
 static char peekaddr(int);
 static void rc();
 
 Block blk[NUM_CON] = {
-  Block(&SMT100, 7, A0, A1), // 1
+  Block(&SMT100, 11, A0, A1), // 1
   Block(&SMT100, 5, A2, A3), // 2
   Block(&SMT100, 3, A4, A5), // 3
   Block(&SMT100, 2, A4, A5), // 3

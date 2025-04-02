@@ -3382,16 +3382,6 @@
 		)
 		(uuid "40c2986a-290c-4210-8f66-6c08de203d0c")
 	)
-	(label "VCC"
-		(at 121.92 85.09 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "457b2b2a-ce4c-4410-a79e-cac4392c0091")
-	)
 	(label "A0"
 		(at 121.92 77.47 0)
 		(effects
@@ -3601,16 +3591,6 @@
 			(justify right bottom)
 		)
 		(uuid "ac42a791-ce88-41b2-850f-5dda3cd93b92")
-	)
-	(label "GND"
-		(at 121.92 92.71 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ae320069-5005-4269-8f24-8b93932a1722")
 	)
 	(label "A4"
 		(at 121.92 67.31 0)
@@ -5468,6 +5448,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 121.92 92.71 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a7629600-8b6c-4aef-a40a-26b76567a28a")
+		(property "Reference" "#PWR09"
+			(at 115.57 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.11 92.7099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 121.92 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 121.92 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a9ab38bb-68ab-4c3b-996b-106026ae0f1c")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "PheonixContact:1985218")
 		(at 85.09 147.32 0)
 		(unit 1)
@@ -5681,6 +5728,72 @@
 			(project "AoQin"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 121.92 85.09 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b43a0f10-70cf-495d-9205-9ee679bc78f9")
+		(property "Reference" "#PWR08"
+			(at 125.73 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 118.11 85.0899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 121.92 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 121.92 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "25789177-465a-4c10-8b3c-4b6d74336193")
+		)
+		(instances
+			(project "AoQin"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
