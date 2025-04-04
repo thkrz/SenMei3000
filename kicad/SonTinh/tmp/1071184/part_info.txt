@@ -1,9 +1,0 @@
-Manufacturer=Phoenix Contact
-PartNumber=1071184
-PartCategory=Connector
-PackageCategory=Other
-PinCount=9
-Version=4.2
-Released=2021-12-30 06:31:11
-Downloaded=2025-03-26 11:54:08
-3D=Y
