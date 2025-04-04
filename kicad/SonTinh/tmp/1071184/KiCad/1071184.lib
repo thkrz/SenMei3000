@@ -1,0 +1,32 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model 1071184
+#/15200683/506064/2.50/9/2/Connector
+DEF 1071184 J 0 30 Y Y 1 F N
+F0 "J" 750 300 50 H V L CNN
+F1 "1071184" 750 200 50 H V L CNN
+F2 "1071184" 750 100 50 H I L CNN
+F3 "https://www.phoenixcontact.com/online/portal/us/?uri=pxc-oc-itemdetail:pid=1071184&library=usen&pcck=P-11-01-05&tab=1&selectedCategory=ALL" 750 0 50 H I L CNN
+F4 "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 160 V, nominal cross section: 1.5 mm, Number of rows: 1, Number of positions per row: 7, product range: SPTA 1,5/..-THR, pitch: 3.81 mm, connection method: Push-in spring connection, mounting: THR soldering, conductor/PCB connection direction: 45 , color: black, Solder pin [P]: 2.6 mm, type of packaging: 44 mm wide tape" 750 -100 50 H I L CNN "Description"
+F5 "12.62" 750 -200 50 H I L CNN "Height"
+F6 "Phoenix Contact" 750 -300 50 H I L CNN "Manufacturer_Name"
+F7 "1071184" 750 -400 50 H I L CNN "Manufacturer_Part_Number"
+F8 "651-1071184" 750 -500 50 H I L CNN "Mouser Part Number"
+F9 "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1071184?qs=P19jvy6W2mc%252BSFHTGS8UdQ%3D%3D" 750 -600 50 H I L CNN "Mouser Price/Stock"
+F10 "" 750 -700 50 H I L CNN "Arrow Part Number"
+F11 "" 750 -800 50 H I L CNN "Arrow Price/Stock"
+DRAW
+X 1 1 900 0 200 L 50 50 0 0 P
+X 2 2 900 -100 200 L 50 50 0 0 P
+X 3 3 900 -200 200 L 50 50 0 0 P
+X 4 4 900 -300 200 L 50 50 0 0 P
+X 5 5 900 -400 200 L 50 50 0 0 P
+X 6 6 900 -500 200 L 50 50 0 0 P
+X 7 7 900 -600 200 L 50 50 0 0 P
+X MH1 MH1 0 0 200 R 50 50 0 0 P
+X MH2 MH2 0 -100 200 R 50 50 0 0 P
+P 5 0 1 6 200 100 700 100 700 -700 200 -700 200 100 N
+ENDDRAW
+ENDDEF
+#
+#End Library
