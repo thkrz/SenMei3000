@@ -2717,6 +2717,12 @@
 		(uuid "1fe88381-c7ed-4b67-8f0c-56f32b3b6798")
 	)
 	(junction
+		(at 113.03 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "26fb3e24-e573-4a8d-9b77-0d9ee3563178")
+	)
+	(junction
 		(at 109.22 77.47)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3017,6 +3023,16 @@
 			(type default)
 		)
 		(uuid "27ee01f6-1303-4474-a4ba-339238512c8d")
+	)
+	(wire
+		(pts
+			(xy 113.03 140.97) (xy 138.43 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ad06967-97b6-47d9-a986-375cd211b58c")
 	)
 	(wire
 		(pts
@@ -3420,7 +3436,7 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 128.27) (xy 113.03 128.27)
+			(xy 107.95 128.27) (xy 113.03 128.27)
 		)
 		(stroke
 			(width 0)
@@ -3658,6 +3674,68 @@
 		)
 		(uuid "e87457d8-ffac-4086-af26-ab32be8114f4")
 	)
+	(netclass_flag ""
+		(length 2.54)
+		(shape round)
+		(at 109.22 128.27 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "816dab48-ce36-41c7-9151-7d4ba97eb5cd")
+		(property "Netclass" "PWR"
+			(at 109.9185 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Component Class" ""
+			(at -60.96 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+	)
+	(netclass_flag ""
+		(length 2.54)
+		(shape round)
+		(at 93.98 130.81 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a2eafd7c-965f-43d9-ba9a-5d82b7e74025")
+		(property "Netclass" "PWR"
+			(at 94.6785 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Component Class" ""
+			(at -76.2 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+	)
 	(symbol
 		(lib_id "power:+5V")
 		(at 194.31 60.96 0)
@@ -3837,6 +3915,15 @@
 			)
 		)
 		(property "Description" "Level-Translating I2C Bus Buffer/Repeater, VSSOP-8"
+			(at 152.4 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TCA9517ADGKR"
 			(at 152.4 74.93 0)
 			(effects
 				(font
@@ -4261,7 +4348,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 111.76 128.27 90)
+		(at 107.95 128.27 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4269,7 +4356,7 @@
 		(dnp no)
 		(uuid "6aa121b9-b56a-4cc1-968e-b514c5cf18c5")
 		(property "Reference" "#PWR03"
-			(at 115.57 128.27 0)
+			(at 111.76 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4278,7 +4365,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 107.95 128.2699 90)
+			(at 104.14 128.2699 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4287,7 +4374,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 111.76 128.27 0)
+			(at 107.95 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4296,7 +4383,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 111.76 128.27 0)
+			(at 107.95 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4305,7 +4392,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 111.76 128.27 0)
+			(at 107.95 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5593,6 +5680,15 @@
 			)
 		)
 		(property "Description" "4-in-1 sensor, gas, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8"
+			(at 87.63 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "BME690"
 			(at 87.63 74.93 0)
 			(effects
 				(font
