@@ -2,12 +2,12 @@
 	(version 20241209)
 	(generator "kicad_symbol_editor")
 	(generator_version "9.0")
-	(symbol "1985195"
+	(symbol "1823353"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "J"
-			(at 16.51 7.62 0)
+			(at 21.59 7.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15,8 +15,8 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "1985195"
-			(at 16.51 5.08 0)
+		(property "Value" "1823353"
+			(at 21.59 5.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24,18 +24,8 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "footprints:1985195"
-			(at 16.51 -94.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://datasheet.datasheetarchive.com/originals/distributors/SFDatasheet-2/sf-00059072.pdf"
-			(at 16.51 -194.92 0)
+		(property "Footprint" "footprints:1823353"
+			(at 21.59 -94.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -44,7 +34,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PCB terminal block, nominal current: 8 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm, number of potentials: 2, number of rows: 1, number of positions per row: 2, product range: PTSA 1,5, pitch: 3.5 mm, connection method: Push-in spring connection, mounting: Wave soldering, conductor/PCB connection direction: 45 , color: green, Pin layout: Zigzag pinning W, Solder pin [P]: 3.5 mm, number of solder pins per potential: 1, type of packaging: packed in cardboard. Offset soldering legs, two-row"
+		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1823353/pdf"
+			(at 21.59 -194.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 160 V, nominal cross section: 1.5 mm?, Number of potentials: 7, Number of rows: 1, Number of positions per row: 7, product range: SPT 1,5/..-V-THR, pitch: 3.81 mm, connection method: Push-in spring connection, mounting: THR soldering, conductor/PCB connection direction: 90 ?, color: black, Pin layout: Linear double pinning, Solder pin [P]: 2 mm, type of packaging: 44 mm wide tape"
 			(at 0 0 0)
 			(effects
 				(font
@@ -53,8 +53,8 @@
 				(hide yes)
 			)
 		)
-		(property "Height" "13"
-			(at 16.51 -394.92 0)
+		(property "Height" "13.75"
+			(at 21.59 -394.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -64,7 +64,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 16.51 -494.92 0)
+			(at 21.59 -494.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -73,8 +73,8 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer_Part_Number" "1985195"
-			(at 16.51 -594.92 0)
+		(property "Manufacturer_Part_Number" "1823353"
+			(at 21.59 -594.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -83,8 +83,8 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser Part Number" "651-1985195"
-			(at 16.51 -694.92 0)
+		(property "Mouser Part Number" "651-1823353"
+			(at 21.59 -694.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -93,8 +93,8 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1985195?qs=nq%2FEIFkB2fEpUV%252BqAaKYzQ%3D%3D"
-			(at 16.51 -794.92 0)
+		(property "Mouser Price/Stock" "https://www.mouser.com/Search/Refine.aspx?Keyword=651-1823353"
+			(at 21.59 -794.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -103,8 +103,8 @@
 				(hide yes)
 			)
 		)
-		(property "Arrow Part Number" "1985195"
-			(at 16.51 -894.92 0)
+		(property "Arrow Part Number" ""
+			(at 21.59 -894.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -113,8 +113,8 @@
 				(hide yes)
 			)
 		)
-		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1985195/phoenix-contact?utm_currency=USD&region=nac"
-			(at 16.51 -994.92 0)
+		(property "Arrow Price/Stock" ""
+			(at 21.59 -994.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -123,10 +123,10 @@
 				(hide yes)
 			)
 		)
-		(symbol "1985195_1_1"
+		(symbol "1823353_1_1"
 			(rectangle
 				(start 5.08 2.54)
-				(end 15.24 -2.54)
+				(end 20.32 -17.78)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -138,7 +138,133 @@
 			(pin passive line
 				(at 0 0 0)
 				(length 5.08)
-				(name "2"
+				(name "1.1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -2.54 0)
+				(length 5.08)
+				(name "2.1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -5.08 0)
+				(length 5.08)
+				(name "3.1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -7.62 0)
+				(length 5.08)
+				(name "4.1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -10.16 0)
+				(length 5.08)
+				(name "5.1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -12.7 0)
+				(length 5.08)
+				(name "6.1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -15.24 0)
+				(length 5.08)
+				(name "7.1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 0 180)
+				(length 5.08)
+				(name "1.2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -154,16 +280,106 @@
 				)
 			)
 			(pin passive line
-				(at 20.32 0 180)
+				(at 25.4 -2.54 180)
 				(length 5.08)
-				(name "1"
+				(name "2.2"
 					(effects
 						(font
 							(size 1.27 1.27)
 						)
 					)
 				)
-				(number "1"
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 -5.08 180)
+				(length 5.08)
+				(name "3.2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 -7.62 180)
+				(length 5.08)
+				(name "4.2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 -10.16 180)
+				(length 5.08)
+				(name "5.2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 -12.7 180)
+				(length 5.08)
+				(name "6.2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 -15.24 180)
+				(length 5.08)
+				(name "7.2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -174,12 +390,12 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "1985218"
+	(symbol "1823638"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "J"
-			(at 16.51 7.62 0)
+			(at 21.59 7.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -187,8 +403,8 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "1985218"
-			(at 16.51 5.08 0)
+		(property "Value" "1823638"
+			(at 21.59 5.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -196,18 +412,8 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "footprints:PTSA_15_4_35_Z"
-			(at 16.51 -94.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://datasheet.datasheetarchive.com/originals/distributors/SFDatasheet-2/sf-00059074.pdf"
-			(at 16.51 -194.92 0)
+		(property "Footprint" "footprints:1823638"
+			(at 21.59 -94.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -216,7 +422,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PCB terminal block, nominal current: 8 A, rated voltage (III/2): 400 V, nominal cross section: 1.5 mm, number of potentials: 4, number of rows: 1, number of positions per row: 4, product range: PTSA 1,5, pitch: 3.5 mm, connection method: Push-in spring connection, mounting: Wave soldering, conductor/PCB connection direction: 45 , color: green, Pin layout: Zigzag pinning W, Solder pin [P]: 3.5 mm, number of solder pins per potential: 1, type of packaging: packed in cardboard. Offset soldering legs, two-row"
+		(property "Datasheet" "http://www.phoenixcontact.com/de/produkte/1823638/pdf"
+			(at 21.59 -194.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "PCB terminal block, nominal current: 13.5 A, rated voltage (III/2): 160 V, nominal cross section: 1.5 mm?, Number of potentials: 2, Number of rows: 1, Number of positions per row: 2, product range: SPT 1,5/..-H-THR, pitch: 3.5 mm, connection method: Push-in spring connection, mounting: THR soldering, conductor/PCB connection direction: 0 ?, color: black, Pin layout: Linear double pinning, Solder pin [P]: 2 mm, type of packaging: 24 mm wide tape"
 			(at 0 0 0)
 			(effects
 				(font
@@ -225,8 +441,8 @@
 				(hide yes)
 			)
 		)
-		(property "Height" "13.1"
-			(at 16.51 -394.92 0)
+		(property "Height" "7.85"
+			(at 21.59 -394.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -236,7 +452,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 16.51 -494.92 0)
+			(at 21.59 -494.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -245,8 +461,8 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer_Part_Number" "1985218"
-			(at 16.51 -594.92 0)
+		(property "Manufacturer_Part_Number" "1823638"
+			(at 21.59 -594.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -255,8 +471,8 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser Part Number" "651-1985218"
-			(at 16.51 -694.92 0)
+		(property "Mouser Part Number" "651-1823638"
+			(at 21.59 -694.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -265,8 +481,8 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1985218?qs=A%2FKWGUWTCZhHYDNhOnewhw%3D%3D"
-			(at 16.51 -794.92 0)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1823638?qs=2WS7V4AoKFoC5XAHPUhu4Q%3D%3D"
+			(at 21.59 -794.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -275,8 +491,8 @@
 				(hide yes)
 			)
 		)
-		(property "Arrow Part Number" "1985218"
-			(at 16.51 -894.92 0)
+		(property "Arrow Part Number" "1823638"
+			(at 21.59 -894.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -285,8 +501,8 @@
 				(hide yes)
 			)
 		)
-		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1985218/phoenix-contact?region=nac"
-			(at 16.51 -994.92 0)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1823638/phoenix-contact?region=nac"
+			(at 21.59 -994.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -295,10 +511,10 @@
 				(hide yes)
 			)
 		)
-		(symbol "1985218_1_1"
+		(symbol "1823638_1_1"
 			(rectangle
 				(start 5.08 2.54)
-				(end 15.24 -5.08)
+				(end 20.32 -5.08)
 				(stroke
 					(width 0.254)
 					(type default)
@@ -310,7 +526,7 @@
 			(pin passive line
 				(at 0 0 0)
 				(length 5.08)
-				(name "2"
+				(name "1.2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -328,25 +544,7 @@
 			(pin passive line
 				(at 0 -2.54 0)
 				(length 5.08)
-				(name "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 20.32 0 180)
-				(length 5.08)
-				(name "1"
+				(name "1.1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -362,9 +560,27 @@
 				)
 			)
 			(pin passive line
-				(at 20.32 -2.54 180)
+				(at 25.4 0 180)
 				(length 5.08)
-				(name "3"
+				(name "2.2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 -2.54 180)
+				(length 5.08)
+				(name "2.1"
 					(effects
 						(font
 							(size 1.27 1.27)
