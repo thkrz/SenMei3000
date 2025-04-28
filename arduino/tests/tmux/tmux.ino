@@ -1,19 +1,21 @@
 #define FET_PIN 0
-#define MUX_PIN 1
+#define MX 1
+#define RX 4
+#define TX 3
 
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET_PIN, OUTPUT);
-  digitalWrite(FET_PIN, HIGH);
+  digitalWrite(FET_PIN, LOW);
 
-  pinMode(MUX_PIN, OUTPUT);
-  pinMode(4, INPUT);
-  pinMode(3, OUTPUT);
+  pinMode(MX, OUTPUT);
+  pinMode(RX, INPUT);
+  pinMode(TX, OUTPUT);
 
   // WRITE
   digitalWrite(LED_BUILTIN, LOW);
-  digitalWrite(MUX_PIN, LOW);
+  digitalWrite(MX, LOW);
 
   // READ
   //digitalWrite(LED_BUILTIN, HIGH);
@@ -21,8 +23,10 @@ void setup() {
 }
 
 void loop() {
-  digitalWrite(3, HIGH);
-  delay(500);
-  digitalWrite(3, LOW);
-  delay(500);
+  digitalWrite(LED_BUILTIN, HIGH);
+  digitalWrite(TX, HIGH);
+  delay(3000);
+  digitalWrite(LED_BUILTIN, LOW);
+  digitalWrite(TX, LOW);
+  delay(3000);
 }

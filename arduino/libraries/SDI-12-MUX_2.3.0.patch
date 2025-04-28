@@ -1,6 +1,6 @@
-diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
-*** SDI-12/src/SDI12.cpp	2025-03-14 10:47:26.073955661 +0100
---- SDI-12-MUX/src/SDI12.cpp	2025-03-14 10:45:01.400419571 +0100
+diff -crB SDI-12/src/SDI12.cpp SDI-12.MUX/src/SDI12.cpp
+*** SDI-12/src/SDI12.cpp	2025-04-28 12:46:44.579125735 +0200
+--- SDI-12.MUX/src/SDI12.cpp	2025-04-28 12:30:23.178119077 +0200
 ***************
 *** 182,189 ****
     setTimeoutValue(-9999);
@@ -190,7 +190,7 @@ diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
       case SDI12_HOLDING:
         {
 !         digitalWrite(_mxPin, LOW);
-!         digitalWrite(_txPin, LOW);    // Pin state = low - marking
+!         digitalWrite(_txPin, HIGH);    // Pin state = low - marking
           setPinInterrupts(false);      // Interrupts disabled on data pin
           break;
         }
@@ -253,31 +253,33 @@ diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
     // Universal interrupts can be on while the break and marking happen because
     // timings for break and from the recorder are not critical.
     // Interrupts on the pin are disabled for the entire transmitting state
-!   digitalWrite(_txPin, HIGH);  // break is HIGH
+!   digitalWrite(_txPin, LOW);  // break is HIGH
     delayMicroseconds(
       SDI12_LINE_BREAK_MICROS);   // Required break of 12 milliseconds (12,000 µs)
     delayMicroseconds(extraWakeTime * 1000);  // allow the sensors to wake
-!   digitalWrite(_txPin, LOW);  // marking is LOW
+!   digitalWrite(_txPin, HIGH);  // marking is LOW
     delayMicroseconds(
       SDI12_LINE_MARK_MICROS);  // Required marking of 8.33 milliseconds(8,333 µs)
   }
 ***************
-*** 421,427 ****
+*** 421,428 ****
     sdi12timer_t t0 = READTIME;  // start time
   
     digitalWrite(
 !     _dataPin,
-      HIGH);  // immediately get going on the start bit
+!     HIGH);  // immediately get going on the start bit
               // this gives us 833µs to calculate parity and position of last high bit
     currentTxBitNum++;
---- 419,425 ----
+  
+--- 419,426 ----
     sdi12timer_t t0 = READTIME;  // start time
   
     digitalWrite(
 !     _txPin,
-      HIGH);  // immediately get going on the start bit
+!     LOW);  // immediately get going on the start bit
               // this gives us 833µs to calculate parity and position of last high bit
     currentTxBitNum++;
+  
 ***************
 *** 459,467 ****
     while (currentTxBitNum++ < lastHighBit) {
@@ -293,9 +295,9 @@ diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
     while (currentTxBitNum++ < lastHighBit) {
       bitValue = outChar & 0x01;  // get next bit in the character to send
       if (bitValue) {
-!       digitalWrite(_txPin, LOW);  // set the pin state to LOW for 1's
+!       digitalWrite(_txPin, HIGH);  // set the pin state to LOW for 1's
       } else {
-!       digitalWrite(_txPin, HIGH);  // set the pin state to HIGH for 0's
+!       digitalWrite(_txPin, LOW);  // set the pin state to HIGH for 0's
       }
       // Hold the line for this bit duration
       while (static_cast<sdi12timer_t>(READTIME - t0) <
@@ -312,7 +314,7 @@ diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
     }
   
     // Set the line low for the all remaining 1's and the stop bit
-!   digitalWrite(_txPin, LOW);
+!   digitalWrite(_txPin, HIGH);
   
   #if F_CPU < 48000000UL
     interrupts();  // Re-enable universal interrupts as soon as critical timing is past
@@ -329,7 +331,7 @@ diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
   
   void SDI12::sendResponse(const char* resp, bool addCRC) {
     setState(SDI12_TRANSMITTING);               // Get ready to send data to the recorder
-!   digitalWrite(_txPin, LOW);                // marking is LOW
+!   digitalWrite(_txPin, HIGH);                // marking is LOW
     delayMicroseconds(SDI12_LINE_MARK_MICROS);  // 8.33 ms marking before response
     for (int unsigned i = 0; i < strlen(resp); i++) {
       writeChar(resp[i]);  // write each character
@@ -346,7 +348,7 @@ diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
   
   void SDI12::sendResponse(FlashString resp, bool addCRC) {
     setState(SDI12_TRANSMITTING);               // Get ready to send data to the recorder
-!   digitalWrite(_txPin, LOW);                // marking is LOW
+!   digitalWrite(_txPin, HIGH);                // marking is LOW
     delayMicroseconds(SDI12_LINE_MARK_MICROS);  // 8.33 ms marking before response
     for (int unsigned i = 0; i < strlen_P((PGM_P)resp); i++) {
       // write each character
@@ -367,9 +369,9 @@ diff -crB SDI-12/src/SDI12.cpp SDI-12-MUX/src/SDI12.cpp
   
     // Check how many bit times have passed since the last change
     uint16_t rxBits = SDI12Timer::bitTimes(thisBitTCNT - prevBitTCNT);
-diff -crB SDI-12/src/SDI12.h SDI-12-MUX/src/SDI12.h
-*** SDI-12/src/SDI12.h	2025-03-14 10:47:26.073955661 +0100
---- SDI-12-MUX/src/SDI12.h	2025-03-14 10:32:04.301373293 +0100
+diff -crB SDI-12/src/SDI12.h SDI-12.MUX/src/SDI12.h
+*** SDI-12/src/SDI12.h	2025-04-28 12:46:44.583125705 +0200
+--- SDI-12.MUX/src/SDI12.h	2025-04-17 10:42:34.213383337 +0200
 ***************
 *** 614,620 ****
     /**
