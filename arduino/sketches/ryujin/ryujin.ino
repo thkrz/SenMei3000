@@ -363,8 +363,8 @@ void setup() {
   flash.begin();
   dir();
 
-  if (battery() == 0)
-    ctrl();
+  //if (battery() == 0)
+  //  ctrl();
     /* not reached */
 
   flash.powerDown();

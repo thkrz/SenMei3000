@@ -11,8 +11,8 @@
 
 String& readline(uint32_t timeout = SDI_TIMEOUT);
 
-//SDI12 socket(MX, RX, TX);
-SDI12 socket(9);
+SDI12 socket(MX, RX, TX);
+//SDI12 socket(9);
 char cmd[128];
 int len = 0;
 
