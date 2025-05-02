@@ -17,6 +17,28 @@ char cmd[128];
 int len = 0;
 
 
+String& measure(char i) {
+  static char st[4] = "aM!";
+  static char rd[5] = "aD0!";
+
+  st[0] = i;
+  socket.sendCommand(st, WAKE_DELAY);
+  String s = readline();
+  Serial.print(s);
+  uint8_t wait = s.substring(1, 4).toInt();
+  //uint8_t num = s.charAt(4) - '0';
+
+  for (int j = 0; j <= wait; j++) {
+    if (socket.available() && socket.read() == i)
+      break;
+    delay(1000);
+  }
+  socket.clearBuffer();
+  rd[0] = i;
+  socket.sendCommand(rd, WAKE_DELAY);
+  return readline();
+}
+
 //int nval(String &s) {
 //  int n = 0;
 //  for (char *p = s.c_str(); *p; p++)
@@ -53,6 +75,8 @@ void setup() {
 }
 
 void loop() {
+  String s;
+
   if (Serial.available()) {
     char c = Serial.read();
     switch (c) {
@@ -60,11 +84,13 @@ void loop() {
       Serial.println();
       if (len > 1 && cmd[len-1] == '!') {
         cmd[len] = '\0';
-        Serial.print("CMD: ");
-        Serial.println(cmd);
-        socket.sendCommand(cmd, WAKE_DELAY);
-        String s = readline();
-        Serial.print("RESP: ");
+        Serial.println("RESP:");
+        if (cmd[1] == 'M') {
+          s = measure(cmd[0]);
+        } else {
+          socket.sendCommand(cmd, WAKE_DELAY);
+          s = readline();
+        }
         Serial.println(s);
       }
       len = 0;
@@ -77,3 +103,4 @@ void loop() {
     }
   }
 }
+

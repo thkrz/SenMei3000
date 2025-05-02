@@ -338,7 +338,9 @@ void sync() {
 }
 
 bool update() {
-  String s = "UPDATE\r\n";
+  String s = "";
+  s += "UPDATE"
+  s += LF;
   enable();
   for (char *p = sid; *p; p++)
     s += ident(*p);

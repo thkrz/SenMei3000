@@ -1,4 +1,7 @@
 #include <MKRNB.h>
+#include <RTCZero.h>
+#include <SHTC3.h>
+#include <Wire.h>
 
 #include "config.h"
 
@@ -18,13 +21,17 @@
 static float battery();
 static void connect();
 static void die();
+static void disable();
+static char *prnt2(uint8_t);
 static bool post(String&);
 static void pullup();
+static void schedule();
 static void verify();
 
 GPRS gprs;
 NBClient client;
 NB nbAccess;
+RTCZero rtc;
 String q;
 
 float battery() {
@@ -52,6 +59,18 @@ void die() {
     digitalWrite(LED_BUILTIN, LOW);
     delay(1000);
   }
+}
+
+void disable() {
+  digitalWrite(FET, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
+}
+
+char *prnt2(uint8_t n) {
+  static char buf[3];
+
+  sprintf(buf, "%02d", n);
+  return buf;
 }
 
 bool post(String &s) {
@@ -88,6 +107,16 @@ void pullup() {
     pinMode(pin[i], INPUT_PULLUP);
 }
 
+void schedule() {
+#if defined(MI_MINUTE)
+  uint8_t m = (rtc.getMinutes() / MI_MINUTE + 1) * MI_MINUTE;
+  rtc.setAlarmMinutes(m % 60);
+#elif defined(MI_HOUR)
+  uint8_t m = (rtc.getHours() / MI_HOUR + 1) * MI_HOUR;
+  rtc.setAlarmHours(m % 24);
+#endif
+}
+
 void verify() {
   //if (!client.connected())
   //  client.stop();
@@ -100,7 +129,7 @@ void verify() {
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET, OUTPUT);
-  pinMode(FET, LOW);
+  disable();
 
   pullup();
 
@@ -110,17 +139,59 @@ void setup() {
 
   connect();
 
+  Wire.begin();
+  SHTC3.begin();
+
   q.reserve(256);
+
+  rtc.begin();
+  rtc.setEpoch(nbAccess.getTime());
+
+  rtc.setAlarmSeconds(0);
+#if defined(MI_MINUTE)
+  rtc.enableAlarm(rtc.MATCH_MMSS);
+#elif defined(MI_HOUR)
+  rtc.setAlarmMinutes(0);
+  rtc.enableAlarm(rtc.MATCH_HHMMSS);
+#else
+  die();
+#endif
+  schedule();
+  rtc.standbyMode();
 }
 
 void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);
   q = "";
+  q += rtc.getYear() + 2000;
+  q += '-';
+  q += prnt2(rtc.getMonth());
+  q += '-';
+  q += prnt2(rtc.getDay());
+  q += 'T';
+  q += prnt2(rtc.getHours());
+  q += ':';
+  q += prnt2(rtc.getMinutes());
+  q += LF;
 
   float bat0 = battery();
-  q += battery();
+  q += '%';
+  q += SIGN(bat0);
+  q += bat0;
+
+  SHTC3.readSample(true, false);
+  float st = SHTC3.getTemperature();
+  float rh = SHTC3.getHumidity();
+  q += SIGN(st);
+  q += st;
+  q += SIGN(rh);
+  q += rh;
+  q += LF;
 
   verify();
   post(q);
 
-  delay(300000);
+  schedule();
+  digitalWrite(LED_BUILTIN, LOW);
+  rtc.standbyMode();
 }
