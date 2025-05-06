@@ -113,7 +113,7 @@ void setup()
   delay(3000);
 
   flash.begin();
-  flash.powerDown();
+  //flash.powerDown();
 }
 
 void loop()

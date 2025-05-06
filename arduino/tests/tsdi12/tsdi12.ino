@@ -1,6 +1,7 @@
 #include <SDI12.h>
 #include <SPI.h>
 
+#define FET 0
 #define MX  1
 #define RX  4
 #define TX  3
@@ -67,6 +68,9 @@ String& readline(uint32_t timeout) {
 }
 
 void setup() {
+  pinMode(FET, OUTPUT);
+  digitalWrite(FET, HIGH);
+
   Serial.begin(19200);
   while (!Serial);
 

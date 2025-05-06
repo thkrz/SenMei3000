@@ -259,7 +259,7 @@ bool post(String &s) {
         buf[n++] = client.read();
       else
         delay(100);
-    if (n == HTTP_MSG_LEN && HTTP_MSG_OK(buf))
+    if (HTTP_OK(buf, n))
       return true;
   }
   return false;
@@ -282,6 +282,8 @@ String& readline(uint32_t timeout) {
   while ((millis() - st) < timeout) {
     if (socket.available()) {
       char c = socket.read();
+      if (c == 0)
+        continue;
       s += c;
       if (c == '\n')
         break;
@@ -338,9 +340,7 @@ void sync() {
 }
 
 bool update() {
-  String s = "";
-  s += "UPDATE"
-  s += LF;
+  String s = "UPDATE\r\n";
   enable();
   for (char *p = sid; *p; p++)
     s += ident(*p);
@@ -367,8 +367,8 @@ void setup() {
   flash.begin();
   dir();
 
-  //if (battery() == 0)
-  //  ctrl();
+  if (battery() < 7)
+    ctrl();
     /* not reached */
 
   flash.powerDown();
