@@ -282,8 +282,6 @@ String& readline(uint32_t timeout) {
   while ((millis() - st) < timeout) {
     if (socket.available()) {
       char c = socket.read();
-      if (c == 0)
-        continue;
       s += c;
       if (c == '\n')
         break;
