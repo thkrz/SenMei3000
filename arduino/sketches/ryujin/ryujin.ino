@@ -44,6 +44,7 @@ static void scan();
 static void schedule();
 static void sync();
 static bool update();
+static bool valid(char);
 static void verify();
 
 GPRS gprs;
@@ -282,6 +283,8 @@ String& readline(uint32_t timeout) {
   while ((millis() - st) < timeout) {
     if (socket.available()) {
       char c = socket.read();
+      if (!valid(c))
+        return;
       s += c;
       if (c == '\n')
         break;
@@ -338,12 +341,16 @@ void sync() {
 }
 
 bool update() {
-  String s = "UPDATE\r\n";
+  String s = "CONFIG\r\n";
   enable();
   for (char *p = sid; *p; p++)
     s += ident(*p);
   disable();
   return post(s);
+}
+
+bool valid(char c) {
+  return (isPrintable(c) || c == '\r' || c == '\n');
 }
 
 void verify() {
@@ -379,7 +386,8 @@ void setup() {
     die();
 
   connect();
-  update();
+  if (!update())
+    die();
 
   Wire.begin();
   SHTC3.begin();
