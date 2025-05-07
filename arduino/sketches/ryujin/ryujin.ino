@@ -35,7 +35,6 @@ static bool handshake(char);
 static String& ident(char);
 static bool load(String&);
 static String& measure(char);
-static char *prnt2(uint8_t);
 static bool post(String&);
 static void pullup();
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
@@ -234,13 +233,6 @@ String& measure(char i) {
 //  return n;
 //}
 
-char *prnt2(uint8_t n) {
-  static char buf[3];
-
-  sprintf(buf, "%02d", n);
-  return buf;
-}
-
 bool post(String &s) {
   int n = s.length();
   if (client.connect(HOST, PORT)) {
@@ -412,15 +404,7 @@ void setup() {
 
 void loop() {
   q = "";
-  q += rtc.getYear() + 2000;
-  q += '-';
-  q += prnt2(rtc.getMonth());
-  q += '-';
-  q += prnt2(rtc.getDay());
-  q += 'T';
-  q += prnt2(rtc.getHours());
-  q += ':';
-  q += prnt2(rtc.getMinutes());
+  q += rtc.getEpoch();
   q += LF;
 
   float bat0 = battery();

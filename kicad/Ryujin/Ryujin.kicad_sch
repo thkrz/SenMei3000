@@ -5379,6 +5379,16 @@
 	)
 	(wire
 		(pts
+			(xy 50.8 29.21) (xy 50.8 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e394656-3077-4b3a-b074-5d9799738f70")
+	)
+	(wire
+		(pts
 			(xy 90.17 30.48) (xy 87.63 30.48)
 		)
 		(stroke
@@ -12097,7 +12107,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 50.8 26.67 180)
+		(at 50.8 29.21 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12106,7 +12116,7 @@
 		(fields_autoplaced yes)
 		(uuid "f9c69514-b002-4c71-a5d8-50c82ac410bb")
 		(property "Reference" "#PWR011"
-			(at 50.8 22.86 0)
+			(at 50.8 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12115,7 +12125,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 50.8 31.75 0)
+			(at 50.8 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12123,7 +12133,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 50.8 26.67 0)
+			(at 50.8 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12132,7 +12142,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 50.8 26.67 0)
+			(at 50.8 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12141,7 +12151,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 50.8 26.67 0)
+			(at 50.8 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
