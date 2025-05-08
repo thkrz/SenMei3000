@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/station.css') }}" />
+
+    <title>{{id}}</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>{{id}}</h1>
+      <h2>General information</h2>
+      <form>
+        <table>
+          <tr>
+            <td><label>Name:</label></td>
+            <td colspan="3"><input value="{{name}}" /></td>
+          </tr>
+          <tr>
+            <td><label>Lat.:</label></td>
+            <td><input value="{{lat}}" /></td>
+            <td><label>Lng.:</label></td>
+            <td><input value="{{lng}}" /></td>
+          </tr>
+          <tr>
+            <td><label>Maintainer:</label></td>
+            <td colspan="3">
+              <input value="{{maintainer}}" />
+              <a href="mailto:{{maintainer}}" class="material-icons">mail</a>
+            </td>
+          </tr>
+        </table>
+        <button class="shadow">Update</button>
+      </form>
+      <h2>Attached sensors</h2>
+      <dl>
+      {% for (k, cfg) in config.items() %}
+      <dt>
+        {{cfg.sensor}}
+        <input value="{{cfg.label}}" />
+        <a href="/station/{{id}}/{{k}}" class="material-icons">download</a>
+      </dt>
+        <dd>
+          <ul>
+            <li>Begin of measurements: <span class="code">{{stats[k].start}}</span></li>
+            <li>Last measurement: <span class="code">{{stats[k].end}}</span></li>
+            <li>Interval: <span class="code">{{stats[k].interval}}</span></li>
+          <li>
+          <table class="data">
+            <caption>Measurements (Last 24 h.)</caption>
+            <thead>
+              <tr>
+                <td></td>
+                <td>Last</td>
+                <td>Before Last</td>
+                <td>Min.</td>
+                <td>Mean</td>
+                <td>Max.</td>
+              </tr>
+            </thead>
+            <tbody>
+          {% for (lbl, inf) in stats[k].info.items() %}
+              <tr>
+                <td>{{lbl}}</td>
+                <td>{{inf.last}}</td>
+                <td>{{inf.before}}</td>
+                <td>{{inf.min}}</td>
+                <td>{{inf.mean}}</td>
+                <td>{{inf.max}}</td>
+              </tr>
+          {% endfor %}
+            </tbody>
+          </table>
+          </li>
+          </ul>
+          <img src="/station/svg/{{id}}/{{k}}" alt="no data" width="100%" />
+        </dd>
+      {% endfor %}
+      </dl>
+    </div>
+  </body>
+</html>

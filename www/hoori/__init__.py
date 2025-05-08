@@ -3,6 +3,7 @@ import uvicorn
 from starlette.applications import Starlette
 from starlette.responses import PlainTextResponse, JSONResponse, FileResponse
 from starlette.routing import Route
+from starlette.templating import Jinja2Templates
 
 # DEBUG
 from starlette.routing import Mount
@@ -22,46 +23,13 @@ async def catalogue(request):
 async def download(request):
     sid = request.path_params["sid"]
     k = request.path_params["k"]
-    meta, arr = db.station.select(sid, key=k)
-    cfg = meta["config"]
-    schema = db.sensor.catalogue()
-    if k in cfg.keys():
-        nam = cfg[k]["sensor"]
-    else:
-        nam = "PCB"
-    hdr = ",".join(["Time"] + schema[nam])
-    name = f"{sid}_{k}.csv"
-    path = "data/" + name
-    np.savetxt(path, arr, delimiter=",", fmt="%.3f", header=hdr.upper())
+    meta = db.station.select(sid, stats=False)
+    label = meta["config"][k]["label"]
+    name = f"{sid}_"
+    name += label if label else k
+    name += ".csv"
+    path = f"/var/db/station/{sid}/{k}.csv"
     return FileResponse(path, filename=name)
-
-
-async def prepare(data, config):
-    schema = db.sensor.catalogue()
-    s = {}
-    for k, cfg in config.items():
-        nam = cfg["sensor"]
-        if nam not in schema.keys():
-            s[k] = errmsg(f"{k}: sensor {nam} is not configured yet")
-            continue
-        if k not in data.keys():
-            s[k] = errmsg(f"{k}: no data available")
-            continue
-        y = data[k]
-        if len(y.shape) == 1:
-            y = y[:, None]
-        labels = schema[nam]
-        title = f"Sensor: {k}\u00A0({nam})"
-        lbl = cfg["label"]
-        if lbl:
-            title += "\u00A0/ " + lbl
-        s[k] = {
-            "data": y.tolist(),
-            "labels": labels,
-            "length": len(labels),
-            "title": title,
-        }
-    return s
 
 
 async def sensor(request):
@@ -75,19 +43,26 @@ async def sensor(request):
 async def station(request):
     sid = request.path_params["sid"]
     if request.method == "POST":
-        b = await request.body()
         try:
-            db.station.insert(sid, b.decode("utf-8"))
+            b = await request.body()
+            lines = b.decode("utf-8").strip().splitlines()
+            if lines[0] == "CONFIG":
+                db.station.config(sid, lines[1:])
+            else:
+                db.station.insert(sid, lines)
         except Exception as ex:
-            return PlainTextResponse(str(ex) + "\r\n", status_code=501)
+            errmsg = f"{__file__}: Line {ex.__traceback__.tb_lineno}: {type(ex).__name__}, {ex}\r\n"
+            return PlainTextResponse(errmsg, status_code=501)
         return PlainTextResponse("success.\r\n", status_code=201)
-    meta, data_ = db.station.select(sid)
-    data = {"time": [], "series": [], "health": []}
-    if len(data_) > 0:
-        data["time"] = data_["time"].tolist()
-        data["series"] = await prepare(data_, meta["config"])
-        data["health"] = await prepare(data_, db.sensor.builtin)
-    return JSONResponse({"meta": meta, "data": data})
+    return templates.TemplateResponse(request, "station.html", db.station.select(sid))
+
+
+async def svg(request):
+    sid = request.path_params["sid"]
+    k = request.path_params["k"]
+    name = f"{k}.svg"
+    path = f"/var/db/station/{sid}/{k}.svg"
+    return FileResponse(path, filename=name)
 
 
 async def update(request):
@@ -97,9 +72,11 @@ async def update(request):
     return PlainTextResponse("success.\r\n", status_code=201)
 
 
+templates = Jinja2Templates(directory="html/templates")
 routes = [
     Route("/sensor", sensor, methods=["GET", "POST"]),
-    Route("/station/{sid}/{k}/download", download, methods=["GET"]),
+    Route("/station/svg/{sid}/{k}", svg, methods=["GET"]),
+    Route("/station/{sid}/{k}", download, methods=["GET"]),
     Route("/station/{sid}/update", update, methods=["POST"]),
     Route("/station/{sid}", station, methods=["GET", "POST"]),
     Route("/station", catalogue, methods=["GET"]),
@@ -109,5 +86,6 @@ routes = [
 app = Starlette(routes=routes)
 
 if __name__ == "__main__":
-    # uvicorn.run("hoori:app", host="0.0.0.0", log_level="info")
-    uvicorn.run("hoori:app", host="127.0.0.1", log_level="info")
+    # uvicorn.run("hoori:app", uds="/tmp/hoori.socket", log_level="info")
+    # uvicorn.run("hoori:app", host="127.0.0.1", log_level="info")
+    pass

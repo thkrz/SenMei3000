@@ -1,148 +1,53 @@
+var map = null;
+var markers = new Map();
+
+function item(id, text) {
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+  a.href = `station/${id}`;
+  a.target = "_blank";
+  a.innerHTML = text;
+  li.appendChild(a);
+  return li;
+}
+
+function search() {
+  const ul = document.getElementById("rlist");
+  ul.replaceChildren();
+  const q = document.getElementById("query").value;
+  map.eachLayer((l) => {
+    if (l instanceof L.Marker)
+        l.remove();
+  });
+  const bounds = L.latLngBounds();
+  const isupper = /[A-Z]/.test(q);
+  for (const [id, mark] of markers) {
+    const s = mark.getTooltip().getContent();
+    const cmp = isupper ? s : s.toLowerCase();
+    if (q.length === 0 || cmp.includes(q)) {
+      mark.addTo(map);
+      bounds.extend(mark.getLatLng());
+      ul.appendChild(item(id, s));
+    }
+  }
+  map.fitBounds(bounds);
+}
+
 function toggleNav() {
   const e = document.getElementById("nav");
-  if (e.style.width === "264px") e.style.width = 0;
-  else e.style.width = "264px";
+  if (e.style.width === "320px") e.style.width = 0;
+  else e.style.width = "320px";
 }
 
-function createConfig(meta) {
-  const tbl = document.getElementById("sensor-config");
-  tbl.replaceChildren();
-  for (const [k, v] of Object.entries(meta.config)) {
-    const row = document.createElement("tr");
-    row.name = k;
-    row.innerHTML = `
-      <td>
-        Sensor&nbsp;<span style="text-transform: none">${k}</span>
-      </td>
-      <td>
-        <input disabled value="${v.sensor}" />&nbsp;/
-      </td>
-      <td>
-        <input name="label" value="${v.label}" placeholder="ENTER DESCRIPTION" />
-      </td>`;
-    tbl.appendChild(row);
-  }
+function hideResults() {
+  if (document.getElementById("searchbox").contains(event.relatedTarget))
+    return;
+  document.getElementById("results").style.display = "none";
 }
 
-function createGraphs(sid, c, time, series) {
-  c.replaceChildren();
-  for (const [k, s] of Object.entries(series)) {
-    const div = document.createElement("div");
-    div.style = "height: 400px";
-    c.appendChild(div);
-    if (s.length === 0) {
-      div.innerHTML = `<div class="alert">
-        <span class="material-icons">warning_amber</span>
-        <h2>${s.title}</h2>
-        </div>`;
-      continue;
-    }
-    const visibility = Array(s.length).fill(false);
-    visibility[0] = true;
-    opts = {
-      title: s.title,
-      xlabel: "Date",
-      width: "auto",
-      labels: ["Date"].concat(s.labels),
-      labelsSeparateLines: true,
-      visibility: visibility,
-    };
-    const g = new Dygraph(
-      div,
-      time.map((e, i) => {
-        return [new Date(e * 1000)].concat(s.data[i]);
-      }),
-      opts
-    );
-
-    const box = document.createElement("div");
-    box.classList.add("ctrl");
-    for (let j = 0; j < s.length; j++) {
-      const lbl = document.createElement("label");
-      const rad = document.createElement("input");
-      rad.type = "radio";
-      rad.name = k;
-      rad.value = j;
-      rad.checked = j === 0;
-      rad.addEventListener("change", (e) => {
-        sel = Number.parseInt(e.target.value);
-        for (let x = 0; x < visibility.length; x++) visibility[x] = x === sel;
-        g.updateOptions({ visibility: visibility });
-      });
-      lbl.classList.add("selection");
-      lbl.appendChild(document.createTextNode(s.labels[j]));
-      lbl.appendChild(rad);
-      box.appendChild(lbl);
-    }
-
-    const b = document.createElement("button");
-    b.addEventListener("click", (e) => {
-      location.href = `http://127.0.0.1:8000/station/${sid}/${k}/download`;
-    });
-    b.classList.add("btn");
-    b.appendChild(document.createTextNode("Download"));
-    box.appendChild(b);
-
-    c.appendChild(box);
-  }
-}
-
-function hide() {
-  document.getElementById("form").style.visibility = "hidden";
-}
-
-function show(sid) {
-  fetch(`http://127.0.0.1:8000/station/${sid}`)
-    .then((r) => r.json())
-    .then(({ meta, data }) => {
-      document
-        .getElementById("sid")
-        .replaceChildren(document.createTextNode(meta.id));
-      const form = document.getElementById("meta");
-      for (const [k, v] of Object.entries(meta)) {
-        const field = form.querySelector(`input[name="${k}"]`);
-        if (field) field.value = v;
-      }
-      createConfig(meta);
-      createGraphs(
-        meta.id,
-        document.getElementById("health"),
-        data.time,
-        data.health
-      );
-      createGraphs(
-        meta.id,
-        document.getElementById("data"),
-        data.time,
-        data.series
-      );
-    });
-  document.getElementById("form").style.visibility = "visible";
-  return false;
-}
-
-async function submit(form) {
-  const o = {
-    name: form.querySelector('input[name="name"]').value,
-    lat: Number.parseFloat(form.querySelector('input[name="lat"]').value || 0),
-    lng: Number.parseFloat(form.querySelector('input[name="lng"]').value || 0),
-  };
-  const config = {};
-  for (const el of document
-    .getElementById("sensor-config")
-    .getElementsByTagName("tr")) {
-    const k = el.name;
-    config[k] = {
-      label: el.querySelector('input[name="label"]').value,
-    };
-  }
-  o.config = config;
-  const sid = document.getElementById("sid").childNodes[0].nodeValue;
-  await fetch(`http://127.0.0.1:8000/station/${sid}/update`, {
-    method: "POST",
-    headers: { Accept: "application/json", "Content-Type": "application/json" },
-    body: JSON.stringify(o),
-  });
+function showResults() {
+  document.getElementById("results").style.display = "block"
+  search();
 }
 
 function init_map() {
@@ -150,58 +55,31 @@ function init_map() {
     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}";
   const copyright =
     "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community";
-  const map = L.map("map", { minZoom: 3, zoomControl: false });
+  map = L.map("map", { minZoom: 3, zoomControl: false });
   L.tileLayer(uri, { attribution: copyright }).addTo(map);
   L.control.scale({ position: "bottomright" }).addTo(map);
-  return map;
 }
 
-function search_item(e) {
-  const li = document.createElement("li");
-  const a = document.createElement("a");
-  a.href = "javascript:void(0)";
-  let s = e.name;
-  if (s !== "") s += ", ";
-  li.innerHTML = `${s}<span class='addendum'>${e.id}</span>`;
-  a.appendChild(li);
-  return a;
-}
-
-const form = document.getElementById("meta");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  submit(form);
-  location.reload();
-});
-
-fetch("http://127.0.0.1:8000/station")
+// main
+fetch("http://erdrutsch.com:8000/station")
   .then((r) => r.json())
   .then((l) => {
-    const map = init_map();
+    init_map();
     let lat = 0;
     let lng = 0;
     const ul = document.getElementById("sbar-list");
-    for (let i = 0; i < l.length; i++) {
-      const latlng = [l[i].lat, l[i].lng];
-      const a = search_item(l[i]);
-      a.style = "text-overflow: ellipses";
-      a.addEventListener(
-        "click",
-        (ev) => {
-          show(l[i].id);
-          map.setView(latlng, 12);
-        },
-        false
-      );
-      ul.appendChild(a);
-      L.marker(latlng)
-        .addTo(map)
-        .on("click", (ev) => show(l[i].id))
-        .bindTooltip(a.lastChild.innerHTML);
-      lat += l[i].lat;
-      lng += l[i].lng;
+    const bounds = L.latLngBounds();
+    for (const e of l) {
+      let name = e.name;
+      if (name)
+        name += ", ";
+      name += e.id;
+      const mark = L.marker([e.lat, e.lng])
+        .on("click", () => window.open(`station/${e.id}`, "_blank"))
+        .bindTooltip(name)
+        .addTo(map);
+      markers.set(e.id, mark);
+      bounds.extend(mark.getLatLng());
     }
-    lat /= l.length;
-    lng /= l.length;
-    map.setView([lat, lng], 9);
+    map.fitBounds(bounds);
   });

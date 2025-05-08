@@ -6,7 +6,7 @@ body {
 	padding: 0;
 	color: #1f1f1f;
 	box-sizing: border-box;
-	font-family: "SpaceGrotesk", sans-serif, monospace;
+	font-family: "Roboto", sans-serif, monospace;
 }
 
 ul {
@@ -15,39 +15,16 @@ ul {
 	margin: 0;
 }
 
-#sbar ul li {
-	font-weight: 300;
-	text-align: center;
-	padding: 0.5em;
-	/* overflow */
-	display: block;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	max-width: 72px;
-}
-#sbar ul li:hover {
-	background-color: rgba(60, 64, 67, 0.06);
-}
-
 ul a {
 	text-decoration: none;
 	color: #000;
 }
+ul a:hover {
+  color: #00f;
+}
 
 li {
   margin: 1rem 0;
-}
-
-details {
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 1rem;
-	margin-bottom: 1rem;
-}
-
-.side-menu {
-	border-top: 1px solid #ccc;
-	padding: 2rem;
 }
 
 #map {
@@ -55,58 +32,39 @@ details {
 	height: 100vh;
 }
 
-#sbar {
+#searchbox {
 	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
+	top: 2rem;
+	left: 2rem;
 	z-index: 999;
+	border-radius: 1.5em;
+	min-width: 258px;
 	background-color: #fff;
-	flex-direction: column;
-	padding: 0 0 1.5em 0;
-	overflow: hidden;
-	font-size: 0.9rem;
-	/* border-radius: 1.5em; */
-	width: 72px;
-	line-height: 24px;
+	padding: 0 1rem;
 }
-
-#header {
-	text-align: center;
-	font-weight: 500;
-	padding: 0.5em;
-	/* background-color: rgba(60, 64, 67, 0.04); */
-	/* border-radius: 1em 1em 0 0; */
-}
-
-.btn {
-}
-
-.content {
-	flex-grow: 1;
-	padding: 1em;
-}
-
-.addendum {
-	color: #5e5e5e;
-	font-weight: normal;
-}
-
-.alert {
-	text-align: center;
-}
-
-.view {
+#search {
 	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-	font-family: "CourierPrime";
+	gap: 1rem;
+	background-color: inherit;
+	flex-direction: row;
+	align-items: center;
+	overflow: hidden;
+	font-size: 1.125rem;
+	line-height: 24px;
+	border-radius: 1.5em;
+}
+#results {
+	display: none;
+	padding: 1.5rem 0;
+	border-top: 1px solid #ccc;
+  overflow: clip;
+  overflow-clip-margin: content-box 0px;
+  max-height: 600px;
 }
 
-.quit {
-	cursor: pointer;
-	float: right;
-	text-align: right;
+.side-menu {
+	border-top: 1px solid #ccc;
+	padding: 2rem;
 }
 
 .sidenav {
@@ -118,9 +76,9 @@ details {
 	bottom: 0;
 	background-color: #fff;
 	overflow-x: hidden;
-	padding: 3rem 0;
-	transition: 0.5s;
-  white-space: nowrap;
+	padding: 0.25rem 0;
+	transition: 0.25s;
+	white-space: nowrap;
 }
 
 .icon {
@@ -129,11 +87,12 @@ details {
 }
 
 .sidenav .closebtn {
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	position: relative;
+	top: 0;
+	right: 0;
 	margin-left: 50px;
 	cursor: pointer;
+	float: right;
 }
 
 .scroll {
@@ -141,7 +100,7 @@ details {
 	overflow-y: auto;
 }
 
-.searchbox {
+.searchfield {
 	color: #1f1f1f;
 	padding: 0;
 	width: 200px;
@@ -151,7 +110,7 @@ details {
 	margin: 0.5em 0 0.5em 1.5em;
 	font-size: inherit;
 }
-.searchbox:focus {
+.searchfield:focus {
 	outline: none;
 }
 
@@ -173,24 +132,6 @@ select {
 	font-family: inherit;
 	width: 16em;
 	height: 24px;
-}
-
-.wnd {
-	display: flex;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 50%;
-	visibility: hidden;
-	z-index: 9999;
-	background-color: #fff;
-	flex-direction: column;
-	padding: 0;
-	transform: translate(-50%, 0);
-	/* border-radius: 1em; */
-	/* height: 100vh; */
-	min-width: 1024px;
-	width: 75%;
 }
 
 button {
@@ -239,8 +180,14 @@ summary {
 }
 
 .logo {
-  text-align: center;
+	padding: 0;
+	margin: 0;
 }
 
-
+.button {
+  cursor: pointer;
+}
+.button:hover {
+  color: #00f;
+}
 
