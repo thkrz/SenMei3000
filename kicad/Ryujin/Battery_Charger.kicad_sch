@@ -2222,10 +2222,6 @@
 		(uuid "f92949f7-35be-4f65-8f48-e6a5cd5fc296")
 	)
 	(no_connect
-		(at 115.57 88.9)
-		(uuid "6d981d0b-dd5f-4f6e-a243-a84223e4f87a")
-	)
-	(no_connect
 		(at 129.54 100.33)
 		(uuid "9e73df77-adb7-4234-82e8-2b6327cf379a")
 	)
@@ -3902,7 +3898,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "../../docs/PDS1040.pdf"
 			(at 83.82 48.26 0)
 			(effects
 				(font
@@ -5963,7 +5959,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board no)
+		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eca53f30-4dd6-4e4a-98a9-0c45dad7a37a")
