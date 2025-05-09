@@ -5224,6 +5224,10 @@
 		(uuid "94d9fc06-f635-4700-8bf4-319c75f8036b")
 	)
 	(no_connect
+		(at 21.59 21.59)
+		(uuid "9ad7927f-fcc9-4ccb-abfa-8b257a46bfdf")
+	)
+	(no_connect
 		(at 259.08 38.1)
 		(uuid "b12b0669-17d9-4fd6-800a-12614df5d501")
 	)
@@ -5399,7 +5403,7 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 36.83) (xy 21.59 24.13)
+			(xy 21.59 36.83) (xy 21.59 26.67)
 		)
 		(stroke
 			(width 0)
@@ -5696,6 +5700,16 @@
 			(type default)
 		)
 		(uuid "6c7a3846-d9a5-445d-b8f2-8979f0a9b466")
+	)
+	(wire
+		(pts
+			(xy 21.59 21.59) (xy 25.4 21.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74ac2cc6-e602-467b-b426-4a84084a3a8c")
 	)
 	(wire
 		(pts
@@ -6299,7 +6313,7 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 24.13) (xy 25.4 24.13)
+			(xy 21.59 26.67) (xy 25.4 26.67)
 		)
 		(stroke
 			(width 0)
@@ -12293,8 +12307,18 @@
 			)
 		)
 		(pin "TS" output
-			(at 25.4 24.13 180)
+			(at 25.4 26.67 180)
 			(uuid "53f91c8d-d1cb-4c17-b0b5-b30184f122ae")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CE" input
+			(at 25.4 21.59 180)
+			(uuid "c1bf6088-f036-441c-b116-28e51567095f")
 			(effects
 				(font
 					(size 1.27 1.27)

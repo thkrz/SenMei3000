@@ -276,7 +276,7 @@ String& readline(uint32_t timeout) {
     if (socket.available()) {
       char c = socket.read();
       if (!valid(c))
-        return;
+        continue;
       s += c;
       if (c == '\n')
         break;
