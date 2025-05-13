@@ -1,4 +1,3 @@
-#include <MKRNB.h>
 #include <RTCZero.h>
 #include <SDI12.h>
 #include <SHTC3.h>
@@ -22,7 +21,6 @@
 #define SIGN(x) ((x)>=0?'+':'\0')
 
 static float battery();
-static bool connect();
 static void ctrl();
 static void die();
 static void dir();
@@ -35,20 +33,13 @@ static bool handshake(char);
 static String& ident(char);
 static bool load(String&);
 static String& measure(char);
-static bool post(String&);
 static void pullup();
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
-static void resend();
 static void scan();
 static void schedule();
 static void sync();
-static bool update();
 static bool valid(char);
-static bool verify();
 
-GPRS gprs;
-NBClient client;
-NB nbAccess;
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
 SPIFlash flash(CS);
@@ -60,17 +51,6 @@ float battery() {
   analogRead(A1);
   int p = analogRead(A1);
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
-}
-
-bool connect() {
-  for (int i = 0; i < RETRIES; i++) {
-    if ((nbAccess.begin(0, "iot.1nce.net") == NB_READY)
-        && (gprs.attachGPRS() == GPRS_READY)) {
-      return true;
-    }
-    delay(1000);
-  }
-  return false;
 }
 
 void ctrl() {
@@ -96,7 +76,7 @@ void ctrl() {
         break;
       case 'f':
         erase();
-        Serial.println(F("#FORMAT"));
+        Serial.println(F("#ERASE"));
         break;
       case 'i':
         Serial.print(F("M IN CACHE: "));
@@ -114,7 +94,7 @@ void ctrl() {
       case '?':
         Serial.println(F("d: dump"));
         Serial.println(F("i: info"));
-        Serial.println(F("f: format"));
+        Serial.println(F("f: erase"));
         Serial.println(F("?: help"));
         break;
       }
@@ -232,37 +212,12 @@ String& measure(char i) {
 //  return n;
 //}
 
-bool post(String &s) {
-  int n = s.length();
-  if (client.connect(HOST, PORT)) {
-    client.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
-    client.println(F("Host: "HOST));
-    client.println(F("Connection: close"));
-    client.println(F("Content-Type: text/plain; charset=utf-8"));
-    client.print(F("Content-Length: "));
-    client.println(n);
-    client.println();
-    client.print(s);
-
-    char buf[HTTP_MSG_LEN];
-    uint32_t st = millis();
-    for (n = 0; n < HTTP_MSG_LEN && (millis() - st) < HTTP_TIMEOUT; )
-      if (client.available())
-        buf[n++] = client.read();
-      else
-        delay(100);
-    if (HTTP_OK(buf, n))
-      return true;
-  }
-  return false;
-}
-
 void pullup() {
-  int8_t pin[10] = {
-    A0, A2, A3, A4, A5, A6, 2, 5, 13, 14
+  int8_t pin[9] = {
+    A0, A2, A3, A4, A5, A6, 5, 13, 14 // 2
   };
 
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 9; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -284,17 +239,6 @@ String& readline(uint32_t timeout) {
   }
   socket.clearBuffer();
   return s;
-}
-
-void resend() {
-  String s;
-  s.reserve(64);
-  while (load(s)) {
-    if (!post(s))
-      break;
-    discard();
-    sync();
-  }
 }
 
 void scan() {
@@ -332,28 +276,8 @@ void sync() {
     flash.writeULong(i*BSZ, addr[i]);
 }
 
-bool update() {
-  String s = "CONFIG\r\n";
-  enable();
-  for (char *p = sid; *p; p++)
-    s += ident(*p);
-  disable();
-  return post(s);
-}
-
 bool valid(char c) {
   return (isPrintable(c) || c == '\r' || c == '\n');
-}
-
-bool verify() {
-  //if (!client.connected())
-  //  client.stop();
-  if (!nbAccess.isAccessAlive()) {
-    //nbAccess.shutdown();
-    MODEM.hardReset();
-    return connect();
-  }
-  return true;
 }
 
 void setup() {
@@ -379,17 +303,13 @@ void setup() {
   if (sid[0] == '\0')
     die();
 
-  connect();
-  if (!update())
-    die();
-
   Wire.begin();
   SHTC3.begin();
 
   q.reserve(256);
 
   rtc.begin();
-  rtc.setEpoch(nbAccess.getTime());
+  rtc.setEpoch(1747056367);
 
   rtc.setAlarmSeconds(0);
 #if defined(MI_MINUTE)
@@ -414,9 +334,7 @@ void loop() {
   q += SIGN(bat0);
   q += bat0;
 
-  bool pm = bat0 < BAT_LOW;
-
-  SHTC3.readSample(true, pm);
+  SHTC3.readSample();
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
   q += SIGN(st);
@@ -432,22 +350,9 @@ void loop() {
 
   flash.powerUp();
   delay(10);
-  if (pm) {
-    nbAccess.shutdown();
-    dump(q);
-  } else if (verify()) {
-    if (LEN > 0)
-      resend();
-    if (!post(q))
-      dump(q);
-  } else {
-    dump(q);
-  }
+  dump(q);
   flash.powerDown();
 
-#if defined(MI_MINUTE)
-  if (!pm)
-#endif
-    schedule();
+  schedule();
   rtc.standbyMode();
 }
