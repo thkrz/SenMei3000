@@ -1,14 +1,12 @@
-#define TINY_GSM_MODEM_SARAR4
-
 #include <RTCZero.h>
 #include <SDI12.h>
 #include <SHTC3.h>
 #include <SPI.h>
 #include <SPIMemory.h>
-#include <TinyGsmClient.h>
 #include <Wire.h>
 
 #include "config.h"
+#include "gsm.h"
 
 #define FET 0
 #define MX  1
@@ -43,7 +41,8 @@ static String& readline(uint32_t timeout = SDI_TIMEOUT);
 static void resend();
 static void scan();
 static void schedule();
-static void setbaud();
+static void setbaud(uint32_t);
+static void settime();
 static void sync();
 static bool update();
 static bool valid(char);
@@ -326,10 +325,29 @@ void schedule() {
 #endif
 }
 
-void setbaud() {
-  modem.setBaud(115200);
+void setbaud(uint32_t rate) {
+  modem.setBaud(rate);
   Serial1.end();
-  Serial1.begin(115200);
+  Serial1.begin(rate);
+}
+
+void settime() {
+  int year;
+  int month;
+  int day;
+  int hour;
+  int minute;
+  int second;
+  float tz;
+
+  if (modem.getNetworkTime(&year, &month, &day, &hour, &minute, &second, &tz)) {
+    rtc.setDate(day, month, year);
+    rtc.setTime(hour, minute, second);
+  }
+#if defined(COMPILE_TIME)
+  else
+    rtc.setEpoch(COMPILE_TIME);
+#endif
 }
 
 void sync() {
@@ -380,11 +398,13 @@ void setup() {
   if (sid[0] == '\0')
     die();
 
-  setbaud();
+  uint32_t rate = TinyGsmAutoBaud(Serial1);
   modem.init();
-  connect();
-  if (!update())
-    die();
+  if (connect()) {
+    setbaud(rate);
+    if (!update())
+      die();
+  }
 
   Wire.begin();
   SHTC3.begin();
@@ -392,7 +412,7 @@ void setup() {
   q.reserve(256);
 
   rtc.begin();
-  rtc.setEpoch(nbAccess.getTime());
+  settime();
 
   rtc.setAlarmSeconds(0);
 #if defined(MI_MINUTE)
@@ -436,7 +456,7 @@ void loop() {
   flash.powerUp();
   delay(10);
   if (pm) {
-    nbAccess.shutdown();
+    //nbAccess.shutdown();
     dump(q);
   } else if (verify()) {
     if (LEN > 0)

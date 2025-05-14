@@ -6,11 +6,9 @@
 #define PORT 8000
 #define USER_AGENT "Ryujin/1.0"
 
-#define HTTP_TIMEOUT 30000
+#define HTTP_TIMEOUT 15000
 #define HTTP_MSG_LEN 10
 #define HTTP_OK(x,n) ((n)>=10&&strncmp("HTTP/1.1 2",(x),10)==0)
-
-#define RETRIES 10
 
 #define SDI_TIMEOUT 3000
 
