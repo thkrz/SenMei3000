@@ -1,9 +1,11 @@
-#include <MKRNB.h>
+#define TINY_GSM_MODEM_SARAR4
+
 #include <RTCZero.h>
 #include <SDI12.h>
 #include <SHTC3.h>
 #include <SPI.h>
 #include <SPIMemory.h>
+#include <TinyGsmClient.h>
 #include <Wire.h>
 
 #include "config.h"
@@ -41,17 +43,17 @@ static String& readline(uint32_t timeout = SDI_TIMEOUT);
 static void resend();
 static void scan();
 static void schedule();
+static void setbaud();
 static void sync();
 static bool update();
 static bool valid(char);
 static bool verify();
 
-GPRS gprs;
-NBClient client;
-NB nbAccess;
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
 SPIFlash flash(CS);
+TinyGsm modem(Serial1);
+TinyGsmClient client(modem);
 char sid[63];
 String q;
 uint32_t addr[CAP];
@@ -63,14 +65,12 @@ float battery() {
 }
 
 bool connect() {
-  for (int i = 0; i < RETRIES; i++) {
-    if ((nbAccess.begin(0, "iot.1nce.net") == NB_READY)
-        && (gprs.attachGPRS() == GPRS_READY)) {
-      return true;
-    }
-    delay(1000);
+  if (!modem.waitForNetwork()) {
+    modem.restart();
+    if (!modem.waitForNetwork())
+      return false;
   }
-  return false;
+  return modem.gprsConnect("iot.1nce.net");
 }
 
 void ctrl() {
@@ -258,11 +258,11 @@ bool post(String &s) {
 }
 
 void pullup() {
-  int8_t pin[10] = {
-    A0, A2, A3, A4, A5, A6, 2, 5, 13, 14
+  int8_t pin[8] = {
+    A0, A2, A3, A4, A5, A6, 2, 5
   };
 
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 8; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -326,6 +326,12 @@ void schedule() {
 #endif
 }
 
+void setbaud() {
+  modem.setBaud(115200);
+  Serial1.end();
+  Serial1.begin(115200);
+}
+
 void sync() {
   while (!flash.eraseSector(0));
   for (int i = 0; i < CAP; i++)
@@ -346,13 +352,8 @@ bool valid(char c) {
 }
 
 bool verify() {
-  //if (!client.connected())
-  //  client.stop();
-  if (!nbAccess.isAccessAlive()) {
-    //nbAccess.shutdown();
-    MODEM.hardReset();
+  if (!modem.isNetworkConnected() || !modem.isGprsConnected())
     return connect();
-  }
   return true;
 }
 
@@ -379,6 +380,8 @@ void setup() {
   if (sid[0] == '\0')
     die();
 
+  setbaud();
+  modem.init();
   connect();
   if (!update())
     die();
