@@ -28,9 +28,11 @@ static void die();
 static void dir();
 static void disable();
 static void discard();
+static void disconnect();
 static bool dump(String&);
 static void enable();
 static void erase();
+static void gsminit();
 static bool handshake(char);
 static String& ident(char);
 static bool load(String&);
@@ -41,17 +43,15 @@ static String& readline(uint32_t timeout = SDI_TIMEOUT);
 static void resend();
 static void scan();
 static void schedule();
-static void setbaud(uint32_t);
 static void settime();
 static void sync();
 static bool update();
 static bool valid(char);
-static bool verify();
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
 SPIFlash flash(CS);
-TinyGsm modem(Serial1);
+TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 char sid[63];
 String q;
@@ -64,12 +64,10 @@ float battery() {
 }
 
 bool connect() {
-  if (!modem.waitForNetwork()) {
-    modem.restart();
-    if (!modem.waitForNetwork())
-      return false;
-  }
-  return modem.gprsConnect("iot.1nce.net");
+  modem.restart();
+  if (!modem.waitForNetwork())
+    return false;
+  return modem.gprsConnect(APN);
 }
 
 void ctrl() {
@@ -146,6 +144,11 @@ void discard() {
     LEN--;
 }
 
+void disconnect() {
+  modem.gprsDisconnect();
+  // modem.poweroff();
+}
+
 bool dump(String &s) {
   if (LEN < CAP-1) {
     uint32_t a = flash.getAddress(flash.sizeofStr(s));
@@ -173,6 +176,16 @@ void erase() {
     flash.writeULong(i*BSZ, 0);
     addr[i] = 0;
   }
+}
+
+void gsminit() {
+  SerialSARA.begin(115200);
+  pinMode(SARA_RESETN, OUTPUT);
+  digitalWrite(SARA_RESETN, LOW);
+  pinMode(SARA_PWR_ON, OUTPUT);
+  digitalWrite(SARA_PWR_ON, HIGH);
+  delay(150);
+  digitalWrite(SARA_PWR_ON, LOW);
 }
 
 bool handshake(char i) {
@@ -232,36 +245,43 @@ String& measure(char i) {
 //}
 
 bool post(String &s) {
-  int n = s.length();
-  if (client.connect(HOST, PORT)) {
-    client.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
-    client.println(F("Host: "HOST));
-    client.println(F("Connection: close"));
-    client.println(F("Content-Type: text/plain; charset=utf-8"));
-    client.print(F("Content-Length: "));
-    client.println(n);
-    client.println();
-    client.print(s);
+  if (!client.connect(HOST, PORT))
+    return false;
 
-    char buf[HTTP_MSG_LEN];
-    uint32_t st = millis();
-    for (n = 0; n < HTTP_MSG_LEN && (millis() - st) < HTTP_TIMEOUT; )
-      if (client.available())
-        buf[n++] = client.read();
-      else
-        delay(100);
-    if (HTTP_OK(buf, n))
-      return true;
+  int n = s.length();
+  client.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
+  client.println(F("Host: "HOST));
+  client.println(F("Connection: close"));
+  client.println(F("Content-Type: text/plain; charset=utf-8"));
+  client.print(F("Content-Length: "));
+  client.println(n);
+  client.println();
+  client.print(s);
+
+  uint32_t timeout = millis();
+  while (!client.available())
+    if ((millis() - timeout) > HTTP_TIMEOUT) {
+      client.stop();
+      return false;
+    }
+
+  n = 0;
+  char buf[HTTP_MSG_LEN];
+  while (client.available()) {
+    char c = client.read();
+    if (n < HTTP_MSG_LEN)
+      buf[n++] = c;
   }
-  return false;
+  client.stop();
+  return HTTP_OK(buf, n);
 }
 
 void pullup() {
-  int8_t pin[8] = {
-    A0, A2, A3, A4, A5, A6, 2, 5
+  int8_t pin[10] = {
+    A0, A2, A3, A4, A5, A6, 2, 5, 13, 14
   };
 
-  for (int i = 0; i < 8; i++)
+  for (int i = 0; i < 10; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -325,12 +345,6 @@ void schedule() {
 #endif
 }
 
-void setbaud(uint32_t rate) {
-  modem.setBaud(rate);
-  Serial1.end();
-  Serial1.begin(rate);
-}
-
 void settime() {
   int year;
   int month;
@@ -341,7 +355,7 @@ void settime() {
   float tz;
 
   if (modem.getNetworkTime(&year, &month, &day, &hour, &minute, &second, &tz)) {
-    rtc.setDate(day, month, year);
+    rtc.setDate(day, month, (year-2000));
     rtc.setTime(hour, minute, second);
   }
 #if defined(COMPILE_TIME)
@@ -369,12 +383,6 @@ bool valid(char c) {
   return (isPrintable(c) || c == '\r' || c == '\n');
 }
 
-bool verify() {
-  if (!modem.isNetworkConnected() || !modem.isGprsConnected())
-    return connect();
-  return true;
-}
-
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET, OUTPUT);
@@ -398,13 +406,10 @@ void setup() {
   if (sid[0] == '\0')
     die();
 
-  uint32_t rate = TinyGsmAutoBaud(Serial1);
-  modem.init();
-  if (connect()) {
-    setbaud(rate);
-    if (!update())
+  gsminit();
+  delay(6000);
+  if (!connect() || !update())
       die();
-  }
 
   Wire.begin();
   SHTC3.begin();
@@ -456,15 +461,13 @@ void loop() {
   flash.powerUp();
   delay(10);
   if (pm) {
-    //nbAccess.shutdown();
+    // modem.poweroff();
     dump(q);
-  } else if (verify()) {
+  } else {
     if (LEN > 0)
       resend();
     if (!post(q))
       dump(q);
-  } else {
-    dump(q);
   }
   flash.powerDown();
 
