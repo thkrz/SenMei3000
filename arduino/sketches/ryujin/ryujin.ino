@@ -22,7 +22,7 @@
 #define SIGN(x) ((x)>=0?'+':'\0')
 
 static float battery();
-static bool connect();
+static bool connect(bool fastboot = false);
 static void ctrl();
 static void die();
 static void dir();
@@ -32,15 +32,16 @@ static void disconnect();
 static bool dump(String&);
 static void enable();
 static void erase();
-static void gsminit();
 static bool handshake(char);
 static String& ident(char);
 static bool load(String&);
 static String& measure(char);
 static bool post(String&);
+static void powerpulse(uint32_t);
 static void pullup();
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
 static void resend();
+static void sarainit();
 static void scan();
 static void schedule();
 static void settime();
@@ -63,8 +64,14 @@ float battery() {
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
-bool connect() {
-  modem.restart();
+bool connect(bool fastboot) {
+  SerialSARA.begin(115200);
+  powerpulse(150);
+  delay(6000);
+  if (fastboot)
+    modem.init();
+  else
+    modem.restart();
   if (!modem.waitForNetwork())
     return false;
   return modem.gprsConnect(APN);
@@ -146,7 +153,9 @@ void discard() {
 
 void disconnect() {
   modem.gprsDisconnect();
-  // modem.poweroff();
+  modem.poweroff();
+  powerpulse(1500);
+  SerialSARA.end();
 }
 
 bool dump(String &s) {
@@ -176,16 +185,6 @@ void erase() {
     flash.writeULong(i*BSZ, 0);
     addr[i] = 0;
   }
-}
-
-void gsminit() {
-  SerialSARA.begin(115200);
-  pinMode(SARA_RESETN, OUTPUT);
-  digitalWrite(SARA_RESETN, LOW);
-  pinMode(SARA_PWR_ON, OUTPUT);
-  digitalWrite(SARA_PWR_ON, HIGH);
-  delay(150);
-  digitalWrite(SARA_PWR_ON, LOW);
 }
 
 bool handshake(char i) {
@@ -276,6 +275,12 @@ bool post(String &s) {
   return HTTP_OK(buf, n);
 }
 
+void powerpulse(uint32_t duration) {
+  digitalWrite(SARA_PWR_ON, HIGH);
+  delay(duration);
+  digitalWrite(SARA_PWR_ON, LOW);
+}
+
 void pullup() {
   int8_t pin[10] = {
     A0, A2, A3, A4, A5, A6, 2, 5, 13, 14
@@ -314,6 +319,13 @@ void resend() {
     discard();
     sync();
   }
+}
+
+void sarainit() {
+  pinMode(SARA_RESETN, OUTPUT);
+  digitalWrite(SARA_RESETN, LOW);
+  pinMode(SARA_PWR_ON, OUTPUT);
+  digitalWrite(SARA_PWR_ON, LOW);
 }
 
 void scan() {
@@ -387,6 +399,7 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET, OUTPUT);
   disable();
+  sarainit();
 
   pullup();
 
@@ -406,8 +419,6 @@ void setup() {
   if (sid[0] == '\0')
     die();
 
-  gsminit();
-  delay(6000);
   if (!connect() || !update())
       die();
 
@@ -418,6 +429,8 @@ void setup() {
 
   rtc.begin();
   settime();
+
+  disconnect();
 
   rtc.setAlarmSeconds(0);
 #if defined(MI_MINUTE)
@@ -461,14 +474,16 @@ void loop() {
   flash.powerUp();
   delay(10);
   if (pm) {
-    // modem.poweroff();
+    disconnect();
     dump(q);
-  } else {
+  } else if (connect()) {
     if (LEN > 0)
       resend();
     if (!post(q))
       dump(q);
-  }
+    disconnect();
+  } else
+    dump(q);
   flash.powerDown();
 
 #if defined(MI_MINUTE)
