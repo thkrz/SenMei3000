@@ -14,8 +14,8 @@
 #define TX  3
 #define CS  7
 
-#define BSZ 4 /* (sizeof(uint32_t)) */
-#define CAP 1024
+#define BSZ 4    /* (sizeof(uint32_t)) */
+#define CAP 1024 /* multiple of 1024 */
 #define LF "\r\n"
 #define LEN (*addr)
 #define WAKE_DELAY 0
@@ -135,7 +135,6 @@ void ctrl() {
         break;
       }
     }
-    delay(10);
   }
 }
 
@@ -290,9 +289,9 @@ bool post(String &s) {
   return HTTP_OK(buf, n);
 }
 
-void powerpulse(uint32_t duration) {
+void powerpulse(uint32_t len) {
   digitalWrite(SARA_PWR_ON, HIGH);
-  delay(duration);
+  delay(len);
   digitalWrite(SARA_PWR_ON, LOW);
 }
 
@@ -391,7 +390,8 @@ void settime() {
 }
 
 void sync() {
-  while (!flash.eraseSector(0));
+  for (int i = 0; i < (CAP / 1024); i++)
+    flash.eraseSector(i);
   for (int i = 0; i < CAP; i++)
     flash.writeULong(i*BSZ, addr[i]);
 }
