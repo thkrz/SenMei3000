@@ -17,11 +17,12 @@
 #define BSZ 4 /* (sizeof(uint32_t)) */
 #define CAP 1024
 #define LF "\r\n"
-#define LEN (addr[0])
+#define LEN (*addr)
 #define WAKE_DELAY 0
 #define SIGN(x) ((x)>=0?'+':'\0')
 
 static float battery();
+static bool config();
 static bool connect(bool fastboot = false);
 static void ctrl();
 static void die();
@@ -46,8 +47,8 @@ static void scan();
 static void schedule();
 static void settime();
 static void sync();
-static bool update();
 static bool valid(char);
+static bool verify();
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
@@ -57,6 +58,7 @@ TinyGsmClient client(modem);
 char sid[63];
 String q;
 uint32_t addr[CAP];
+bool sarapower = false;
 
 float battery() {
   analogRead(A1);
@@ -64,9 +66,19 @@ float battery() {
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
+bool config() {
+  String s = "CONFIG\r\n";
+  enable();
+  for (char *p = sid; *p; p++)
+    s += ident(*p);
+  disable();
+  return post(s);
+}
+
 bool connect(bool fastboot) {
   SerialSARA.begin(115200);
   powerpulse(150);
+  sarapower = true;
   delay(6000);
   if (fastboot)
     modem.init();
@@ -148,13 +160,15 @@ void disable() {
 
 void discard() {
   if (LEN > 0)
-    LEN--;
+    --LEN;
 }
 
 void disconnect() {
-  modem.gprsDisconnect();
+  if (modem.isGprsConnected())
+    modem.gprsDisconnect();
   modem.poweroff();
   powerpulse(1500);
+  sarapower = false;
   SerialSARA.end();
 }
 
@@ -165,7 +179,7 @@ bool dump(String &s) {
       return false;
     addr[LEN+1] = a;
     if (flash.writeStr(a, s)) {
-      LEN++;
+      ++LEN;
       sync();
       return true;
     }
@@ -258,18 +272,27 @@ bool post(String &s) {
   client.print(s);
 
   uint32_t timeout = millis();
-  while (!client.available())
+  while (client.connected() && !client.available()) {
     if ((millis() - timeout) > HTTP_TIMEOUT) {
       client.stop();
       return false;
     }
+    delay(10);
+  }
 
   n = 0;
   char buf[HTTP_MSG_LEN];
-  while (client.available()) {
-    char c = client.read();
-    if (n < HTTP_MSG_LEN)
-      buf[n++] = c;
+  while (client.connected() || client.available()) {
+    while (client.available()) {
+      char c = client.read();
+      if (n < HTTP_MSG_LEN)
+        buf[n++] = c;
+    }
+    if ((millis() - timeout) > HTTP_TIMEOUT) {
+      client.stop();
+      return false;
+    }
+    delay(10);
   }
   client.stop();
   return HTTP_OK(buf, n);
@@ -311,8 +334,7 @@ String& readline(uint32_t timeout) {
 }
 
 void resend() {
-  String s;
-  s.reserve(64);
+  static String s = "";
   while (load(s)) {
     if (!post(s))
       break;
@@ -382,17 +404,18 @@ void sync() {
     flash.writeULong(i*BSZ, addr[i]);
 }
 
-bool update() {
-  String s = "CONFIG\r\n";
-  enable();
-  for (char *p = sid; *p; p++)
-    s += ident(*p);
-  disable();
-  return post(s);
-}
-
 bool valid(char c) {
   return (isPrintable(c) || c == '\r' || c == '\n');
+}
+
+bool verify() {
+  if (modem.isNetworkConnected() && modem.isGprsConnected())
+    return true;
+  if (sarapower) {
+    disconnect();
+    delay(6000);
+  }
+  return connect(true);
 }
 
 void setup() {
@@ -419,7 +442,7 @@ void setup() {
   if (sid[0] == '\0')
     die();
 
-  if (!connect() || !update())
+  if (!connect() || !config())
       die();
 
   Wire.begin();
@@ -429,8 +452,6 @@ void setup() {
 
   rtc.begin();
   settime();
-
-  disconnect();
 
   rtc.setAlarmSeconds(0);
 #if defined(MI_MINUTE)
@@ -476,12 +497,19 @@ void loop() {
   if (pm) {
     disconnect();
     dump(q);
-  } else if (connect()) {
-    if (LEN > 0)
-      resend();
-    if (!post(q))
+  } else if (verify()) {
+    resend();
+    if (!post(q)) {
+      q = "DEBUG";
+      q += LF;
+      q += "HTTP_ERROR";
+      q += LF;
+      q += "LEN: ";
+      q += LEN;
+      q += LF;
+      post(q);
       dump(q);
-    disconnect();
+    }
   } else
     dump(q);
   flash.powerDown();

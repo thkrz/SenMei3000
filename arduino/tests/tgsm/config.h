@@ -12,6 +12,6 @@
 
 #define SDI_TIMEOUT 3000
 
-#define BAT_LOW 12.2
+#define BAT_LOW 11.9
 
 #endif // _CONFIG_H
