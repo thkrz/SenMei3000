@@ -5959,7 +5959,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eca53f30-4dd6-4e4a-98a9-0c45dad7a37a")

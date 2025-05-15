@@ -271,17 +271,9 @@ bool post(String &s) {
   client.println();
   client.print(s);
 
-  uint32_t timeout = millis();
-  while (client.connected() && !client.available()) {
-    if ((millis() - timeout) > HTTP_TIMEOUT) {
-      client.stop();
-      return false;
-    }
-    delay(10);
-  }
-
   n = 0;
   char buf[HTTP_MSG_LEN];
+  uint32_t timeout = millis();
   while (client.connected() || client.available()) {
     while (client.available()) {
       char c = client.read();
@@ -292,7 +284,7 @@ bool post(String &s) {
       client.stop();
       return false;
     }
-    delay(10);
+    delay(100);
   }
   client.stop();
   return HTTP_OK(buf, n);
@@ -495,21 +487,14 @@ void loop() {
   flash.powerUp();
   delay(10);
   if (pm) {
-    disconnect();
+    if (sarapower)
+      disconnect();
     dump(q);
   } else if (verify()) {
+    delay(3000);
     resend();
-    if (!post(q)) {
-      q = "DEBUG";
-      q += LF;
-      q += "HTTP_ERROR";
-      q += LF;
-      q += "LEN: ";
-      q += LEN;
-      q += LF;
-      post(q);
+    if (!post(q))
       dump(q);
-    }
   } else
     dump(q);
   flash.powerDown();
