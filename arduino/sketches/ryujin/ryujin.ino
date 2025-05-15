@@ -14,8 +14,8 @@
 #define TX  3
 #define CS  7
 
-#define BSZ 4    /* (sizeof(uint32_t)) */
-#define CAP 1024 /* multiple of 1024 */
+#define BSZ 4       /* (sizeof(uint32_t)) */
+#define CAP (8<<10) /* multiple of 1024 */
 #define LF "\r\n"
 #define LEN (*addr)
 #define WAKE_DELAY 0
@@ -159,7 +159,7 @@ void disable() {
 
 void discard() {
   if (LEN > 0)
-    --LEN;
+    LEN--;
 }
 
 void disconnect() {
@@ -178,7 +178,7 @@ bool dump(String &s) {
       return false;
     addr[LEN+1] = a;
     if (flash.writeStr(a, s)) {
-      ++LEN;
+      LEN++;
       sync();
       return true;
     }
@@ -390,7 +390,7 @@ void settime() {
 }
 
 void sync() {
-  for (int i = 0; i < (CAP / 1024); i++)
+  for (int i = 0; i < (CAP>>10); i++)
     flash.eraseSector(i);
   for (int i = 0; i < CAP; i++)
     flash.writeULong(i*BSZ, addr[i]);
@@ -468,9 +468,9 @@ void loop() {
   q += SIGN(bat0);
   q += bat0;
 
-  bool pm = bat0 < BAT_LOW;
+  bool psm = bat0 < BAT_LOW;
 
-  SHTC3.readSample(true, pm);
+  SHTC3.readSample(true, psm);
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
   q += SIGN(st);
@@ -486,7 +486,7 @@ void loop() {
 
   flash.powerUp();
   delay(10);
-  if (pm) {
+  if (psm) {
     if (sarapower)
       disconnect();
     dump(q);
@@ -500,7 +500,7 @@ void loop() {
   flash.powerDown();
 
 #if defined(MI_MINUTE)
-  if (!pm)
+  if (!psm)
 #endif
     schedule();
   rtc.standbyMode();
