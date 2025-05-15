@@ -2634,7 +2634,10 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Diode:BAT54W"
+		(symbol "Diode:SS34"
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -2650,7 +2653,7 @@
 					)
 				)
 			)
-			(property "Value" "BAT54W"
+			(property "Value" "SS34"
 				(at 0 -2.54 0)
 				(effects
 					(font
@@ -2658,7 +2661,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Package_TO_SOT_SMD:SOT-323_SC-70"
+			(property "Footprint" "Diode_SMD:D_SMA"
 				(at 0 -4.445 0)
 				(effects
 					(font
@@ -2667,7 +2670,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BAT54W_SER.pdf"
+			(property "Datasheet" "https://www.vishay.com/docs/88751/ss32.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2676,7 +2679,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Schottky barrier diode, SOT-323"
+			(property "Description" "40V 3A Schottky Diode, SMA"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2685,7 +2688,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "schottky diode"
+			(property "ki_keywords" "diode Schottky"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2694,7 +2697,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "SOT?323*"
+			(property "ki_fp_filters" "D*SMA*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2703,7 +2706,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "BAT54W_0_1"
+			(symbol "SS34_0_1"
 				(polyline
 					(pts
 						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
@@ -2741,7 +2744,7 @@
 					)
 				)
 			)
-			(symbol "BAT54W_1_1"
+			(symbol "SS34_1_1"
 				(pin passive line
 					(at -3.81 0 0)
 					(length 2.54)
@@ -2752,26 +2755,7 @@
 							)
 						)
 					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 0 0 90)
-					(length 2.54)
-					(hide yes)
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2789,7 +2773,7 @@
 							)
 						)
 					)
-					(number "1"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -9174,88 +9158,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:BAT54W")
-		(at 134.62 30.48 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "69796a2e-0e8d-4187-8b59-b3344c7b2477")
-		(property "Reference" "D8"
-			(at 136.2076 33.02 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "D2"
-			(at 134.9375 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 134.62 26.035 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BAT54W_SER.pdf"
-			(at 134.62 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Schottky barrier diode"
-			(at 134.62 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" " BAT54"
-			(at 134.62 30.48 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "66d68267-685d-4c94-bad9-65c9c14ba17c")
-		)
-		(pin "2"
-			(uuid "a441c323-3c46-4601-aab3-1c2ad52e8100")
-		)
-		(pin "3"
-			(uuid "859aac69-c7e7-4fe3-ba0d-78429afef6df")
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "D8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 248.92 118.11 0)
 		(unit 1)
@@ -11103,6 +11005,74 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "Q2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:SS34")
+		(at 134.62 30.48 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c31a99c1-2a75-4b54-8b05-608e92d6f675")
+		(property "Reference" "D1"
+			(at 134.9375 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SS34"
+			(at 134.9375 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMA"
+			(at 134.62 26.035 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/88751/ss32.pdf"
+			(at 134.62 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "40V 3A Schottky Diode, SMA"
+			(at 134.62 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "1482e0fe-58b5-4e5a-9848-1280d7d67bbb")
+		)
+		(pin "1"
+			(uuid "80227e0b-42f9-4205-8a09-aefb5ecb3d89")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "D1")
 					(unit 1)
 				)
 			)

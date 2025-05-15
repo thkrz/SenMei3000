@@ -556,6 +556,9 @@
       "Net-(C7-Pad1)": [
         "PWR"
       ],
+      "Net-(D1-K)": [
+        "PWR"
+      ],
       "Net-(D5-K)": [
         "PWR"
       ],
