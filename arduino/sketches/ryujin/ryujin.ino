@@ -14,8 +14,8 @@
 #define TX  3
 #define CS  7
 
-#define BSZ 4       /* (sizeof(uint32_t)) */
-#define CAP (8<<10) /* multiple of 1024 */
+#define BLKSZ 4    /* (sizeof(uint32_t)) */
+#define CAP 1024
 #define LF "\r\n"
 #define LEN (*addr)
 #define WAKE_DELAY 0
@@ -42,7 +42,6 @@ static void powerpulse(uint32_t);
 static void pullup();
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
 static void resend();
-static void sarainit();
 static void scan();
 static void schedule();
 static void settime();
@@ -58,7 +57,7 @@ TinyGsmClient client(modem);
 char sid[63];
 String q;
 uint32_t addr[CAP];
-bool sarapower = false;
+bool power = false;
 
 float battery() {
   analogRead(A1);
@@ -78,7 +77,7 @@ bool config() {
 bool connect(bool fastboot) {
   SerialSARA.begin(115200);
   powerpulse(150);
-  sarapower = true;
+  power = true;
   delay(6000);
   if (fastboot)
     modem.init();
@@ -149,7 +148,7 @@ void die(uint32_t p) {
 
 void dir() {
   for (int i = 0; i < CAP; i++)
-    addr[i] = flash.readULong(i*BSZ);
+    addr[i] = flash.readULong(i*BLKSZ);
 }
 
 void disable() {
@@ -167,7 +166,7 @@ void disconnect() {
     modem.gprsDisconnect();
   modem.poweroff();
   powerpulse(1500);
-  sarapower = false;
+  power = false;
   SerialSARA.end();
 }
 
@@ -195,7 +194,7 @@ void enable() {
 void erase() {
   flash.eraseChip();
   for (int i = 0; i < CAP; i++) {
-    flash.writeULong(i*BSZ, 0);
+    flash.writeULong(i*BLKSZ, 0);
     addr[i] = 0;
   }
 }
@@ -331,14 +330,8 @@ void resend() {
       break;
     discard();
     sync();
+    delay(1000);
   }
-}
-
-void sarainit() {
-  pinMode(SARA_RESETN, OUTPUT);
-  digitalWrite(SARA_RESETN, LOW);
-  pinMode(SARA_PWR_ON, OUTPUT);
-  digitalWrite(SARA_PWR_ON, LOW);
 }
 
 void scan() {
@@ -387,7 +380,7 @@ void sync() {
   for (int i = 0; i < (CAP>>10); i++)
     flash.eraseSector(i);
   for (int i = 0; i < CAP; i++)
-    flash.writeULong(i*BSZ, addr[i]);
+    flash.writeULong(i*BLKSZ, addr[i]);
 }
 
 bool valid(char c) {
@@ -397,7 +390,7 @@ bool valid(char c) {
 bool verify() {
   if (modem.isNetworkConnected() && modem.isGprsConnected())
     return true;
-  if (sarapower) {
+  if (power) {
     disconnect();
     delay(6000);
   }
@@ -408,7 +401,11 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET, OUTPUT);
   disable();
-  sarainit();
+
+  pinMode(SARA_RESETN, OUTPUT);
+  digitalWrite(SARA_RESETN, LOW);
+  pinMode(SARA_PWR_ON, OUTPUT);
+  digitalWrite(SARA_PWR_ON, LOW);
 
   pullup();
 
@@ -481,11 +478,10 @@ void loop() {
   flash.powerUp();
   delay(10);
   if (psm) {
-    if (sarapower)
+    if (power)
       disconnect();
     dump(q);
   } else if (verify()) {
-    delay(1000);
     resend();
     if (!post(q))
       dump(q);
