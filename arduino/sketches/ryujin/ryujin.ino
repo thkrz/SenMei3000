@@ -25,7 +25,7 @@ static float battery();
 static bool config();
 static bool connect(bool fastboot = false);
 static void ctrl();
-static void die();
+static void die(uint32_t);
 static void dir();
 static void disable();
 static void discard();
@@ -138,12 +138,12 @@ void ctrl() {
   }
 }
 
-void die() {
+void die(uint32_t p) {
   for(;;) {
     digitalWrite(LED_BUILTIN, HIGH);
-    delay(1000);
+    delay(p);
     digitalWrite(LED_BUILTIN, LOW);
-    delay(1000);
+    delay(p);
   }
 }
 
@@ -361,9 +361,7 @@ void scan() {
 void schedule() {
 #if defined(MI_MINUTE)
   uint8_t m = (rtc.getMinutes() / MI_MINUTE + 1) * MI_MINUTE;
-  if (m == 60)
-    m = 0;
-  rtc.setAlarmMinutes(m);
+  rtc.setAlarmMinutes(m % 60);
 #elif defined(MI_HOUR)
   uint8_t m = (rtc.getHours() / MI_HOUR + 1) * MI_HOUR;
   rtc.setAlarmHours(m % 24);
@@ -383,10 +381,6 @@ void settime() {
     rtc.setDate(day, month, (year-2000));
     rtc.setTime(hour, minute, second);
   }
-#if defined(COMPILE_TIME)
-  else
-    rtc.setEpoch(COMPILE_TIME);
-#endif
 }
 
 void sync() {
@@ -432,10 +426,10 @@ void setup() {
   scan();
   disable();
   if (sid[0] == '\0')
-    die();
+    die(500);
 
   if (!connect() || !config())
-      die();
+      die(1500);
 
   Wire.begin();
   SHTC3.begin();
@@ -491,7 +485,7 @@ void loop() {
       disconnect();
     dump(q);
   } else if (verify()) {
-    delay(3000);
+    delay(1000);
     resend();
     if (!post(q))
       dump(q);
