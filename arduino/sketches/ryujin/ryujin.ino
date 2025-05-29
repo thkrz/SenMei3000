@@ -37,6 +37,7 @@ static bool handshake(char);
 static String& ident(char);
 static bool load(String&);
 static String& measure(char);
+static bool pop(String&);
 static bool post(String&);
 static void powerpulse(uint32_t);
 static void pullup();
@@ -85,7 +86,7 @@ bool connect(bool fastboot) {
     modem.restart();
   if (!modem.waitForNetwork())
     return false;
-  return modem.gprsConnect(APN);
+  return modem.gprsConnect(F(APN));
 }
 
 void ctrl() {
@@ -113,25 +114,6 @@ void ctrl() {
         erase();
         Serial.println(F("#FORMAT"));
         break;
-      case 'i':
-        Serial.print(F("M IN CACHE: "));
-        Serial.println(LEN);
-        n = 0;
-        for (int i = 1; i < CAP; i++)
-          if (addr[i] > 0)
-            n++;
-          else
-            break;
-        Serial.print(F("M ON FLASH: "));
-        Serial.println(n);
-        Serial.println(F("#INFO"));
-        break;
-      case '?':
-        Serial.println(F("d: dump"));
-        Serial.println(F("i: info"));
-        Serial.println(F("f: format"));
-        Serial.println(F("?: help"));
-        break;
       }
     }
   }
@@ -147,7 +129,8 @@ void die(uint32_t p) {
 }
 
 void dir() {
-  for (int i = 0; i < CAP; i++)
+  LEN = flash.readULong(0);
+  for (int i = 1; i <= LEN; i++)
     addr[i] = flash.readULong(i*BLKSZ);
 }
 
@@ -221,9 +204,7 @@ String& ident(char i) {
 }
 
 bool load(String &s) {
-  if (LEN < 1)
-    return false;
-  return flash.readStr(addr[LEN], s);
+  return LEN > 0 && flash.readStr(addr[LEN], s);
 }
 
 String& measure(char i) {
@@ -254,6 +235,18 @@ String& measure(char i) {
 //      n++;
 //  return n;
 //}
+
+bool pop(String &s) {
+  for (int i = 0; i < 3; i++) {
+    if (post(s)) {
+      discard();
+      sync();
+      return true;
+    }
+    delay(500);
+  }
+  return false;
+}
 
 bool post(String &s) {
   if (!client.connect(HOST, PORT))
@@ -325,12 +318,10 @@ String& readline(uint32_t timeout) {
 
 void resend() {
   static String s = "";
+
   while (load(s)) {
-    if (!post(s))
+    if (!pop(s))
       break;
-    discard();
-    sync();
-    delay(1000);
   }
 }
 
@@ -425,13 +416,13 @@ void setup() {
   if (sid[0] == '\0')
     die(500);
 
-  if (!connect() || !config())
-      die(1500);
-
   Wire.begin();
   SHTC3.begin();
 
   q.reserve(256);
+
+  if (!connect() || !config())
+      die(1500);
 
   rtc.begin();
   settime();
@@ -442,8 +433,6 @@ void setup() {
 #elif defined(MI_HOUR)
   rtc.setAlarmMinutes(0);
   rtc.enableAlarm(rtc.MATCH_HHMMSS);
-#else
-  die();
 #endif
   schedule();
   rtc.standbyMode();
@@ -476,7 +465,6 @@ void loop() {
   disable();
 
   flash.powerUp();
-  delay(10);
   if (psm) {
     if (power)
       disconnect();
