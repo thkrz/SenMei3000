@@ -42,7 +42,7 @@ static bool post(String&);
 static void powerpulse(uint32_t);
 static void pullup();
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
-static void resend();
+static bool resend();
 static void scan();
 static void schedule();
 static void settime();
@@ -86,7 +86,7 @@ bool connect(bool fastboot) {
     modem.restart();
   if (!modem.waitForNetwork())
     return false;
-  return modem.gprsConnect(F(APN));
+  return modem.gprsConnect(APN);
 }
 
 void ctrl() {
@@ -137,6 +137,7 @@ void dir() {
 void disable() {
   digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
+  socket.end();
 }
 
 void discard() {
@@ -171,6 +172,7 @@ bool dump(String &s) {
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
   digitalWrite(FET, HIGH);
+  socket.begin();
   delay(600);
 }
 
@@ -263,22 +265,21 @@ bool post(String &s) {
   client.print(s);
 
   n = 0;
-  char buf[HTTP_MSG_LEN];
+  char r = 0;
   uint32_t timeout = millis();
-  while (client.connected() || client.available()) {
-    while (client.available()) {
-      char c = client.read();
-      if (n < HTTP_MSG_LEN)
-        buf[n++] = c;
-    }
-    if ((millis() - timeout) > HTTP_TIMEOUT) {
-      client.stop();
-      return false;
-    }
-    delay(100);
-  }
+  while (n < HTTP_MSG_LEN && (millis() - timeout) < HTTP_TIMEOUT)
+    if (client.available()) {
+      r = client.read();
+      n++;
+    } else
+      delay(100);
+
+  /* flush */
+  while (client.available())
+    client.read();
+
   client.stop();
-  return HTTP_OK(buf, n);
+  return n == HTTP_MSG_LEN && r == '2';
 }
 
 void powerpulse(uint32_t len) {
@@ -316,13 +317,13 @@ String& readline(uint32_t timeout) {
   return s;
 }
 
-void resend() {
+bool resend() {
   static String s = "";
 
-  while (load(s)) {
+  while (load(s))
     if (!pop(s))
-      break;
-  }
+      return false;
+  return true;
 }
 
 void scan() {
@@ -353,23 +354,22 @@ void schedule() {
 }
 
 void settime() {
-  int year;
-  int month;
-  int day;
-  int hour;
-  int minute;
-  int second;
-  float tz;
+  int Y;
+  int m;
+  int d;
+  int h;
+  int b;
+  int s;
+  float z;
 
-  if (modem.getNetworkTime(&year, &month, &day, &hour, &minute, &second, &tz)) {
-    rtc.setDate(day, month, (year-2000));
-    rtc.setTime(hour, minute, second);
+  if (modem.getNetworkTime(&Y, &m, &d, &h, &b, &s, &z)) {
+    rtc.setDate(d, m, (Y-2000));
+    rtc.setTime(h, b, s);
   }
 }
 
 void sync() {
-  for (int i = 0; i < (CAP>>10); i++)
-    flash.eraseSector(i);
+  flash.eraseSector(0);
   for (int i = 0; i < CAP; i++)
     flash.writeULong(i*BLKSZ, addr[i]);
 }
@@ -385,14 +385,17 @@ bool verify() {
     disconnect();
     delay(6000);
   }
-  return connect(true);
+  if (!connect(true))
+    return false;
+  settime();
+  return true;
 }
 
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
   pinMode(FET, OUTPUT);
-  disable();
-
+  digitalWrite(FET, LOW);
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
   pinMode(SARA_RESETN, OUTPUT);
   digitalWrite(SARA_RESETN, LOW);
   pinMode(SARA_PWR_ON, OUTPUT);
@@ -409,7 +412,6 @@ void setup() {
 
   flash.powerDown();
 
-  socket.begin();
   enable();
   scan();
   disable();
@@ -469,12 +471,8 @@ void loop() {
     if (power)
       disconnect();
     dump(q);
-  } else if (verify()) {
-    resend();
-    if (!post(q))
+  } else if (!verify() || !resend() || !post(q))
       dump(q);
-  } else
-    dump(q);
   flash.powerDown();
 
 #if defined(MI_MINUTE)

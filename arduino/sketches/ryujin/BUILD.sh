@@ -1,7 +1,7 @@
 #!/bin/bash -e
 FBQN=arduino:samd:mkrnb1500
 
-DEF=-DCOMPILE_TIME=$(date +'%s')
+DEF=
 for arg in "$@"; do
   DEF="$DEF -D$arg"
 done
