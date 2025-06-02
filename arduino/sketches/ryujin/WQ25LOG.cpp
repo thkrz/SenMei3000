@@ -1,5 +1,9 @@
 #include "WQ25LOG.h"
 
+#define ADDR(i) (_start+(i)*4)
+#define INVALID 0xFFFFFFFF
+#define TOGGLE (_start=_start>0?0:_cap)
+
 WQ25LOG::WQ25LOG(int cs, uint16_t index)
   : _flash(cs) {
   _index = index;
@@ -7,16 +11,21 @@ WQ25LOG::WQ25LOG(int cs, uint16_t index)
 
 void WQ25LOG::begin() {
   _flash.begin();
+  _cap = _flash.getCapacity() >> 1;
+
+  _start = 0;
+  if (_flash.readULong(0) == INVALID && _flash.readULong(_cap) != INVALID)
+    _start = _cap;
+
   _len = _index;
-  while (_len > 0 && _flash.readByte(ADDR(_len-1) == 0xFF))
+  while (_len > 0 && _flash.readULong(ADDR(_len-1)) == INVALID)
     _len--;
 }
 
 uint32_t WQ25LOG::_getReadAddress() {
   for (int i = _len; i > 0; i--) {
     uint32_t a = _flash.readULong(ADDR(i-1));
-    uint8_t flag = _flash.readByte(a);
-    if (flag == 0xFF)
+    if (_flash.readByte(a) == 0xFF)
       return a;
   }
   return INVALID;
@@ -35,10 +44,11 @@ bool WQ25LOG::append(String &s) {
     return false;
 
   uint32_t a = _getWriteAddress();
+
   char *buf = (char*)s.c_str();
   uint16_t len = s.length() + 1;
 
-  if (a + 3 + len > _flash.getCapacity())
+  if (a + 3 + len > _cap)
     return false;
 
   _flash.writeWord(a + 1, len);
@@ -50,7 +60,16 @@ bool WQ25LOG::append(String &s) {
 }
 
 void WQ25LOG::compact() {
-  // TODO
+  uint16_t len = 0;
+  for (int i = _len; i > 0; i--) {
+    uint32_t a = _flash.readULong(ADDR(i-1));
+    if (_flash.readByte(a) != 0xFF)
+      continue;
+  }
+
+  for (uint32_t a = 0; i < _cap; a += 0x10000)
+    _flash.eraseBlock64K(_start + a);
+  TOGGLE;
 }
 
 bool WQ25LOG::format() {
@@ -71,7 +90,7 @@ bool WQ25LOG::readLast(String &s) {
 void WQ25LOG::removeLast() {
   uint32_t a = _getReadAddress();
   if (a != INVALID)
-    _flash.writeByte(a, 0);
+    _flash.writeByte(a, 0x00);
 }
 
 void WQ25LOG::sleep(bool state) {

@@ -3,14 +3,13 @@
 
 #include <SPIMemory.h>
 
-#define ADDR(i) ((i)*4)
-#define INVALID 0xFFFFFFFF
-
 class WQ25LOG {
   private:
-    uint16_t _len;
+    uint32_t _cap;
     SPIFlash _flash;
     uint16_t _index;
+    uint16_t _len;
+    uint32_t _start;
 
     uint32_t _getReadAddress();
     uint32_t _getWriteAddress();
