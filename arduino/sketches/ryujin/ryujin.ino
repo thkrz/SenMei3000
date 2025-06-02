@@ -195,7 +195,7 @@ String& measure(char i) {
 bool pop(String &s) {
   for (int i = 0; i < 3; i++) {
     if (post(s)) {
-      wq25.flag();
+      wq25.delete();
       return true;
     }
     delay(500);

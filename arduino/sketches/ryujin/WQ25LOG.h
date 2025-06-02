@@ -15,7 +15,7 @@ class WQ25LOG {
     void begin();
 
     bool append(String&);
-    void flag();
+    void delete();
     bool format();
     bool read(String&);
     void seek(uint32_t);

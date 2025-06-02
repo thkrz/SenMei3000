@@ -32,7 +32,7 @@ bool WQ25LOG::append(String &s) {
   return true;
 }
 
-void WQ25LOG::flag() {
+void WQ25LOG::delete() {
   _flash.writeByte(_rp, 0x00);
 }
 

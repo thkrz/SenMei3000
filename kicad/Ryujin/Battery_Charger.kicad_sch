@@ -4077,7 +4077,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100k 0402"
+		(property "MPN" "97.6k 0402"
 			(at 248.92 104.14 0)
 			(effects
 				(font
@@ -4918,7 +4918,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "499k 0402"
+		(property "MPN" "536k 0402"
 			(at 248.92 91.44 0)
 			(effects
 				(font
