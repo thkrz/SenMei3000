@@ -1,10 +1,9 @@
 #include <RTCZero.h>
 #include <SDI12.h>
 #include <SHTC3.h>
-#include <SPI.h>
-#include <SPIMemory.h>
 #include <Wire.h>
 
+#include "WQ25LOG.h"
 #include "config.h"
 #include "gsm.h"
 
@@ -14,10 +13,7 @@
 #define TX  3
 #define CS  7
 
-#define BLKSZ 4    /* (sizeof(uint32_t)) */
-#define CAP 1024
 #define LF "\r\n"
-#define LEN (*addr)
 #define WAKE_DELAY 0
 #define SIGN(x) ((x)>=0?'+':'\0')
 
@@ -26,16 +22,11 @@ static bool config();
 static bool connect(bool fastboot = false);
 static void ctrl();
 static void die(uint32_t);
-static void dir();
 static void disable();
-static void discard();
 static void disconnect();
-static bool dump(String&);
 static void enable();
-static void erase();
 static bool handshake(char);
 static String& ident(char);
-static bool load(String&);
 static String& measure(char);
 static bool pop(String&);
 static bool post(String&);
@@ -46,18 +37,16 @@ static bool resend();
 static void scan();
 static void schedule();
 static void settime();
-static void sync();
 static bool valid(char);
 static bool verify();
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
-SPIFlash flash(CS);
+WQ25LOG wq25(CS);
 TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 char sid[63];
 String q;
-uint32_t addr[CAP];
 bool power = false;
 
 float battery() {
@@ -68,6 +57,13 @@ float battery() {
 
 bool config() {
   String s = "CONFIG\r\n";
+#if defined(MI_MINUTE)
+  uint16_t i = MI_MINUTE * 60;
+#elif defined(MI_HOUR)
+  uint16_t i = MI_HOUR * 3600;
+#endif
+  s += i;
+  s += LF;
   enable();
   for (char *p = sid; *p; p++)
     s += ident(*p);
@@ -90,10 +86,6 @@ bool connect(bool fastboot) {
 }
 
 void ctrl() {
-  uint32_t len;
-  int n;
-  String s;
-
   Serial.begin(19200);
   while(!Serial);
 
@@ -102,16 +94,10 @@ void ctrl() {
       char c = Serial.read();
       switch (c) {
       case 'd':
-        len = LEN;
-        while (load(s)) {
-          Serial.print(s);
-          discard();
-        }
-        LEN = len;
         Serial.println(F("#DUMP"));
         break;
-      case 'f':
-        erase();
+      case 'F':
+        wq25.format();
         Serial.println(F("#FORMAT"));
         break;
       }
@@ -128,21 +114,10 @@ void die(uint32_t p) {
   }
 }
 
-void dir() {
-  LEN = flash.readULong(0);
-  for (int i = 1; i <= LEN; i++)
-    addr[i] = flash.readULong(i*BLKSZ);
-}
-
 void disable() {
   digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
   socket.end();
-}
-
-void discard() {
-  if (LEN > 0)
-    LEN--;
 }
 
 void disconnect() {
@@ -154,34 +129,11 @@ void disconnect() {
   SerialSARA.end();
 }
 
-bool dump(String &s) {
-  if (LEN < CAP-1) {
-    uint32_t a = flash.getAddress(flash.sizeofStr(s));
-    if (a == 0)
-      return false;
-    addr[LEN+1] = a;
-    if (flash.writeStr(a, s)) {
-      LEN++;
-      sync();
-      return true;
-    }
-  }
-  return false;
-}
-
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
   digitalWrite(FET, HIGH);
   socket.begin();
   delay(600);
-}
-
-void erase() {
-  flash.eraseChip();
-  for (int i = 0; i < CAP; i++) {
-    flash.writeULong(i*BLKSZ, 0);
-    addr[i] = 0;
-  }
 }
 
 bool handshake(char i) {
@@ -203,10 +155,6 @@ String& ident(char i) {
   cmd[0] = i;
   socket.sendCommand(cmd, WAKE_DELAY);
   return readline();
-}
-
-bool load(String &s) {
-  return LEN > 0 && flash.readStr(addr[LEN], s);
 }
 
 String& measure(char i) {
@@ -241,8 +189,7 @@ String& measure(char i) {
 bool pop(String &s) {
   for (int i = 0; i < 3; i++) {
     if (post(s)) {
-      discard();
-      sync();
+      wq25.removeLast();
       return true;
     }
     delay(500);
@@ -318,9 +265,9 @@ String& readline(uint32_t timeout) {
 }
 
 bool resend() {
-  static String s = "";
+  static String s;
 
-  while (load(s))
+  while (wq25.readLast(s))
     if (!pop(s))
       return false;
   return true;
@@ -368,12 +315,6 @@ void settime() {
   }
 }
 
-void sync() {
-  flash.eraseSector(0);
-  for (int i = 0; i < CAP; i++)
-    flash.writeULong(i*BLKSZ, addr[i]);
-}
-
 bool valid(char c) {
   return (isPrintable(c) || c == '\r' || c == '\n');
 }
@@ -403,14 +344,11 @@ void setup() {
 
   pullup();
 
-  flash.begin();
-  dir();
-
+  wq25.begin();
   if (battery() < 7)
     ctrl();
     /* not reached */
-
-  flash.powerDown();
+  wq25.sleep(true);
 
   enable();
   scan();
@@ -466,14 +404,14 @@ void loop() {
     q += measure(*p);
   disable();
 
-  flash.powerUp();
+  wq25.sleep(false);
   if (psm) {
     if (power)
       disconnect();
-    dump(q);
+    wq25.append(q);
   } else if (!verify() || !resend() || !post(q))
-      dump(q);
-  flash.powerDown();
+      wq25.append(q);
+  wq25.sleep(true);
 
 #if defined(MI_MINUTE)
   if (!psm)
