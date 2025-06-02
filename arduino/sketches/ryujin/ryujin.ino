@@ -415,7 +415,7 @@ void loop() {
     if (power)
       disconnect();
     w25q.append(q);
-  } else if (!verify() || !resend() || !post(q))
+  } else if (!verify() || !resend() || !retry(q))
       w25q.append(q);
   w25q.sleep(true);
 
