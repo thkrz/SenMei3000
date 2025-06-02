@@ -3,7 +3,7 @@
 #include <SHTC3.h>
 #include <Wire.h>
 
-#include "WQ25LOG.h"
+#include "W25QLOG.h"
 #include "config.h"
 #include "gsm.h"
 
@@ -28,12 +28,12 @@ static void enable();
 static bool handshake(char);
 static String& ident(char);
 static String& measure(char);
-static bool pop(String&);
 static bool post(String&);
 static void powerpulse(uint32_t);
 static void pullup();
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
 static bool resend();
+static bool retry(String&);
 static void scan();
 static void schedule();
 static void settime();
@@ -42,7 +42,7 @@ static bool verify();
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
-WQ25LOG wq25(CS);
+W25QLOG w25q(CS);
 TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 char sid[63];
@@ -97,13 +97,13 @@ void ctrl() {
       char c = Serial.read();
       switch (c) {
       case 'd':
-        wq25.seek(0);
-        while (wq25.read(s))
+        w25q.seek(0);
+        while (w25q.read(s))
           Serial.print(s);
         Serial.println(F("#DUMP"));
         break;
       case 'F':
-        wq25.format();
+        w25q.format();
         Serial.println(F("#FORMAT"));
         break;
       }
@@ -192,17 +192,6 @@ String& measure(char i) {
 //  return n;
 //}
 
-bool pop(String &s) {
-  for (int i = 0; i < 3; i++) {
-    if (post(s)) {
-      wq25.delete();
-      return true;
-    }
-    delay(500);
-  }
-  return false;
-}
-
 bool post(String &s) {
   if (!client.connect(HOST, PORT))
     return false;
@@ -273,10 +262,21 @@ String& readline(uint32_t timeout) {
 bool resend() {
   static String s;
 
-  while (wq25.read(s))
-    if (!pop(s))
+  while (w25q.read(s)) {
+    if (!retry(s))
       return false;
+    w25q.unlink();
+  }
   return true;
+}
+
+bool retry(String &s) {
+  for (int i = 0; i < 3; i++) {
+    if (post(s))
+      return true;
+    delay(500);
+  }
+  return false;
 }
 
 void scan() {
@@ -350,11 +350,11 @@ void setup() {
 
   pullup();
 
-  wq25.begin();
+  w25q.begin();
   if (battery() < 7)
     ctrl();
     /* not reached */
-  wq25.sleep(true);
+  w25q.sleep(true);
 
   enable();
   scan();
@@ -410,14 +410,14 @@ void loop() {
     q += measure(*p);
   disable();
 
-  wq25.sleep(false);
+  w25q.sleep(false);
   if (psm) {
     if (power)
       disconnect();
-    wq25.append(q);
+    w25q.append(q);
   } else if (!verify() || !resend() || !post(q))
-      wq25.append(q);
-  wq25.sleep(true);
+      w25q.append(q);
+  w25q.sleep(true);
 
 #if defined(MI_MINUTE)
   if (!psm)

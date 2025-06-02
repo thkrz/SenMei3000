@@ -1,12 +1,12 @@
-#include "WQ25LOG.h"
+#include "W25QLOG.h"
 
 #define SHIFT(a,n) ((a)+=3+(n))
 
-WQ25LOG::WQ25LOG(int cs)
+W25QLOG::W25QLOG(int cs)
   : _flash(cs) {
 }
 
-void WQ25LOG::begin() {
+void W25QLOG::begin() {
   _flash.begin();
 
   _rp = 0;
@@ -19,7 +19,7 @@ void WQ25LOG::begin() {
   }
 }
 
-bool WQ25LOG::append(String &s) {
+bool W25QLOG::append(String &s) {
   uint16_t len = s.length() + 1;
 
   if (_wp + 3 + len > _flash.getCapacity())
@@ -32,15 +32,11 @@ bool WQ25LOG::append(String &s) {
   return true;
 }
 
-void WQ25LOG::delete() {
-  _flash.writeByte(_rp, 0x00);
-}
-
-bool WQ25LOG::format() {
+bool W25QLOG::format() {
   return _flash.eraseChip();
 }
 
-bool WQ25LOG::read(String &s) {
+bool W25QLOG::read(String &s) {
   while (_rp < _wp) {
     uint16_t len = _flash.readWord(_rp + 1);
     if (_flash.readByte(_rp) == 0xFF) {
@@ -55,14 +51,18 @@ bool WQ25LOG::read(String &s) {
   return false;
 }
 
-void WQ25LOG::seek(uint32_t a) {
+void W25QLOG::seek(uint32_t a) {
   _rp = a;
 }
 
-void WQ25LOG::sleep(bool state) {
+void W25QLOG::sleep(bool state) {
   if (state)
     _flash.powerDown();
   else
     _flash.powerUp();
+}
+
+void W25QLOG::unlink() {
+  _flash.writeByte(_rp, 0x00);
 }
 
