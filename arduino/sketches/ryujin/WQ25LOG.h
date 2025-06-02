@@ -5,25 +5,20 @@
 
 class WQ25LOG {
   private:
-    uint32_t _cap;
     SPIFlash _flash;
-    uint16_t _index;
-    uint16_t _len;
-    uint32_t _start;
-
-    uint32_t _getReadAddress();
-    uint32_t _getWriteAddress();
+    uint32_t _rp;
+    uint32_t _wp;
 
   public:
-    WQ25LOG(int cs, uint16_t index = 4096);
+    WQ25LOG(int cs);
 
     void begin();
 
     bool append(String&);
-    void compact();
+    void flag();
     bool format();
-    bool readLast(String&);
-    void removeLast();
+    bool read(String&);
+    void seek(uint32_t);
     void sleep(bool);
 };
 

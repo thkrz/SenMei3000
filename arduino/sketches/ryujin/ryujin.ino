@@ -86,6 +86,9 @@ bool connect(bool fastboot) {
 }
 
 void ctrl() {
+  String s;
+  s.reserve(256);
+
   Serial.begin(19200);
   while(!Serial);
 
@@ -94,6 +97,9 @@ void ctrl() {
       char c = Serial.read();
       switch (c) {
       case 'd':
+        wq25.seek(0);
+        while (wq25.read(s))
+          Serial.print(s);
         Serial.println(F("#DUMP"));
         break;
       case 'F':
@@ -189,7 +195,7 @@ String& measure(char i) {
 bool pop(String &s) {
   for (int i = 0; i < 3; i++) {
     if (post(s)) {
-      wq25.removeLast();
+      wq25.flag();
       return true;
     }
     delay(500);
@@ -267,7 +273,7 @@ String& readline(uint32_t timeout) {
 bool resend() {
   static String s;
 
-  while (wq25.readLast(s))
+  while (wq25.read(s))
     if (!pop(s))
       return false;
   return true;
