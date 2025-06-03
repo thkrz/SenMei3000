@@ -3,8 +3,7 @@
 #define SHIFT(a,n) ((a)+=3+(n))
 
 W25QLOG::W25QLOG(int cs)
-  : _flash(cs) {
-}
+  : _flash(cs) {}
 
 void W25QLOG::begin() {
   _flash.begin();

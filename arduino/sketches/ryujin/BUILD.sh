@@ -7,7 +7,6 @@ for arg in "$@"; do
 done
 
 arduino-cli compile -b ${FBQN} --build-property="compiler.cpp.extra_flags=$DEF" .
-exit 0
 PORT=$(arduino-cli board list | awk "/${FBQN}/"'{print $1}')
 if [ -n "$PORT" ]; then
   arduino-cli upload -p ${PORT} -b ${FBQN} .

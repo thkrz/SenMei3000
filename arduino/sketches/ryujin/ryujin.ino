@@ -68,7 +68,7 @@ bool config() {
   for (char *p = sid; *p; p++)
     s += ident(*p);
   disable();
-  return post(s);
+  return retry(s);
 }
 
 bool connect(bool fastboot) {
@@ -102,7 +102,7 @@ void ctrl() {
           Serial.print(s);
         Serial.println(F("#DUMP"));
         break;
-      case 'F':
+      case 'f':
         w25q.format();
         Serial.println(F("#FORMAT"));
         break;
@@ -274,7 +274,7 @@ bool retry(String &s) {
   for (int i = 0; i < 3; i++) {
     if (post(s))
       return true;
-    delay(500);
+    delay(750);
   }
   return false;
 }
