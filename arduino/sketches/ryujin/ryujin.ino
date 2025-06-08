@@ -65,8 +65,15 @@ bool config() {
   s += i;
   s += LF;
   enable();
-  for (char *p = sid; *p; p++)
-    s += ident(*p);
+  for (char *p = sid; *p; p++) {
+    String q = ident(*p);
+    if (q.length() < 20) {
+      s += *p;
+      s += SDI_SENSOR_ERROR;
+      s += LF;
+    } else
+      s += ident(*p);
+  }
   disable();
   return retry(s);
 }
