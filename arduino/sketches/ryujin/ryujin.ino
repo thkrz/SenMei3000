@@ -67,12 +67,13 @@ bool config() {
   enable();
   for (char *p = sid; *p; p++) {
     String q = ident(*p);
-    if (q.length() < 20) {
+    if (q.endsWith(LF)) {
+      s += q;
+    } else {
       s += *p;
       s += SDI_SENSOR_ERROR;
       s += LF;
-    } else
-      s += ident(*p);
+    }
   }
   disable();
   return retry(s);
@@ -190,14 +191,6 @@ String& measure(char i) {
   socket.sendCommand(rd, WAKE_DELAY);
   return readline();
 }
-
-//int nval(String &s) {
-//  int n = 0;
-//  for (char *p = s.c_str(); *p; p++)
-//    if (*p == '+' || *p == '-')
-//      n++;
-//  return n;
-//}
 
 bool post(String &s) {
   if (!client.connect(HOST, PORT))
