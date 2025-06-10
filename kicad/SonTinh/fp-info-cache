@@ -1,4 +1,4 @@
-25130055402449362
+25128322168264927
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -100947,23 +100947,16 @@ Varistor VF
 2
 2
 footprints
-1823353
-1823353
-Connector
-0
-14
-14
-footprints
-1823638
-1823638
-Connector
-0
-4
-4
-footprints
 Arduino_Micro_Socket
 https://docs.arduino.cc/hardware/micro
 
 0
 34
 32
+footprints
+CONN22_791077010_MOL
+
+791077010 
+0
+22
+22
