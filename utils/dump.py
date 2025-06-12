@@ -7,10 +7,16 @@ import sys
 class Control:
     def __init__(self, port = "/dev/ttyACM0"):
         self.com = serial.Serial(port)
-        self.com.baudrate = 9600
+        self.com.baudrate = 19200
         self.com.bytesize = 8
         self.com.parity = "N"
         self.com.stopbits = 1
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.close()
 
     def close(self):
         self.com.close()
@@ -35,18 +41,18 @@ if __name__ == "__main__":
     port = "/dev/ttyACM0"
     if len(sys.argv) > 1:
         port = sys.argv[-1]
-    ctrl = Control(port)
-    ctrl.write("d")
-    s = ctrl.read_until("#DUMP")
-    if len(s) == 0:
-        log("no data on chip")
-    else:
-        sys.stdout.write(s + "\r\n")
-        sys.stdout.flush()
-    time.sleep(1)
-    ans = input("Format chip[y/N]?: ") or None
-    if ans.lower() == "y":
-        ctrl.write("f")
-        s = ctrl.read_until("#FORMAT")
-        log("Chip formatted")
-    ctrl.close()
+    with Control(port) as ctrl:
+        ctrl.write("d")
+        s = ctrl.read_until("#DUMP")
+        if len(s) == 0:
+            log("no data on chip")
+            sys.exit(1)
+        else:
+            sys.stdout.write(s + "\r\n")
+            sys.stdout.flush()
+        time.sleep(1)
+        ans = input("Format chip[y/N]?: ") or None
+        if ans.lower() == "y":
+            ctrl.write("f")
+            ctrl.read_until("#FORMAT")
+            log("Chip formatted")

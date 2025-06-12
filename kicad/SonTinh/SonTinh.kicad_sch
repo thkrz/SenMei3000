@@ -4848,6 +4848,16 @@
 	)
 	(wire
 		(pts
+			(xy 204.47 102.87) (xy 204.47 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "04cb7075-b403-4946-8629-c30305bbcd99")
+	)
+	(wire
+		(pts
 			(xy 130.81 41.91) (xy 130.81 72.39)
 		)
 		(stroke
@@ -5238,7 +5248,7 @@
 	)
 	(wire
 		(pts
-			(xy 193.04 105.41) (xy 204.47 105.41)
+			(xy 177.8 102.87) (xy 204.47 102.87)
 		)
 		(stroke
 			(width 0)
@@ -7186,6 +7196,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+12V")
+		(at 177.8 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6fb08bc1-77cc-41c2-95e7-2ed43dd7272b")
+		(property "Reference" "#PWR05"
+			(at 181.61 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 173.99 102.8699 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 177.8 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4e8293c2-740b-4e91-8430-34d7155a7a2d")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 85.09 90.17 0)
 		(unit 1)
@@ -7320,7 +7396,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 182.88 110.49 0)
+		(at 182.88 110.49 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7329,7 +7405,7 @@
 		(fields_autoplaced yes)
 		(uuid "78eaaf07-fea6-4c4d-b89d-6641ecb47cbc")
 		(property "Reference" "#PWR011"
-			(at 182.88 114.3 0)
+			(at 186.69 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7338,7 +7414,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 182.88 105.41 0)
+			(at 181.61 107.95 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7452,7 +7528,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 187.96 107.95 0)
+		(at 187.96 107.95 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7461,7 +7537,7 @@
 		(fields_autoplaced yes)
 		(uuid "84f891be-cece-4fe7-9611-5ec8fac7cf65")
 		(property "Reference" "#PWR01"
-			(at 187.96 111.76 0)
+			(at 191.77 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7470,7 +7546,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 187.96 102.87 0)
+			(at 186.69 105.41 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7577,72 +7653,6 @@
 			(project "SonTinh"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "#PWR014")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 193.04 105.41 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "9e979b62-a6f7-4a16-919a-4a380c5bd6ed")
-		(property "Reference" "#PWR05"
-			(at 193.04 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 193.0401 101.6 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 193.04 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 193.04 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 193.04 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ffc30a1b-6f1b-41fa-9dbe-54f266c18f50")
-		)
-		(instances
-			(project "SonTinh"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "#PWR05")
 					(unit 1)
 				)
 			)
