@@ -108,13 +108,12 @@ void ctrl() {
         w25q.seek(0);
         while (w25q.read(s))
           Serial.print(s);
-        Serial.println(F("#DUMP"));
         break;
       case 'f':
         w25q.format();
-        Serial.println(F("#FORMAT"));
         break;
       }
+      Serial.println(F("#"));
     }
   }
 }
@@ -307,12 +306,7 @@ void schedule() {
 }
 
 void settime() {
-  int Y;
-  int m;
-  int d;
-  int h;
-  int b;
-  int s;
+  int Y, m, d, h, b, s;
   float z;
 
   if (modem.getNetworkTime(&Y, &m, &d, &h, &b, &s, &z)) {
@@ -332,7 +326,7 @@ bool verify() {
     disconnect();
     delay(6000);
   }
-  if (!connect(true))
+  if (!connect())
     return false;
   settime();
   return true;
