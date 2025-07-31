@@ -1,4 +1,5 @@
 (sym_lib_table
   (version 7)
-  (lib (name "Molex")(type "KiCad")(uri "${KIPRJMOD}/symbols/Molex.kicad_sym")(options "")(descr ""))
+  (lib (name "PheonixContact")(type "KiCad")(uri "${KIPRJMOD}/symbols/PheonixContact.kicad_sym")(options "")(descr ""))
+  (lib (name "PheonicContact")(type "KiCad")(uri "${KIPRJMOD}/symbols/PheonicContact.kicad_sym")(options "")(descr ""))
 )
