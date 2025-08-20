@@ -62,10 +62,9 @@ if __name__ == "__main__":
             cmd = arg[1:]
         else:
             port = arg
-    if cmd == "?":
+    if cmd == "?" or cmd not in msg.keys():
         usage()
         # not reached
-    assert cmd in msg.keys(), "invalid command"
     with Control(port) as ctrl:
         ctrl.write(cmd)
         s = ctrl.read_chunk()

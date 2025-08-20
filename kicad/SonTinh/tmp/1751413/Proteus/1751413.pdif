@@ -1,0 +1,145 @@
+;Proteus Design Interchange Format
+(PDIF
+ (vendor "SamacSys Limited")
+ (version 1 0)
+ (library
+  (part "1751413"
+   (description "PCB terminal block, 3.5mm pitch, 2 level")
+   (family "CON")
+   (package "1751413")
+   (attribute "Datasheet Link" "https://datasheet.datasheetarchive.com/originals/distributors/SFDatasheet-2/sf-00051394.pdf")
+   (attribute "Geometry.Height" "16.35mm")
+   (attribute "Manufacturer_Name" "Phoenix Contact")
+   (attribute "Manufacturer_Part_Number" "1751413")
+   (attribute "Mouser Part Number" "651-1751413")
+   (attribute "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1751413?qs=IooffJMZQA61yzSPaR8Rbw%3D%3D")
+   (attribute "Arrow Part Number" "1751413")
+   (attribute "Arrow Price/Stock" "https://www.arrow.com/en/products/1751413/phoenix-contact?region=nac")
+   (gate
+    (symbol "1751413")
+    (pin "1" 1 PS)
+    (pin "2" 2 PS)
+    (pin "3" 3 PS)
+    (pin "4" 4 PS)
+    (pin "5" 5 PS)
+    (pin "6" 6 PS)
+    (pin "7" 7 PS)
+    (pin "8" 8 PS)
+   )
+  )
+  (symbol "1751413"
+   (units THOU)
+   (origin (pt 0 0))
+   (graphic
+    (stroke 10)
+    (path (pt 200 100) (pt 600 100) (pt 600 -400) (pt 200 -400) (pt 200 100) (closed))
+   )
+   (terminal
+    (body (symbol "PIN") (pt 0 0) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 800 0) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -100) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 800 -100) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -200) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 800 -200) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -300) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 800 -300) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+  )
+  (symbol "PIN"
+   (units THOU)
+   (origin (pt 0 0))
+   (graphic
+    (stroke 10)
+    (path (pt 0 0) (pt 200 0))))
+  (symbol "PINSHORT"
+   (units THOU)
+   (origin (pt 0 0))
+   (graphic
+    (stroke 10)
+    (path (pt 0 0) (pt 100 0))))
+  (package "1751413"
+   (units MM)
+   (layer TASM
+    (graphic
+     (stroke 0.1)
+     (path
+      (closed true)
+      (pt -3.75 12.7)
+      (pt 12.5 12.7)
+      (pt 12.5 -3.6)
+      (pt -3.75 -3.6)
+      (pt -3.75 12.7))))
+   (layer TSLK
+    (graphic
+     (stroke 0.2)
+     (path
+      (closed true)
+      (pt -3.75 12.7)
+      (pt 12.5 12.7)
+      (pt 12.5 -3.6)
+      (pt -3.75 -3.6)
+      (pt -3.75 12.7))))
+   (layer OCCA
+    (graphic
+     (stroke 0.1)
+     (path
+      (closed true)
+      (pt -4.75 13.7)
+      (pt 13.5 13.7)
+      (pt 13.5 -4.6)
+      (pt -4.75 -4.6)
+      (pt -4.75 13.7))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1)
+     (path
+      (closed true)
+      (pt -0.2 -4.2)
+      (arc (pt -0.200 -4.200) (pt -0.250 -4.200) (pt -0.150 -4.100) (start 180.0) (sweep -90.0))
+      (pt -0.2 -4.1)
+      (arc (pt -0.200 -4.100) (pt -0.250 -4.200) (pt -0.150 -4.100) (start 180.0) (sweep 90.0))
+      (pt -0.2 -4.2))))
+   (leg 1 (pt 0.000 0.000) (padstack 0))
+   (leg 2 (pt -1.750 11.400) (padstack 0))
+   (leg 3 (pt 3.500 0.000) (padstack 0))
+   (leg 4 (pt 1.750 11.400) (padstack 0))
+   (leg 5 (pt 7.000 0.000) (padstack 0))
+   (leg 6 (pt 5.250 11.400) (padstack 0))
+   (leg 7 (pt 10.500 0.000) (padstack 0))
+   (leg 8 (pt 8.750 11.400) (padstack 0))
+   (padstack 0
+    (hole 1.1)
+    (plated true)
+    (pad (layer TCOP) (round 1.650))
+    (pad (layer INNER) (round 1.650))
+    (pad (layer BCOP) (round 1.650))
+   )
+   (model "1751413.stp"
+    (euler 90 0 -90)
+    (offset -3.75 12.699999809265137 0.699999988079071)
+   )
+  )
+ )
+)

@@ -1,0 +1,9 @@
+Manufacturer=Phoenix Contact
+PartNumber=1751413
+PartCategory=Connector
+PackageCategory=Other
+PinCount=8
+Version=6.2
+Released=2018-01-19 15:42:00
+Downloaded=2025-08-01 14:27:27
+3D=Y

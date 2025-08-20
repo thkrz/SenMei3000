@@ -18,6 +18,7 @@
 #define SIGN(x) ((x)>=0?'+':'\0')
 
 static float battery();
+static String& bus(char*);
 static bool config();
 static bool connect(bool fastboot = false);
 static void ctrl();
@@ -55,6 +56,23 @@ float battery() {
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
+String& bus(char *cmd) {
+  static String s;
+
+  for (int j = 0; j < 3; j++) {
+    socket.sendCommand(cmd, WAKE_DELAY);
+    s = readline();
+    if (s.endsWith(LF))
+      return s;
+    delay(1000);
+  }
+  s = "";
+  s += i;
+  s += SDI_SENSOR_ERROR;
+  s += LF;
+  return s;
+}
+
 bool config() {
   String s = "CONFIG\r\n";
 #if defined(MI_MINUTE)
@@ -65,16 +83,8 @@ bool config() {
   s += i;
   s += LF;
   enable();
-  for (char *p = sid; *p; p++) {
-    String q = ident(*p);
-    if (q.endsWith(LF)) {
-      s += q;
-    } else {
-      s += *p;
-      s += SDI_SENSOR_ERROR;
-      s += LF;
-    }
-  }
+  for (char *p = sid; *p; p++)
+    s += ident(*p);
   disable();
   return retry(s);
 }
@@ -166,8 +176,7 @@ String& ident(char i) {
   static char cmd[4] = "aI!";
 
   cmd[0] = i;
-  socket.sendCommand(cmd, WAKE_DELAY);
-  return readline();
+  return bus(cmd);
 }
 
 String& measure(char i) {
@@ -187,8 +196,7 @@ String& measure(char i) {
   }
   socket.clearBuffer();
   rd[0] = i;
-  socket.sendCommand(rd, WAKE_DELAY);
-  return readline();
+  return bus(rd);
 }
 
 bool post(String &s) {
@@ -320,16 +328,25 @@ bool valid(char c) {
 }
 
 bool verify() {
-  if (modem.isNetworkConnected() && modem.isGprsConnected())
-    return true;
-  if (power) {
-    disconnect();
-    delay(6000);
-  }
-  if (!connect())
-    return false;
-  settime();
+  if (!modem.isNetworkConnected())
+    if (!modem.waitForNetwork(90000L)) {
+      modem.restart();
+      if (!modem.waitForNetwork(90000L))
+        return false;
+    }
+  if (!modem.isGprsConnected())
+    return modem.gprsConnect(APN);
   return true;
+  //if (modem.isNetworkConnected() && modem.isGprsConnected())
+  //  return true;
+  //if (power) {
+  //  disconnect();
+  //  delay(6000);
+  //}
+  //if (!connect())
+  //  return false;
+  //settime();
+  //return true;
 }
 
 void setup() {
