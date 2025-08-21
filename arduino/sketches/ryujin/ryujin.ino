@@ -18,7 +18,6 @@
 #define SIGN(x) ((x)>=0?'+':'\0')
 
 static float battery();
-static String& bus(char*);
 static bool config();
 static bool connect(bool fastboot = false);
 static void ctrl();
@@ -28,18 +27,18 @@ static void disconnect();
 static void enable();
 static bool handshake(char);
 static String& ident(char);
-static String& measure(char);
+static String& measure(char, char mode = 'M');
 static bool post(String&);
 static void powerpulse(uint32_t);
 static void pullup();
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
+static bool reconnect();
 static bool resend();
 static bool retry(String&);
 static void scan();
 static void schedule();
 static void settime();
 static bool valid(char);
-static bool verify();
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
@@ -48,29 +47,11 @@ TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 char sid[63];
 String q;
-bool power = false;
 
 float battery() {
   analogRead(A1);
   int p = analogRead(A1);
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
-}
-
-String& bus(char *cmd) {
-  static String s;
-
-  for (int j = 0; j < 3; j++) {
-    socket.sendCommand(cmd, WAKE_DELAY);
-    s = readline();
-    if (s.endsWith(LF))
-      return s;
-    delay(1000);
-  }
-  s = "";
-  s += i;
-  s += SDI_SENSOR_ERROR;
-  s += LF;
-  return s;
 }
 
 bool config() {
@@ -92,12 +73,8 @@ bool config() {
 bool connect(bool fastboot) {
   SerialSARA.begin(115200);
   powerpulse(150);
-  power = true;
   delay(6000);
-  if (fastboot)
-    modem.init();
-  else
-    modem.restart();
+  modem.restart();
   if (!modem.waitForNetwork())
     return false;
   return modem.gprsConnect(APN);
@@ -122,6 +99,9 @@ void ctrl() {
       case 'f':
         w25q.format();
         break;
+      case 'v':
+        char i = Serial.read();
+        Serial.print(measure(i, mode = 'V');
       }
       Serial.println(F("#"));
     }
@@ -176,27 +156,34 @@ String& ident(char i) {
   static char cmd[4] = "aI!";
 
   cmd[0] = i;
-  return bus(cmd);
+  socket.sendCommand(cmd, WAKE_DELAY);
+  return readline();
 }
 
-String& measure(char i) {
+String& measure(char i, char mode) {
   static char st[4] = "aM!";
   static char rd[5] = "aD0!";
 
   st[0] = i;
+  st[1] = mode;
   socket.sendCommand(st, WAKE_DELAY);
   String s = readline();
   uint8_t wait = s.substring(1, 4).toInt();
   //uint8_t num = s.charAt(4) - '0';
 
+  char sig[3];
+  int n = 0;
   for (int j = 0; j <= wait; j++) {
-    if (socket.available() && socket.read() == i)
+    while (socket.available() && n < 3)
+      sig[n++] = (char)socker.read();
+    if (sig[0] == i && sig[1] == '\r' && sig[2] == '\n')
       break;
     delay(1000);
   }
   socket.clearBuffer();
   rd[0] = i;
-  return bus(rd);
+  socket.sendCommand(rd, WAKE_DELAY);
+  return readline();
 }
 
 bool post(String &s) {
@@ -252,18 +239,42 @@ String& readline(uint32_t timeout) {
   s = "";
   uint32_t st = millis();
   while ((millis() - st) < timeout) {
-    if (socket.available()) {
+    while (socket.available()) {
       char c = socket.read();
       if (!valid(c))
         continue;
       s += c;
-      if (c == '\n')
-        break;
-    } else
-      delay(10);
+      if (c == '\n') {
+        socket.clearBuffer();
+        return s;
+      }
+    }
+    delay(10);
   }
-  socket.clearBuffer();
+  s = LF;
   return s;
+}
+
+bool reconnect() {
+  if (!modem.isNetworkConnected())
+    if (!modem.waitForNetwork(90000L)) {
+      modem.restart();
+      if (!modem.waitForNetwork(90000L))
+        return false;
+    }
+  if (!modem.isGprsConnected())
+    return modem.gprsConnect(APN);
+  return true;
+  //if (modem.isNetworkConnected() && modem.isGprsConnected())
+  //  return true;
+  //if (power) {
+  //  disconnect();
+  //  delay(6000);
+  //}
+  //if (!connect())
+  //  return false;
+  //settime();
+  //return true;
 }
 
 bool resend() {
@@ -325,28 +336,6 @@ void settime() {
 
 bool valid(char c) {
   return (isPrintable(c) || c == '\r' || c == '\n');
-}
-
-bool verify() {
-  if (!modem.isNetworkConnected())
-    if (!modem.waitForNetwork(90000L)) {
-      modem.restart();
-      if (!modem.waitForNetwork(90000L))
-        return false;
-    }
-  if (!modem.isGprsConnected())
-    return modem.gprsConnect(APN);
-  return true;
-  //if (modem.isNetworkConnected() && modem.isGprsConnected())
-  //  return true;
-  //if (power) {
-  //  disconnect();
-  //  delay(6000);
-  //}
-  //if (!connect())
-  //  return false;
-  //settime();
-  //return true;
 }
 
 void setup() {
@@ -426,7 +415,7 @@ void loop() {
     if (power)
       disconnect();
     w25q.append(q);
-  } else if (!verify() || !resend() || !retry(q))
+  } else if (!reconnect() || !resend() || !retry(q))
       w25q.append(q);
   w25q.sleep(true);
 
