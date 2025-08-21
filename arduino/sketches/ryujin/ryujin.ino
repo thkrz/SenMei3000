@@ -127,9 +127,9 @@ void disconnect() {
   if (modem.isGprsConnected())
     modem.gprsDisconnect();
   modem.poweroff();
-  powerpulse(1500);
-  power = false;
-  SerialSARA.end();
+  // powerpulse(1500);
+  // power = false;
+  // SerialSARA.end();
 }
 
 void enable() {
@@ -251,6 +251,7 @@ String& readline(uint32_t timeout) {
     }
     delay(10);
   }
+  socket.clearBuffer();
   s = LF;
   return s;
 }
