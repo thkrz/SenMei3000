@@ -252,7 +252,7 @@ String& readline(uint32_t timeout) {
     delay(10);
   }
   socket.clearBuffer();
-  s = LF;
+  s = "";
   return s;
 }
 
