@@ -17,6 +17,8 @@
 #define WAKE_DELAY 0
 #define SIGN(x) ((x) >= 0 ? '+' : '\0')
 
+typedef String& (*command)(char);
+
 static float battery();
 static bool config();
 static bool connect();
@@ -31,6 +33,7 @@ static String& measure(char);
 static bool post(String&);
 static void powerpulse(uint32_t);
 static void pullup();
+static String& rc(command, char);
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
 static bool reconnect();
 static bool resend();
@@ -64,7 +67,7 @@ bool config() {
   s += LF;
   enable();
   for (char* p = sid; *p; p++)
-    s += ident(*p);
+    s += rc(ident, *p);
   disable();
   return post(s);
 }
@@ -222,6 +225,15 @@ void pullup() {
 
   for (int i = 0; i < 10; i++)
     pinMode(pin[i], INPUT_PULLUP);
+}
+
+String& rc(command c, char i) {
+  String *s = &c(i);
+  if (s->length() == 0) {
+    *s += i;
+    *s += LF;
+  }
+  return *s;
 }
 
 String& readline(uint32_t timeout) {
@@ -387,7 +399,7 @@ void loop() {
 
   enable();
   for (char* p = sid; *p; p++)
-    q += measure(*p);
+    q += rc(measure, *p);
   disable();
 
   w25q.sleep(false);
