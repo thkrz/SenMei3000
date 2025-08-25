@@ -8,18 +8,18 @@
 #include "gsm.h"
 
 #define FET 0
-#define MX  1
-#define RX  4
-#define TX  3
-#define CS  7
+#define MX 1
+#define RX 4
+#define TX 3
+#define CS 7
 
 #define LF "\r\n"
 #define WAKE_DELAY 0
-#define SIGN(x) ((x)>=0?'+':'\0')
+#define SIGN(x) ((x) >= 0 ? '+' : '\0')
 
 static float battery();
 static bool config();
-static bool connect(bool fastboot = false);
+static bool connect();
 static void ctrl();
 static void die(uint32_t);
 static void disable();
@@ -39,6 +39,7 @@ static void scan();
 static void schedule();
 static void settime();
 static bool valid(char);
+static String& verify(char);
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
@@ -64,13 +65,13 @@ bool config() {
   s += i;
   s += LF;
   enable();
-  for (char *p = sid; *p; p++)
+  for (char* p = sid; *p; p++)
     s += ident(*p);
   disable();
   return retry(s);
 }
 
-bool connect(bool fastboot) {
+bool connect() {
   SerialSARA.begin(115200);
   powerpulse(150);
   delay(6000);
@@ -85,31 +86,28 @@ void ctrl() {
   s.reserve(256);
 
   Serial.begin(19200);
-  while(!Serial);
+  while (!Serial);
 
   for (;;) {
     if (Serial.available()) {
       char c = Serial.read();
       switch (c) {
-      case 'd':
-        w25q.seek(0);
-        while (w25q.read(s))
-          Serial.print(s);
-        break;
-      case 'f':
-        w25q.format();
-        break;
-      case 'v':
-        char i = Serial.read();
-        Serial.print(measure(i, mode = 'V');
+        case 'd':
+          w25q.seek(0);
+          while (w25q.read(s))
+            Serial.print(s);
+          break;
+        case 'f':
+          w25q.format();
+          break;
       }
-      Serial.println(F("#"));
+      Serial.print(F("#"));
     }
   }
 }
 
 void die(uint32_t p) {
-  for(;;) {
+  for (;;) {
     digitalWrite(LED_BUILTIN, HIGH);
     delay(p);
     digitalWrite(LED_BUILTIN, LOW);
@@ -171,12 +169,8 @@ String& measure(char i, char mode) {
   uint8_t wait = s.substring(1, 4).toInt();
   //uint8_t num = s.charAt(4) - '0';
 
-  char sig[3];
-  int n = 0;
   for (int j = 0; j <= wait; j++) {
-    while (socket.available() && n < 3)
-      sig[n++] = (char)socker.read();
-    if (sig[0] == i && sig[1] == '\r' && sig[2] == '\n')
+    if (socket.available() && socket.read() == i)
       break;
     delay(1000);
   }
@@ -186,13 +180,13 @@ String& measure(char i, char mode) {
   return readline();
 }
 
-bool post(String &s) {
+bool post(String& s) {
   if (!client.connect(HOST, PORT))
     return false;
 
   int n = s.length();
-  client.println(F("POST "PATH"/"STAT_CTRL_ID" HTTP/1.1"));
-  client.println(F("Host: "HOST));
+  client.println(F("POST " PATH "/" STAT_CTRL_ID " HTTP/1.1"));
+  client.println(F("Host: " HOST));
   client.println(F("Connection: close"));
   client.println(F("Content-Type: text/plain; charset=utf-8"));
   client.print(F("Content-Length: "));
@@ -207,8 +201,7 @@ bool post(String &s) {
     if (client.available()) {
       r = client.read();
       n++;
-    } else
-      delay(100);
+    }
 
   /* flush */
   while (client.available())
@@ -238,8 +231,8 @@ String& readline(uint32_t timeout) {
 
   s = "";
   uint32_t st = millis();
-  while ((millis() - st) < timeout) {
-    while (socket.available()) {
+  while ((millis() - st) < timeout)
+    if (socket.available()) {
       char c = socket.read();
       if (!valid(c))
         continue;
@@ -249,8 +242,6 @@ String& readline(uint32_t timeout) {
         return s;
       }
     }
-    delay(10);
-  }
   socket.clearBuffer();
   s = "";
   return s;
@@ -289,7 +280,7 @@ bool resend() {
   return true;
 }
 
-bool retry(String &s) {
+bool retry(String& s) {
   for (int i = 0; i < 3; i++) {
     if (post(s))
       return true;
@@ -330,13 +321,17 @@ void settime() {
   float z;
 
   if (modem.getNetworkTime(&Y, &m, &d, &h, &b, &s, &z)) {
-    rtc.setDate(d, m, (Y-2000));
+    rtc.setDate(d, m, (Y - 2000));
     rtc.setTime(h, b, s);
   }
 }
 
 bool valid(char c) {
   return (isPrintable(c) || c == '\r' || c == '\n');
+}
+
+String& verify(char i) {
+  return measure(i, 'V');
 }
 
 void setup() {
@@ -354,7 +349,7 @@ void setup() {
   w25q.begin();
   if (battery() < 7)
     ctrl();
-    /* not reached */
+  /* not reached */
   w25q.sleep(true);
 
   enable();
@@ -369,7 +364,7 @@ void setup() {
   q.reserve(256);
 
   if (!connect() || !config())
-      die(1500);
+    die(1500);
 
   rtc.begin();
   settime();
@@ -407,17 +402,17 @@ void loop() {
   q += LF;
 
   enable();
-  for (char *p = sid; *p; p++)
+  for (char* p = sid; *p; p++)
     q += measure(*p);
   disable();
 
   w25q.sleep(false);
   if (psm) {
-    if (power)
-      disconnect();
+    //if (power)
+    //  disconnect();
     w25q.append(q);
   } else if (!reconnect() || !resend() || !retry(q))
-      w25q.append(q);
+    w25q.append(q);
   w25q.sleep(true);
 
 #if defined(MI_MINUTE)

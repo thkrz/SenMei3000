@@ -3,8 +3,6 @@ import serial
 import time
 import sys
 
-msg = {"d": "no data on chip", "f": "chip erased"}
-
 
 class Control:
     def __init__(self, port):
@@ -50,7 +48,9 @@ def log(s, end="\n"):
 
 def usage():
     log("usage: ctrl [port] [-CMD]")
-    log("CMD:\n\td - dump chip content\n\tf - format chip\n\t? - show this text")
+    log(
+        "CMD:\n\td - dump chip content\n\tf - format chip\n\t? - show this text\n\t va - verify sensor with address a"
+    )
     sys.exit(1)
 
 
@@ -62,15 +62,12 @@ if __name__ == "__main__":
             cmd = arg[1:]
         else:
             port = arg
-    if cmd == "?" or cmd not in msg.keys():
+    if cmd == "?" or cmd == "h":
         usage()
         # not reached
     with Control(port) as ctrl:
         ctrl.write(cmd)
         s = ctrl.read_chunk()
-        if len(s) > 0:
-            sys.stdout.write(s + "\r\n")
-            sys.stdout.flush()
-        else:
-            log(msg[cmd])
+        sys.stdout.write(s + "\r\n")
+        sys.stdout.flush()
     sys.exit(0)

@@ -20,5 +20,5 @@ if __name__ == "__main__":
             arduino.write(bytes(cmd, "utf-8"))
             time.sleep(0.05)
             res = arduino.readline()
-            sys.stderr.write(res.decode("utf-8"))
-            sys.stderr.flush()
+            sys.stdout.write(res.decode("utf-8"))
+            sys.stdout.flush()

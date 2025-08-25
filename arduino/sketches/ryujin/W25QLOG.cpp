@@ -1,6 +1,6 @@
 #include "W25QLOG.h"
 
-#define SHIFT(a,n) ((a)+=3+(n))
+#define SHIFT(a, n) ((a) += 3 + (n))
 
 W25QLOG::W25QLOG(int cs)
   : _flash(cs) {}
@@ -25,7 +25,7 @@ bool W25QLOG::append(String &s) {
     return false;
 
   _flash.writeWord(_wp + 1, len);
-  _flash.writeCharArray(_wp + 3, (char*)s.c_str(), len);
+  _flash.writeCharArray(_wp + 3, (char *)s.c_str(), len);
 
   SHIFT(_wp, len);
   return true;
@@ -64,4 +64,3 @@ void W25QLOG::sleep(bool state) {
 void W25QLOG::unlink() {
   _flash.writeByte(_rp, 0x00);
 }
-
