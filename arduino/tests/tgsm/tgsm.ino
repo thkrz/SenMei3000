@@ -2,7 +2,6 @@
 
 #include "gsm.h"
 
-#define MI_MINUTE 2
 #define CS  7
 
 #define APN "iot.1nce.net"
@@ -77,24 +76,28 @@ void powerpulse(uint32_t len) {
 }
 
 bool reconnect() {
+  //Serial.print("Connect to exmple.com...");
+  //if (!client.connect("example.com", 80)) {
+  //  Serial.println("ERROR");
+  //  return false;
+  //} else {
+  //  Serial.println("OK");
+  //  client.stop();
+  //}
   Serial.print("Is network connected: ");
   if (!modem.isNetworkConnected()) {
     Serial.println("no");
+    Serial.println("Restart modem");
+    modem.restart();
     Serial.print("Wait for network...");
     if (!modem.waitForNetwork(90000L)) {
       Serial.println("ERROR");
-      Serial.println("Restart modem");
-      modem.restart();
-      Serial.print("Wait for network...");
-      if (!modem.waitForNetwork(90000L)) {
-        Serial.println("ERROR");
-        return false;
-      }
-      Serial.println("OK");
+      return false;
     }
     Serial.println("OK");
-  }
-  Serial.println("yes");
+  } else
+    Serial.println("yes");
+
   Serial.print("Is GPRS connected: ");
   if (!modem.isGprsConnected()) {
     Serial.println("no");
@@ -117,11 +120,6 @@ bool reconnect() {
   //  return false;
   //settime();
   //return true;
-}
-
-void schedule() {
-  uint8_t m = (rtc.getMinutes() / MI_MINUTE + 1) * MI_MINUTE;
-  rtc.setAlarmMinutes(m % 60);
 }
 
 void settime() {
@@ -154,18 +152,23 @@ void setup() {
   settime();
   Serial.println("OK");
 
-  //rtc.setAlarmSeconds(0);
-  //rtc.enableAlarm(rtc.MATCH_MMSS);
-  //schedule();
-  //rtc.standbyMode();
+  rtc.setAlarmSeconds(0);
+  rtc.enableAlarm(rtc.MATCH_SS);
 }
 
 void loop() {
-  int db = modem.getSignalQuality();
-  Serial.print(db);
-  Serial.println(" db");
+  digitalWrite(LED_BUILTIN, HIGH);
+  Serial.println(rtc.getMinutes());
   reconnect();
+  Serial.println("5 s");
   delay(5000);
-  //schedule();
-  //rtc.standbyMode();
+  Serial.print("Connect to exmple.com...");
+  if (!client.connect("example.com", 80, 5)) {
+    Serial.println("ERROR");
+  } else {
+    Serial.println("OK");
+    client.stop();
+  }
+  digitalWrite(LED_BUILTIN, LOW);
+  rtc.standbyMode();
 }

@@ -10,6 +10,7 @@
 #define HTTP_MSG_LEN 10
 
 #define SDI_TIMEOUT 3000
+#define SDI_ERROR(i, s) (s += i; s += "ERROR\r\n")
 
 #define BAT_LOW 11.9
 
