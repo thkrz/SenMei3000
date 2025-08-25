@@ -10,6 +10,302 @@
 		(rev "1")
 	)
 	(lib_symbols
+		(symbol "Bosch:BMP384"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "IC"
+				(at 26.67 17.78 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "BMP384"
+				(at 26.67 15.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "footprints:BMP384"
+				(at 26.67 -84.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.mouser.in/datasheet/2/783/bst_bmp384_ds003-1954011.pdf"
+				(at 26.67 -184.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "Board Mount Pressure Sensors Absolute Pressure Sensor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "1"
+				(at 26.67 -384.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "262-BMP384"
+				(at 26.67 -484.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Bosch-Sensortec/BMP384?qs=IS%252B4QmGtzzqB3KCclqIEVQ%3D%3D"
+				(at 26.67 -584.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "BOSCH"
+				(at 26.67 -684.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "BMP384"
+				(at 26.67 -784.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "BMP384_1_1"
+				(rectangle
+					(start 5.08 12.7)
+					(end 25.4 -15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "VSS_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "SDI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "SDO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 17.78 270)
+					(length 5.08)
+					(name "SCK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -20.32 90)
+					(length 5.08)
+					(name "CSB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 17.78 270)
+					(length 5.08)
+					(name "VDDIO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -20.32 90)
+					(length 5.08)
+					(name "INT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 30.48 0 180)
+					(length 5.08)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 30.48 -2.54 180)
+					(length 5.08)
+					(name "VSS_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 30.48 -5.08 180)
+					(length 5.08)
+					(name "VSS_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Connector:Screw_Terminal_01x02"
 			(pin_names
 				(offset 1.016)
@@ -433,6 +729,145 @@
 						)
 					)
 					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:C"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1933,45 +2368,49 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Sensor:BME680"
+		(symbol "Sensiron:SHT35-DIS-F2.5kS"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U"
-				(at -8.89 11.43 0)
+			(property "Reference" "IC"
+				(at 31.75 7.62 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left top)
 				)
 			)
-			(property "Value" "BME680"
-				(at 7.62 11.43 0)
+			(property "Value" "SHT35-DIS-F2.5kS"
+				(at 31.75 5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left top)
 				)
 			)
-			(property "Footprint" "Package_LGA:Bosch_LGA-8_3x3mm_P0.8mm_ClockwisePinNumbering"
-				(at 36.83 -11.43 0)
+			(property "Footprint" "footprints:SON50P250X250X100-9N-D"
+				(at 31.75 -94.92 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left top)
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://ae-bst.resource.bosch.com/media/_tech/media/datasheets/BST-BME680-DS001.pdf"
-				(at 0 -5.08 0)
+			(property "Datasheet" "https://componentsearchengine.com/Datasheets/1/SHT35-DIS-F2.5kS.pdf"
+				(at 31.75 -194.92 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left top)
 					(hide yes)
 				)
 			)
-			(property "Description" "4-in-1 sensor, gas, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8"
+			(property "Description" "Board Mount Humidity Sensors SHT3x Humidity and Temperature Sensor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1980,28 +2419,60 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "Bosch gas pressure humidity temperature environment environmental measurement digital"
-				(at 0 0 0)
+			(property "Height" "1"
+				(at 31.75 -394.92 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left top)
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*LGA*3x3mm*P0.8mm*Clockwise*"
-				(at 0 0 0)
+			(property "Mouser Part Number" "403-SHT35-DIS-F"
+				(at 31.75 -494.92 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left top)
 					(hide yes)
 				)
 			)
-			(symbol "BME680_0_1"
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Sensirion/SHT35-DIS-F2.5kS?qs=SiS427jF8nOlr8P7g5GiOw%3D%3D"
+				(at 31.75 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Sensirion"
+				(at 31.75 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "SHT35-DIS-F2.5kS"
+				(at 31.75 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "SHT35-DIS-F2.5kS_1_1"
 				(rectangle
-					(start -10.16 10.16)
-					(end 10.16 -10.16)
+					(start 5.08 2.54)
+					(end 30.48 -15.24)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -2010,30 +2481,10 @@
 						(type background)
 					)
 				)
-			)
-			(symbol "BME680_1_1"
-				(pin power_in line
-					(at -2.54 15.24 270)
+				(pin passive line
+					(at 0 0 0)
 					(length 5.08)
-					(name "VDDIO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -2.54 -15.24 90)
-					(length 5.08)
-					(name "GND"
+					(name "SDA"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2048,17 +2499,17 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 2.54 15.24 270)
+				(pin passive line
+					(at 0 -2.54 0)
 					(length 5.08)
-					(name "VDD"
+					(name "ADDR"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "8"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2066,64 +2517,10 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 2.54 -15.24 90)
+				(pin passive line
+					(at 0 -5.08 0)
 					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 7.62 180)
-					(length 5.08)
-					(name "SDO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 15.24 2.54 180)
-					(length 5.08)
-					(name "SCK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -2.54 180)
-					(length 5.08)
-					(name "SDI"
+					(name "ALERT"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2138,10 +2535,252 @@
 						)
 					)
 				)
-				(pin input line
-					(at 15.24 -7.62 180)
+				(pin passive line
+					(at 0 -7.62 0)
 					(length 5.08)
-					(name "CSB"
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 -20.32 90)
+					(length 5.08)
+					(name "EP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 35.56 0 180)
+					(length 5.08)
+					(name "VSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 35.56 -2.54 180)
+					(length 5.08)
+					(name "R"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 35.56 -5.08 180)
+					(length 5.08)
+					(name "NRESET"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 35.56 -7.62 180)
+					(length 5.08)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Sensiron:STC31-C-R3"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "IC"
+				(at 26.67 17.78 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "STC31-C-R3"
+				(at 26.67 15.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "footprints:QFN80P300X350X110-13N-D"
+				(at 26.67 -84.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.mouser.fr/datasheet/2/682/Sensirion_Datasheet_STC31_C-3459977.pdf"
+				(at 26.67 -184.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "package-qfn12"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "1.1"
+				(at 26.67 -384.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "403-STC31-C-R3"
+				(at 26.67 -484.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Sensirion/STC31-C-R3?qs=wT7LY0lnAe37rCJTiHe%252BrQ%3D%3D"
+				(at 26.67 -584.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Sensirion"
+				(at 26.67 -684.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "STC31-C-R3"
+				(at 26.67 -784.76 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "STC31-C-R3_1_1"
+				(rectangle
+					(start 5.08 12.7)
+					(end 25.4 -17.78)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "VSS_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "NC_1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2149,6 +2788,204 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "ADDR"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 17.78 270)
+					(length 5.08)
+					(name "EP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 17.78 270)
+					(length 5.08)
+					(name "NC_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -22.86 90)
+					(length 5.08)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 17.78 270)
+					(length 5.08)
+					(name "VSS_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -22.86 90)
+					(length 5.08)
+					(name "VSS_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 17.78 270)
+					(length 5.08)
+					(name "NC_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 -22.86 90)
+					(length 5.08)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 30.48 0 180)
+					(length 5.08)
+					(name "VSS_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 30.48 -2.54 180)
+					(length 5.08)
+					(name "NC_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 30.48 -5.08 180)
+					(length 5.08)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2643,22 +3480,16 @@
 		(uuid "094932f2-f99d-497a-8f4b-e89238696be7")
 	)
 	(junction
-		(at 121.92 72.39)
+		(at 63.5 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "11d3364c-f28b-459d-92b2-864c42b055bf")
+		(uuid "2c9e528a-0706-4536-87a4-ff6b2cc3b24d")
 	)
 	(junction
 		(at 189.23 77.47)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "303e8179-6522-439b-832c-c32619152d68")
-	)
-	(junction
-		(at 109.22 77.47)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3932e6cf-7e28-4955-9a47-cd25f1e890fb")
 	)
 	(junction
 		(at 171.45 62.23)
@@ -2671,12 +3502,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "447a6904-771e-497a-8b1e-4cf281394a7e")
-	)
-	(junction
-		(at 121.92 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "48b69f49-60cc-4246-a939-b88e640d45ba")
 	)
 	(junction
 		(at 133.35 77.47)
@@ -2703,22 +3528,16 @@
 		(uuid "5d90f461-480c-42ab-861e-142f04c1f042")
 	)
 	(junction
-		(at 90.17 59.69)
+		(at 78.74 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "60b1a95e-d129-4e88-b827-d6d4cbf44617")
+		(uuid "9bdc55b1-4f9b-4fc1-9dfd-5d5e596b7079")
 	)
 	(junction
-		(at 109.22 90.17)
+		(at 41.91 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "7accf5a8-3a38-4ee8-bc4a-9338e3e4c187")
-	)
-	(junction
-		(at 85.09 90.17)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8f7ce615-0149-46dd-abb1-bf6bd841209c")
+		(uuid "9e2d94b6-fc68-4abc-abb5-2ef4c6f656fd")
 	)
 	(junction
 		(at 86.36 142.24)
@@ -2733,6 +3552,12 @@
 		(uuid "b2dfc3f0-4eb6-4bc3-9845-abf6a4706ece")
 	)
 	(junction
+		(at 78.74 74.93)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d22f15aa-16ca-4794-9fac-711753e0dc4d")
+	)
+	(junction
 		(at 182.88 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2743,6 +3568,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e6c320ed-a6be-4ad3-bb06-75c7b7558774")
+	)
+	(junction
+		(at 78.74 64.77)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f823a04d-9f0b-401c-8913-f9843842a038")
+	)
+	(junction
+		(at 63.5 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f8f39d1e-0bab-4afe-a826-94d270df84e6")
 	)
 	(no_connect
 		(at 255.27 87.63)
@@ -2898,6 +3735,16 @@
 	)
 	(wire
 		(pts
+			(xy 83.82 74.93) (xy 78.74 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16f9072a-7780-4239-a195-7381bb5967be")
+	)
+	(wire
+		(pts
 			(xy 109.22 77.47) (xy 109.22 80.01)
 		)
 		(stroke
@@ -3008,6 +3855,16 @@
 	)
 	(wire
 		(pts
+			(xy 78.74 43.18) (xy 78.74 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a9aef49-02be-45d4-af98-689ba4ebd562")
+	)
+	(wire
+		(pts
 			(xy 259.08 97.79) (xy 255.27 97.79)
 		)
 		(stroke
@@ -3028,16 +3885,6 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 90.17) (xy 109.22 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "49b82362-f4a4-48bf-a560-1dbd6c8a265b")
-	)
-	(wire
-		(pts
 			(xy 189.23 77.47) (xy 204.47 77.47)
 		)
 		(stroke
@@ -3045,6 +3892,16 @@
 			(type default)
 		)
 		(uuid "4d415535-6f5a-45e1-946d-e78a87dedddd")
+	)
+	(wire
+		(pts
+			(xy 63.5 43.18) (xy 78.74 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53168f6b-6dd2-46da-a292-dfec5542b169")
 	)
 	(wire
 		(pts
@@ -3128,6 +3985,16 @@
 	)
 	(wire
 		(pts
+			(xy 82.55 72.39) (xy 78.74 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f65c2da-9667-4f99-a852-774d2c7140e3")
+	)
+	(wire
+		(pts
 			(xy 86.36 152.4) (xy 93.98 152.4)
 		)
 		(stroke
@@ -3138,6 +4005,16 @@
 	)
 	(wire
 		(pts
+			(xy 78.74 64.77) (xy 78.74 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70636f9e-4c93-491e-ab75-f3c27f70195f")
+	)
+	(wire
+		(pts
 			(xy 86.36 139.7) (xy 93.98 139.7)
 		)
 		(stroke
@@ -3145,6 +4022,36 @@
 			(type default)
 		)
 		(uuid "711d6479-9aa7-4cbe-929a-2f6f747e6109")
+	)
+	(wire
+		(pts
+			(xy 78.74 72.39) (xy 78.74 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72338383-c866-4e67-ac7a-e72f492ceed5")
+	)
+	(wire
+		(pts
+			(xy 41.91 69.85) (xy 48.26 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a649f65-a259-45a5-88bc-cf18a3818dfa")
+	)
+	(wire
+		(pts
+			(xy 63.5 31.75) (xy 63.5 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7dc38594-9bc0-4abf-b736-82ece55d4ecb")
 	)
 	(wire
 		(pts
@@ -3168,6 +4075,16 @@
 	)
 	(wire
 		(pts
+			(xy 63.5 43.18) (xy 63.5 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b39104c-475d-47d9-abda-210e8e4bbe8e")
+	)
+	(wire
+		(pts
 			(xy 34.29 132.08) (xy 41.91 132.08)
 		)
 		(stroke
@@ -3175,6 +4092,26 @@
 			(type default)
 		)
 		(uuid "8dab52c9-2896-443e-ace1-a28a569e8c0c")
+	)
+	(wire
+		(pts
+			(xy 41.91 48.26) (xy 63.5 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f6a883f-ea06-4467-9df5-84d49fb7c390")
+	)
+	(wire
+		(pts
+			(xy 41.91 60.96) (xy 41.91 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f8d863b-2010-4b82-878c-c20fb2b02850")
 	)
 	(wire
 		(pts
@@ -3248,16 +4185,6 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 72.39) (xy 121.92 72.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9eb7a920-332a-44d0-a565-093c908cbb46")
-	)
-	(wire
-		(pts
 			(xy 182.88 62.23) (xy 182.88 66.04)
 		)
 		(stroke
@@ -3265,6 +4192,16 @@
 			(type default)
 		)
 		(uuid "9ee6d010-38f4-4f69-b3e8-bc7391632b4e")
+	)
+	(wire
+		(pts
+			(xy 60.96 38.1) (xy 60.96 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f7391e4-cbf8-4ea1-b2de-daa00673f57a")
 	)
 	(wire
 		(pts
@@ -3308,16 +4245,6 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 82.55) (xy 102.87 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a5c5b73b-9643-4698-8771-ca721aea5cef")
-	)
-	(wire
-		(pts
 			(xy 182.88 77.47) (xy 189.23 77.47)
 		)
 		(stroke
@@ -3348,6 +4275,16 @@
 	)
 	(wire
 		(pts
+			(xy 39.37 74.93) (xy 48.26 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa6d7136-1443-48d6-8bb2-e910c7a3ac24")
+	)
+	(wire
+		(pts
 			(xy 121.92 59.69) (xy 140.97 59.69)
 		)
 		(stroke
@@ -3355,6 +4292,16 @@
 			(type default)
 		)
 		(uuid "acabd3f0-44fa-472e-8e83-f9c6f7e52187")
+	)
+	(wire
+		(pts
+			(xy 82.55 64.77) (xy 78.74 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae473947-1bd9-4d62-9cbb-049188224a78")
 	)
 	(wire
 		(pts
@@ -3378,16 +4325,6 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 77.47) (xy 109.22 77.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bcaaa195-325d-40ba-aeaf-9485ef9f1306")
-	)
-	(wire
-		(pts
 			(xy 90.17 90.17) (xy 85.09 90.17)
 		)
 		(stroke
@@ -3398,6 +4335,16 @@
 	)
 	(wire
 		(pts
+			(xy 29.21 69.85) (xy 41.91 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bedf4d1d-e284-4f87-badc-b952f2fbf733")
+	)
+	(wire
+		(pts
 			(xy 259.08 105.41) (xy 255.27 105.41)
 		)
 		(stroke
@@ -3405,16 +4352,6 @@
 			(type default)
 		)
 		(uuid "c20bdcdc-99f6-4dd5-b763-5cfbea70d2e5")
-	)
-	(wire
-		(pts
-			(xy 121.92 59.69) (xy 90.17 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c7e64e43-0656-44a8-b10c-c262e9e00b02")
 	)
 	(wire
 		(pts
@@ -3458,6 +4395,26 @@
 	)
 	(wire
 		(pts
+			(xy 63.5 48.26) (xy 63.5 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db29b6d5-0874-4e82-8280-b529b800e394")
+	)
+	(wire
+		(pts
+			(xy 35.56 72.39) (xy 48.26 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8e0ac82-5815-4b93-aaae-38ecd7576903")
+	)
+	(wire
+		(pts
 			(xy 171.45 80.01) (xy 171.45 72.39)
 		)
 		(stroke
@@ -3498,6 +4455,16 @@
 	)
 	(wire
 		(pts
+			(xy 41.91 48.26) (xy 41.91 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f833fbad-d11b-40c2-b2c1-cde6022ce13f")
+	)
+	(wire
+		(pts
 			(xy 171.45 62.23) (xy 171.45 63.5)
 		)
 		(stroke
@@ -3505,16 +4472,6 @@
 			(type default)
 		)
 		(uuid "fecce30c-3b73-4a84-a2c3-d763b5cbeee8")
-	)
-	(wire
-		(pts
-			(xy 85.09 59.69) (xy 90.17 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fefa7bd1-84c6-4290-8a45-7b3fd401d99d")
 	)
 	(label "SDA_3V3"
 		(at 133.35 41.91 0)
@@ -3606,6 +4563,16 @@
 		)
 		(uuid "5162fddd-61c8-474f-bb9c-6d136cd2440d")
 	)
+	(label "A2"
+		(at 39.37 74.93 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "59e95f06-b017-4490-94e2-1fa36d0589be")
+	)
 	(label "SCL_3V3"
 		(at 130.81 41.91 180)
 		(effects
@@ -3646,6 +4613,16 @@
 		)
 		(uuid "a898d225-c202-4612-b971-5e5f931741d6")
 	)
+	(label "SCL_3V3"
+		(at 60.96 38.1 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d588ac2d-7b9e-43a0-bd9b-975d120d5b66")
+	)
 	(label "SS"
 		(at 259.08 105.41 0)
 		(effects
@@ -3675,6 +4652,16 @@
 			(justify left bottom)
 		)
 		(uuid "e87457d8-ffac-4086-af26-ab32be8114f4")
+	)
+	(label "SDA_3V3"
+		(at 35.56 72.39 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f1cff9e4-6433-4839-a90e-c2757a8319ce")
 	)
 	(label "D7"
 		(at 69.85 142.24 0)
@@ -4165,7 +5152,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 124.46 80.01 0)
+			(at 122.174 85.598 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4291,6 +5278,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 29.21 69.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "40254507-d719-4151-b637-31689c97bad8")
+		(property "Reference" "#PWR09"
+			(at 29.21 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 29.21 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 29.21 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 29.21 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 29.21 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f3e66b70-6de3-49fb-bed2-e901847ea7e4")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 86.36 148.59 180)
 		(unit 1)
@@ -4364,6 +5417,293 @@
 			(project "SonTinh"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Bosch:BMP384")
+		(at 48.26 69.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "544d1620-0160-4e17-acfe-3249d26327f6")
+		(property "Reference" "IC3"
+			(at 65.6433 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BMP384"
+			(at 65.6433 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:BMP384"
+			(at 74.93 154.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.in/datasheet/2/783/bst_bmp384_ds003-1954011.pdf"
+			(at 74.93 254.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Board Mount Pressure Sensors Absolute Pressure Sensor"
+			(at 48.26 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "1"
+			(at 74.93 454.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "262-BMP384"
+			(at 74.93 554.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Bosch-Sensortec/BMP384?qs=IS%252B4QmGtzzqB3KCclqIEVQ%3D%3D"
+			(at 74.93 654.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "BOSCH"
+			(at 74.93 754.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "BMP384"
+			(at 74.93 854.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "9"
+			(uuid "12124ed7-9a8e-4de2-8fe9-bb45d602f954")
+		)
+		(pin "4"
+			(uuid "ddfdf664-c663-4126-8644-02535cc053f5")
+		)
+		(pin "8"
+			(uuid "0a64ddc2-3b30-418a-8d29-51b15951c732")
+		)
+		(pin "3"
+			(uuid "861f3f54-a2d9-44b7-a0d6-1654ff70ca03")
+		)
+		(pin "1"
+			(uuid "06e0909d-cc7d-45bc-975c-a8b67a99f424")
+		)
+		(pin "6"
+			(uuid "6bed19c8-82ff-424f-992b-39a74aa2ae13")
+		)
+		(pin "2"
+			(uuid "75bfe899-93b6-4265-b3f5-f88635d1cdfd")
+		)
+		(pin "5"
+			(uuid "f0c11a29-5dd9-410e-916d-9f7f3494cac5")
+		)
+		(pin "7"
+			(uuid "d8d5edd9-0d07-4eec-b200-6784878d94fc")
+		)
+		(pin "10"
+			(uuid "82e31563-de3b-402c-838e-a72dc3d0427e")
+		)
+		(instances
+			(project ""
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "IC3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensiron:SHT35-DIS-F2.5kS")
+		(at 194.31 21.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5feecca8-f5dc-475e-b9a4-b76fa4723faf")
+		(property "Reference" "IC1"
+			(at 212.09 13.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SHT35-DIS-F2.5kS"
+			(at 212.09 16.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:SON50P250X250X100-9N-D"
+			(at 226.06 116.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://componentsearchengine.com/Datasheets/1/SHT35-DIS-F2.5kS.pdf"
+			(at 226.06 216.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Board Mount Humidity Sensors SHT3x Humidity and Temperature Sensor"
+			(at 194.31 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "1"
+			(at 226.06 416.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "403-SHT35-DIS-F"
+			(at 226.06 516.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Sensirion/SHT35-DIS-F2.5kS?qs=SiS427jF8nOlr8P7g5GiOw%3D%3D"
+			(at 226.06 616.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Sensirion"
+			(at 226.06 716.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "SHT35-DIS-F2.5kS"
+			(at 226.06 816.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "e4103843-2495-4241-acf3-2880ee1edbd2")
+		)
+		(pin "6"
+			(uuid "2688da35-1281-4119-b90b-2dd2db0fd7f2")
+		)
+		(pin "5"
+			(uuid "27119515-be0e-468e-9beb-9377e1b6c5a2")
+		)
+		(pin "2"
+			(uuid "1d620aea-d6e5-471c-887c-2009279634e6")
+		)
+		(pin "1"
+			(uuid "e186ae65-039f-4a96-ab38-74cc709da059")
+		)
+		(pin "9"
+			(uuid "349fe06e-461a-4b91-af65-96f8b2b87054")
+		)
+		(pin "8"
+			(uuid "7a5e1dc1-8f54-44d7-b660-31491ca97048")
+		)
+		(pin "4"
+			(uuid "0d6adc8d-33a8-46c1-b9c4-571124351b78")
+		)
+		(pin "7"
+			(uuid "af3aa514-984d-4bac-a60b-3b0f8c4b2e7b")
+		)
+		(instances
+			(project ""
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "IC1")
 					(unit 1)
 				)
 			)
@@ -5154,6 +6494,142 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 82.55 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8f0fbad0-c0d2-4dfe-9381-85a18592f74f")
+		(property "Reference" "C1"
+			(at 86.36 67.3099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C"
+			(at 86.36 69.8499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 83.5152 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 82.55 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 82.55 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1b3632fd-e31b-445c-b657-6dfd34f89ac6")
+		)
+		(pin "2"
+			(uuid "44c156ca-0465-474c-893a-492d0a2d19dc")
+		)
+		(instances
+			(project ""
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 83.82 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "98e959fb-1dd3-4a2c-9926-54a65a7810f1")
+		(property "Reference" "#PWR012"
+			(at 83.82 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 83.82 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 83.82 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 83.82 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 83.82 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4b8f78ec-ab9f-4836-a7a7-ee20cb4f7b7f")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 152.4 90.17 0)
 		(unit 1)
@@ -5425,6 +6901,225 @@
 			(project ""
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 63.5 31.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bec45c41-64f3-41ed-9231-908dbf912ab8")
+		(property "Reference" "#PWR04"
+			(at 63.5 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 63.5 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 63.5 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 63.5 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 63.5 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8ac3f429-1b5d-470b-a4cf-72a0649684d7")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensiron:STC31-C-R3")
+		(at 241.3 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c21e6bdb-8a30-4476-8ac4-31ba148d9fa5")
+		(property "Reference" "IC2"
+			(at 274.32 26.5998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "STC31-C-R3"
+			(at 274.32 29.1398 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:QFN80P300X350X110-13N-D"
+			(at 267.97 117.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.fr/datasheet/2/682/Sensirion_Datasheet_STC31_C-3459977.pdf"
+			(at 267.97 217.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "package-qfn12"
+			(at 241.3 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "1.1"
+			(at 267.97 417.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "403-STC31-C-R3"
+			(at 267.97 517.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Sensirion/STC31-C-R3?qs=wT7LY0lnAe37rCJTiHe%252BrQ%3D%3D"
+			(at 267.97 617.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Sensirion"
+			(at 267.97 717.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "STC31-C-R3"
+			(at 267.97 817.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "9"
+			(uuid "a2bf315c-fca3-4c95-91e2-de57558dd870")
+		)
+		(pin "10"
+			(uuid "72d13d37-fb3a-4ab4-9e5c-18c8b444f5b3")
+		)
+		(pin "11"
+			(uuid "e1bfeb3f-effe-4cdc-9154-6bdc980d5734")
+		)
+		(pin "8"
+			(uuid "e029f3de-861c-4129-a665-8653bf5ec479")
+		)
+		(pin "7"
+			(uuid "3c706931-7d66-4a8f-9849-2f78e8f2d010")
+		)
+		(pin "5"
+			(uuid "adc1b940-e4e2-4d45-88bc-c7be38aa3988")
+		)
+		(pin "1"
+			(uuid "d65f709a-3652-41f6-a0af-bb40f8480457")
+		)
+		(pin "2"
+			(uuid "77e1f8e4-619a-4c4d-882f-0de7b84c1daf")
+		)
+		(pin "3"
+			(uuid "4e049670-fbfa-4bbe-87fa-93f526d62410")
+		)
+		(pin "13"
+			(uuid "26f14799-34e5-4c57-9d05-4aed0ea32701")
+		)
+		(pin "12"
+			(uuid "0525c784-d7b1-4326-af2f-cc0ef3076899")
+		)
+		(pin "4"
+			(uuid "51e4bdce-65e2-4b80-8ee6-c4214f5e1ed6")
+		)
+		(pin "6"
+			(uuid "36f6bd5a-f351-4977-86cc-885385790e83")
+		)
+		(instances
+			(project ""
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "IC2")
 					(unit 1)
 				)
 			)
@@ -5936,44 +7631,35 @@
 		)
 	)
 	(symbol
-		(lib_id "Sensor:BME680")
-		(at 87.63 74.93 0)
+		(lib_id "Device:C")
+		(at 41.91 57.15 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "fca5e2c3-93ab-46b0-8d66-704ec99a4c30")
-		(property "Reference" "U1"
-			(at 76.2 76.2001 0)
+		(uuid "fd4f5364-b647-4cf6-85af-47aa0c3b0f9f")
+		(property "Reference" "C2"
+			(at 45.72 55.8799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
-		(property "Value" "BME680"
-			(at 76.2 73.6601 0)
+		(property "Value" "C"
+			(at 45.72 58.4199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Package_LGA:Bosch_LGA-8_3x3mm_P0.8mm_ClockwisePinNumbering"
-			(at 124.46 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://ae-bst.resource.bosch.com/media/_tech/media/datasheets/BST-BME680-DS001.pdf"
-			(at 87.63 80.01 0)
+		(property "Footprint" ""
+			(at 42.8752 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5981,8 +7667,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "4-in-1 sensor, gas, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8"
-			(at 87.63 74.93 0)
+		(property "Datasheet" "~"
+			(at 41.91 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5990,95 +7676,26 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "BME690"
-			(at 87.63 74.93 0)
+		(property "Description" "Unpolarized capacitor"
+			(at 41.91 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(pin "5"
-			(uuid "263521fe-280d-4bad-8744-577d1b5ee233")
-		)
-		(pin "2"
-			(uuid "7831a1f9-1a49-4fed-88a5-0bdd262ca567")
-		)
-		(pin "8"
-			(uuid "116ad2b7-8b3e-441f-ac79-afefc66be60e")
-		)
-		(pin "3"
-			(uuid "d0824d6b-edeb-472d-83f5-d7dcd282d016")
-		)
-		(pin "4"
-			(uuid "9b66c379-206c-43a0-a559-c95624c967e2")
-		)
-		(pin "7"
-			(uuid "ba1f669c-911c-4146-af2f-74d7aed2d5ec")
-		)
-		(pin "6"
-			(uuid "016282d9-ad58-4aaf-99e6-35e2da5e7da0")
 		)
 		(pin "1"
-			(uuid "207aca7a-4b3f-4c13-8f45-58bee767ed95")
+			(uuid "e9df9051-2086-4824-8956-dbe5fb28c4a0")
+		)
+		(pin "2"
+			(uuid "da677d53-1a89-41f7-8e63-6766b88c2ca3")
 		)
 		(instances
 			(project ""
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(reference "U1")
+					(reference "C2")
 					(unit 1)
-				)
-			)
-		)
-	)
-	(sheet
-		(at 27.94 57.15)
-		(size 17.78 16.51)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "581b87ac-ffad-43c4-b63a-432012fc2f08")
-		(property "Sheetname" "IRC-AT"
-			(at 27.94 56.4384 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "irc_at.kicad_sch"
-			(at 27.94 74.2446 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Datasheet" "../../docs/irc_at.pdf"
-			(at 27.94 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "SonTinh"
-				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
-					(page "2")
 				)
 			)
 		)

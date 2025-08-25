@@ -5,6 +5,8 @@
 #define MI_MINUTE 2
 #define CS  7
 
+#define APN "iot.1nce.net"
+
 static bool connect(bool fastboot = false);
 static void die(uint32_t);
 static void disable();
@@ -20,13 +22,26 @@ TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 
 bool connect(bool fastboot) {
+  Serial.println("Begin SerialSARA");
   SerialSARA.begin(115200);
+  Serial.println("Send powerpulse");
   powerpulse(150);
   delay(6000);
+  Serial.println("Restart modem");
   modem.restart();
-  if (!modem.waitForNetwork())
+  Serial.print("Wait for network...");
+  if (!modem.waitForNetwork()) {
+    Serial.println("ERROR");
     return false;
-  return modem.gprsConnect(APN);
+  }
+  Serial.println("OK");
+  Serial.print("Connect to " APN "...");
+  if (!modem.gprsConnect(APN)) {
+    Serial.println("ERROR");
+    return false;
+  }
+  Serial.println("OK");
+  return true;
 }
 
 void die(uint32_t p) {
@@ -39,9 +54,7 @@ void die(uint32_t p) {
 }
 
 void disable() {
-  digitalWrite(FET, LOW);
   digitalWrite(LED_BUILTIN, LOW);
-  socket.end();
 }
 
 void disconnect() {
@@ -55,9 +68,6 @@ void disconnect() {
 
 void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
-  digitalWrite(FET, HIGH);
-  socket.begin();
-  delay(600);
 }
 
 void powerpulse(uint32_t len) {
@@ -67,14 +77,35 @@ void powerpulse(uint32_t len) {
 }
 
 bool reconnect() {
-  if (!modem.isNetworkConnected())
+  Serial.print("Is network connected: ");
+  if (!modem.isNetworkConnected()) {
+    Serial.println("no");
+    Serial.print("Wait for network...");
     if (!modem.waitForNetwork(90000L)) {
+      Serial.println("ERROR");
+      Serial.println("Restart modem");
       modem.restart();
-      if (!modem.waitForNetwork(90000L))
+      Serial.print("Wait for network...");
+      if (!modem.waitForNetwork(90000L)) {
+        Serial.println("ERROR");
         return false;
+      }
+      Serial.println("OK");
     }
-  if (!modem.isGprsConnected())
-    return modem.gprsConnect(APN);
+    Serial.println("OK");
+  }
+  Serial.println("yes");
+  Serial.print("Is GPRS connected: ");
+  if (!modem.isGprsConnected()) {
+    Serial.println("no");
+    Serial.print("Connect to " APN "...");
+    if (!modem.gprsConnect(APN)) {
+      Serial.println("ERROR");
+      return false;
+    }
+    Serial.println("OK");
+  }
+  Serial.println("yes");
   return true;
   //if (modem.isNetworkConnected() && modem.isGprsConnected())
   //  return true;
@@ -113,13 +144,10 @@ void setup() {
 
   Serial.begin(19200);
   while(!Serial);
+  delay(1000);
 
-  Serial.print("Connecting...");
-  if (!connect()) {
-    Serial.println("FAILED");
+  if (!connect())
     die(1000);
-  }
-  Serial.println("OK");
 
   rtc.begin();
   Serial.print("Setting time...");
@@ -136,10 +164,7 @@ void loop() {
   int db = modem.getSignalQuality();
   Serial.print(db);
   Serial.println(" db");
-  if (!reconnect())
-    Serial.println("Reconnect not possible");
-  else
-    Serial.println("Reconnected");
+  reconnect();
   delay(5000);
   //schedule();
   //rtc.standbyMode();
