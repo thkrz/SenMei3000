@@ -6027,7 +6027,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "footprints:MKDSFW_15_2_35"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal"
 			(at 46.99 119.38 0)
 			(effects
 				(font
@@ -6172,7 +6172,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "footprints:MKDS_15_2_35"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal"
 			(at 46.99 151.13 0)
 			(effects
 				(font
@@ -6242,7 +6242,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "footprints:MKDS_15_3_35"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-3-3.5-H_1x03_P3.50mm_Horizontal"
 			(at 99.06 142.24 0)
 			(effects
 				(font
@@ -7232,7 +7232,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "footprints:MKDSFW_15_2_35"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal"
 			(at 46.99 129.54 0)
 			(effects
 				(font
