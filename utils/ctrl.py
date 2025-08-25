@@ -68,6 +68,6 @@ if __name__ == "__main__":
     with Control(port) as ctrl:
         ctrl.write(cmd)
         s = ctrl.read_chunk()
-        sys.stdout.write(s + "\r\n")
+        sys.stdout.write(s)
         sys.stdout.flush()
     sys.exit(0)
