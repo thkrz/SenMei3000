@@ -228,7 +228,7 @@ void pullup() {
 }
 
 String& rc(command c, char i) {
-  String *s = &c(i);
+  String* s = &c(i);
   if (s->length() == 0) {
     *s += i;
     *s += LF;
@@ -260,7 +260,7 @@ String& readline(uint32_t timeout) {
 bool reconnect() {
   if (!modem.isNetworkConnected()) {
     modem.restart();
-    if (!modem.waitForNetwork(90000L))
+    if (!modem.waitForNetwork())
       return false;
   }
   if (!modem.isGprsConnected())
