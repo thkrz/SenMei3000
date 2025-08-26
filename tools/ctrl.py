@@ -47,7 +47,7 @@ def log(s, end="\n"):
 
 
 def usage():
-    log("usage: ctrl [port] [-c CMD]")
+    log("usage: ctrl [-p port] [CMD]")
     sys.exit(1)
 
 
@@ -56,18 +56,13 @@ if __name__ == "__main__":
     cmd = "d"
     argv = iter(sys.argv[1:])
     for arg in argv:
-        if arg.startswith("-c"):
-            if len(arg) > 2:
-                cmd = arg[2:]
-            else:
-                try:
-                    cmd = next(argv)
-                except StopIteration:
-                    usage()
-        elif arg == "-?" or arg == "-h":
-            usage()
-        else:
-            port = arg
+        match arg:
+            case "-p":
+                port = next(argv)
+            case "-?" | "-h":
+                usage()
+            case _:
+                cmd = arg
     with Control(port) as ctrl:
         ctrl.write(cmd)
         s = ctrl.read_chunk()
