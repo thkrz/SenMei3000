@@ -1,7 +1,8 @@
 #!/bin/bash -e
+FIRMWARE="\"1.000.001\""
 FBQN=arduino:samd:mkrnb1500
 
-DEF=
+DEF=-DFIRMWARE=$FIRMWARE
 for arg in "$@"; do
   DEF="$DEF -D$arg"
 done

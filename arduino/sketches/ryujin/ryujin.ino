@@ -102,6 +102,9 @@ void ctrl() {
           w25q.format();
           Serial.print("chip formatted\r\n");
           break;
+        case 'v':
+          Serial.print(F("Firmware: " FIRMWARE "\r\n"));
+          break;
       }
       Serial.print(F("#"));
     }
