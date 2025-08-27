@@ -568,6 +568,9 @@
       "Net-(Q3A-S)": [
         "PWR"
       ],
+      "Net-(Q5-D)": [
+        "PWR"
+      ],
       "Net-(U6-PH)": [
         "PWR"
       ],
