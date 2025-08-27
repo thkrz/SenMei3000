@@ -2327,156 +2327,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:D_Zener"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "D_Zener"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Zener diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "D_Zener_0_1"
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -0.762 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "D_Zener_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:LED"
 			(pin_numbers
 				(hide yes)
@@ -3733,301 +3583,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Transistor_FET:IRLML5203"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Q"
-				(at 5.08 1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "IRLML5203"
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-				(at 5.08 -1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-						(italic yes)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d"
-				(at 5.08 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Description" "-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "P-Channel HEXFET MOSFET"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SOT?23*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "IRLML5203_0_1"
-				(polyline
-					(pts
-						(xy 0.254 1.905) (xy 0.254 -1.905)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 2.286) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 0.508) (xy 0.762 -0.508)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.27) (xy 0.762 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 1.651 0)
-					(radius 2.794)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 2.54 -1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.794 -0.508) (xy 2.921 -0.381) (xy 3.683 -0.381) (xy 3.81 -0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "IRLML5203_1_1"
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "G"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Transistor_FET:IRLML6244"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -4266,6 +3821,304 @@
 				)
 			)
 			(symbol "IRLML6244_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Transistor_FET:IRLML6402"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "IRLML6402"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.infineon.com/dgdl/irlml6402pbf.pdf?fileId=5546d462533600a401535668d5c2263c"
+				(at 5.08 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "-3.7A Id, -20V Vds, 65mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "P-Channel HEXFET MOSFET"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "IRLML6402_0_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 -0.508) (xy 2.921 -0.381) (xy 3.683 -0.381) (xy 3.81 -0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "IRLML6402_1_1"
 				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
@@ -5049,6 +4902,131 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:VCC"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "VCC"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"VCC\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "VCC_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "VCC_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(rectangle
 		(start 236.22 24.13)
@@ -5114,12 +5092,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1858e2d0-b2ba-460a-b056-2817c44e0531")
-	)
-	(junction
-		(at 105.41 30.48)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1af8c5a7-1c21-430b-affe-c48ed403631a")
 	)
 	(junction
 		(at 248.92 114.3)
@@ -5206,18 +5178,6 @@
 		(uuid "7dd8358d-7dd4-44b2-ae98-363ec784e459")
 	)
 	(junction
-		(at 113.03 30.48)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8b28b572-3941-4a5c-b05d-5c90d75e9daf")
-	)
-	(junction
-		(at 123.19 30.48)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8c2d777a-74b6-4e04-b5b7-dad1172992d9")
-	)
-	(junction
 		(at 256.54 156.21)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5236,6 +5196,12 @@
 		(uuid "911436eb-8302-493e-8c68-9a6bf6772049")
 	)
 	(junction
+		(at 148.3029 151.13)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "918c3458-cf53-4ff4-a19b-ac212a05be7d")
+	)
+	(junction
 		(at 127.9829 134.62)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5252,12 +5218,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9caaf8ed-bda6-4ece-9c83-5238f226045a")
-	)
-	(junction
-		(at 133.35 39.37)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9df1cbfc-55b6-4423-ae83-b8e742a4ce6c")
 	)
 	(junction
 		(at 127.9829 132.08)
@@ -5296,18 +5256,6 @@
 		(uuid "be4d8b22-fcdb-4b6b-904d-f0d844b73db5")
 	)
 	(junction
-		(at 118.11 39.37)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d2dd05ff-d08b-40f0-aca1-41a41446dff2")
-	)
-	(junction
-		(at 148.3029 151.13)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d42cb96a-9333-427c-afd6-08ebf8b12f43")
-	)
-	(junction
 		(at 129.54 153.67)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5330,12 +5278,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e112e2f8-455e-4046-8adb-6ace245a70b8")
-	)
-	(junction
-		(at 133.35 46.99)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ec006193-a53c-4329-82ab-8fc1bde7bec6")
 	)
 	(junction
 		(at 261.62 114.3)
@@ -5428,16 +5370,6 @@
 	(no_connect
 		(at 62.23 27.94)
 		(uuid "fa4723a7-4ce6-4e41-8114-97f58537c73d")
-	)
-	(wire
-		(pts
-			(xy 138.43 30.48) (xy 144.78 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0023384e-47b6-48ef-b45a-f16d09bc7e84")
 	)
 	(wire
 		(pts
@@ -5551,16 +5483,6 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 39.37) (xy 133.35 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "15135eb3-0094-4a07-8922-e66b44745fed")
-	)
-	(wire
-		(pts
 			(xy 219.71 138.43) (xy 224.79 138.43)
 		)
 		(stroke
@@ -5618,6 +5540,16 @@
 			(type default)
 		)
 		(uuid "23f17e3c-123c-40ef-aa32-4effcf237e0d")
+	)
+	(wire
+		(pts
+			(xy 111.4729 167.64) (xy 120.65 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26c0a00d-b3a7-4d49-8fc0-ac83ba08f142")
 	)
 	(wire
 		(pts
@@ -5691,17 +5623,7 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 30.48) (xy 128.27 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "33f52235-6c98-4afe-8e28-d59371f4b6df")
-	)
-	(wire
-		(pts
-			(xy 133.35 46.99) (xy 144.78 46.99)
+			(xy 128.27 38.1) (xy 144.78 38.1)
 		)
 		(stroke
 			(width 0)
@@ -5728,6 +5650,16 @@
 			(type default)
 		)
 		(uuid "44645da3-c5f3-4116-933f-777038625fda")
+	)
+	(wire
+		(pts
+			(xy 158.75 55.88) (xy 151.13 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4815abb7-f6a2-478f-9dca-6961fca32801")
 	)
 	(wire
 		(pts
@@ -5791,7 +5723,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.0329 134.62) (xy 155.9229 134.62)
+			(xy 147.0329 134.62) (xy 156.21 134.62)
 		)
 		(stroke
 			(width 0)
@@ -5808,16 +5740,6 @@
 			(type default)
 		)
 		(uuid "58cf4d52-7cc0-4ebe-baf3-93d32970f94a")
-	)
-	(wire
-		(pts
-			(xy 148.3029 151.13) (xy 155.9229 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "59ef22a8-a81c-4ed0-a393-689ec1b55d9a")
 	)
 	(wire
 		(pts
@@ -5871,16 +5793,6 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 46.99) (xy 133.35 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "60fbfe85-cfa9-448c-b674-c05788df8fbf")
-	)
-	(wire
-		(pts
 			(xy 148.3029 148.59) (xy 155.9229 148.59)
 		)
 		(stroke
@@ -5911,26 +5823,6 @@
 	)
 	(wire
 		(pts
-			(xy 111.4729 167.64) (xy 120.3629 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "68f5647b-3e41-4d78-b6e4-777b76388bee")
-	)
-	(wire
-		(pts
-			(xy 118.11 38.1) (xy 118.11 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "69774a39-c774-450a-bb44-55865ba3148b")
-	)
-	(wire
-		(pts
 			(xy 127.9829 139.7) (xy 147.0329 139.7)
 		)
 		(stroke
@@ -5958,16 +5850,6 @@
 			(type default)
 		)
 		(uuid "6c7a3846-d9a5-445d-b8f2-8979f0a9b466")
-	)
-	(wire
-		(pts
-			(xy 113.03 30.48) (xy 123.19 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e47783a-a4b9-4c7b-86d0-34b5a52549be")
 	)
 	(wire
 		(pts
@@ -6028,16 +5910,6 @@
 			(type default)
 		)
 		(uuid "7e25a78c-6944-4183-b3d2-a1643bf70497")
-	)
-	(wire
-		(pts
-			(xy 105.41 30.48) (xy 113.03 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8000dda6-84b6-4fde-a7f2-809efdbe45fd")
 	)
 	(wire
 		(pts
@@ -6251,6 +6123,16 @@
 	)
 	(wire
 		(pts
+			(xy 133.35 55.88) (xy 140.97 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a3953ef0-13ff-4485-9868-7459e0901b20")
+	)
+	(wire
+		(pts
 			(xy 177.8 60.96) (xy 177.8 63.5)
 		)
 		(stroke
@@ -6261,7 +6143,7 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 30.48) (xy 105.41 30.48)
+			(xy 128.27 30.48) (xy 144.78 30.48)
 		)
 		(stroke
 			(width 0)
@@ -6581,16 +6463,6 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 39.37) (xy 133.35 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d0b82280-cf49-466e-973c-8c6c8864ab76")
-	)
-	(wire
-		(pts
 			(xy 21.59 26.67) (xy 25.4 26.67)
 		)
 		(stroke
@@ -6631,16 +6503,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 38.1) (xy 144.78 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d958341f-d497-4f51-86f1-b44d32b99bd2")
-	)
-	(wire
-		(pts
 			(xy 271.78 143.51) (xy 271.78 138.43)
 		)
 		(stroke
@@ -6651,16 +6513,6 @@
 	)
 	(wire
 		(pts
-			(xy 113.03 39.37) (xy 118.11 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "da997076-7416-45f3-b845-48e3c836fd16")
-	)
-	(wire
-		(pts
 			(xy 198.12 68.58) (xy 198.12 60.96)
 		)
 		(stroke
@@ -6668,6 +6520,16 @@
 			(type default)
 		)
 		(uuid "ddd6986d-9b6f-4466-9254-145e0060779f")
+	)
+	(wire
+		(pts
+			(xy 148.3029 151.13) (xy 156.21 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e0d8dc3c-090c-4f44-bf01-a7a6ae5f42d4")
 	)
 	(wire
 		(pts
@@ -6768,16 +6630,6 @@
 			(type default)
 		)
 		(uuid "f1a4d6e3-36ce-479a-8905-1387271728a4")
-	)
-	(wire
-		(pts
-			(xy 105.41 30.48) (xy 105.41 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f4d9b76b-8ad5-4404-b0b7-0c5c5350671f")
 	)
 	(wire
 		(pts
@@ -7195,6 +7047,37 @@
 	(netclass_flag ""
 		(length 2.54)
 		(shape round)
+		(at 156.21 55.88 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "53db4838-98db-4cb7-95e5-25331ca3d31a")
+		(property "Netclass" "PWR"
+			(at 156.9085 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Component Class" ""
+			(at 57.15 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+	)
+	(netclass_flag ""
+		(length 2.54)
+		(shape round)
 		(at 144.78 30.48 0)
 		(fields_autoplaced yes)
 		(effects
@@ -7586,6 +7469,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+12V")
+		(at 133.35 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "08f5ae31-9b6e-4867-829e-040220f6d203")
+		(property "Reference" "#PWR023"
+			(at 133.35 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 133.35 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 133.35 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 133.35 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 133.35 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "de39ac7a-d563-4716-9274-05f397f394a1")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR023")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x04_Pin")
 		(at 141.9529 134.62 0)
 		(unit 1)
@@ -7735,6 +7684,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:VCC")
+		(at 177.8 58.42 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "13f821a3-6246-4d66-b64b-0702f2674579")
+		(property "Reference" "#PWR021"
+			(at 177.8 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 177.8 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 177.8 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3a040e52-ac59-4cc4-bf3a-290a1e86d667")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 266.7 25.4 0)
 		(unit 1)
@@ -7868,55 +7883,17 @@
 		)
 	)
 	(symbol
-		(lib_id "Transistor_FET:IRLML5203")
-		(at 118.11 33.02 90)
+		(lib_id "power:VCC")
+		(at 120.65 167.64 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "210686be-1050-4bd8-bbf1-c8c8507b27f5")
-		(property "Reference" "Q6"
-			(at 123.19 23.368 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "IRLML5203"
-			(at 123.19 25.908 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 120.015 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "../../docs/Infineon-IRLML5203-DataSheet-v01_01-EN.pdf"
-			(at 121.92 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
-			(at 118.11 33.02 0)
+		(fields_autoplaced yes)
+		(uuid "22b35fc2-ec62-4562-a16e-4bb6364bcd88")
+		(property "Reference" "#PWR04"
+			(at 116.84 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7924,8 +7901,35 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "IRLML5203TRPBF"
-			(at 118.11 33.02 0)
+		(property "Value" "VCC"
+			(at 124.46 167.6399 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 120.65 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 120.65 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 120.65 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7934,18 +7938,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "bc7d150e-f162-4d4b-a95f-493306675afb")
-		)
-		(pin "2"
-			(uuid "c391419a-376c-4849-b6bd-fa08229da772")
-		)
-		(pin "3"
-			(uuid "91620432-32a2-45f5-812d-93eb5f94eaa9")
+			(uuid "774b2726-8bff-4c11-89e2-d3906005d65a")
 		)
 		(instances
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "Q6")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -8202,6 +8200,151 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 146.05 67.31 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2e3f4b1c-d65f-427b-8ba6-3e8264ef9195")
+		(property "Reference" "R11"
+			(at 148.59 69.088 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "127k"
+			(at 146.05 69.596 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 147.828 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 146.05 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 146.05 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "127k 0603"
+			(at 146.05 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8153009b-408e-4ff5-9f9d-4b03b92f0214")
+		)
+		(pin "1"
+			(uuid "335c1dff-6fbc-4d62-8d18-18b545837555")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VCC")
+		(at 156.21 151.13 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2ebd05ef-4289-4d91-86aa-f23ada3f0138")
+		(property "Reference" "#PWR03"
+			(at 152.4 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 160.02 151.1299 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 156.21 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 156.21 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 156.21 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "81e84e24-530f-445a-b10b-c0fb845e2a1a")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 238.76 142.24 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8344,6 +8487,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 146.05 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3318e864-6412-428e-a633-1810b2580751")
+		(property "Reference" "#PWR034"
+			(at 146.05 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 146.05 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 146.05 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 146.05 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8f33ea84-8f17-4ba2-92b9-ece67c4f64bf")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 267.97 58.42 180)
 		(unit 1)
@@ -8422,17 +8631,17 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+12V")
-		(at 155.9229 134.62 270)
+		(lib_id "power:VCC")
+		(at 156.21 134.62 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "3d1d9db0-f5ae-4fbf-ba9d-f9c482eb9337")
-		(property "Reference" "#PWR030"
-			(at 152.1129 134.62 0)
+		(uuid "3c469500-8535-4bb7-92dd-56b5646968c2")
+		(property "Reference" "#PWR02"
+			(at 152.4 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8440,8 +8649,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+12V"
-			(at 159.7329 134.6199 90)
+		(property "Value" "VCC"
+			(at 160.02 134.6199 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8450,7 +8659,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 155.9229 134.62 0)
+			(at 156.21 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8459,7 +8668,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 155.9229 134.62 0)
+			(at 156.21 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8467,8 +8676,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 155.9229 134.62 0)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 156.21 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8477,12 +8686,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "1294118f-6770-4abb-8ee3-7d8f470074fe")
+			(uuid "2be05609-b802-4ef4-a04e-902299a3dcc1")
 		)
 		(instances
-			(project "Ryujin_v2"
+			(project ""
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR030")
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -8909,35 +9118,54 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D_Zener")
-		(at 133.35 43.18 270)
+		(lib_id "Transistor_FET:IRLML6402")
+		(at 195.58 73.66 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4ba2eff8-c955-44b7-98e5-7564dd6bbaa3")
-		(property "Reference" "D1"
-			(at 135.89 41.9099 90)
+		(uuid "51e3fb14-77ac-42db-b7d0-5560355a59f1")
+		(property "Reference" "Q6"
+			(at 204.47 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "IRLML6402"
+			(at 201.93 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 200.66 71.755 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml6402pbf.pdf?fileId=5546d462533600a401535668d5c2263c"
+			(at 200.66 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
-		(property "Value" "D_Zener"
-			(at 135.89 44.4499 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
-			(at 133.35 43.18 0)
+		(property "Description" "-3.7A Id, -20V Vds, 65mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
+			(at 195.58 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8945,17 +9173,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 133.35 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Zener diode"
-			(at 133.35 43.18 0)
+		(property "MPN" "IRLML6402TRPBF"
+			(at 195.58 73.66 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8964,15 +9183,18 @@
 			)
 		)
 		(pin "2"
-			(uuid "f14dd50a-a1c5-440a-a24d-3a734cc5b1fa")
+			(uuid "4c412851-2daf-440b-8e2e-8f7b0e24978d")
+		)
+		(pin "3"
+			(uuid "4b7fdc47-7d28-4010-b72b-c01524e78cc3")
 		)
 		(pin "1"
-			(uuid "e0382c22-0902-4f72-a1b9-4144f676d60d")
+			(uuid "ff3c0994-d18e-4aca-b187-9124f391ce96")
 		)
 		(instances
-			(project ""
+			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "D1")
+					(reference "Q6")
 					(unit 1)
 				)
 			)
@@ -9722,91 +9944,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Transistor_FET:IRLML5203")
-		(at 133.35 33.02 270)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "76cb1958-a757-4d2c-b0f1-5a7ae23e72ae")
-		(property "Reference" "Q5"
-			(at 128.27 23.368 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "IRLML5203"
-			(at 128.27 25.908 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 131.445 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "../../docs/Infineon-IRLML5203-DataSheet-v01_01-EN.pdf"
-			(at 129.54 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
-			(at 133.35 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "IRLML5203TRPBF"
-			(at 133.35 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6080453e-41ac-4ce2-8ce0-08320d4ac4ef")
-		)
-		(pin "2"
-			(uuid "d8a11dd0-90a3-4b2f-a8cf-97109521bbf5")
-		)
-		(pin "3"
-			(uuid "bf8a929f-1380-41c1-95fb-36b30a0e52ff")
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "Q5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 177.8 67.31 180)
 		(unit 1)
@@ -10188,139 +10325,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+12V")
-		(at 229.87 114.3 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "85b1c41e-76df-413d-8de3-7754e58dd4d9")
-		(property "Reference" "#PWR021"
-			(at 229.87 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 229.87 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 229.87 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 229.87 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 229.87 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "050ae288-430f-46a3-b173-af7e9c7f0183")
-		)
-		(instances
-			(project "Ryujin_v2"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 120.3629 167.64 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "884060b7-e2d2-4775-ae8d-3807864f2a12")
-		(property "Reference" "#PWR038"
-			(at 116.5529 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 124.1729 167.6399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 120.3629 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 120.3629 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 120.3629 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8920245c-2ac8-42a0-ab65-0b804f910c46")
-		)
-		(instances
-			(project "Ryujin_v2"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR038")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Sensor_Humidity:SHTC3")
 		(at 254 148.59 0)
 		(unit 1)
@@ -10403,6 +10407,89 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLML6402")
+		(at 146.05 58.42 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "92d663ed-0eca-401f-91cf-7c5644db5175")
+		(property "Reference" "Q5"
+			(at 146.05 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "IRLML6402"
+			(at 146.05 52.07 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 144.145 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml6402pbf.pdf?fileId=5546d462533600a401535668d5c2263c"
+			(at 142.24 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "-3.7A Id, -20V Vds, 65mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
+			(at 146.05 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "IRLML6402TRPBF"
+			(at 146.05 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2501f325-e7f2-4608-9b29-5f270b43675e")
+		)
+		(pin "3"
+			(uuid "69ba927b-f3c3-42c8-9050-b947ab9a1bb5")
+		)
+		(pin "1"
+			(uuid "5dcbeb8c-bf85-4b6d-b8ca-e88ee85b047d")
+		)
+		(instances
+			(project ""
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "Q5")
 					(unit 1)
 				)
 			)
@@ -10724,7 +10811,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 120.65 46.99 0)
+		(at 128.27 38.1 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10733,7 +10820,7 @@
 		(fields_autoplaced yes)
 		(uuid "9e2c392d-b465-4395-acf1-6506fbf570da")
 		(property "Reference" "#PWR010"
-			(at 120.65 53.34 0)
+			(at 128.27 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10742,7 +10829,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 120.65 52.07 0)
+			(at 128.27 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10750,7 +10837,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 120.65 46.99 0)
+			(at 128.27 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10759,7 +10846,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 120.65 46.99 0)
+			(at 128.27 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10768,7 +10855,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 120.65 46.99 0)
+			(at 128.27 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10783,6 +10870,72 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VCC")
+		(at 158.75 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9fe67b53-c982-46fc-ae4b-b23b9f377a70")
+		(property "Reference" "#PWR030"
+			(at 158.75 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 158.75 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 158.75 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 158.75 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 158.75 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "77c03b9f-b191-48f9-aaae-96faa174beb4")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR030")
 					(unit 1)
 				)
 			)
@@ -10937,6 +11090,72 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VCC")
+		(at 229.87 114.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a92f2af6-6ec6-49fe-acf1-bc4ed033f0f4")
+		(property "Reference" "#PWR09"
+			(at 229.87 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 229.87 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 229.87 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 229.87 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 229.87 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c379c1ae-2657-4b3a-b14e-0ba818ef9c64")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -11951,91 +12170,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Transistor_FET:IRLML5203")
-		(at 195.58 73.66 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d5365af5-69cb-4de2-852b-5788b2ebe6f5")
-		(property "Reference" "Q1"
-			(at 201.93 74.9301 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "IRLML5203"
-			(at 201.93 72.3901 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 200.66 71.755 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "../../docs/Infineon-IRLML5203-DataSheet-v01_01-EN.pdf"
-			(at 200.66 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"
-			(at 195.58 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "IRLML5203TRPBF"
-			(at 195.58 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ab228cce-b0a8-4dff-b82b-2b38e280e040")
-		)
-		(pin "2"
-			(uuid "9caf0c7f-1168-407b-b663-701bc8a3bb81")
-		)
-		(pin "3"
-			(uuid "26e30280-2b38-43a2-a62a-8d2543c690b3")
-		)
-		(instances
-			(project "Ryujin_v2"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "Q1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 271.78 147.32 0)
 		(unit 1)
@@ -12116,7 +12250,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 102.87 30.48 0)
+		(at 128.27 30.48 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12125,7 +12259,7 @@
 		(fields_autoplaced yes)
 		(uuid "e57701a0-354b-4cde-be9c-89753ee89df9")
 		(property "Reference" "#PWR08"
-			(at 102.87 34.29 0)
+			(at 128.27 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12134,7 +12268,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 102.87 25.4 0)
+			(at 128.27 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12142,7 +12276,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 102.87 30.48 0)
+			(at 128.27 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12151,7 +12285,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 102.87 30.48 0)
+			(at 128.27 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12160,7 +12294,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 102.87 30.48 0)
+			(at 128.27 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12175,139 +12309,6 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR08")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 155.9229 151.13 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e63d92fe-22ed-4eca-961d-aaee3a686e01")
-		(property "Reference" "#PWR034"
-			(at 152.1129 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 159.7329 151.1299 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 155.9229 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 155.9229 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 155.9229 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "da2ab9f0-77ed-4600-b52a-915ea3dc866c")
-		)
-		(instances
-			(project "Ryujin_v2"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR034")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 177.8 58.42 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e6bbca0e-6a3a-4232-b743-c74f8cd96df9")
-		(property "Reference" "#PWR023"
-			(at 177.8 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 177.8 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 177.8 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 177.8 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 177.8 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c8e5c4aa-f844-4939-bd81-e22238e8c90b")
-		)
-		(instances
-			(project "Ryujin_v2"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -12624,84 +12625,6 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR048")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 109.22 39.37 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f1e0a1b7-0ab8-4dab-aefc-bf6b1f1c0487")
-		(property "Reference" "R11"
-			(at 110.998 36.83 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "127k"
-			(at 111.506 39.37 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 109.22 37.592 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 109.22 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 109.22 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "127k 0603"
-			(at 109.22 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "c589c42a-62a5-4037-90c3-1c61ae9dda3d")
-		)
-		(pin "1"
-			(uuid "cce35054-de8b-475b-913e-0fdcdd0a560d")
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(reference "R11")
 					(unit 1)
 				)
 			)
