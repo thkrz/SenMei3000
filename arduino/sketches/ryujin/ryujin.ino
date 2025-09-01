@@ -102,8 +102,18 @@ void ctrl() {
           w25q.format();
           Serial.print("chip formatted\r\n");
           break;
-        case 'v':
+        case 'i':
           Serial.print(F("Firmware: " FIRMWARE "\r\n"));
+          Serial.print(F("Station Id: " STAT_CTRL_ID "\r\n"));
+          Serial.print(F("APN: " APN "\r\n"));
+          Serial.print(F("Measure Interval: "));
+#if defined(MI_MINUTE)
+          Serial.print(MI_MINUTE);
+          Serial.print(F("min\r\n"));
+#elif defined(MI_HOUR)
+          Serial.print(MI_HOUR);
+          Serial.print(F("h\r\n"));
+#endif
           break;
       }
       Serial.print(F("#"));
