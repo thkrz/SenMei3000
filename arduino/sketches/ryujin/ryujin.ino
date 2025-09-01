@@ -106,7 +106,7 @@ void ctrl() {
           Serial.print(F("Firmware: " FIRMWARE "\r\n"));
           Serial.print(F("Station Id: " STAT_CTRL_ID "\r\n"));
           Serial.print(F("APN: " APN "\r\n"));
-          Serial.print(F("Measure Interval: "));
+          Serial.print(F("Interval: "));
 #if defined(MI_MINUTE)
           Serial.print(MI_MINUTE);
           Serial.print(F("min\r\n"));

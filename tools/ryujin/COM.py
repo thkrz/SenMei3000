@@ -1,15 +1,13 @@
-#!/usr/bin/python3
 import serial
 import time
 import sys
 
 
-class Control:
+class COM:
     def __init__(self, port):
         try:
             self.com = serial.Serial(port)
         except serial.SerialException:
-            log(f"could not open {port}")
             sys.exit(1)
         self.com.baudrate = 19200
         self.com.bytesize = 8
@@ -39,33 +37,3 @@ class Control:
         s = b.decode("utf-8")
         assert s.endswith(eol), "read error"
         return s[: -len(eol)]
-
-
-def log(s, end="\n"):
-    sys.stderr.write(s + end)
-    sys.stderr.flush()
-
-
-def usage():
-    log("usage: ctrl [-p port] [CMD]")
-    sys.exit(1)
-
-
-if __name__ == "__main__":
-    port = "/dev/ttyACM0"
-    cmd = "d"
-    argv = iter(sys.argv[1:])
-    for arg in argv:
-        match arg:
-            case "-p":
-                port = next(argv)
-            case "-?" | "-h":
-                usage()
-            case _:
-                cmd = arg
-    with Control(port) as ctrl:
-        ctrl.write(cmd)
-        s = ctrl.read_chunk()
-        sys.stdout.write(s)
-        sys.stdout.flush()
-    sys.exit(0)
