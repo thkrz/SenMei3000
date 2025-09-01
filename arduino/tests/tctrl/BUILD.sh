@@ -1,6 +1,7 @@
 #!/bin/bash -e
-FIRMWARE="\"1.000.001\""
-FBQN=arduino:samd:mkrnb1500
+FIRMWARE="\"$(cat fw.txt)\""
+#FBQN=arduino:samd:mkrnb1500
+FBQN=arduino:samd:mkrzero
 
 DEF=-DFIRMWARE=$FIRMWARE
 cflag=0

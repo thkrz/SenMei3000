@@ -42,10 +42,6 @@ void ctrl() {
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
-  pinMode(SARA_RESETN, OUTPUT);
-  digitalWrite(SARA_RESETN, LOW);
-  pinMode(SARA_PWR_ON, OUTPUT);
-  digitalWrite(SARA_PWR_ON, LOW);
 
   rtc.begin();
 

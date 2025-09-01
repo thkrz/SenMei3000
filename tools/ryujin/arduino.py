@@ -2,7 +2,8 @@ import serial
 import time
 import subprocess
 
-FBQN = "arduino:samd:mkrnb1500"
+# FBQN = "arduino:samd:mkrnb1500"
+FBQN = "arduino:samd:mkrzero"
 
 
 class COM:
@@ -12,6 +13,7 @@ class COM:
         self.com.bytesize = 8
         self.com.parity = "N"
         self.com.stopbits = 1
+        # self.com.timeout = 3.0
 
     def __enter__(self):
         return self
@@ -37,6 +39,14 @@ class COM:
         assert s.endswith(eol), "read error"
         return s[: -len(eol)]
 
+    @property
+    def timeout(self):
+        return self.com.timeout
+
+    @timeout.setter
+    def timeout(self, n):
+        self.com.timeout = n
+
 
 def _arduino_cli(argv):
     p = subprocess.Popen(
@@ -54,7 +64,7 @@ def compile(path, flags={}):
     if len(flags) > 0:
         flags = [f"-D{k}={v}" for k, v in flags.items()]
         properties = f'compiler.cpp.extra_flags={" ".join(flags)}'
-        argv += ["--build-property", properties]
+        argv += ["--build-propert", properties]
     argv.append(path)
     r, out, err = _arduino_cli(argv)
     assert r == 0, err
