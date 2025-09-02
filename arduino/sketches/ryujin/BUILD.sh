@@ -12,8 +12,7 @@ for arg in "$@"; do
   fi
 done
 
-arduino-cli compile -e -b ${FBQN} --build-property="compiler.cpp.extra_flags=$DEF" .
-install -m644 build/arduino.samd.mkrnb1500/ryujin.ino.bin fw/${FIRMWARE//\"/}.bin && rm -r build/
+arduino-cli compile -b ${FBQN} --build-property="compiler.cpp.extra_flags=$DEF" .
 if [ "$cflag" -ne 0 ]; then
   exit 0
 fi

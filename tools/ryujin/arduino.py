@@ -2,8 +2,7 @@ import serial
 import time
 import subprocess
 
-# FBQN = "arduino:samd:mkrnb1500"
-FBQN = "arduino:samd:mkrzero"
+FBQN = "arduino:samd:mkrnb1500"
 
 
 class COM:
@@ -49,8 +48,9 @@ class COM:
 
 
 def _arduino_cli(argv):
+    argv = ["arduino-cli"] + [str(arg) for arg in argv]
     p = subprocess.Popen(
-        ["arduino-cli"] + [str(arg) for arg in argv],
+        argv,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
@@ -64,14 +64,9 @@ def compile(path, flags={}):
     if len(flags) > 0:
         flags = [f"-D{k}={v}" for k, v in flags.items()]
         properties = f'compiler.cpp.extra_flags={" ".join(flags)}'
-        argv += ["--build-propert", properties]
+        argv += ["--build-property", properties]
     argv.append(path)
     r, out, err = _arduino_cli(argv)
-    assert r == 0, err
-
-
-def upload(path, port):
-    r, out, err = _arduino_cli(["upload", "-p", port, "-b", FBQN, path])
     assert r == 0, err
 
 
@@ -79,3 +74,15 @@ def port():
     r, out, _ = _arduino_cli(["board", "list"])
     assert r == 0
     return [s.split()[0] for s in out.splitlines() if FBQN in s]
+
+
+def send(port, msg, timeout=3.0):
+    with COM(port) as com:
+        com.write(msg)
+        com.timeout = timeout
+        return com.read_chunk()
+
+
+def upload(path, port):
+    r, out, err = _arduino_cli(["upload", "-p", port, "-b", FBQN, path])
+    assert r == 0, err

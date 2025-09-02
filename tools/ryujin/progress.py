@@ -1,5 +1,5 @@
 from PySide6.QtCore import QObject, QThread, Signal
-from PySide6.QtWidgets import QMessageBox, QProgressDialog
+from PySide6.QtWidgets import QProgressDialog
 
 
 class Worker(QObject):
@@ -15,15 +15,12 @@ class Worker(QObject):
         try:
             self.rc(*self.argv)
             self.finished.emit()
-        except AssertionError as ex:
-            s = [ln for ln in str(ex).splitlines() if ln.startswith("Error")]
-            self.error.emit("\n".join(s))
+        except AssertionError as e:
+            msg = [ln for ln in str(e).splitlines() if ln.startswith("Error")]
+            self.error.emit("\n".join(msg))
 
 
-def show(parent, title, message, callback, argv=[]):
-    def on_error(s):
-        QMessageBox.critical(parent, "Error", s)
-
+def show(parent, title, message, on_error, callback, argv=[]):
     dialog = QProgressDialog(message, None, 0, 0, parent)
     dialog.setWindowTitle(title)
     dialog.setModal(True)
@@ -39,6 +36,7 @@ def show(parent, title, message, callback, argv=[]):
     worker.error.connect(on_error)
     worker.error.connect(thread.quit)
     worker.error.connect(dialog.close)
+    thread.finished.connect(worker.deleteLater)
     thread.finished.connect(thread.deleteLater)
 
     thread.start()

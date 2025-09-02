@@ -1,17 +1,18 @@
 import os
 import sys
 from pathlib import Path
+from PySide6.QtCore import Slot
 from PySide6.QtWidgets import (
     QApplication,
-    QMainWindow,
+    QComboBox,
     QFileDialog,
     QFormLayout,
-    QWidget,
-    QPushButton,
-    QComboBox,
-    QLineEdit,
     QHBoxLayout,
+    QLineEdit,
+    QMainWindow,
     QMessageBox,
+    QPushButton,
+    QWidget,
 )
 
 import arduino
@@ -19,24 +20,12 @@ import progress
 
 
 class MainWindow(QMainWindow):
-    def __init__(self, path=""):
+    def __init__(self):
         super().__init__()
 
-        self.path = QFileDialog.getExistingDirectory(
-            self,
-            "Select a Folder",
-            path,
-            QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks,
-        )
-        if not self.path:
-            sys.exit(1)
-        sketch(self.path)
+        self._choose()
 
-        self.path = Path(self.path)
-        with open(self.path / "fw.txt") as f:
-            self.firmware = f.read().strip()
-
-        self.setWindowTitle(f"RYUJIN - {self.path}")
+        self.setWindowTitle(f"{self.sketch.name.upper()} ({self.sketch})")
         self.ports = arduino.port()
         if len(self.ports) == 0:
             sys.exit(1)
@@ -47,16 +36,39 @@ class MainWindow(QMainWindow):
         container.setLayout(layout)
         self.setCentralWidget(container)
 
+    def _choose(self):
+        path = cache()
+        while True:
+            self.sketch = QFileDialog.getExistingDirectory(
+                self,
+                "Select a Folder",
+                path,
+                QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks,
+            )
+            if not self.sketch:
+                sys.exit(0)
+            path = self.sketch
+            self.sketch = Path(self.sketch)
+            fwf = self.sketch / "fw.txt"
+            if fwf.exists():
+                break
+            self._error("No firmware version found")
+        with open(fwf) as f:
+            self.firmware = f.read().strip()
+        cache(self.sketch)
+
+    @Slot(str)
+    def _error(self, msg):
+        QMessageBox.critical(self, "Error", msg)
+
     def info(self):
         d = {}
-        with arduino.COM(self.port) as com:
-            com.write("i")
-            s = com.read_chunk()
-            for ln in s.splitlines():
-                k, v = tuple([p.strip() for p in ln.split(":")])
-                if k == "FIRMWARE" and v != self.firmware:
-                    v += " -> " + self.firmware
-                d[k] = v
+        s = arduino.send(self.port, "i")
+        for ln in s.splitlines():
+            k, v = tuple([p.strip() for p in ln.split(":")])
+            if k == "FIRMWARE" and v != self.firmware:
+                v += " -> " + self.firmware
+            d[k] = v
         return d
 
     def createForm(self, form):
@@ -97,9 +109,7 @@ class MainWindow(QMainWindow):
         form.addRow("Memory:", layout)
 
     def chipDump(self):
-        with arduino.COM(self.port) as com:
-            com.write("d")
-            s = com.read_chunk()
+        s = arduino.send(self.port, "d")
         if len(s) > 0:
             path, _ = QFileDialog.getSaveFileName(
                 self, "Save dump", "", "TextFiles (*.txt);;All Files (*)"
@@ -110,12 +120,10 @@ class MainWindow(QMainWindow):
 
     def chipErase(self):
         def rc(port):
-            with arduino.COM(port) as com:
-                com.write("f")
-                com.read_chunk()
+            arduino.send(port, "f", timeout=30.0)
 
         self.dialog, self.thread, self.worker = progress.show(
-            self, "W25Q", "Erasing chip...", rc, [self.port]
+            self, "W25Q", "Erasing chip...", self._error, rc, [self.port]
         )
 
     def selectPort(self, index):
@@ -137,29 +145,33 @@ class MainWindow(QMainWindow):
                 flags[k] = f'"{v.text()}"'
 
         self.dialog, self.thread, self.worker = progress.show(
-            self, self.port, "Uploading...", rc, [self.path, self.port, flags]
+            self,
+            self.port,
+            "Uploading...",
+            self._error,
+            rc,
+            [self.sketch, self.port, flags],
         )
 
 
-def sketch(p=None):
-    cache = os.getenv("XDG_CACHE_HOME")
-    if not cache:
-        cache = Path(os.getenv("HOME")) / ".cache"
-    else:
-        cache = Path(cache)
-    _path = cache / "ryujin_path.txt"
+def cache(p=None):
+    try:
+        wd = Path(os.getenv("XDG_CACHE_HOME"))
+    except TypeError:
+        wd = Path(os.getenv("HOME")) / ".cache"
+    _p = wd / "ryujin_path.txt"
     if p is None:
-        if _path.exists():
-            with open(_path) as f:
+        if _p.exists():
+            with open(_p) as f:
                 return f.read()
         return ""
-    with open(_path, "w") as f:
-        f.write(p)
+    with open(_p, "w") as f:
+        f.write(str(p))
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    wnd = MainWindow(sketch())
+    wnd = MainWindow()
     wnd.show()
 
-    app.exec()
+    sys.exit(app.exec())

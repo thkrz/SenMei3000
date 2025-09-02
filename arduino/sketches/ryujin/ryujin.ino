@@ -31,7 +31,6 @@ static bool handshake(char);
 static String& ident(char);
 static String& measure(char);
 static bool post(String&);
-static void powerpulse(uint32_t);
 static void pullup();
 static String& rc(command, char);
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
@@ -41,6 +40,7 @@ static void scan();
 static void schedule();
 static void settime();
 static bool valid(char);
+static bool wait(uint32_t timeout = MODEM_TIMEOUT);
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
@@ -74,8 +74,12 @@ bool config() {
 
 bool connect() {
   SerialSARA.begin(115200);
-  powerpulse(150);
-  delay(6000);
+  digitalWrite(SARA_PWR_ON, HIGH);
+  delay(200);
+  digitalWrite(SARA_PWR_ON, LOW);
+  delay(2000);
+  if (!wait())
+    return false;
   modem.restart();
   if (!modem.waitForNetwork())
     return false;
@@ -103,16 +107,17 @@ void ctrl() {
           Serial.print("chip formatted\r\n");
           break;
         case 'i':
-          Serial.print(F("Firmware: " FIRMWARE "\r\n"));
-          Serial.print(F("Station Id: " STAT_CTRL_ID "\r\n"));
+          Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
+          Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
           Serial.print(F("APN: " APN "\r\n"));
-          Serial.print(F("Interval: "));
 #if defined(MI_MINUTE)
+          Serial.print(F("MI_MINUTE: "));
           Serial.print(MI_MINUTE);
-          Serial.print(F("min\r\n"));
+          Serial.print(F("\r\n"));
 #elif defined(MI_HOUR)
+          Serial.print(F("MI_HOUR: "));
           Serial.print(MI_HOUR);
-          Serial.print(F("h\r\n"));
+          Serial.print(F("\r\n"));
 #endif
           break;
       }
@@ -223,12 +228,6 @@ bool post(String& s) {
 
   client.stop();
   return n == HTTP_MSG_LEN && r == '2';
-}
-
-void powerpulse(uint32_t len) {
-  digitalWrite(SARA_PWR_ON, HIGH);
-  delay(len);
-  digitalWrite(SARA_PWR_ON, LOW);
 }
 
 void pullup() {
@@ -343,13 +342,23 @@ bool valid(char c) {
   return (isPrintable(c) || c == '\r' || c == '\n');
 }
 
+bool wait(uint32_t timeout) {
+  uint32_t st = millis();
+  while (millis() - st < timeout) {
+    if (modem.testAT())
+      return true;
+    delay(500);
+  }
+  return false;
+}
+
 void setup() {
   pinMode(FET, OUTPUT);
   digitalWrite(FET, LOW);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
   pinMode(SARA_RESETN, OUTPUT);
-  digitalWrite(SARA_RESETN, LOW);
+  digitalWrite(SARA_RESETN, HIGH);
   pinMode(SARA_PWR_ON, OUTPUT);
   digitalWrite(SARA_PWR_ON, LOW);
 
