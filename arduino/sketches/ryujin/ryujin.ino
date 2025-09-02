@@ -15,7 +15,7 @@
 
 #define LF "\r\n"
 #define WAKE_DELAY 0
-#define SIGN(x) ((x) >= 0 ? '+' : '\0')
+#define SIGN(x) ((x) >= 0 ? "+" : "")
 
 typedef String& (*command)(char);
 
@@ -246,7 +246,7 @@ void pullup() {
     A0, A2, A3, A4, A5, A6, 2, 5, 13, 14
   };
 
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 8; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -387,7 +387,7 @@ void setup() {
   w25q.begin();
   if (battery() < 7)
     ctrl();
-    /* not reached */
+  /* not reached */
   w25q.sleep(true);
 
   enable();
