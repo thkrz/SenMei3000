@@ -50,7 +50,7 @@ W25QLOG w25q(CS);
 TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 char sid[63];
-String q;
+String msg;
 bool power;
 
 float battery() {
@@ -60,19 +60,19 @@ float battery() {
 }
 
 bool config() {
-  String s = "CONFIG\r\n";
+  msg = "CONFIG\r\n";
 #if defined(MI_MINUTE)
   uint16_t i = MI_MINUTE * 60;
 #elif defined(MI_HOUR)
   uint16_t i = MI_HOUR * 3600;
 #endif
-  s += i;
-  s += LF;
+  msg += i;
+  msg += LF;
   enable();
   for (char* p = sid; *p; p++)
-    s += rc(ident, *p);
+    msg += rc(ident, *p);
   disable();
-  return post(s);
+  return post(msg);
 }
 
 bool connect() {
@@ -163,7 +163,7 @@ bool handshake(char i) {
   static char cmd[3] = "a!";
 
   cmd[0] = i;
-  for (int j = 0; j < 3; j++) {
+  for (uint8_t j = 0; j < 3; j++) {
     socket.sendCommand(cmd, WAKE_DELAY);
     String s = readline(50);
     if (s.charAt(0) == i)
@@ -190,7 +190,7 @@ String& measure(char i) {
   uint8_t wait = s.substring(1, 4).toInt();
   //uint8_t num = s.charAt(4) - '0';
 
-  for (int j = 0; j <= wait; j++) {
+  for (uint8_t j = 0; j <= wait; j++) {
     if (socket.available() && socket.read() == i)
       break;
     delay(1000);
@@ -266,7 +266,13 @@ String& rc(command c, char i) {
 }
 
 String& readline(uint32_t timeout) {
+  static bool init = false;
   static String s;
+
+  if (!init) {
+    s.reserve(128);
+    init = true;
+  }
 
   s = "";
   uint32_t st = millis();
@@ -293,27 +299,31 @@ bool reconnect() {
   if (modem.isNetworkConnected() && modem.isGprsConnected() && ping())
     return true;
 
-  for (uint8_t j = 0; j < 3; j++) {
-    if (!modem.testAT()) {
-      pulse(SARA_RESETN, 150);
-      wait();
-      modem.init();
-    }
-    if (modem.waitForNetwork()) {
-      modem.gprsDisconnect();
-      if (modem.gprsConnect(APN) && ping())
-        return true;
-    }
-    modem.restart();
+  if (!modem.testAT()) {
+    pulse(SARA_RESETN, 150);
+    if (!wait() || !modem.init())
+      return false;
   }
-  return false;
+
+  if (modem.waitForNetwork()) {
+    modem.gprsDisconnect();
+    if(modem.gprsConnect(APN) && ping())
+      return true;
+  }
+  modem.restart();
+  if (modem.waitForNetwork()) {
+    modem.gprsDisconnect();
+    if(modem.gprsConnect(APN) && ping())
+      return true;
+  }
+
+  disconnect();
+  return connect();
 }
 
 bool resend() {
-  static String s;
-
-  while (w25q.read(s)) {
-    if (!post(s))
+  while (w25q.read(msg)) {
+    if (!post(msg))
       return false;
     w25q.unlink();
   }
@@ -375,12 +385,14 @@ bool wait(uint32_t timeout) {
 void setup() {
   pinMode(FET, OUTPUT);
   digitalWrite(FET, LOW);
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
+
   pinMode(SARA_RESETN, OUTPUT);
   digitalWrite(SARA_RESETN, LOW);
   pinMode(SARA_PWR_ON, OUTPUT);
   digitalWrite(SARA_PWR_ON, LOW);
+
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
 
   pullup();
 
@@ -399,7 +411,7 @@ void setup() {
   Wire.begin();
   SHTC3.begin();
 
-  q.reserve(256);
+  msg.reserve(256);
 
   if (!connect() || !config())
     die(1500);
@@ -419,29 +431,29 @@ void setup() {
 }
 
 void loop() {
-  q = "";
-  q += rtc.getEpoch();
-  q += LF;
+  msg = "";
+  msg += rtc.getEpoch();
+  msg += LF;
 
   float bat0 = battery();
-  q += '%';
-  q += SIGN(bat0);
-  q += bat0;
+  msg += '%';
+  msg += SIGN(bat0);
+  msg += bat0;
 
   bool psm = bat0 < BAT_LOW;
 
   SHTC3.readSample(true, psm);
   float st = SHTC3.getTemperature();
   float rh = SHTC3.getHumidity();
-  q += SIGN(st);
-  q += st;
-  q += SIGN(rh);
-  q += rh;
-  q += LF;
+  msg += SIGN(st);
+  msg += st;
+  msg += SIGN(rh);
+  msg += rh;
+  msg += LF;
 
   enable();
   for (char* p = sid; *p; p++)
-    q += rc(measure, *p);
+    msg += rc(measure, *p);
   disable();
 
   w25q.sleep(false);
@@ -449,8 +461,11 @@ void loop() {
     if (power)
       disconnect();
     w25q.append(q);
-  } else if (!reconnect() || !resend() || !post(q))
-    w25q.append(q);
+  } else {
+    if (!reconnect() || !post(msg))
+      w25q.append(msg);
+    resend();
+  }
   w25q.sleep(true);
 
 #if defined(MI_MINUTE)
