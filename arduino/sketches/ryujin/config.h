@@ -9,6 +9,8 @@
 #define HTTP_TIMEOUT 15000
 #define HTTP_MSG_LEN 10
 
+#define MODEM_TIMEOUT 10000
+
 #define SDI_TIMEOUT 3000
 #define SDI_ERROR(i, s) (s += i; s += "ERROR\r\n")
 

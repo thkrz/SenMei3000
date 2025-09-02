@@ -30,8 +30,10 @@ static void enable();
 static bool handshake(char);
 static String& ident(char);
 static String& measure(char);
+static bool ping();
 static bool post(String&);
 static void pullup();
+static void pulse(int, uint32_t);
 static String& rc(command, char);
 static String& readline(uint32_t timeout = SDI_TIMEOUT);
 static bool reconnect();
@@ -49,6 +51,7 @@ TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 char sid[63];
 String q;
+bool power;
 
 float battery() {
   analogRead(A1);
@@ -74,16 +77,13 @@ bool config() {
 
 bool connect() {
   SerialSARA.begin(115200);
-  digitalWrite(SARA_PWR_ON, HIGH);
-  delay(200);
-  digitalWrite(SARA_PWR_ON, LOW);
-  delay(2000);
-  if (!wait())
+  pulse(SARA_PWR_ON, 200);
+  if (!wait() || !modem.init() || !modem.waitForNetwork())
     return false;
-  modem.restart();
-  if (!modem.waitForNetwork())
+  if (!modem.gprsConnect(APN))
     return false;
-  return modem.gprsConnect(APN);
+  power = true;
+  return true;
 }
 
 void ctrl() {
@@ -142,12 +142,14 @@ void disable() {
 }
 
 void disconnect() {
+  client.stop();
+
   if (modem.isGprsConnected())
     modem.gprsDisconnect();
-  modem.poweroff();
-  // powerpulse(1500);
-  // power = false;
-  // SerialSARA.end();
+  if (modem.poweroff())
+    delay(1500);
+  SerialSARA.end();
+  power = false;
 }
 
 void enable() {
@@ -199,6 +201,15 @@ String& measure(char i) {
   return readline();
 }
 
+bool ping() {
+  TinyGsmClient probe(modem);
+  if (probe.connect("8.8.8.8", 53)) {
+    probe.stop();
+    return true;
+  }
+  return false;
+}
+
 bool post(String& s) {
   if (!client.connect(HOST, PORT))
     return false;
@@ -239,6 +250,12 @@ void pullup() {
     pinMode(pin[i], INPUT_PULLUP);
 }
 
+void pulse(int pin, uint32_t len) {
+  digitalWrite(pin, HIGH);
+  delay(len);
+  digitalWrite(pin, LOW);
+}
+
 String& rc(command c, char i) {
   String* s = &c(i);
   if (s->length() == 0) {
@@ -270,24 +287,26 @@ String& readline(uint32_t timeout) {
 }
 
 bool reconnect() {
-  if (!modem.isNetworkConnected()) {
+  if (!power)
+    return connect();
+
+  if (modem.isNetworkConnected() && modem.isGprsConnected() && ping())
+    return true;
+
+  for (uint8_t j = 0; j < 3; j++) {
+    if (!modem.testAT()) {
+      pulse(SARA_RESETN, 150);
+      wait();
+      modem.init();
+    }
+    if (modem.waitForNetwork()) {
+      modem.gprsDisconnect();
+      if (modem.gprsConnect(APN) && ping())
+        return true;
+    }
     modem.restart();
-    if (!modem.waitForNetwork())
-      return false;
   }
-  if (!modem.isGprsConnected())
-    return modem.gprsConnect(APN);
-  return true;
-  //if (modem.isNetworkConnected() && modem.isGprsConnected())
-  //  return true;
-  //if (power) {
-  //  disconnect();
-  //  delay(6000);
-  //}
-  //if (!connect())
-  //  return false;
-  //settime();
-  //return true;
+  return false;
 }
 
 bool resend() {
@@ -343,6 +362,7 @@ bool valid(char c) {
 }
 
 bool wait(uint32_t timeout) {
+  delay(2000);
   uint32_t st = millis();
   while (millis() - st < timeout) {
     if (modem.testAT())
@@ -358,7 +378,7 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
   pinMode(SARA_RESETN, OUTPUT);
-  digitalWrite(SARA_RESETN, HIGH);
+  digitalWrite(SARA_RESETN, LOW);
   pinMode(SARA_PWR_ON, OUTPUT);
   digitalWrite(SARA_PWR_ON, LOW);
 
@@ -367,7 +387,7 @@ void setup() {
   w25q.begin();
   if (battery() < 7)
     ctrl();
-  /* not reached */
+    /* not reached */
   w25q.sleep(true);
 
   enable();
@@ -426,8 +446,8 @@ void loop() {
 
   w25q.sleep(false);
   if (psm) {
-    //if (power)
-    disconnect();
+    if (power)
+      disconnect();
     w25q.append(q);
   } else if (!reconnect() || !resend() || !post(q))
     w25q.append(q);
