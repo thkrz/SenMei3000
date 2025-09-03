@@ -221,9 +221,11 @@ String& measure(char i) {
 }
 
 bool post(String& s) {
-  if (!modem.isNetworkConnected() || !client.connect(HOST, PORT))
-    if (!reconnect() || !client.connect(HOST, PORT))
-      return false;
+  if (!modem.isNetworkConnected() ||
+      !client.connect(HOST, PORT) ||
+      !reconnect() ||
+      !client.connect(HOST, PORT))
+    return false;
 
   int n = s.length();
   client.println(F("POST " PATH "/" STAT_CTRL_ID " HTTP/1.1"));
