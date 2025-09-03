@@ -17,7 +17,7 @@
 #define WAKE_DELAY 0
 #define SIGN(x) ((x) >= 0 ? "+" : "")
 
-typedef String& (*command)(char);
+typedef String &(*command)(char);
 
 static float battery();
 static bool config();
@@ -29,19 +29,20 @@ static void disconnect();
 static void enable();
 static bool gprs();
 static bool handshake(char);
-static String& ident(char);
-static String& measure(char);
-static bool post(String&);
+static String &ident(char);
+static String &measure(char);
+static bool post(String &);
 static void pullup();
 static void pulse(int, uint32_t);
-static String& rc(command, char);
-static String& readline(uint32_t timeout = SDI_TIMEOUT);
+static String &rc(command, char);
+static String &readline(uint32_t timeout = SDI_TIMEOUT);
 static bool reconnect();
 static bool resend();
 static void scan();
 static void schedule();
 static void settime();
 static bool valid(char);
+static bool verify();
 static bool wait(uint32_t timeout = MODEM_TIMEOUT);
 
 RTCZero rtc;
@@ -56,7 +57,7 @@ bool power;
 float battery() {
   analogRead(A1);
   int p = analogRead(A1);
-  return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
+  return (float)p * 0.014956; // R1 = 1.2M; R2 = 330k
 }
 
 bool config() {
@@ -71,7 +72,7 @@ bool config() {
   msg += i;
   msg += LF;
   enable();
-  for (char* p = sid; *p; p++)
+  for (char *p = sid; *p; p++)
     msg += rc(ident, *p);
   disable();
   return post(msg);
@@ -80,9 +81,12 @@ bool config() {
 bool connect() {
   SerialSARA.begin(115200);
   pulse(SARA_PWR_ON, 200);
-  power = true;
-  if (!wait() || !modem.init() || !modem.waitForNetwork())
+  if (!wait() || !modem.init() || !modem.waitForNetwork()) {
+    SerialSARA.end();
+    power = false;
     return false;
+  }
+  power = true;
   return gprs();
 }
 
@@ -91,35 +95,36 @@ void ctrl() {
   s.reserve(256);
 
   Serial.begin(19200);
-  while (!Serial);
+  while (!Serial)
+    ;
 
   for (;;) {
     if (Serial.available()) {
       char c = Serial.read();
       switch (c) {
-        case 'd':
-          w25q.seek(0);
-          while (w25q.read(s))
-            Serial.print(s);
-          break;
-        case 'f':
-          w25q.format();
-          Serial.print("chip formatted\r\n");
-          break;
-        case 'i':
-          Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
-          Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
-          Serial.print(F("APN: " APN "\r\n"));
+      case 'd':
+        w25q.seek(0);
+        while (w25q.read(s))
+          Serial.print(s);
+        break;
+      case 'f':
+        w25q.format();
+        Serial.print("chip formatted\r\n");
+        break;
+      case 'i':
+        Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
+        Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
+        Serial.print(F("APN: " APN "\r\n"));
 #if defined(MI_MINUTE)
-          Serial.print(F("MI_MINUTE: "));
-          Serial.print(MI_MINUTE);
-          Serial.print(F("\r\n"));
+        Serial.print(F("MI_MINUTE: "));
+        Serial.print(MI_MINUTE);
+        Serial.print(F("\r\n"));
 #elif defined(MI_HOUR)
-          Serial.print(F("MI_HOUR: "));
-          Serial.print(MI_HOUR);
-          Serial.print(F("\r\n"));
+        Serial.print(F("MI_HOUR: "));
+        Serial.print(MI_HOUR);
+        Serial.print(F("\r\n"));
 #endif
-          break;
+        break;
       }
       Serial.print(F("#"));
     }
@@ -145,19 +150,10 @@ void disconnect() {
   client.stop();
   if (modem.isGprsConnected())
     modem.gprsDisconnect();
-  if (modem.poweroff()) {
+  if (modem.poweroff())
     delay(5000L);
-    power = false;
-    for (uint8_t j = 0; j < 3; j++) {
-      if (modem.testAT()) {
-        power = true;
-        break;
-      }
-      delay(200L);
-    }
-  }
-  if (!power)
-    SerialSARA.end();
+  power = false;
+  SerialSARA.end();
 }
 
 void enable() {
@@ -168,12 +164,15 @@ void enable() {
 }
 
 bool gprs() {
-  for (uint8_t j = 0; j < 2; j++) {
+  uint8_t j = 1;
+  for (;;) {
     if (modem.gprsConnect(APN)) {
       settime();
       return true;
     }
-    delay(1000L);
+    if (++j == 3)
+      break;
+    delay(1000L * j * 2);
   }
   return false;
 }
@@ -191,7 +190,7 @@ bool handshake(char i) {
   return false;
 }
 
-String& ident(char i) {
+String &ident(char i) {
   static char cmd[4] = "aI!";
 
   cmd[0] = i;
@@ -199,7 +198,7 @@ String& ident(char i) {
   return readline();
 }
 
-String& measure(char i) {
+String &measure(char i) {
   static char st[4] = "aM!";
   static char rd[5] = "aD0!";
 
@@ -207,7 +206,7 @@ String& measure(char i) {
   socket.sendCommand(st, WAKE_DELAY);
   String s = readline();
   uint8_t wait = s.substring(1, 4).toInt();
-  //uint8_t num = s.charAt(4) - '0';
+  // uint8_t num = s.charAt(4) - '0';
 
   for (uint8_t j = 0; j <= wait; j++) {
     if (socket.available() && socket.read() == i)
@@ -220,8 +219,8 @@ String& measure(char i) {
   return readline();
 }
 
-bool post(String& s) {
-  if (!modem.isNetworkConnected() || !client.connect(HOST, PORT) || !reconnect() || !client.connect(HOST, PORT))
+bool post(String &s) {
+  if (!verify())
     return false;
 
   int n = s.length();
@@ -252,11 +251,9 @@ bool post(String& s) {
 }
 
 void pullup() {
-  int8_t pin[10] = {
-    A0, A2, A3, A4, A5, A6, 2, 5, 13, 14
-  };
+  int8_t pin[10] = {A0, A2, A3, A4, A5, A6, 2, 5, 13, 14};
 
-  for (uint8_t i = 0; i < 8; i++)
+  for (uint8_t i = 0; i < 10; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -266,8 +263,8 @@ void pulse(int pin, uint32_t len) {
   digitalWrite(pin, LOW);
 }
 
-String& rc(command c, char i) {
-  String* s = &c(i);
+String &rc(command c, char i) {
+  String *s = &c(i);
   if (s->length() == 0) {
     *s += i;
     *s += LF;
@@ -275,7 +272,7 @@ String& rc(command c, char i) {
   return *s;
 }
 
-String& readline(uint32_t timeout) {
+String &readline(uint32_t timeout) {
   static bool init = false;
   static String s;
 
@@ -303,9 +300,6 @@ String& readline(uint32_t timeout) {
 }
 
 bool reconnect() {
-  if (!power)
-    return connect();
-
   if (!modem.testAT()) {
     pulse(SARA_RESETN, 150L);
     if (!wait() || !modem.init()) {
@@ -323,12 +317,9 @@ bool reconnect() {
     }
   }
 
-  client.stop();
-  if (modem.isGprsConnected()) {
-    modem.gprsDisconnect();
-    delay(200L);
-  }
-  return gprs();
+  if (!modem.isGprsConnected())
+    return gprs();
+  return true;
 }
 
 bool resend() {
@@ -377,8 +368,22 @@ void settime() {
   }
 }
 
-bool valid(char c) {
-  return (isPrintable(c) || c == '\r' || c == '\n');
+bool valid(char c) { return (isPrintable(c) || c == '\r' || c == '\n'); }
+
+bool verify() {
+  if (!power && !connect())
+    return false;
+  else if (!modem.isNetworkConnected() || !modem.isGprsConnected())
+    if (!reconnect())
+      return false;
+
+  if (client.connect(HOST, PORT))
+    return true;
+  client.stop();
+  delay(200);
+  if (!reconnect())
+    return false;
+  return client.connect(HOST, PORT);
 }
 
 bool wait(uint32_t timeout) {
@@ -460,7 +465,7 @@ void loop() {
   msg += LF;
 
   enable();
-  for (char* p = sid; *p; p++)
+  for (char *p = sid; *p; p++)
     msg += rc(measure, *p);
   disable();
 
