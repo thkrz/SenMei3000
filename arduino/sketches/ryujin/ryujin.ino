@@ -221,10 +221,7 @@ String& measure(char i) {
 }
 
 bool post(String& s) {
-  if (!modem.isNetworkConnected() ||
-      !client.connect(HOST, PORT) ||
-      !reconnect() ||
-      !client.connect(HOST, PORT))
+  if (!modem.isNetworkConnected() || !client.connect(HOST, PORT) || !reconnect() || !client.connect(HOST, PORT))
     return false;
 
   int n = s.length();
