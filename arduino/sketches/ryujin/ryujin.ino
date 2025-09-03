@@ -50,7 +50,7 @@ TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 char sid[63];
 String msg;
-bool power;
+bool power = false;
 
 float battery() {
   analogRead(A1);
@@ -77,12 +77,17 @@ bool config() {
 bool connect() {
   SerialSARA.begin(115200);
   pulse(SARA_PWR_ON, 200);
+  power = true;
   if (!wait() || !modem.init() || !modem.waitForNetwork())
     return false;
-  if (!modem.gprsConnect(APN))
-    return false;
-  power = true;
-  return true;
+  for (uint8_t j = 0; j < 2; j++) {
+    if (modem.gprsConnect(APN)) {
+      settime;
+      return true;
+    }
+    delay(1000);
+  }
+  return false;
 }
 
 void ctrl() {
@@ -142,13 +147,21 @@ void disable() {
 
 void disconnect() {
   client.stop();
-
   if (modem.isGprsConnected())
     modem.gprsDisconnect();
-  if (modem.poweroff())
-    delay(1500);
-  SerialSARA.end();
-  power = false;
+  if (modem.poweroff()) {
+    delay(5000);
+    power = false;
+    for (uint8_t j = 0; j < 3; j++) {
+      if (modem.testAT()) {
+        power = true;
+        break
+      }
+      delay(200);
+    }
+  }
+  if (!power)
+    SerialSARA.end();
 }
 
 void enable() {
@@ -201,8 +214,9 @@ String& measure(char i) {
 }
 
 bool post(String& s) {
-  if (!client.connect(HOST, PORT))
-    return false;
+  if (!modem.isNetworkConnected() || !client.connect(HOST, PORT))
+    if (!reconnect() || !client.connect(HOST, PORT))
+      return false;
 
   int n = s.length();
   client.println(F("POST " PATH "/" STAT_CTRL_ID " HTTP/1.1"));
@@ -236,7 +250,7 @@ void pullup() {
     A0, A2, A3, A4, A5, A6, 2, 5, 13, 14
   };
 
-  for (int i = 0; i < 8; i++)
+  for (uint8_t i = 0; i < 8; i++)
     pinMode(pin[i], INPUT_PULLUP);
 }
 
@@ -286,16 +300,15 @@ bool reconnect() {
   if (!power)
     return connect();
 
-  if (modem.isNetworkConnected() && modem.isGprsConnected())
-    return true;
-
   if (!modem.testAT()) {
     pulse(SARA_RESETN, 150);
     if (!wait() || !modem.init()) {
       disconnect();
       return connect();
     }
-  }
+    settime();
+  } else
+    modem.init();
 
   if (!modem.waitForNetwork()) {
     modem.restart();
@@ -305,9 +318,17 @@ bool reconnect() {
     }
   }
 
-  modem.gprsDisconnect();
-  delay(200);
-  return modem.gprsConnect(APN);
+  client.stop();
+  if (modem.isGprsConnected()) {
+    modem.gprsDisconnect();
+    delay(200);
+  }
+  for (uint8_t j = 0; j < 2; j++) {
+    if (modem.gprsConnect(APN))
+      return true;
+    delay(1000);
+  }
+  return false;
 }
 
 bool resend() {
@@ -397,16 +418,14 @@ void setup() {
   if (sid[0] == '\0')
     die(500);
 
-  Wire.begin();
-  SHTC3.begin();
-
   msg.reserve(256);
 
-  if (!connect() || !config())
-    die(1500);
-
+  Wire.begin();
+  SHTC3.begin();
   rtc.begin();
-  settime();
+
+  if (!config())
+    die(1500);
 
   rtc.setAlarmSeconds(0);
 #if defined(MI_MINUTE)
@@ -449,11 +468,12 @@ void loop() {
   if (psm) {
     if (power)
       disconnect();
-    w25q.append(q);
+    w25q.append(msg);
   } else {
-    if (!reconnect() || !post(msg))
+    if (!post(msg))
       w25q.append(msg);
-    resend();
+    else
+      resend();
   }
   w25q.sleep(true);
 
