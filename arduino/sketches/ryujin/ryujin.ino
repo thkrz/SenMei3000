@@ -30,7 +30,6 @@ static void enable();
 static bool handshake(char);
 static String& ident(char);
 static String& measure(char);
-static bool ping();
 static bool post(String&);
 static void pullup();
 static void pulse(int, uint32_t);
@@ -201,15 +200,6 @@ String& measure(char i) {
   return readline();
 }
 
-bool ping() {
-  TinyGsmClient probe(modem);
-  if (probe.connect("8.8.8.8", 53)) {
-    probe.stop();
-    return true;
-  }
-  return false;
-}
-
 bool post(String& s) {
   if (!client.connect(HOST, PORT))
     return false;
@@ -296,29 +286,28 @@ bool reconnect() {
   if (!power)
     return connect();
 
-  if (modem.isNetworkConnected() && modem.isGprsConnected() && ping())
+  if (modem.isNetworkConnected() && modem.isGprsConnected())
     return true;
 
   if (!modem.testAT()) {
     pulse(SARA_RESETN, 150);
-    if (!wait() || !modem.init())
-      return false;
+    if (!wait() || !modem.init()) {
+      disconnect();
+      return connect();
+    }
   }
 
-  if (modem.waitForNetwork()) {
-    modem.gprsDisconnect();
-    if(modem.gprsConnect(APN) && ping())
-      return true;
-  }
-  modem.restart();
-  if (modem.waitForNetwork()) {
-    modem.gprsDisconnect();
-    if(modem.gprsConnect(APN) && ping())
-      return true;
+  if (!modem.waitForNetwork()) {
+    modem.restart();
+    if (!wait() || !modem.init() || !modem.waitForNetwork()) {
+      disconnect();
+      return connect();
+    }
   }
 
-  disconnect();
-  return connect();
+  modem.gprsDisconnect();
+  delay(200);
+  return modem.gprsConnect(APN);
 }
 
 bool resend() {

@@ -1,0 +1,6 @@
+The following is my sketch for an arduino mkr nb 1500 with the SARA-R4 chip. It is mainly a data logger that goes to stand by for about 15 minutes.
+I am mostly interested in my reconnect method, do you think this is correct and good practice how I try to reconnect after a connection loss?
+Specifically the hardware reset (the pins are inverted so LOW is normal, and HIGH is rest)?
+
+Sketch:
+
