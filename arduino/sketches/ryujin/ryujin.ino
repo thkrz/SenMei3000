@@ -27,6 +27,7 @@ static void die(uint32_t);
 static void disable();
 static void disconnect();
 static void enable();
+static bool gprs();
 static bool handshake(char);
 static String& ident(char);
 static String& measure(char);
@@ -50,7 +51,7 @@ TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 char sid[63];
 String msg;
-bool power = false;
+bool power;
 
 float battery() {
   analogRead(A1);
@@ -80,14 +81,7 @@ bool connect() {
   power = true;
   if (!wait() || !modem.init() || !modem.waitForNetwork())
     return false;
-  for (uint8_t j = 0; j < 2; j++) {
-    if (modem.gprsConnect(APN)) {
-      settime;
-      return true;
-    }
-    delay(1000);
-  }
-  return false;
+  return gprs();
 }
 
 void ctrl() {
@@ -155,7 +149,7 @@ void disconnect() {
     for (uint8_t j = 0; j < 3; j++) {
       if (modem.testAT()) {
         power = true;
-        break
+        break;
       }
       delay(200);
     }
@@ -169,6 +163,17 @@ void enable() {
   digitalWrite(FET, HIGH);
   socket.begin();
   delay(600);
+}
+
+bool gprs() {
+  for (uint8_t j = 0; j < 2; j++) {
+    if (modem.gprsConnect(APN)) {
+      settime();
+      return true;
+    }
+    delay(1000);
+  }
+  return false;
 }
 
 bool handshake(char i) {
@@ -306,7 +311,6 @@ bool reconnect() {
       disconnect();
       return connect();
     }
-    settime();
   } else
     modem.init();
 
@@ -323,12 +327,7 @@ bool reconnect() {
     modem.gprsDisconnect();
     delay(200);
   }
-  for (uint8_t j = 0; j < 2; j++) {
-    if (modem.gprsConnect(APN))
-      return true;
-    delay(1000);
-  }
-  return false;
+  return gprs();
 }
 
 bool resend() {
@@ -424,7 +423,7 @@ void setup() {
   SHTC3.begin();
   rtc.begin();
 
-  if (!config())
+  if (!connect() || !config())
     die(1500);
 
   rtc.setAlarmSeconds(0);
