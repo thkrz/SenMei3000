@@ -61,6 +61,8 @@ float battery() {
 
 bool config() {
   msg = "CONFIG\r\n";
+  msg += modem.getIMSI();
+  msg += LF;
 #if defined(MI_MINUTE)
   uint16_t i = MI_MINUTE * 60;
 #elif defined(MI_HOUR)
@@ -144,14 +146,14 @@ void disconnect() {
   if (modem.isGprsConnected())
     modem.gprsDisconnect();
   if (modem.poweroff()) {
-    delay(5000);
+    delay(5000L);
     power = false;
     for (uint8_t j = 0; j < 3; j++) {
       if (modem.testAT()) {
         power = true;
         break;
       }
-      delay(200);
+      delay(200L);
     }
   }
   if (!power)
@@ -162,7 +164,7 @@ void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
   digitalWrite(FET, HIGH);
   socket.begin();
-  delay(600);
+  delay(600L);
 }
 
 bool gprs() {
@@ -171,7 +173,7 @@ bool gprs() {
       settime();
       return true;
     }
-    delay(1000);
+    delay(1000L);
   }
   return false;
 }
@@ -210,7 +212,7 @@ String& measure(char i) {
   for (uint8_t j = 0; j <= wait; j++) {
     if (socket.available() && socket.read() == i)
       break;
-    delay(1000);
+    delay(1000L);
   }
   socket.clearBuffer();
   rd[0] = i;
@@ -306,7 +308,7 @@ bool reconnect() {
     return connect();
 
   if (!modem.testAT()) {
-    pulse(SARA_RESETN, 150);
+    pulse(SARA_RESETN, 150L);
     if (!wait() || !modem.init()) {
       disconnect();
       return connect();
@@ -325,7 +327,7 @@ bool reconnect() {
   client.stop();
   if (modem.isGprsConnected()) {
     modem.gprsDisconnect();
-    delay(200);
+    delay(200L);
   }
   return gprs();
 }
@@ -381,12 +383,12 @@ bool valid(char c) {
 }
 
 bool wait(uint32_t timeout) {
-  delay(2000);
+  delay(2000L);
   uint32_t st = millis();
   while (millis() - st < timeout) {
     if (modem.testAT())
       return true;
-    delay(500);
+    delay(500L);
   }
   return false;
 }
@@ -415,7 +417,7 @@ void setup() {
   scan();
   disable();
   if (sid[0] == '\0')
-    die(500);
+    die(500L);
 
   msg.reserve(256);
 
@@ -424,7 +426,7 @@ void setup() {
   rtc.begin();
 
   if (!connect() || !config())
-    die(1500);
+    die(1500L);
 
   rtc.setAlarmSeconds(0);
 #if defined(MI_MINUTE)

@@ -1,125 +1,109 @@
 #include <RTCZero.h>
-
 #include "gsm.h"
-
-#define CS  7
 
 #define APN "iot.1nce.net"
 
-static bool connect(bool fastboot = false);
-static void die(uint32_t);
-static void disable();
+static bool connect();
 static void disconnect();
-static void enable();
-static void powerpulse(uint32_t);
+static bool gprs();
+static bool ping();
+static void pulse(int, uint32_t);
 static bool reconnect();
-static void schedule();
 static void settime();
+static bool wait(uint32_t timeout = MODEM_TIMEOUT);
 
 RTCZero rtc;
 TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
+bool power;
 
-bool connect(bool fastboot) {
-  Serial.println("Begin SerialSARA");
+bool connect() {
+  Serial.println("Bringing SerialSARA up");
   SerialSARA.begin(115200);
-  Serial.println("Send powerpulse");
-  powerpulse(150);
-  delay(6000);
-  Serial.println("Restart modem");
-  modem.restart();
-  Serial.print("Wait for network...");
-  if (!modem.waitForNetwork()) {
-    Serial.println("ERROR");
+  Serial.println("Power pulse");
+  pulse(SARA_PWR_ON, 200);
+  power = true;
+  if (!wait() || !modem.init() || !modem.waitForNetwork())
     return false;
-  }
-  Serial.println("OK");
-  Serial.print("Connect to " APN "...");
-  if (!modem.gprsConnect(APN)) {
-    Serial.println("ERROR");
-    return false;
-  }
-  Serial.println("OK");
-  return true;
-}
-
-void die(uint32_t p) {
-  for(;;) {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(p);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(p);
-  }
-}
-
-void disable() {
-  digitalWrite(LED_BUILTIN, LOW);
+  Serial.println("Connecting GPRS");
+  return gprs();
 }
 
 void disconnect() {
+  Serial.println("Disconnect");
+  client.stop();
   if (modem.isGprsConnected())
     modem.gprsDisconnect();
-  modem.poweroff();
-  // powerpulse(1500);
-  // power = false;
-  // SerialSARA.end();
+  if (modem.poweroff()) {
+    delay(5000);
+    power = false;
+    for (uint8_t j = 0; j < 3; j++) {
+      if (modem.testAT()) {
+        power = true;
+        break;
+      }
+      delay(200);
+    }
+  }
+  if (!power)
+    SerialSARA.end();
 }
 
-void enable() {
-  digitalWrite(LED_BUILTIN, HIGH);
+bool gprs() {
+  for (uint8_t j = 0; j < 5; j++) {
+    if (modem.gprsConnect(APN)) {
+      settime();
+      return true;
+    }
+    delay(1000);
+  }
+  return false;
 }
 
-void powerpulse(uint32_t len) {
-  digitalWrite(SARA_PWR_ON, HIGH);
+bool ping() {
+  if (!modem.isNetworkConnected() || !client.connect("8.8.8.8", 53))
+    if (!reconnect() || !client.connect("8.8.8.8", 53))
+      return false;
+  client.stop();
+  return true;
+}
+
+void pulse(int pin, uint32_t len) {
+  digitalWrite(pin, HIGH);
   delay(len);
-  digitalWrite(SARA_PWR_ON, LOW);
+  digitalWrite(pin, LOW);
 }
 
 bool reconnect() {
-  //Serial.print("Connect to exmple.com...");
-  //if (!client.connect("example.com", 80)) {
-  //  Serial.println("ERROR");
-  //  return false;
-  //} else {
-  //  Serial.println("OK");
-  //  client.stop();
-  //}
-  Serial.print("Is network connected: ");
-  if (!modem.isNetworkConnected()) {
-    Serial.println("no");
-    Serial.println("Restart modem");
-    modem.restart();
-    Serial.print("Wait for network...");
-    if (!modem.waitForNetwork(90000L)) {
-      Serial.println("ERROR");
-      return false;
-    }
-    Serial.println("OK");
-  } else
-    Serial.println("yes");
+  Serial.println("Reconnect...");
+  if (!power)
+    return connect();
 
-  Serial.print("Is GPRS connected: ");
-  if (!modem.isGprsConnected()) {
-    Serial.println("no");
-    Serial.print("Connect to " APN "...");
-    if (!modem.gprsConnect(APN)) {
-      Serial.println("ERROR");
-      return false;
+  if (!modem.testAT()) {
+    Serial.println("RESET");
+    pulse(SARA_RESETN, 150);
+    if (!wait() || !modem.init()) {
+      disconnect();
+      return connect();
     }
-    Serial.println("OK");
+  } else
+    modem.init();
+
+  if (!modem.waitForNetwork()) {
+    Serial.println("RESTART");
+    modem.restart();
+    if (!wait() || !modem.init() || !modem.waitForNetwork()) {
+      disconnect();
+      return connect();
+    }
   }
-  Serial.println("yes");
-  return true;
-  //if (modem.isNetworkConnected() && modem.isGprsConnected())
-  //  return true;
-  //if (power) {
-  //  disconnect();
-  //  delay(6000);
-  //}
-  //if (!connect())
-  //  return false;
-  //settime();
-  //return true;
+
+  client.stop();
+  if (modem.isGprsConnected()) {
+    modem.gprsDisconnect();
+    delay(200);
+  }
+  return gprs();
 }
 
 void settime() {
@@ -127,48 +111,39 @@ void settime() {
   float z;
 
   if (modem.getNetworkTime(&Y, &m, &d, &h, &b, &s, &z)) {
-    rtc.setDate(d, m, (Y-2000));
+    rtc.setDate(d, m, (Y - 2000));
     rtc.setTime(h, b, s);
   }
 }
 
+bool wait(uint32_t timeout) {
+  delay(2000);
+  uint32_t st = millis();
+  while (millis() - st < timeout) {
+    if (modem.testAT())
+      return true;
+    delay(500);
+  }
+  return false;
+}
+
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
   pinMode(SARA_RESETN, OUTPUT);
   digitalWrite(SARA_RESETN, LOW);
   pinMode(SARA_PWR_ON, OUTPUT);
   digitalWrite(SARA_PWR_ON, LOW);
 
-  Serial.begin(19200);
-  while(!Serial);
-  delay(1000);
+  rtc.begin();
+
+  Serial.begin(9600);
+  while (!Serial);
 
   if (!connect())
-    die(1000);
-
-  rtc.begin();
-  Serial.print("Setting time...");
-  settime();
-  Serial.println("OK");
-
-  rtc.setAlarmSeconds(0);
-  rtc.enableAlarm(rtc.MATCH_SS);
+    Serial.println("Connection error");
 }
 
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);
-  Serial.println(rtc.getMinutes());
-  reconnect();
-  Serial.println("5 s");
-  delay(5000);
-  Serial.print("Connect to exmple.com...");
-  if (!client.connect("example.com", 80, 5)) {
-    Serial.println("ERROR");
-  } else {
-    Serial.println("OK");
-    client.stop();
-  }
-  digitalWrite(LED_BUILTIN, LOW);
-  rtc.standbyMode();
+  Serial.print("PING: ");
+  Serial.println(ping());
+  delay(15000L);
 }

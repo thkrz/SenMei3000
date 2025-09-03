@@ -6,13 +6,10 @@
 #define PORT 8000
 #define USER_AGENT "Ryujin/1.0"
 
-#define HTTP_TIMEOUT 15000
+#define HTTP_TIMEOUT 15000L
 #define HTTP_MSG_LEN 10
 
-#define MODEM_TIMEOUT 8000
-
-#define SDI_TIMEOUT 3000
-#define SDI_ERROR(i, s) (s += i; s += "ERROR\r\n")
+#define SDI_TIMEOUT 3000L
 
 #define BAT_LOW 11.9
 

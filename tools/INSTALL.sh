@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/bash -e
 PREFIX="$HOME/.local"
-python -m zipapp ryujin -o ryujin.pyz -p "/usr/bin/python3"
+python3 -m zipapp ryujin -o ryujin.pyz -p "/usr/bin/python3"
 install -m755 ryujin.pyz "$PREFIX/bin"
-install -m644 Ryujin.desktop "$PREFIX/share/applications"
+desktop-file-install Ryujin.desktop
 rm -f ryujin.pyz
