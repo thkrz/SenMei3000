@@ -10019,7 +10019,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "footprints:T522V"
+		(property "Footprint" "footprints:EEFCX0J101R"
 			(at 221.9452 38.1 0)
 			(effects
 				(font
@@ -10046,7 +10046,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "T522V227M006ATE025"
+		(property "MPN" "EEFCX0J221R"
 			(at 220.98 34.29 0)
 			(effects
 				(font
