@@ -8572,7 +8572,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1uF 6.3V 0805"
+		(property "MPN" "1uF 6.3V 0603"
 			(at 160.02 33.02 0)
 			(effects
 				(font
@@ -9071,7 +9071,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1uF 6.3V 0805"
+		(property "MPN" "1uF 6.3V 0603"
 			(at 189.23 33.02 0)
 			(effects
 				(font
@@ -9149,7 +9149,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0.1uF 6.3V 0805"
+		(property "MPN" "0.1uF 6.3V 0603"
 			(at 200.66 36.83 0)
 			(effects
 				(font
@@ -9953,7 +9953,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_Slide_SPDT_Straight_CK_OS102011MS2Q"
 			(at 190.5 53.34 0)
 			(effects
 				(font
@@ -9972,6 +9972,15 @@
 			)
 		)
 		(property "Description" "Switch, single pole double throw"
+			(at 190.5 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "OS102011MS2QN1"
 			(at 190.5 53.34 0)
 			(effects
 				(font
@@ -10104,7 +10113,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_4x5.3"
+		(property "Footprint" "footprints:T522V"
 			(at 221.9452 38.1 0)
 			(effects
 				(font
@@ -10131,7 +10140,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "220uF 6.3V"
+		(property "MPN" "T522V227M006ATE025"
 			(at 220.98 34.29 0)
 			(effects
 				(font
@@ -13431,6 +13440,15 @@
 		)
 		(property "Description" "Ideal Diode With Input Polarity Protection 1.5 - 5.5V  Input Voltage, 1.5A Output Current, Ron 141 mOhm, SC-70-6"
 			(at 177.8 49.784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "LM66100DCKT"
+			(at 177.8 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)

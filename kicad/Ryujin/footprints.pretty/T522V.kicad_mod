@@ -1,0 +1,202 @@
+(footprint "T522V"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "T522V")
+	(tags "Capacitor Polarised")
+	(property "Reference" "C**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "3c5e4990-61f2-4847-80e1-98528a900f26")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "T522V"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "96a988d1-f2bd-416f-b1e2-ec37a1c3918f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ef988ef0-4020-4634-8330-baf4dda11c1c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "10134129-0167-4f1d-bd9e-364e84d2ab69")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -3.65 -2.15)
+		(end 3.65 -2.15)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "a716b766-a798-47fc-a13b-1154d2c07d9d")
+	)
+	(fp_line
+		(start 3.65 2.15)
+		(end -3.65 2.15)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "e1d4fa33-4e6a-40ae-8691-ca97dbd55b1a")
+	)
+	(fp_circle
+		(center -4.72 0)
+		(end -4.72 0.05)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "bc996b41-eca8-4b64-8800-b48c407d0cbe")
+	)
+	(fp_line
+		(start -5.105 -3.15)
+		(end 5.105 -3.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "157d1e91-6954-4952-baca-39ad62371652")
+	)
+	(fp_line
+		(start -5.105 3.15)
+		(end -5.105 -3.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "25186798-4bd5-45b8-84cc-43538f1eb567")
+	)
+	(fp_line
+		(start 5.105 -3.15)
+		(end 5.105 3.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "70190d8d-9d2e-4d17-8de1-fde061592a84")
+	)
+	(fp_line
+		(start 5.105 3.15)
+		(end -5.105 3.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "323b159a-4900-49ff-80d3-a7ea04af7d91")
+	)
+	(fp_line
+		(start -3.65 -2.15)
+		(end 3.65 -2.15)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "157eed1a-ec5e-48f3-a478-223f8b9c658f")
+	)
+	(fp_line
+		(start -3.65 2.15)
+		(end -3.65 -2.15)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "23f6069d-3e32-46ec-a797-a1a6d07edef2")
+	)
+	(fp_line
+		(start 3.65 -2.15)
+		(end 3.65 2.15)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5a39f7ea-be2c-4c7e-95af-9fe3c149d048")
+	)
+	(fp_line
+		(start 3.65 2.15)
+		(end -3.65 2.15)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6385c999-c286-431a-817a-98cfa617b775")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "52338d3f-717c-48e1-9326-d81a8727e813")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -3.12 0)
+		(size 2.37 2.43)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "eb2359b8-5a09-4ba8-8f76-2cb4b33f3fbe")
+	)
+	(pad "2" smd rect
+		(at 3.12 0)
+		(size 2.37 2.43)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ba8e20eb-c065-4848-b13e-6e0c505ec9e9")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3dmodels/T522V227M006ATE025.stp"
+		(offset
+			(xyz -3.670000021 -2.299999918 0.1299999933)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

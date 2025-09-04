@@ -1,4 +1,4 @@
-24826259436421636
+24828016411440074
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -99840,6 +99840,13 @@ MOSFET (N-Channel)
 0
 12
 12
+footprints
+T522V
+T522V
+Capacitor Polarised
+0
+2
+2
 footprints
 TMUXDBVR
 
