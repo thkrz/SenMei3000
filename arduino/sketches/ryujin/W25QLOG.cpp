@@ -1,16 +1,16 @@
 #include "W25QLOG.h"
 
+#define MAX_LEN 256
 #define SHIFT(a, n) ((a) += 3 + (n))
 
-W25QLOG::W25QLOG(int cs)
-  : _flash(cs) {}
+W25QLOG::W25QLOG(int cs) : _flash(cs) {}
 
 void W25QLOG::begin() {
   _flash.begin();
 
   _rp = 0;
   _wp = 0;
-  while (_wp < _flash.getCapacity()) {
+  while (_wp + 1 < _flash.getCapacity()) {
     uint16_t len = _flash.readWord(_wp + 1);
     if (len == 0xFFFF)
       break;
@@ -20,6 +20,8 @@ void W25QLOG::begin() {
 
 bool W25QLOG::append(String &s) {
   uint16_t len = s.length() + 1;
+  if (len >= MAX_LEN - 1)
+    return false;
 
   if (_wp + 3 + len > _flash.getCapacity())
     return false;
@@ -31,16 +33,18 @@ bool W25QLOG::append(String &s) {
   return true;
 }
 
-bool W25QLOG::format() {
-  return _flash.eraseChip();
-}
+bool W25QLOG::format() { return _flash.eraseChip(); }
 
 bool W25QLOG::read(String &s) {
+  char buf[MAX_LEN];
+
   while (_rp < _wp) {
     uint16_t len = _flash.readWord(_rp + 1);
+    if (len < 1 || len >= MAX_LEN - 1)
+      return false;
     if (_flash.readByte(_rp) == 0xFF) {
-      char buf[len];
       _flash.readCharArray(_rp + 3, buf, len);
+      buf[len] = '\0';
       s = "";
       s += buf;
       return true;
@@ -50,9 +54,7 @@ bool W25QLOG::read(String &s) {
   return false;
 }
 
-void W25QLOG::seek(uint32_t a) {
-  _rp = a;
-}
+void W25QLOG::seek(uint32_t a) { _rp = a; }
 
 void W25QLOG::sleep(bool state) {
   if (state)
@@ -61,6 +63,4 @@ void W25QLOG::sleep(bool state) {
     _flash.powerUp();
 }
 
-void W25QLOG::unlink() {
-  _flash.writeByte(_rp, 0x00);
-}
+void W25QLOG::unlink() { _flash.writeByte(_rp, 0x00); }
