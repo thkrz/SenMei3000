@@ -81,12 +81,9 @@ bool config() {
 bool connect() {
   SerialSARA.begin(115200);
   pulse(SARA_PWR_ON, 200);
-  if (!wait() || !modem.init() || !modem.waitForNetwork()) {
-    SerialSARA.end();
-    power = false;
-    return false;
-  }
   power = true;
+  if (!wait() || !modem.init() || !modem.waitForNetwork())
+    return false;
   return gprs();
 }
 
@@ -373,7 +370,7 @@ bool valid(char c) { return (isPrintable(c) || c == '\r' || c == '\n'); }
 bool verify() {
   if (!power && !connect())
     return false;
-  else if (!modem.isNetworkConnected() || !modem.isGprsConnected())
+  if (!modem.isNetworkConnected() || !modem.isGprsConnected())
     if (!reconnect())
       return false;
 
