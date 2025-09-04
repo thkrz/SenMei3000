@@ -19,31 +19,31 @@
 
 typedef String &(*command)(char);
 
-static float battery();
-static bool config();
-static bool connect();
-static void ctrl();
-static void die(uint32_t);
-static void disable();
-static void disconnect();
-static void enable();
-static bool gprs();
-static bool handshake(char);
-static String &ident(char);
-static String &measure(char);
-static bool post(String &);
-static void pullup();
-static void pulse(int, uint32_t);
-static String &rc(command, char);
-static String &readline(uint32_t timeout = SDI_TIMEOUT);
-static bool reconnect();
-static bool resend();
-static void scan();
-static void schedule();
-static void settime();
-static bool valid(char);
-static bool verify();
-static bool wait(uint32_t timeout = MODEM_TIMEOUT);
+float battery();
+bool config();
+bool connect();
+void ctrl();
+void die(uint32_t);
+void disable();
+void disconnect();
+void enable();
+bool gprs();
+bool handshake(char);
+String &ident(char);
+String &measure(char);
+bool post(String &);
+void pullup();
+void pulse(int, uint32_t);
+String &rc(command, char);
+String &readline(uint32_t timeout = SDI_TIMEOUT);
+bool reconnect();
+bool resend();
+void scan();
+void schedule();
+void settime();
+bool valid(char);
+bool verify();
+bool wait(uint32_t timeout = MODEM_TIMEOUT);
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
@@ -365,7 +365,9 @@ void settime() {
   }
 }
 
-bool valid(char c) { return (isPrintable(c) || c == '\r' || c == '\n'); }
+bool valid(char c) {
+  return (isPrintable(c) || c == '\r' || c == '\n');
+}
 
 bool verify() {
   if (!power && !connect())
