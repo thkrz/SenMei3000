@@ -1,5 +1,5 @@
 #!/bin/bash -e
-FIRMWARE="\"$(cat fw.txt)\""
+FIRMWARE="\"$(git tag | tail -n1)\""
 FBQN=arduino:samd:mkrnb1500
 
 DEF=-DFIRMWARE=$FIRMWARE

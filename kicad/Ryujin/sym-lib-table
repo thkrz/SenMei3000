@@ -4,4 +4,5 @@
   (lib (name "DiodesIncorporated")(type "KiCad")(uri "${KIPRJMOD}/symbols/DiodesIncorporated.kicad_sym")(options "")(descr ""))
   (lib (name "Infineon")(type "KiCad")(uri "${KIPRJMOD}/symbols/Infineon.kicad_sym")(options "")(descr ""))
   (lib (name "Vishay")(type "KiCad")(uri "${KIPRJMOD}/symbols/Vishay.kicad_sym")(options "")(descr ""))
+  (lib (name "NKK")(type "KiCad")(uri "${KIPRJMOD}/symbols/NKK.kicad_sym")(options "")(descr ""))
 )

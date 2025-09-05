@@ -25,7 +25,7 @@ bool connect();
 void ctrl();
 void die(uint32_t);
 void disable();
-void disconnect();
+void disconnect(bool alive = true);
 void enable();
 bool gprs();
 bool handshake(char);
@@ -43,7 +43,7 @@ void schedule();
 void settime();
 bool valid(char);
 bool verify();
-bool wait(uint32_t timeout = MODEM_TIMEOUT);
+bool wait(bool off = false, uint32_t timeout = MODEM_TIMEOUT);
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
@@ -57,7 +57,7 @@ bool power;
 float battery() {
   analogRead(A1);
   int p = analogRead(A1);
-  return (float)p * 0.014956; // R1 = 1.2M; R2 = 330k
+  return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
 bool config() {
@@ -82,7 +82,12 @@ bool connect() {
   SerialSARA.begin(115200);
   pulse(SARA_PWR_ON, 200);
   power = true;
-  if (!wait() || !modem.init() || !modem.waitForNetwork())
+  if (!wait() || !modem.init()) {
+    pulse(SARA_RESETN, 50);
+    if (!wait() || !modem.init())
+      return false;
+  }
+  if (!modem.waitForNetwork())
     return false;
   return gprs();
 }
@@ -92,36 +97,35 @@ void ctrl() {
   s.reserve(256);
 
   Serial.begin(19200);
-  while (!Serial)
-    ;
+  while (!Serial);
 
   for (;;) {
     if (Serial.available()) {
       char c = Serial.read();
       switch (c) {
-      case 'd':
-        w25q.seek(0);
-        while (w25q.read(s))
-          Serial.print(s);
-        break;
-      case 'f':
-        w25q.format();
-        Serial.print("chip formatted\r\n");
-        break;
-      case 'i':
-        Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
-        Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
-        Serial.print(F("APN: " APN "\r\n"));
+        case 'd':
+          w25q.seek(0);
+          while (w25q.read(s))
+            Serial.print(s);
+          break;
+        case 'f':
+          w25q.format();
+          Serial.print("chip formatted\r\n");
+          break;
+        case 'i':
+          Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
+          Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
+          Serial.print(F("APN: " APN "\r\n"));
 #if defined(MI_MINUTE)
-        Serial.print(F("MI_MINUTE: "));
-        Serial.print(MI_MINUTE);
-        Serial.print(F("\r\n"));
+          Serial.print(F("MI_MINUTE: "));
+          Serial.print(MI_MINUTE);
+          Serial.print(F("\r\n"));
 #elif defined(MI_HOUR)
-        Serial.print(F("MI_HOUR: "));
-        Serial.print(MI_HOUR);
-        Serial.print(F("\r\n"));
+          Serial.print(F("MI_HOUR: "));
+          Serial.print(MI_HOUR);
+          Serial.print(F("\r\n"));
 #endif
-        break;
+          break;
       }
       Serial.print(F("#"));
     }
@@ -143,12 +147,13 @@ void disable() {
   socket.end();
 }
 
-void disconnect() {
+void disconnect(bool alive) {
   client.stop();
-  if (modem.isGprsConnected())
+  if (alive && modem.isGprsConnected())
     modem.gprsDisconnect();
-  if (modem.poweroff())
-    delay(5000L);
+  if (!(alive && modem.poweroff()))
+    pulse(SARA_PWR_ON, 2000L);
+  wait(true);
   power = false;
   SerialSARA.end();
 }
@@ -232,8 +237,8 @@ bool post(String &s) {
 
   n = 0;
   char r = 0;
-  uint32_t timeout = millis();
-  while (n < HTTP_MSG_LEN && (millis() - timeout) < HTTP_TIMEOUT)
+  uint32_t t0 = millis();
+  while (n < HTTP_MSG_LEN && (millis() - t0) < HTTP_TIMEOUT)
     if (client.available()) {
       r = client.read();
       n++;
@@ -248,7 +253,7 @@ bool post(String &s) {
 }
 
 void pullup() {
-  int8_t pin[10] = {A0, A2, A3, A4, A5, A6, 2, 5, 13, 14};
+  int8_t pin[10] = { A0, A2, A3, A4, A5, A6, 2, 5, 13, 14 };
 
   for (uint8_t i = 0; i < 10; i++)
     pinMode(pin[i], INPUT_PULLUP);
@@ -279,8 +284,8 @@ String &readline(uint32_t timeout) {
   }
 
   s = "";
-  uint32_t st = millis();
-  while ((millis() - st) < timeout)
+  uint32_t t0 = millis();
+  while ((millis() - t0) < timeout)
     if (socket.available()) {
       char c = socket.read();
       if (!valid(c))
@@ -298,11 +303,8 @@ String &readline(uint32_t timeout) {
 
 bool reconnect() {
   if (!modem.testAT()) {
-    pulse(SARA_RESETN, 150L);
-    if (!wait() || !modem.init()) {
-      disconnect();
-      return connect();
-    }
+    disconnect(false);
+    return connect();
   } else
     modem.init();
 
@@ -385,11 +387,11 @@ bool verify() {
   return client.connect(HOST, PORT);
 }
 
-bool wait(uint32_t timeout) {
+bool wait(bool off, uint32_t timeout) {
   delay(2000L);
-  uint32_t st = millis();
-  while (millis() - st < timeout) {
-    if (modem.testAT())
+  uint32_t t0 = millis();
+  while (millis() - t0 < timeout) {
+    if (modem.testAT() ^ off)
       return true;
     delay(500L);
   }
