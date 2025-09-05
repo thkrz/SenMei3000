@@ -2368,6 +2368,148 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Regulator_Switching:R-78E5.0-1.0"
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -3.81 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R-78E5.0-1.0"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Converter_DCDC:Converter_DCDC_RECOM_R-78E-0.5_THT"
+				(at 1.27 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.recom-power.com/pdf/Innoline/R-78Exx-1.0.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "1A Step-Down DC/DC-Regulator, 7-28V input, 5V fixed Output Voltage, LM78xx replacement, -40°C to +85°C, SIP3"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "dc-dc recom Step-Down DC/DC-Regulator"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Converter*DCDC*RECOM*R*78E*0.5*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R-78E5.0-1.0_0_1"
+				(rectangle
+					(start -5.08 1.905)
+					(end 5.08 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "R-78E5.0-1.0_1_1"
+				(pin power_in line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Sensiron:SHT35-DIS-F2.5kS"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3498,6 +3640,12 @@
 		(uuid "303e8179-6522-439b-832c-c32619152d68")
 	)
 	(junction
+		(at 259.08 29.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "396d26e5-f497-481a-977e-9b650183d691")
+	)
+	(junction
 		(at 171.45 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3534,6 +3682,12 @@
 		(uuid "58e6d4ec-b88c-4fc9-8a4b-8aa85d1820a8")
 	)
 	(junction
+		(at 228.6 36.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a0f13bc-04fd-4cc4-bd91-88fd42ec68d4")
+	)
+	(junction
 		(at 130.81 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3544,6 +3698,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5d90f461-480c-42ab-861e-142f04c1f042")
+	)
+	(junction
+		(at 246.38 36.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "872ec998-d4ae-4d6c-a3f8-a879b4acc550")
+	)
+	(junction
+		(at 228.6 29.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9bdce687-c1e4-43f5-a9bc-bf2b8dff048f")
 	)
 	(junction
 		(at 24.13 166.37)
@@ -3825,6 +3991,16 @@
 	)
 	(wire
 		(pts
+			(xy 246.38 36.83) (xy 259.08 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f72512d-9352-4fec-b05b-ecd892250987")
+	)
+	(wire
+		(pts
 			(xy 109.22 77.47) (xy 109.22 80.01)
 		)
 		(stroke
@@ -4062,6 +4238,16 @@
 			(type default)
 		)
 		(uuid "5fbd7a62-c0e2-49fb-aa02-5ae1d39c560b")
+	)
+	(wire
+		(pts
+			(xy 228.6 36.83) (xy 246.38 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61fa38ec-bb64-426d-a5a8-c233f671ec6f")
 	)
 	(wire
 		(pts
@@ -4445,6 +4631,16 @@
 	)
 	(wire
 		(pts
+			(xy 228.6 29.21) (xy 238.76 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac2e8aa5-b560-478f-a808-de91c5748286")
+	)
+	(wire
+		(pts
 			(xy 121.92 59.69) (xy 140.97 59.69)
 		)
 		(stroke
@@ -4535,6 +4731,16 @@
 	)
 	(wire
 		(pts
+			(xy 220.98 29.21) (xy 228.6 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c50c756e-e234-43cc-a089-48f38da096d0")
+	)
+	(wire
+		(pts
 			(xy 149.86 59.69) (xy 149.86 62.23)
 		)
 		(stroke
@@ -4585,6 +4791,16 @@
 	)
 	(wire
 		(pts
+			(xy 220.98 36.83) (xy 228.6 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc6c5f63-d84a-44a6-85f7-da9227751160")
+	)
+	(wire
+		(pts
 			(xy 35.56 72.39) (xy 48.26 72.39)
 		)
 		(stroke
@@ -4592,6 +4808,16 @@
 			(type default)
 		)
 		(uuid "e8e0ac82-5815-4b93-aaae-38ecd7576903")
+	)
+	(wire
+		(pts
+			(xy 254 29.21) (xy 259.08 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e93c5fc8-ec4e-496f-ae42-9263da324877")
 	)
 	(wire
 		(pts
@@ -4622,6 +4848,16 @@
 			(type default)
 		)
 		(uuid "f23252f5-174d-4c9a-8c0f-62a0080718f3")
+	)
+	(wire
+		(pts
+			(xy 259.08 29.21) (xy 270.51 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f71dc20f-2825-488f-8727-5b9abbd81fd4")
 	)
 	(wire
 		(pts
@@ -4906,6 +5142,37 @@
 		)
 		(property "Component Class" ""
 			(at -133.35 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+	)
+	(netclass_flag ""
+		(length 2.54)
+		(shape round)
+		(at 232.41 29.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f673c00b-a006-4c5e-b961-d857d4e59648")
+		(property "Netclass" "PWR"
+			(at 233.1085 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Component Class" ""
+			(at 133.35 3.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5477,6 +5744,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 228.6 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "18339ba9-b971-4de2-b1d9-16aa6c46d2a9")
+		(property "Reference" "C3"
+			(at 232.41 31.7499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uF"
+			(at 232.41 34.2899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 229.5652 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 228.6 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 228.6 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10uF 16V 1206"
+			(at 228.6 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e1b954da-8fd8-43e9-9f5f-ca6c5880384b")
+		)
+		(pin "2"
+			(uuid "403a9a7c-569c-4c90-9bac-c2a19a7c0c2f")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 156.21 149.86 0)
 		(unit 1)
@@ -6020,6 +6366,85 @@
 			(project "SonTinh"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 259.08 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "48e811c2-3d4b-498a-9066-613f94e288f4")
+		(property "Reference" "C4"
+			(at 262.89 31.7499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uF"
+			(at 262.89 34.2899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 260.0452 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 259.08 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 259.08 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10uF 6.3V 0805"
+			(at 259.08 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "46f49e6a-297f-4137-a0d7-508d68ae8a31")
+		)
+		(pin "2"
+			(uuid "377d6764-d956-4cdc-8411-ad528ac21724")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "C4")
 					(unit 1)
 				)
 			)
@@ -7227,6 +7652,72 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 220.98 36.83 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "88416f7d-d859-4d4f-90a8-834f8fa01b20")
+		(property "Reference" "#PWR034"
+			(at 220.98 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 220.98 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 220.98 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 220.98 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 220.98 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1b26c962-e31b-4389-a288-b92b8d463bc2")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 24.13 26.67 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7488,6 +7979,79 @@
 			(project "SonTinh"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Regulator_Switching:R-78E5.0-1.0")
+		(at 246.38 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9de18948-12ae-4e2b-ad01-7ac335c4bc55")
+		(property "Reference" "U7"
+			(at 246.38 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R-78E5.0-1.0"
+			(at 246.38 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Converter_DCDC:Converter_DCDC_RECOM_R-78E-0.5_THT"
+			(at 247.65 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.recom-power.com/pdf/Innoline/R-78Exx-1.0.pdf"
+			(at 246.38 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1A Step-Down DC/DC-Regulator, 7-28V input, 5V fixed Output Voltage, LM78xx replacement, -40°C to +85°C, SIP3"
+			(at 246.38 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6a8c3689-1f74-4bd8-874e-9c81b011fb3a")
+		)
+		(pin "2"
+			(uuid "797ef9e0-7e64-438a-b684-ba6bc8ffcd55")
+		)
+		(pin "3"
+			(uuid "fcbf61a6-314a-4902-89b3-3b3cd8af4601")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "U7")
 					(unit 1)
 				)
 			)
@@ -8487,6 +9051,138 @@
 			(project "SonTinh"
 				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
 					(reference "#PWR025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 270.51 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e594f18e-cf42-40ec-b46a-e2a5895ea342")
+		(property "Reference" "#PWR035"
+			(at 270.51 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 270.51 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 270.51 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 270.51 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 270.51 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "60dcd9d7-328c-4a7b-8893-e509dc7d499e")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "#PWR035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 220.98 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eeb2d93c-d4d0-41f8-be1d-7c4723449178")
+		(property "Reference" "#PWR033"
+			(at 220.98 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 220.98 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a316cfc3-0545-4904-9c12-90f8592082ed")
+		)
+		(instances
+			(project "SonTinh"
+				(path "/91dda452-9985-4be5-905c-71f5be143fcf"
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
