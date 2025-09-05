@@ -10,7 +10,7 @@ void W25QLOG::begin() {
 
   _rp = 0;
   _wp = 0;
-  while (_wp + 1 < _flash.getCapacity()) {
+  while (_wp + 2 < _flash.getCapacity()) {
     uint16_t len = _flash.readWord(_wp + 1);
     if (len == 0xFFFF)
       break;
@@ -20,7 +20,7 @@ void W25QLOG::begin() {
 
 bool W25QLOG::append(String &s) {
   uint16_t len = s.length() + 1;
-  if (len >= MAX_LEN - 1)
+  if (len > MAX_LEN - 1)
     return false;
 
   if (_wp + 3 + len > _flash.getCapacity())
@@ -40,7 +40,7 @@ bool W25QLOG::read(String &s) {
 
   while (_rp < _wp) {
     uint16_t len = _flash.readWord(_rp + 1);
-    if (len < 1 || len >= MAX_LEN - 1)
+    if (len == 0 || len > MAX_LEN - 1)
       return false;
     if (_flash.readByte(_rp) == 0xFF) {
       _flash.readCharArray(_rp + 3, buf, len);
