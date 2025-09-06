@@ -1006,7 +1006,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 30 "+3V3")
+			(net 33 "/SDA_3V3")
 			(pintype "passive")
 			(uuid "39de87ec-a8ee-4def-8d01-54279def25af")
 		)
@@ -1015,7 +1015,7 @@
 			(size 1.025 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.243902)
-			(net 33 "/SDA_3V3")
+			(net 30 "+3V3")
 			(pintype "passive")
 			(uuid "a8df987c-dc19-4bf1-a423-6ac5ce2bcb8a")
 		)
@@ -1191,7 +1191,7 @@
 				)
 			)
 		)
-		(property "MPN" "1751251"
+		(property "MPN" "1984620"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3388,7 +3388,7 @@
 				)
 			)
 		)
-		(property "MPN" "1868128"
+		(property "MPN" "1984617"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4537,6 +4537,19 @@
 				)
 			)
 		)
+		(property "MPN" "1984617"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7b4b7a35-e95a-4b3b-bb1d-53c4a642e492")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "TerminalBlock*:*")
 		(path "/8038dbed-1c99-4881-92d5-c1da4b1b86be")
 		(sheetname "/")
@@ -5560,7 +5573,7 @@
 				)
 			)
 		)
-		(property "MPN" "1868128"
+		(property "MPN" "1984617"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
