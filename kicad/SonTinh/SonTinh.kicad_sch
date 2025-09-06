@@ -3658,12 +3658,6 @@
 		(uuid "3f3d02d5-6d79-4f74-b898-542d4e3c2b6a")
 	)
 	(junction
-		(at 140.97 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "447a6904-771e-497a-8b1e-4cf281394a7e")
-	)
-	(junction
 		(at 133.35 77.47)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3947,16 +3941,6 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 59.69) (xy 140.97 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "12da5854-8c19-4c17-accf-66733dcc5481")
-	)
-	(wire
-		(pts
 			(xy 88.9 74.93) (xy 83.82 74.93)
 		)
 		(stroke
@@ -4177,7 +4161,7 @@
 	)
 	(wire
 		(pts
-			(xy 149.86 59.69) (xy 140.97 59.69)
+			(xy 121.92 59.69) (xy 149.86 59.69)
 		)
 		(stroke
 			(width 0)
@@ -4624,16 +4608,6 @@
 			(type default)
 		)
 		(uuid "ac2e8aa5-b560-478f-a808-de91c5748286")
-	)
-	(wire
-		(pts
-			(xy 121.92 59.69) (xy 140.97 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "acabd3f0-44fa-472e-8e83-f9c6f7e52187")
 	)
 	(wire
 		(pts
@@ -7931,7 +7905,7 @@
 		(dnp no)
 		(uuid "b6da3d71-a425-43f8-8e6e-b8263a9dc900")
 		(property "Reference" "R16"
-			(at 114.3 62.2299 0)
+			(at 111.506 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7940,7 +7914,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 114.3 64.7699 0)
+			(at 111.506 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
