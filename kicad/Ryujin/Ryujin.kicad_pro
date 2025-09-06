@@ -722,6 +722,10 @@
     [
       "5d8fcbd7-e8f6-4322-b7f5-743508fec2cc",
       "Battery Charger"
+    ],
+    [
+      "b8c6628b-465a-4136-9b29-69aabe2bd672",
+      "Voltage Supply"
     ]
   ],
   "text_variables": {}
