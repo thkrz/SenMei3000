@@ -40,27 +40,30 @@ void rc() {
   if (addr != a)
     return;
   rsp[0] = a;
+  rsp[1] = '\0';
   bool rs = false;
   if (len > 1)
     switch (cmd[1]) {
     case 'I':
-      strcpy(&rsp[1], "13JMUWUERZKLIM100001");
+      strcpy(&rsp[1], F("13JMUWUERZKLIM100001"));
       break;
     case 'M':
       rs = true;
-      strcpy(&rsp[1], "0026");
+      strcpy(&rsp[1], F("0026"));
       break;
     case 'D':
       strcpy(&rsp[1], sample);
       break;
     case 'A':
+      if (len < 2)
+        return;
       a = cmd[2];
       addr = a;
       EEPROM.write(EE_ADDR, addr);
       break;
     }
 
-  strcat(rsp, "\r\n");
+  strcat(rsp, F("\r\n"));
   socket.sendResponse(rsp);
   if (rs)
     readSample();

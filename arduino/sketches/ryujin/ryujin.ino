@@ -80,10 +80,10 @@ bool config() {
 
 bool connect() {
   SerialSARA.begin(115200);
-  pulse(SARA_PWR_ON, 200);
+  pulse(SARA_PWR_ON, 1500L);
   power = true;
   if (!wait() || !modem.init()) {
-    pulse(SARA_RESETN, 50);
+    pulse(SARA_RESETN, 50L);
     if (!wait() || !modem.init())
       return false;
   }
@@ -255,8 +255,8 @@ bool post(String &s) {
 void pullup() {
   int8_t pin[10] = { A0, A2, A3, A4, A5, A6, 2, 5, 13, 14 };
 
-  for (uint8_t i = 0; i < 10; i++)
-    pinMode(pin[i], INPUT_PULLUP);
+  for (int8_t p : pin)
+    pinMode(p, INPUT_PULLUP);
 }
 
 void pulse(int pin, uint32_t len) {
