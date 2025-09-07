@@ -1,43 +1,51 @@
-#include <avr/interrupt.h>
-#include <avr/sleep.h>
 #include <EEPROM.h>
 #include <SDI12.h>
+#include <avr/interrupt.h>
+#include <avr/sleep.h>
 
-#define SLEEP_TIMEOUT 10000
+#define SLEEP_TIMEOUT 10000L
 
+#define BUS_PIN 7
 #define CMD_LEN 4
 #define EE_ADDR 0
-#define BUS_PIN 7
 #define MAX_RSP 72
 
+enum { INT1 = 0x01, INT2 = 0x02 };
+volatile uint8_t interrupt = 0;
+
+void int1ISR();
+void int2ISR();
 char peekaddr();
-void readSample();
 void rc();
+void sample();
+void sleep();
 
 SDI12 socket(BUS_PIN);
 char addr;
-char sample[72];
 char cmd[CMD_LEN];
+char measurement[MAX_RSP - 3];
 int len = 0;
 uint32_t wait;
+
+void int1ISR() { interrupt |= INT1; }
+void int2ISR() { interrupt |= INT2; }
 
 char peekaddr() {
   char c = EEPROM.read(EE_ADDR);
   if (!isAlphaNumeric(c)) {
-    c = '0' + a;
+    c = '0';
     EEPROM.write(EE_ADDR, c);
   }
   return c;
-}
-
-void readSample() {
 }
 
 void rc() {
   static char rsp[MAX_RSP];
 
   char a = cmd[0];
-  if (addr != a)
+  if (a == '?')
+    a = addr;
+  else if (addr != a)
     return;
   rsp[0] = a;
   rsp[1] = '\0';
@@ -52,7 +60,7 @@ void rc() {
       strcpy(&rsp[1], F("0026"));
       break;
     case 'D':
-      strcpy(&rsp[1], sample);
+      strcpy(&rsp[1], measurement);
       break;
     case 'A':
       if (len < 2)
@@ -66,33 +74,47 @@ void rc() {
   strcat(rsp, F("\r\n"));
   socket.sendResponse(rsp);
   if (rs)
-    readSample();
+    sample();
 }
+
+void sample() {}
 
 void sleep() {
-  pinMode(BUS_PIN, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(BUS_PIN), wake, RISING);
+  socket.forceListen();
+
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);
   sleep_enable();
-  sleep_mode();
-  sleep_disable();
-}
 
-void wake() {
-  detachInterrupt(0);
-  socket.forceListen();
-  wait = millis();
+  noInterrupts();
+#if defined(BODS) && defined(BODSE)
+  // Disable brown-out during sleep for lower current (if supported)
+  MCUCR = MCUCR | _BV(BODSE) | _BV(BODS);
+  MCUCR = (MCUCR & ~_BV(BODSE)) | _BV(BODS);
+#endif
+  interrupts();
+
+  sleep_cpu();
+  sleep_disable();
 }
 
 void setup() {
   addr = peekaddr();
+
   socket.begin();
+  delay(100);
   socket.forceListen();
-  //sleep();
+
+  pinMode(0, INPUT_PULLUP);
+  pinMode(1, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(0), int1ISR, LOW);
+  attachInterrupt(digitalPinToInterrupt(1), int2ISR, LOW);
+
+  sleep();
 }
 
 void loop() {
   if (socket.available()) {
+    wait = millis();
     char c = socket.read();
     if (c == '!') {
       socket.clearBuffer();
@@ -101,11 +123,23 @@ void loop() {
         rc();
         len = 0;
       }
-      socket.forceListen();
-      wait = millis();
     } else if (c > 0 && len < CMD_LEN)
       cmd[len++] = c;
   }
+  socket.forceListen();
+
+  noInterrupts();
+  uint8_t i = interrupt;
+  interrupt = 0;
+  interrupts();
+
+  if (i & INT1) {
+    wait = millis();
+  }
+  if (i & INT2) {
+    wait = millis();
+  }
+
   if (millis() - wait > SLEEP_TIMEOUT)
     sleep();
 }
