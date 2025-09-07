@@ -1,6 +1,5 @@
 #include "W25QLOG.h"
 
-#define ERASED 0xFF
 #define COMMIT 0xFE
 #define DELETE 0xFC
 
@@ -27,10 +26,7 @@ bool W25QLOG::begin() {
 
 bool W25QLOG::append(const String &s) {
   uint16_t len = s.length() + 1;
-  if (len > MAX_LEN - 1)
-    return false;
-
-  if (_wp + 3 + len > _cap)
+  if (len > MAX_LEN - 1 || _wp + 3 + len > _cap)
     return false;
 
   if (!_flash.writeWord(_wp + 1, len) ||
