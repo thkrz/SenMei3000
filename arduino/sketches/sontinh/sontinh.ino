@@ -7,16 +7,16 @@
 
 #define CMD_LEN 4
 #define EE_ADDR 0
-#define NUM_CON 6
 #define BUS_PIN 7
+#define MAX_RSP 72
 
-static String& measurement();
-static char peekaddr();
-static void readSample();
-static void rc();
+char peekaddr();
+void readSample();
+void rc();
 
 SDI12 socket(BUS_PIN);
 char addr;
+char sample[72];
 char cmd[CMD_LEN];
 int len = 0;
 uint32_t wait;
@@ -30,23 +30,28 @@ char peekaddr() {
   return c;
 }
 
+void readSample() {
+}
+
 void rc() {
+  static char rsp[MAX_RSP];
+
   char a = cmd[0];
   if (addr != a)
     return;
-  String r = "";
+  rsp[0] = a;
   bool rs = false;
   if (len > 1)
     switch (cmd[1]) {
     case 'I':
-      r = "13JMUWUERZKLIM100001";
+      strcpy(&rsp[1], "13JMUWUERZKLIM100001");
       break;
     case 'M':
       rs = true;
-      r = "0026";
+      strcpy(&rsp[1], "0026");
       break;
     case 'D':
-      r = measurement();
+      strcpy(&rsp[1], sample);
       break;
     case 'A':
       a = cmd[2];
@@ -55,11 +60,8 @@ void rc() {
       break;
     }
 
-  String s;
-  s += addr;
-  s += r;
-  s += "\r\n";
-  socket.sendResponse(s);
+  strcat(rsp, "\r\n");
+  socket.sendResponse(rsp);
   if (rs)
     readSample();
 }
@@ -82,7 +84,8 @@ void wake() {
 void setup() {
   addr = peekaddr();
   socket.begin();
-  sleep();
+  socket.forceListen();
+  //sleep();
 }
 
 void loop() {
