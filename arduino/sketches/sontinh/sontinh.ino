@@ -9,6 +9,7 @@
 #define CMD_LEN 4
 #define EE_ADDR 0
 #define MAX_RSP 72
+#define CLEAR (m[0] = '\0')
 
 enum { INT1 = 0x01, INT2 = 0x02 };
 volatile uint8_t interrupt = 0;
@@ -23,7 +24,7 @@ void sleep();
 SDI12 socket(BUS_PIN);
 char addr;
 char cmd[CMD_LEN];
-char measurement[MAX_RSP - 3];
+char m[MAX_RSP - 3];
 int len = 0;
 uint32_t wait;
 
@@ -45,7 +46,7 @@ void rc() {
   char a = cmd[0];
   if (a == '?')
     a = addr;
-  else if (addr != a)
+  if (addr != a)
     return;
   rsp[0] = a;
   rsp[1] = '\0';
@@ -60,7 +61,7 @@ void rc() {
       strcpy(&rsp[1], F("0026"));
       break;
     case 'D':
-      strcpy(&rsp[1], measurement);
+      strcpy(&rsp[1], m);
       break;
     case 'A':
       if (len < 2)
@@ -70,6 +71,7 @@ void rc() {
       EEPROM.write(EE_ADDR, addr);
       break;
     }
+  CLEAR;
 
   strcat(rsp, F("\r\n"));
   socket.sendResponse(rsp);
@@ -77,7 +79,14 @@ void rc() {
     sample();
 }
 
-void sample() {}
+void sample() {
+  static char *r = "a\r\n";
+
+  strcpy(m, "+0.00+0.00+0.00+0.00+0.00");
+
+  r[0] = addr;
+  socket.sendResponse(r);
+}
 
 void sleep() {
   socket.forceListen();
@@ -99,6 +108,7 @@ void sleep() {
 
 void setup() {
   addr = peekaddr();
+  CLEAR;
 
   socket.begin();
   delay(100);
@@ -106,15 +116,14 @@ void setup() {
 
   pinMode(0, INPUT_PULLUP);
   pinMode(1, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(0), int1ISR, LOW);
-  attachInterrupt(digitalPinToInterrupt(1), int2ISR, LOW);
+  attachInterrupt(digitalPinToInterrupt(0), int1ISR, FALLING);
+  attachInterrupt(digitalPinToInterrupt(1), int2ISR, FALLING);
 
   sleep();
 }
 
 void loop() {
   if (socket.available()) {
-    wait = millis();
     char c = socket.read();
     if (c == '!') {
       socket.clearBuffer();
@@ -123,10 +132,11 @@ void loop() {
         rc();
         len = 0;
       }
+      socket.forceListen();
     } else if (c > 0 && len < CMD_LEN)
       cmd[len++] = c;
+    wait = millis();
   }
-  socket.forceListen();
 
   noInterrupts();
   uint8_t i = interrupt;
