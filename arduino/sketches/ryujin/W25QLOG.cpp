@@ -52,7 +52,7 @@ bool W25QLOG::read(String &s) {
       return false;
     switch (_flash.readByte(_rp)) {
     case DELETE:
-      continue;
+      break;
     case COMMIT:
       if (!_flash.readCharArray(_rp + 3, buf, len))
         return false;
