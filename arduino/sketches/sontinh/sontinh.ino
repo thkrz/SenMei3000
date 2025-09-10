@@ -3,16 +3,13 @@
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
 
-#define SLEEP_TIMEOUT 10000L
-
 #define BUS_PIN 7
 #define CMD_LEN 4
 #define EE_ADDR 0
 #define MAX_RSP 72
 #define CLEAR (m[0] = '\0')
 
-enum { INT1 = 0x01, INT2 = 0x02 };
-volatile uint8_t interrupt = 0;
+volatile uint32_t int1, int2;
 
 void int1ISR();
 void int2ISR();
@@ -28,8 +25,8 @@ char m[MAX_RSP - 3];
 int len = 0;
 uint32_t wait;
 
-void int1ISR() { interrupt |= INT1; }
-void int2ISR() { interrupt |= INT2; }
+void int1ISR() { int1++; }
+void int2ISR() { int2++; }
 
 char peekaddr() {
   char c = EEPROM.read(EE_ADDR);
@@ -82,7 +79,7 @@ void rc() {
 void sample() {
   static char *r = "a\r\n";
 
-  strcpy(m, "+0.00+0.00+0.00+0.00+0.00");
+  strcpy(m, "+0.00+0.00+0.00+0.00+0.00+0.00");
 
   r[0] = addr;
   socket.sendResponse(r);
@@ -123,7 +120,7 @@ void setup() {
 }
 
 void loop() {
-  if (socket.available()) {
+  while (socket.available()) {
     char c = socket.read();
     if (c == '!') {
       socket.clearBuffer();
@@ -135,21 +132,7 @@ void loop() {
       socket.forceListen();
     } else if (c > 0 && len < CMD_LEN)
       cmd[len++] = c;
-    wait = millis();
   }
 
-  noInterrupts();
-  uint8_t i = interrupt;
-  interrupt = 0;
-  interrupts();
-
-  if (i & INT1) {
-    wait = millis();
-  }
-  if (i & INT2) {
-    wait = millis();
-  }
-
-  if (millis() - wait > SLEEP_TIMEOUT)
-    sleep();
+  sleep();
 }
