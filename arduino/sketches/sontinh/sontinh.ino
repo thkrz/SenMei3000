@@ -6,7 +6,7 @@
 #define BUS_PIN 7
 #define CMD_LEN 4
 #define EE_ADDR 0
-#define MAX_RSP 72
+#define MAX_RSP 75
 #define CLEAR (m[0] = '\0')
 
 volatile uint32_t int1, int2;
