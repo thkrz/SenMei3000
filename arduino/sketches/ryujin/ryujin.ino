@@ -253,7 +253,7 @@ bool post(String &s) {
 }
 
 void pullup() {
-  int8_t pin[10] = { A0, A2, A3, A4, A5, A6, 2, 5, 13, 14 };
+  int8_t pin[10] = { A0, A2, A3, A4, A5, A6, 5, 13, 14 };
 
   for (int8_t p : pin)
     pinMode(p, INPUT_PULLUP);
@@ -413,7 +413,7 @@ void setup() {
   pullup();
 
   w25q.begin();
-  if (battery() < 7)
+  if (battery() < 1 || digitalRead(2) == HIGH)
     ctrl();
   /* not reached */
   w25q.sleep(true);
