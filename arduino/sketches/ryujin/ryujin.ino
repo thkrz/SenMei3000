@@ -105,7 +105,7 @@ void ctrl() {
       switch (c) {
         case 'd':
           w25q.seek(0);
-          while (w25q.read(s))
+          while (w25q.read(s, true))
             Serial.print(s);
           break;
         case 'f':
@@ -322,7 +322,7 @@ bool reconnect() {
 }
 
 bool resend() {
-  while (w25q.read(msg)) {
+  while (w25q.read(msg, false)) {
     if (!post(msg))
       return false;
     w25q.unlink();
