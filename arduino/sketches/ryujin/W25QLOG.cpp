@@ -43,7 +43,7 @@ bool W25QLOG::format() {
   return _flash.eraseChip();
 }
 
-bool W25QLOG::read(String &s) {
+bool W25QLOG::read(String &s, bool advance) {
   char buf[MAX_LEN];
 
   while (_rp < _wp) {
@@ -51,15 +51,16 @@ bool W25QLOG::read(String &s) {
     if (len == 0 || len > MAX_LEN - 1)
       return false;
     switch (_flash.readByte(_rp)) {
-    case DELETE:
-      break;
     case COMMIT:
       if (!_flash.readCharArray(_rp + 3, buf, len))
         return false;
       buf[len] = '\0';
       s = "";
       s += buf;
-      return true;
+      if (!advance)
+        return true;
+    case DELETE:
+      break;
     default:
       return false;
     }
