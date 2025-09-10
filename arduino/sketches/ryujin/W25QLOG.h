@@ -17,7 +17,7 @@ public:
 
   bool append(const String &);
   bool format();
-  bool read(String &);
+  bool read(String &, bool);
   void seek(uint32_t);
   void sleep(bool);
   bool unlink();
