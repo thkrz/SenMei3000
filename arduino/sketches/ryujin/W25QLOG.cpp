@@ -57,8 +57,9 @@ bool W25QLOG::read(String &s, bool advance) {
       buf[len] = '\0';
       s = "";
       s += buf;
-      if (!advance)
-        return true;
+      if (advance)
+        SHIFT(_rp, Len);
+      return true;
     case DELETE:
       break;
     default:
