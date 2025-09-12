@@ -2249,7 +2249,7 @@
 				)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 128.27 92.71 0)
 			(effects
 				(font
@@ -2277,6 +2277,15 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
+			(at 128.27 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "LTST-C193KRKT-5A"
 			(at 128.27 92.71 0)
 			(effects
 				(font
@@ -2318,7 +2327,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "540"
 			(at 140.716 92.71 90)
 			(effects
 				(font
@@ -2354,7 +2363,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "330 0603"
+		(property "MPN" "540 0603"
 			(at 138.43 92.71 0)
 			(effects
 				(font
