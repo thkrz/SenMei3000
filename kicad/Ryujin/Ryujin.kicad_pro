@@ -726,6 +726,10 @@
     [
       "b8c6628b-465a-4136-9b29-69aabe2bd672",
       "Voltage Supply"
+    ],
+    [
+      "b2a8ed1e-f848-406f-b548-98b1e96922dd",
+      "GPS"
     ]
   ],
   "text_variables": {}

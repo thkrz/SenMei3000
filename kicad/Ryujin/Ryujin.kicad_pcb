@@ -12370,7 +12370,7 @@
 				)
 			)
 		)
-		(property "Value" "540"
+		(property "Value" "536"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "6a03913f-745d-41f6-b9b0-31159a317d8d")
@@ -12407,7 +12407,7 @@
 				)
 			)
 		)
-		(property "MPN" "540 0603"
+		(property "MPN" "536 0603"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
