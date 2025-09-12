@@ -428,6 +428,36 @@
 		(at 129.54 74.93)
 		(uuid "a1fb423b-1aae-4820-91d3-6abec5a9a078")
 	)
+	(wire
+		(pts
+			(xy 139.7 59.69) (xy 139.7 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "429b974b-d2d4-45d7-ba0b-788ef9ecf88a")
+	)
+	(wire
+		(pts
+			(xy 120.65 82.55) (xy 129.54 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44d4c7de-745c-4673-ae45-46a9b99a1ad7")
+	)
+	(wire
+		(pts
+			(xy 120.65 80.01) (xy 129.54 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d9e8737-bdf0-4fe7-945f-190b849a0c8c")
+	)
 	(symbol
 		(lib_id "RF_GPS:MAX-M10S")
 		(at 144.78 82.55 0)
