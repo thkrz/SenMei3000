@@ -8,6 +8,7 @@
 #include "gsm.h"
 
 #define FET 0
+#define PWR 2
 #define MX 1
 #define RX 4
 #define TX 3
@@ -55,7 +56,6 @@ String msg;
 bool power;
 
 float battery() {
-  analogRead(A1);
   int p = analogRead(A1);
   return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
@@ -413,7 +413,7 @@ void setup() {
   pullup();
 
   w25q.begin();
-  if (battery() < 1 || digitalRead(2) == HIGH)
+  if (digitalRead(PWR) == HIGH || battery() < 1)
     ctrl();
   /* not reached */
   w25q.sleep(true);
