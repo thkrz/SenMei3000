@@ -12289,48 +12289,6 @@
 		)
 	)
 	(sheet
-		(at 238.76 74.93)
-		(size 12.7 8.89)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 132 132 0 1.0000)
-		)
-		(uuid "b2a8ed1e-f848-406f-b548-98b1e96922dd")
-		(property "Sheetname" "GPS"
-			(at 238.76 74.2184 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "gps.kicad_sch"
-			(at 238.76 84.4046 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "Ryujin"
-				(path "/a03941d3-2006-4bae-a82d-663063c77238"
-					(page "4")
-				)
-			)
-		)
-	)
-	(sheet
 		(at 242.57 34.29)
 		(size 12.7 11.43)
 		(exclude_from_sim no)
