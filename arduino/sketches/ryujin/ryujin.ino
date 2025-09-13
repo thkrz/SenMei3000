@@ -44,7 +44,7 @@ void schedule();
 void settime();
 bool valid(char);
 bool verify();
-bool wait(bool off = false, uint32_t timeout = MODEM_TIMEOUT);
+bool wait(bool, uint32_t timeout = MODEM_TIMEOUT);
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
@@ -82,9 +82,9 @@ bool connect() {
   SerialSARA.begin(115200);
   pulse(SARA_PWR_ON, 1500L);
   power = true;
-  if (!wait() || !modem.init()) {
+  if (!wait(MODEM_ON) || !modem.init()) {
     pulse(SARA_RESETN, 50L);
-    if (!wait() || !modem.init())
+    if (!wait(MODEM_ON) || !modem.init())
       return false;
   }
   if (!modem.waitForNetwork())
@@ -119,12 +119,11 @@ void ctrl() {
 #if defined(MI_MINUTE)
           Serial.print(F("MI_MINUTE: "));
           Serial.print(MI_MINUTE);
-          Serial.print(F("\r\n"));
 #elif defined(MI_HOUR)
           Serial.print(F("MI_HOUR: "));
           Serial.print(MI_HOUR);
-          Serial.print(F("\r\n"));
 #endif
+          Serial.print(F("\r\n"));
           break;
       }
       Serial.print(F("#"));
@@ -153,7 +152,7 @@ void disconnect(bool alive) {
     modem.gprsDisconnect();
   if (!(alive && modem.poweroff()))
     pulse(SARA_PWR_ON, 2000L);
-  wait(true);
+  wait(MODEM_OFF);
   power = false;
   SerialSARA.end();
 }
@@ -310,7 +309,7 @@ bool reconnect() {
 
   if (!modem.waitForNetwork()) {
     modem.restart();
-    if (!wait() || !modem.init() || !modem.waitForNetwork()) {
+    if (!wait(MODEM_ON) || !modem.init() || !modem.waitForNetwork()) {
       disconnect();
       return connect();
     }
