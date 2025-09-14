@@ -18,7 +18,6 @@ bool GPS::wait() {
       if (c == '$') {
         _len = 0;
         sentence = true;
-        continue;
       }
       if (sentence) {
         if (_len < MAX_NMEA)
