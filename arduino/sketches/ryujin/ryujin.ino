@@ -165,15 +165,13 @@ void enable() {
 }
 
 bool gprs() {
-  uint8_t j = 1;
-  for (;;) {
+  uint8_t pause[] = {1, 3, 5};
+  for (uint32_t p : pause) {
     if (modem.gprsConnect(APN)) {
       settime();
       return true;
     }
-    if (++j == 3)
-      break;
-    delay(1000L * j * 2);
+    delay(p);
   }
   return false;
 }
@@ -252,7 +250,7 @@ bool post(String &s) {
 }
 
 void pullup() {
-  int8_t pin[10] = { A0, A2, A3, A4, A5, A6, 5, 13, 14 };
+  int8_t pin[] = { A0, A2, A3, A4, A5, A6, 5, 13, 14 };
 
   for (int8_t p : pin)
     pinMode(p, INPUT_PULLUP);
@@ -278,7 +276,7 @@ String &readline(uint32_t timeout) {
   static String s;
 
   if (!init) {
-    s.reserve(128);
+    s.reserve(75);
     init = true;
   }
 
@@ -380,7 +378,7 @@ bool verify() {
   if (client.connect(HOST, PORT))
     return true;
   client.stop();
-  delay(200);
+  delay(200L);
   if (!reconnect())
     return false;
   return client.connect(HOST, PORT);
