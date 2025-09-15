@@ -5124,6 +5124,16 @@
 	)
 	(wire
 		(pts
+			(xy 245.11 45.72) (xy 245.11 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0528bc55-08ca-4dbb-b012-108dec62cd05")
+	)
+	(wire
+		(pts
 			(xy 100.33 137.16) (xy 116.84 137.16)
 		)
 		(stroke
@@ -5294,13 +5304,13 @@
 	)
 	(wire
 		(pts
-			(xy 251.46 49.53) (xy 251.46 45.72)
+			(xy 252.73 45.72) (xy 252.73 49.53)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "23f87351-256b-4432-8d19-15b6c8b0f42f")
+		(uuid "2524b46a-629d-4e7b-ac6f-b8686cb530ec")
 	)
 	(wire
 		(pts
@@ -5604,7 +5614,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 50.8) (xy 247.65 45.72)
+			(xy 248.92 45.72) (xy 248.92 50.8)
 		)
 		(stroke
 			(width 0)
@@ -6533,7 +6543,7 @@
 		(uuid "243d314e-9273-4367-95fe-2c202fd1a928")
 	)
 	(label "D2"
-		(at 251.46 49.53 0)
+		(at 252.73 49.53 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10109,6 +10119,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 245.11 48.26 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9c85f9cc-adcc-4b46-987c-41243c0bf7bc")
+		(property "Reference" "#PWR010"
+			(at 245.11 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 245.11 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 245.11 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 245.11 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 245.11 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "42353956-da35-4e9e-88ac-f186997319f7")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 161.29 95.25 180)
 		(unit 1)
@@ -11311,7 +11387,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 247.65 50.8 180)
+		(at 248.92 50.8 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11320,7 +11396,7 @@
 		(fields_autoplaced yes)
 		(uuid "cdab7129-4d46-4377-8687-c0f62f656845")
 		(property "Reference" "#PWR030"
-			(at 247.65 46.99 0)
+			(at 248.92 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11329,7 +11405,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 247.65 55.88 0)
+			(at 248.92 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11337,7 +11413,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 247.65 50.8 0)
+			(at 248.92 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11346,7 +11422,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 247.65 50.8 0)
+			(at 248.92 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11355,7 +11431,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 247.65 50.8 0)
+			(at 248.92 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12323,16 +12399,6 @@
 				(hide yes)
 			)
 		)
-		(pin "VCC" passive
-			(at 247.65 45.72 270)
-			(uuid "5bc3cad5-b7d5-4444-b29a-05ade77e520a")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(pin "VIN" input
 			(at 242.57 38.1 180)
 			(uuid "5f61abc1-c81f-48bc-97f2-f966ace22e92")
@@ -12354,8 +12420,28 @@
 			)
 		)
 		(pin "ST" output
-			(at 251.46 45.72 270)
+			(at 252.73 45.72 270)
 			(uuid "231ee4ab-3ec8-4552-9f66-5e0927698d2e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GND" output
+			(at 245.11 45.72 270)
+			(uuid "644602b0-98a7-427d-8859-799da1d095e1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VREF" passive
+			(at 248.92 45.72 270)
+			(uuid "ce2b9a55-c07b-45af-88c3-24ea3833dbda")
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -165,7 +165,7 @@ void enable() {
 }
 
 bool gprs() {
-  uint8_t pause[] = {1, 3, 5};
+  uint8_t pause[] = { 1, 3, 5 };
   for (uint32_t p : pause) {
     if (modem.gprsConnect(APN)) {
       settime();
@@ -254,6 +254,8 @@ void pullup() {
 
   for (int8_t p : pin)
     pinMode(p, INPUT_PULLUP);
+
+  analogRead(A1);
 }
 
 void pulse(int pin, uint32_t len) {
@@ -410,9 +412,10 @@ void setup() {
   pullup();
 
   w25q.begin();
-  if (digitalRead(PWR) == HIGH || battery() < 1)
+  if (digitalRead(PWR) == HIGH || battery() < 1) {
     ctrl();
-  /* not reached */
+    /* not reached */
+  }
   w25q.sleep(true);
 
   enable();

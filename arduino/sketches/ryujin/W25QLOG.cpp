@@ -6,7 +6,8 @@
 #define MAX_LEN 256
 #define SHIFT(a, n) ((a) += 3 + (n))
 
-W25QLOG::W25QLOG(int cs) : _flash(cs) {};
+W25QLOG::W25QLOG(int cs)
+  : _flash(cs) {};
 
 bool W25QLOG::begin() {
   if (!_flash.begin())
@@ -29,9 +30,7 @@ bool W25QLOG::append(const String &s) {
   if (len > MAX_LEN - 1 || _wp + 3 + len > _cap)
     return false;
 
-  if (!_flash.writeWord(_wp + 1, len) ||
-      !_flash.writeCharArray(_wp + 3, (char *)s.c_str(), len) ||
-      !_flash.writeByte(_wp, COMMIT))
+  if (!_flash.writeWord(_wp + 1, len) || !_flash.writeCharArray(_wp + 3, (char *)s.c_str(), len) || !_flash.writeByte(_wp, COMMIT))
     return false;
   SHIFT(_wp, len);
   return true;
@@ -51,26 +50,28 @@ bool W25QLOG::read(String &s, bool advance) {
     if (len == 0 || len > MAX_LEN - 1)
       return false;
     switch (_flash.readByte(_rp)) {
-    case COMMIT:
-      if (!_flash.readCharArray(_rp + 3, buf, len))
+      case COMMIT:
+        if (!_flash.readCharArray(_rp + 3, buf, len))
+          return false;
+        buf[len] = '\0';
+        s = "";
+        s += buf;
+        if (advance)
+          SHIFT(_rp, len);
+        return true;
+      case DELETE:
+        break;
+      default:
         return false;
-      buf[len] = '\0';
-      s = "";
-      s += buf;
-      if (advance)
-        SHIFT(_rp, Len);
-      return true;
-    case DELETE:
-      break;
-    default:
-      return false;
     }
     SHIFT(_rp, len);
   }
   return false;
 }
 
-void W25QLOG::seek(uint32_t a) { _rp = a; }
+void W25QLOG::seek(uint32_t a) {
+  _rp = a;
+}
 
 void W25QLOG::sleep(bool state) {
   if (state)
@@ -79,4 +80,6 @@ void W25QLOG::sleep(bool state) {
     _flash.powerUp();
 }
 
-bool W25QLOG::unlink() { return _flash.writeByte(_rp, DELETE); }
+bool W25QLOG::unlink() {
+  return _flash.writeByte(_rp, DELETE);
+}
