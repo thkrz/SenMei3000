@@ -166,12 +166,12 @@ void enable() {
 
 bool gprs() {
   uint8_t pause[] = { 1, 3, 5 };
-  for (uint32_t p : pause) {
+  for (uint8_t p : pause) {
     if (modem.gprsConnect(APN)) {
       settime();
       return true;
     }
-    delay(p);
+    delay(p * 1000L);
   }
   return false;
 }
