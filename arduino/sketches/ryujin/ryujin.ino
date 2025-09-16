@@ -3,6 +3,7 @@
 #include <SHTC3.h>
 #include <Wire.h>
 
+#include "NMEA.h"
 #include "W25QLOG.h"
 #include "config.h"
 #include "gsm.h"
@@ -31,6 +32,7 @@ void enable();
 bool gprs();
 bool handshake(char);
 String &ident(char);
+void location();
 String &measure(char);
 bool post(String &);
 void pullup();
@@ -42,6 +44,7 @@ bool resend();
 void scan();
 void schedule();
 void settime();
+void update(float &);
 bool valid(char);
 bool verify();
 bool wait(bool, uint32_t timeout = MODEM_TIMEOUT);
@@ -57,7 +60,7 @@ bool power;
 
 float battery() {
   int p = analogRead(A1);
-  return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
+  return (float)p * 0.014956; // R1 = 1.2M; R2 = 330k
 }
 
 bool config() {
@@ -97,34 +100,35 @@ void ctrl() {
   s.reserve(256);
 
   Serial.begin(19200);
-  while (!Serial);
+  while (!Serial)
+    ;
 
   for (;;) {
     if (Serial.available()) {
       char c = Serial.read();
       switch (c) {
-        case 'd':
-          w25q.seek(0);
-          while (w25q.read(s, true))
-            Serial.print(s);
-          break;
-        case 'f':
-          w25q.format();
-          Serial.print("chip formatted\r\n");
-          break;
-        case 'i':
-          Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
-          Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
-          Serial.print(F("APN: " APN "\r\n"));
+      case 'd':
+        w25q.seek(0);
+        while (w25q.read(s, true))
+          Serial.print(s);
+        break;
+      case 'f':
+        w25q.format();
+        Serial.print("chip formatted\r\n");
+        break;
+      case 'i':
+        Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
+        Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
+        Serial.print(F("APN: " APN "\r\n"));
 #if defined(MI_MINUTE)
-          Serial.print(F("MI_MINUTE: "));
-          Serial.print(MI_MINUTE);
+        Serial.print(F("MI_MINUTE: "));
+        Serial.print(MI_MINUTE);
 #elif defined(MI_HOUR)
-          Serial.print(F("MI_HOUR: "));
-          Serial.print(MI_HOUR);
+        Serial.print(F("MI_HOUR: "));
+        Serial.print(MI_HOUR);
 #endif
-          Serial.print(F("\r\n"));
-          break;
+        Serial.print(F("\r\n"));
+        break;
       }
       Serial.print(F("#"));
     }
@@ -165,7 +169,7 @@ void enable() {
 }
 
 bool gprs() {
-  uint8_t pause[] = { 1, 3, 5 };
+  uint8_t pause[] = {1, 3, 5};
   for (uint8_t p : pause) {
     if (modem.gprsConnect(APN)) {
       settime();
@@ -195,6 +199,21 @@ String &ident(char i) {
   cmd[0] = i;
   socket.sendCommand(cmd, WAKE_DELAY);
   return readline();
+}
+
+void location() {
+  NMEA nmea;
+  digitalWrite(LED_BUILTIN, HIGH);
+  nmea.begin();
+  int status = 1;
+  while (status) {
+    status = nmea.poll();
+    if (status < 0)
+      goto NOT_PRESENT;
+  }
+NOT_PRESENT:
+  nmea.end();
+  digitalWrite(LED_BUILTIN, LOW);
 }
 
 String &measure(char i) {
@@ -250,7 +269,7 @@ bool post(String &s) {
 }
 
 void pullup() {
-  int8_t pin[] = { A0, A2, A3, A4, A5, A6, 5, 13, 14 };
+  int8_t pin[] = {A0, A2, A3, A4, A5, A6, 5, 13, 14};
 
   for (int8_t p : pin)
     pinMode(p, INPUT_PULLUP);
@@ -366,9 +385,7 @@ void settime() {
   }
 }
 
-bool valid(char c) {
-  return (isPrintable(c) || c == '\r' || c == '\n');
-}
+bool valid(char c) { return (isPrintable(c) || c == '\r' || c == '\n'); }
 
 bool verify() {
   if (!power && !connect())
@@ -417,6 +434,8 @@ void setup() {
     /* not reached */
   }
   w25q.sleep(true);
+
+  location();
 
   enable();
   scan();

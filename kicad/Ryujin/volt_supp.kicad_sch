@@ -2137,7 +2137,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "536"
+		(property "Value" "590"
 			(at 140.716 92.71 90)
 			(effects
 				(font
@@ -2173,7 +2173,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "536 0603"
+		(property "MPN" "590 0603"
 			(at 138.43 92.71 0)
 			(effects
 				(font

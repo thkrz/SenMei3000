@@ -5049,6 +5049,10 @@
 		(uuid "fba40972-bc9c-4aa7-ba4b-c6286f89f94b")
 	)
 	(no_connect
+		(at 21.59 21.59)
+		(uuid "0525f039-bd78-4cab-973c-d051dedc7481")
+	)
+	(no_connect
 		(at 193.04 27.94)
 		(uuid "2794dbda-883e-4804-a6c6-cebadad3d80e")
 	)
@@ -5624,6 +5628,16 @@
 	)
 	(wire
 		(pts
+			(xy 179.07 53.34) (xy 181.61 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78c0e9f1-e8a3-49b6-aea0-24115e9d29a8")
+	)
+	(wire
+		(pts
 			(xy 62.23 30.48) (xy 55.88 30.48)
 		)
 		(stroke
@@ -5921,6 +5935,16 @@
 			(type default)
 		)
 		(uuid "a5cd61b1-6738-45a3-872a-386050df9283")
+	)
+	(wire
+		(pts
+			(xy 165.1 53.34) (xy 171.45 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8f74633-3258-41b7-989d-6a37393af335")
 	)
 	(wire
 		(pts
@@ -6562,16 +6586,6 @@
 		)
 		(uuid "3b99e200-d5c6-40ec-9c77-aa00c9a60b00")
 	)
-	(label "D5"
-		(at 189.23 53.34 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4ea2945f-fd30-4039-bdc3-6e6ad9f170a8")
-	)
 	(label "CIPO"
 		(at 223.52 43.18 180)
 		(effects
@@ -6621,16 +6635,6 @@
 			(justify left bottom)
 		)
 		(uuid "67c087fe-ded8-4703-8a96-548d17ff5e9e")
-	)
-	(label "D5"
-		(at 21.59 21.59 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "697f8a49-80f7-4bfd-9794-ab234a5019fd")
 	)
 	(label "COPI"
 		(at 223.52 48.26 180)
@@ -7795,6 +7799,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 165.1 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2847d7a3-91d3-4439-bcf7-c304e35dad38")
+		(property "Reference" "#PWR024"
+			(at 165.1 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 165.1 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 165.1 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 165.1 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0783f211-dd55-47a0-b839-9c5363791313")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "#PWR024")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 262.89 38.1 0)
 		(unit 1)
@@ -8353,6 +8423,82 @@
 			(project "Ryujin"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "C21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 185.42 53.34 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "480815d2-7343-4de4-b152-4b3b7d0211cc")
+		(property "Reference" "R18"
+			(at 185.42 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "274"
+			(at 185.42 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 185.42 55.118 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 185.42 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "274 0603"
+			(at 185.42 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5cd72a8c-6493-493c-8b0f-2c9b00bc49ea")
+		)
+		(pin "1"
+			(uuid "0864e07a-6c19-4279-b471-b554d82ddd4b")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "R18")
 					(unit 1)
 				)
 			)
@@ -10324,6 +10470,92 @@
 			(project "Ryujin_v2"
 				(path "/a03941d3-2006-4bae-a82d-663063c77238"
 					(reference "#PWR028")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 175.26 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a2dcacbd-170e-4f45-a3aa-a5bc167860f3")
+		(property "Reference" "D2"
+			(at 173.6725 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 173.6725 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
+			(at 175.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 175.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 175.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 175.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "LTST-C194KFKT"
+			(at 175.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "220449df-e94b-425d-9e64-f66e7b0e0081")
+		)
+		(pin "1"
+			(uuid "69db8ad3-5a8e-47b7-bd6b-5a6bf90c941d")
+		)
+		(instances
+			(project "Ryujin"
+				(path "/a03941d3-2006-4bae-a82d-663063c77238"
+					(reference "D2")
 					(unit 1)
 				)
 			)
