@@ -3,6 +3,7 @@
 #include <SHTC3.h>
 #include <Wire.h>
 
+#include "NMEA.h"
 #include "W25QLOG.h"
 #include "config.h"
 #include "gsm.h"
@@ -42,7 +43,7 @@ bool resend();
 void scan();
 void schedule();
 void settime();
-void update(float &);
+void track();
 bool valid(char);
 bool verify();
 bool wait(bool, uint32_t timeout = MODEM_TIMEOUT);
@@ -58,13 +59,20 @@ bool power;
 
 float battery() {
   int p = analogRead(A1);
-  return (float)p * 0.014956; // R1 = 1.2M; R2 = 330k
+  return (float)p * 0.014956;  // R1 = 1.2M; R2 = 330k
 }
 
 bool config() {
   msg = "CONFIG\r\n";
+
   msg += modem.getIMSI();
   msg += LF;
+
+  char gps[GGA_LEN];
+  if (w25q.get(gps, GGA_LEN))
+    msg += gps;
+  msg += LF;
+
 #if defined(MI_MINUTE)
   uint16_t i = MI_MINUTE * 60;
 #elif defined(MI_HOUR)
@@ -72,19 +80,21 @@ bool config() {
 #endif
   msg += i;
   msg += LF;
+
   enable();
   for (char *p = sid; *p; p++)
     msg += rc(ident, *p);
   disable();
+
   return post(msg);
 }
 
 bool connect() {
   SerialSARA.begin(115200);
-  pulse(SARA_PWR_ON, 1500L);
+  pulse(SARA_PWR_ON, 1500UL);
   power = true;
   if (!wait(MODEM_ON) || !modem.init()) {
-    pulse(SARA_RESETN, 50L);
+    pulse(SARA_RESETN, 50UL);
     if (!wait(MODEM_ON) || !modem.init())
       return false;
   }
@@ -98,35 +108,34 @@ void ctrl() {
   s.reserve(256);
 
   Serial.begin(19200);
-  while (!Serial)
-    ;
+  while (!Serial);
 
   for (;;) {
     if (Serial.available()) {
       char c = Serial.read();
       switch (c) {
-      case 'd':
-        w25q.seek(0);
-        while (w25q.read(s, true))
-          Serial.print(s);
-        break;
-      case 'f':
-        w25q.format();
-        Serial.print("chip formatted\r\n");
-        break;
-      case 'i':
-        Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
-        Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
-        Serial.print(F("APN: " APN "\r\n"));
+        case 'd':
+          w25q.seek(0);
+          while (w25q.read(s, true))
+            Serial.print(s);
+          break;
+        case 'f':
+          w25q.format();
+          Serial.print("chip formatted\r\n");
+          break;
+        case 'i':
+          Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
+          Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
+          Serial.print(F("APN: " APN "\r\n"));
 #if defined(MI_MINUTE)
-        Serial.print(F("MI_MINUTE: "));
-        Serial.print(MI_MINUTE);
+          Serial.print(F("MI_MINUTE: "));
+          Serial.print(MI_MINUTE);
 #elif defined(MI_HOUR)
-        Serial.print(F("MI_HOUR: "));
-        Serial.print(MI_HOUR);
+          Serial.print(F("MI_HOUR: "));
+          Serial.print(MI_HOUR);
 #endif
-        Serial.print(F("\r\n"));
-        break;
+          Serial.print(F("\r\n"));
+          break;
       }
       Serial.print(F("#"));
     }
@@ -153,7 +162,7 @@ void disconnect(bool alive) {
   if (alive && modem.isGprsConnected())
     modem.gprsDisconnect();
   if (!(alive && modem.poweroff()))
-    pulse(SARA_PWR_ON, 2000L);
+    pulse(SARA_PWR_ON, 2000UL);
   wait(MODEM_OFF);
   power = false;
   SerialSARA.end();
@@ -163,17 +172,17 @@ void enable() {
   digitalWrite(LED_BUILTIN, HIGH);
   digitalWrite(FET, HIGH);
   socket.begin();
-  delay(600L);
+  delay(600UL);
 }
 
 bool gprs() {
-  uint8_t pause[] = {1, 3, 5};
+  uint8_t pause[] = { 1, 3, 5 };
   for (uint8_t p : pause) {
     if (modem.gprsConnect(APN)) {
       settime();
       return true;
     }
-    delay(p * 1000L);
+    delay(p * 1000UL);
   }
   return false;
 }
@@ -212,7 +221,7 @@ String &measure(char i) {
   for (uint8_t j = 0; j <= wait; j++) {
     if (socket.available() && socket.read() == i)
       break;
-    delay(1000L);
+    delay(1000UL);
   }
   socket.clearBuffer();
   rd[0] = i;
@@ -252,7 +261,7 @@ bool post(String &s) {
 }
 
 void pullup() {
-  int8_t pin[] = {A0, A2, A3, A4, A5, A6, 5, 13, 14};
+  int8_t pin[] = { A0, A2, A3, A4, A5, A6, 5, 13, 14 };
 
   for (int8_t p : pin)
     pinMode(p, INPUT_PULLUP);
@@ -368,7 +377,21 @@ void settime() {
   }
 }
 
-bool valid(char c) { return (isPrintable(c) || c == '\r' || c == '\n'); }
+void track() {
+  NMEA nmea;
+
+  nmea.begin();
+  while (nmea.poll())
+    if (nmea.valid()) {
+      w25q.put(nmea.dataset());
+      break;
+    }
+  nmea.end();
+}
+
+bool valid(char c) {
+  return (isPrintable(c) || c == '\r' || c == '\n');
+}
 
 bool verify() {
   if (!power && !connect())
@@ -380,19 +403,19 @@ bool verify() {
   if (client.connect(HOST, PORT))
     return true;
   client.stop();
-  delay(200L);
+  delay(200UL);
   if (!reconnect())
     return false;
   return client.connect(HOST, PORT);
 }
 
 bool wait(bool off, uint32_t timeout) {
-  delay(2000L);
+  delay(2000UL);
   uint32_t t0 = millis();
   while (millis() - t0 < timeout) {
     if (modem.testAT() ^ off)
       return true;
-    delay(500L);
+    delay(500UL);
   }
   return false;
 }
@@ -416,13 +439,14 @@ void setup() {
     ctrl();
     /* not reached */
   }
+  track();
   w25q.sleep(true);
 
   enable();
   scan();
   disable();
   if (sid[0] == '\0')
-    die(500L);
+    die(500UL);
 
   msg.reserve(256);
 
@@ -431,7 +455,7 @@ void setup() {
   rtc.begin();
 
   if (!connect() || !config())
-    die(1500L);
+    die(1500UL);
 
   rtc.setAlarmSeconds(0);
 #if defined(MI_MINUTE)

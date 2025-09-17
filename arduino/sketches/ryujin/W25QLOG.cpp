@@ -43,18 +43,16 @@ bool W25QLOG::format() {
   return _flash.eraseSection(SECTOR1, _cap - SECTOR1);
 }
 
-bool W25QLOG::get(String &s) {
-  return _flash.readStr(0, s);
+bool W25QLOG::get(char *s, size_t n) {
+  return _flash.readCharArray(0, s, n);
 }
 
-bool W25QLOG::put(String &s) {
-  if (_flash.sizeofStr(s) > SECTOR1 - 1)
+bool W25QLOG::put(char *s) {
+  size_t n = strlen(s) + 1;
+  if (n > SECTOR1 - 1)
     return false;
-  String q;
-  if (get(q) && s == q)
-    return true;
   if (_flash.eraseSector(0))
-    return _flash.writeStr(0, s);
+    return _flash.writeCharArray(0, s, n);
   return false;
 }
 

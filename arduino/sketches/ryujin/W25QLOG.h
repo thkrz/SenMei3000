@@ -17,8 +17,8 @@ public:
 
   bool append(const String &);
   bool format();
-  bool get(String&);
-  bool put(String&);
+  bool get(char *, size_t);
+  bool put(char *);
   bool read(String &, bool);
   void seek(uint32_t);
   void sleep(bool);
