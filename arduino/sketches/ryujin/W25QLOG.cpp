@@ -3,6 +3,7 @@
 #define COMMIT 0xFE
 #define DELETE 0xFC
 
+#define SECTOR1 0x00001000
 #define MAX_LEN 256
 #define SHIFT(a, n) ((a) += 3 + (n))
 
@@ -14,8 +15,8 @@ bool W25QLOG::begin() {
     return false;
 
   _cap = _flash.getCapacity();
-  _rp = 0;
-  _wp = 0;
+  _rp = SECTOR1;
+  _wp = SECTOR1;
   while (_wp + 3 < _cap) {
     uint16_t len = _flash.readWord(_wp + 1);
     if (len == 0xFFFF)
@@ -37,9 +38,24 @@ bool W25QLOG::append(const String &s) {
 }
 
 bool W25QLOG::format() {
-  _rp = 0;
-  _wp = 0;
-  return _flash.eraseChip();
+  _rp = SECTOR1;
+  _wp = SECTOR1;
+  return _flash.eraseSection(SECTOR1, _cap - SECTOR1);
+}
+
+bool W25QLOG::get(String &s) {
+  return _flash.readStr(0, s);
+}
+
+bool W25QLOG::put(String &s) {
+  if (_flash.sizeofStr(s) > SECTOR1 - 1)
+    return false;
+  String q;
+  if (get(q) && s == q)
+    return true;
+  if (_flash.eraseSector(0))
+    return _flash.writeStr(0, s);
+  return false;
 }
 
 bool W25QLOG::read(String &s, bool advance) {
@@ -70,7 +86,7 @@ bool W25QLOG::read(String &s, bool advance) {
 }
 
 void W25QLOG::seek(uint32_t a) {
-  _rp = a;
+  _rp = a + SECTOR1;
 }
 
 void W25QLOG::sleep(bool state) {

@@ -3,7 +3,6 @@
 #include <SHTC3.h>
 #include <Wire.h>
 
-#include "NMEA.h"
 #include "W25QLOG.h"
 #include "config.h"
 #include "gsm.h"
@@ -32,7 +31,6 @@ void enable();
 bool gprs();
 bool handshake(char);
 String &ident(char);
-void location();
 String &measure(char);
 bool post(String &);
 void pullup();
@@ -199,21 +197,6 @@ String &ident(char i) {
   cmd[0] = i;
   socket.sendCommand(cmd, WAKE_DELAY);
   return readline();
-}
-
-void location() {
-  NMEA nmea;
-  digitalWrite(LED_BUILTIN, HIGH);
-  nmea.begin();
-  int status = 1;
-  while (status) {
-    status = nmea.poll();
-    if (status < 0)
-      goto NOT_PRESENT;
-  }
-NOT_PRESENT:
-  nmea.end();
-  digitalWrite(LED_BUILTIN, LOW);
 }
 
 String &measure(char i) {
@@ -434,8 +417,6 @@ void setup() {
     /* not reached */
   }
   w25q.sleep(true);
-
-  location();
 
   enable();
   scan();
