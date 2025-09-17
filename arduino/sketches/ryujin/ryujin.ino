@@ -435,7 +435,11 @@ void setup() {
   pullup();
 
   w25q.begin();
+#if defined(VERSION_B)
   if (digitalRead(PWR) == HIGH || battery() < 1) {
+#else
+  if (battery() < 7) {
+#endif
     ctrl();
     /* not reached */
   }
