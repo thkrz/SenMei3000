@@ -1,6 +1,8 @@
 #ifndef _CONFIG_H
 #define _CONFIG_H
 
+#define LED_ORANGE 5
+
 #define HOST "erdrutsch.com"
 #define PATH "/station"
 #define PORT 8000
