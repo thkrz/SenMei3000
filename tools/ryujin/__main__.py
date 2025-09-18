@@ -78,13 +78,13 @@ class MainWindow(QMainWindow):
         }
         try:
             s = arduino.send(self.port, "i")
-        except AssertionError:
-            return d
-        for ln in s.splitlines():
-            k, v = tuple([p.strip() for p in ln.split("=")])
-            if k == "FIRMWARE" and v != self.firmware:
-                v += " -> " + self.firmware
-            d[k] = v
+            for ln in s.splitlines():
+                k, v = tuple([p.strip() for p in ln.split("=")])
+                if k == "FIRMWARE" and v != self.firmware:
+                    v += " -> " + self.firmware
+                d[k] = v
+        except (AssertionError, ValueError):
+            pass
         return d
 
     def createForm(self, form):
