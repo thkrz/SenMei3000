@@ -2,6 +2,7 @@ import os
 import sys
 from pathlib import Path
 from PySide6.QtCore import Slot
+from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -26,10 +27,15 @@ class MainWindow(QMainWindow):
 
         self._choose()
 
+        self.icon = QIcon()
+        self.icon.addFile(":/Ryujin.png")
+        self.setWindowIcon(self.icon)
+
         self.setWindowTitle(f"{self.sketch.name.upper()} ({self.sketch})")
         self.ports = arduino.port()
         if len(self.ports) == 0:
             sys.exit(1)
+
 
         layout = QFormLayout()
         self.createForm(layout)
@@ -64,7 +70,7 @@ class MainWindow(QMainWindow):
 
     def info(self):
         d = {
-            "FIRMWARE": "0",
+            "FIRMWARE": f"-> {self.firmware}",
             "STAT_CTRL_ID": "",
             "APN": "iot.1nce.net",
             "MI_MINUTE": "15",
