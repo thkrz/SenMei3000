@@ -4,6 +4,7 @@ from pathlib import Path
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import (
     QApplication,
+    QCheckBox,
     QComboBox,
     QFileDialog,
     QFormLayout,
@@ -62,10 +63,19 @@ class MainWindow(QMainWindow):
         QMessageBox.critical(self, "Error", msg)
 
     def info(self):
-        d = {}
-        s = arduino.send(self.port, "i")
+        d = {
+            "FIRMWARE": "0",
+            "STAT_CTRL_ID": "",
+            "APN": "iot.1nce.net",
+            "MI_MINUTE": "15",
+            "LEGACY_BUILT": "0",
+        }
+        try:
+            s = arduino.send(self.port, "i")
+        except AssertionError:
+            return d
         for ln in s.splitlines():
-            k, v = tuple([p.strip() for p in ln.split(":")])
+            k, v = tuple([p.strip() for p in ln.split("=")])
             if k == "FIRMWARE" and v != self.firmware:
                 v += " -> " + self.firmware
             d[k] = v
@@ -92,6 +102,10 @@ class MainWindow(QMainWindow):
                 lo.addWidget(self.unit)
                 lo.addWidget(le)
                 le = lo
+            elif k == "LEGACY_BUILT":
+                le = QCheckBox()
+                le.setChecked(bool(int(v)))
+                self.properties[k] = le
             form.addRow(k + ":", le)
 
         fwupd = QPushButton("Upload firmware")
@@ -141,6 +155,8 @@ class MainWindow(QMainWindow):
             elif k.startswith("MI"):
                 k = f"MI_{self.unit.currentText()}"
                 flags[k] = v.text()
+            elif k == "LEGACY_BUILT":
+                flags[k] = str(int(v.isChecked()))
             else:
                 flags[k] = f'"{v.text()}"'
 

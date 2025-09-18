@@ -127,6 +127,11 @@ void ctrl() {
           Serial.print(MI_HOUR);
 #endif
           Serial.print(F("\r\n"));
+#if defined(LEGACY_BUILT) && LEGACY_BUILT == 1
+          Serial.print(F("LEGACY_BUILT=1"));
+#else
+          Serial.print(F("LEGACY_BUILT=0"));
+#endif
           break;
       }
       Serial.print(F("#"));
@@ -415,7 +420,7 @@ void setup() {
   pullup();
 
   w25q.begin();
-#if defined(LEGACY_BUILT)
+#if defined(LEGACY_BUILT) && LEGACY_BUILT == 1
   if (battery() < 7) {
 #else
   if (digitalRead(PWR) == HIGH || battery() < 1) {
