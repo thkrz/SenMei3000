@@ -43,16 +43,15 @@ bool W25QLOG::format() {
   return _flash.eraseSection(SECTOR1, _cap - SECTOR1);
 }
 
-bool W25QLOG::get(char *s, size_t n) {
-  return _flash.readCharArray(0, s, n);
+bool W25QLOG::get(char *s, uint16_t n) {
+  return _flash.readCharArray(2, s, n);
 }
 
-bool W25QLOG::put(char *s) {
-  size_t n = strlen(s) + 1;
-  if (n > SECTOR1 - 1)
+bool W25QLOG::put(char *s, uint16_t n) {
+  if (n > SECTOR1 - 3)
     return false;
   if (_flash.eraseSector(0))
-    return _flash.writeCharArray(0, s, n);
+    return _flash.writeWord(0, n) && _flash.writeCharArray(2, s, n);
   return false;
 }
 
@@ -85,6 +84,13 @@ bool W25QLOG::read(String &s, bool advance) {
 
 void W25QLOG::seek(uint32_t a) {
   _rp = a + SECTOR1;
+}
+
+uint16_t W25QLOG::size() {
+  uint16_t n = _flash.readWord(0);
+  if (n > SECTOR1 - 3)
+    n = 0;
+  return n;
 }
 
 void W25QLOG::sleep(bool state) {

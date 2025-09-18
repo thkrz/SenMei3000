@@ -3,7 +3,6 @@
 #include <SHTC3.h>
 #include <Wire.h>
 
-#include "NMEA.h"
 #include "W25QLOG.h"
 #include "config.h"
 #include "gsm.h"
@@ -43,7 +42,6 @@ bool resend();
 void scan();
 void schedule();
 void settime();
-void track();
 bool valid(char);
 bool verify();
 bool wait(bool, uint32_t timeout = MODEM_TIMEOUT);
@@ -66,11 +64,6 @@ bool config() {
   msg = "CONFIG\r\n";
 
   msg += modem.getIMSI();
-  msg += LF;
-
-  char gps[GGA_LEN];
-  if (w25q.get(gps, GGA_LEN))
-    msg += gps;
   msg += LF;
 
 #if defined(MI_MINUTE)
@@ -121,17 +114,16 @@ void ctrl() {
           break;
         case 'f':
           w25q.format();
-          Serial.print("chip formatted\r\n");
           break;
         case 'i':
-          Serial.print(F("FIRMWARE: " FIRMWARE "\r\n"));
-          Serial.print(F("STAT_CTRL_ID: " STAT_CTRL_ID "\r\n"));
-          Serial.print(F("APN: " APN "\r\n"));
+          Serial.print(F("FIRMWARE=" FIRMWARE "\r\n"));
+          Serial.print(F("STAT_CTRL_ID=" STAT_CTRL_ID "\r\n"));
+          Serial.print(F("APN=" APN "\r\n"));
 #if defined(MI_MINUTE)
-          Serial.print(F("MI_MINUTE: "));
+          Serial.print(F("MI_MINUTE="));
           Serial.print(MI_MINUTE);
 #elif defined(MI_HOUR)
-          Serial.print(F("MI_HOUR: "));
+          Serial.print(F("MI_HOUR="));
           Serial.print(MI_HOUR);
 #endif
           Serial.print(F("\r\n"));
@@ -377,18 +369,6 @@ void settime() {
   }
 }
 
-void track() {
-  NMEA nmea;
-
-  nmea.begin();
-  while (nmea.poll())
-    if (nmea.valid()) {
-      w25q.put(nmea.dataset());
-      break;
-    }
-  nmea.end();
-}
-
 bool valid(char c) {
   return (isPrintable(c) || c == '\r' || c == '\n');
 }
@@ -435,15 +415,14 @@ void setup() {
   pullup();
 
   w25q.begin();
-#if defined(VERSION_B)
-  if (digitalRead(PWR) == HIGH || battery() < 1) {
-#else
+#if defined(LEGACY_BUILT)
   if (battery() < 7) {
+#else
+  if (digitalRead(PWR) == HIGH || battery() < 1) {
 #endif
     ctrl();
     /* not reached */
   }
-  track();
   w25q.sleep(true);
 
   enable();
