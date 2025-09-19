@@ -1,9 +1,14 @@
 #!/bin/bash -e
 FIRMWARE="\"$(cat fw.txt)\""
 FBQN=arduino:samd:mkrnb1500
-STAT_CTRL_ID=$(kdialog --inputbox "STAT_CTRL_ID:" --title "BURN ID")
-if [ -z "$STAT_CTRL_ID" ]; then
-	exit 1
+
+if [ -n "$1" ]; then
+	STAT_CTRL_ID="$1"
+else
+	STAT_CTRL_ID=$(kdialog --inputbox "STAT_CTRL_ID:" --title "BURN ID")
+	if [ -z "$STAT_CTRL_ID" ]; then
+		exit 1
+	fi
 fi
 
 SKETCH=../arduino/sketches/ryujin
@@ -13,14 +18,14 @@ PORT=$(arduino-cli board list | awk "/${FBQN}/"'{print $1}')
 if [ -n "$PORT" ]; then
 	arduino-cli upload -p ${PORT} -b ${FBQN} $SKETCH
 	sleep 5
-  echo -n "FORMAT..."
-  r=$(echo f | python3 ryujin-ctrl.py -t 30)
-  echo $r
-  if [ "$r" == "OK" ]; then
-    echo "BURN ${STAT_CTRL_ID}..."
-    r=$(echo "\$${STAT_CTRL_ID}\#" | python3 ryujin-ctrl.py)
-    echo $r
-  fi
+	echo -n "FORMAT..."
+	r=$(echo f | python3 ryujin-ctrl.py -t 30)
+	echo $r
+	if [ "$r" == "OK" ]; then
+		echo "BURN ${STAT_CTRL_ID}..."
+		r=$(echo "\$${STAT_CTRL_ID}\#" | python3 ryujin-ctrl.py)
+		echo $r
+	fi
 else
 	echo "no board found" >&2
 fi
