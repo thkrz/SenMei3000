@@ -53,6 +53,7 @@ private:
 #else
     Serial.print(F("LEGACY_BUILT=0"));
 #endif
+    Serial.print(F("\r\n"));
   }
 
   void _query() {

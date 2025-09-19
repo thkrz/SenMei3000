@@ -1,6 +1,6 @@
-import prompt_toolkit as ptk
 import serial
 import time
+import sys
 
 
 class COM:
@@ -23,7 +23,7 @@ class COM:
 
     def write(self, s):
         self.com.write(s.encode())
-        time.sleep(1)
+        time.sleep(0.1)
 
     def read_chunk(self):
         s = self.read_until("#")
@@ -47,16 +47,20 @@ class COM:
 
 if __name__ == "__main__":
     port = "/dev/ttyACM0"
-    timeout = 60.0
+
+    timeout = 3.0
+    argv = iter(sys.argv[1:])
+    for arg in argv:
+        if argv == "-t":
+            timeout = float(next(argv))
+        else:
+            msg = arg
 
     com = COM(port)
-    while True:
-        try:
-            msg = ptk.prompt("RYUJIN> ") or None
-        except EOFError:
-            break
-        if msg:
-            com.write(msg)
-            com.timeout = timeout
-            print(com.read_chunk())
+    if not sys.stdin.isatty():
+        msg = sys.stdin.read().strip()
+    if msg:
+        com.write(msg)
+        com.timeout = timeout
+        print(com.read_chunk())
     com.close()
