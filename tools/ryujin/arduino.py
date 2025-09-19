@@ -8,11 +8,11 @@ FBQN = "arduino:samd:mkrnb1500"
 class COM:
     def __init__(self, port):
         self.com = serial.Serial(port)
-        self.com.baudrate = 19200
+        self.com.baudrate = 57600
         self.com.bytesize = 8
         self.com.parity = "N"
         self.com.stopbits = 1
-        # self.com.timeout = 3.0
+        #self.com.timeout = 3.0
 
     def __enter__(self):
         return self
@@ -76,7 +76,7 @@ def port():
     return [s.split()[0] for s in out.splitlines() if FBQN in s]
 
 
-def send(port, msg, timeout=3.0):
+def send(port, msg, timeout=30.0):
     with COM(port) as com:
         com.write(msg)
         com.timeout = timeout

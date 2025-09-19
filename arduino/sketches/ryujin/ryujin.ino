@@ -53,6 +53,7 @@ TinyGsm modem(SerialSARA);
 TinyGsmClient client(modem);
 char sid[63];
 String msg;
+String stat_id;
 bool power;
 
 float battery() {
@@ -188,7 +189,9 @@ bool post(String &s) {
     return false;
 
   int n = s.length();
-  client.println(F("POST " PATH "/" STAT_CTRL_ID " HTTP/1.1"));
+  client.print(F("POST " PATH "/"));
+  client.print(stat_id);
+  client.println(F(" HTTP/1.1"));
   client.println(F("Host: " HOST));
   client.println(F("Connection: close"));
   client.println(F("Content-Type: text/plain; charset=utf-8"));
@@ -386,6 +389,7 @@ void setup() {
     ctrl.exec();
     /* not reached */
   }
+  stat_id = w25q.get();
   w25q.sleep(true);
 
   enable();

@@ -16,7 +16,7 @@ public:
   bool begin();
 
   bool append(const String &);
-  bool format();
+  bool format(bool);
   String &get();
   bool put(String &);
   bool read(String &, bool);

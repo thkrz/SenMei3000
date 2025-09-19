@@ -36,7 +36,6 @@ class MainWindow(QMainWindow):
         if len(self.ports) == 0:
             sys.exit(1)
 
-
         layout = QFormLayout()
         self.createForm(layout)
         container = QWidget()
@@ -70,13 +69,14 @@ class MainWindow(QMainWindow):
 
     def info(self):
         d = {
+            "STAT_CTRL_ID": "ERROR",
             "FIRMWARE": f"-> {self.firmware}",
-            "STAT_CTRL_ID": "",
             "APN": "iot.1nce.net",
             "MI_MINUTE": "15",
             "LEGACY_BUILT": "0",
         }
         try:
+            d["STAT_CTRL_ID"] = arduino.send(self.port, "q")
             s = arduino.send(self.port, "i")
             for ln in s.splitlines():
                 k, v = tuple([p.strip() for p in ln.split("=")])
@@ -98,7 +98,7 @@ class MainWindow(QMainWindow):
             le = QLineEdit()
             le.setText(v)
             self.properties[k] = le
-            if k == "FIRMWARE":
+            if k in ["STAT_CTRL_ID", "FIRMWARE"]:
                 le.setReadOnly(True)
             elif k.startswith("MI"):
                 k = "MI"
@@ -140,7 +140,9 @@ class MainWindow(QMainWindow):
 
     def chipErase(self):
         def rc(port):
-            arduino.send(port, "f", timeout=30.0)
+            r = arduino.send(port, "f", timeout=30.0)
+            if r == "ERROR":
+                self._error("Could not erase chip")
 
         self.dialog, self.thread, self.worker = progress.show(
             self, "W25Q", "Erasing chip...", self._error, rc, [self.port]

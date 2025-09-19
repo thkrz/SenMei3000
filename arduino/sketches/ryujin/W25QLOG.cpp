@@ -37,17 +37,20 @@ bool W25QLOG::append(const String &s) {
   return true;
 }
 
-bool W25QLOG::format() {
+bool W25QLOG::format(bool wipe) {
   _rp = SECTOR1;
   _wp = SECTOR1;
+  if (wipe)
+    return _flash.eraseChip();
   return _flash.eraseSection(SECTOR1, _cap - SECTOR1);
 }
 
 String &W25QLOG::get() {
   static String s = "";
 
-  if (!_flash.readStr(0, s))
-    s = "";
+  if (_flash.readByte(0) != 0xFF && _flash.readStr(0, s))
+    return s;
+  s = "";
   return s;
 }
 

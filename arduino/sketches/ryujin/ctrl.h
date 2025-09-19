@@ -8,12 +8,12 @@ class Ctrl {
 private:
   W25QLOG _w25q;
 
-  inline void _burn() {
+  void _burn() {
     String s = "";
 
     while (Serial.available()) {
       char c = Serial.read();
-      if (c == '\n')
+      if (c == '#')
         break;
       if (isPrintable(c))
         s += c;
@@ -21,7 +21,11 @@ private:
     Serial.print(_w25q.put(s) ? OK : ERR);
   }
 
-  inline void _dump() {
+  void _clear() {
+    Serial.print(_w25q.format(false) ? OK : ERR);
+  }
+
+  void _dump() {
     String s = "";
 
     _w25q.seek(0);
@@ -29,15 +33,12 @@ private:
       Serial.print(s);
   }
 
-  inline void _format() {
-    Serial.print(_w25q.format() ? OK : ERR);
+  void _format() {
+    Serial.print(_w25q.format(true) ? OK : ERR);
   }
 
-  inline void _info() {
+  void _info() {
     Serial.print(F("FIRMWARE=" FIRMWARE "\r\n"));
-    Serial.print(F("STAT_CTRL_ID="));
-    Serial.print(_w25q.get());
-    Serial.print(F("\r\n"));
     Serial.print(F("APN=" APN "\r\n"));
 #if defined(MI_MINUTE)
     Serial.print(F("MI_MINUTE="));
@@ -54,10 +55,14 @@ private:
 #endif
   }
 
+  void _query() {
+    Serial.print(_w25q.get());
+  }
+
 public:
   Ctrl(W25QLOG& w25q)
     : _w25q(w25q) {
-    Serial.begin(115200);
+    Serial.begin(57600);
   }
 
   ~Ctrl() {
@@ -74,6 +79,9 @@ public:
           case '$':
             _burn();
             break;
+          case 'c':
+            _clear();
+            break;
           case 'd':
             _dump();
             break;
@@ -82,6 +90,9 @@ public:
             break;
           case 'i':
             _info();
+            break;
+          case 'q':
+            _query();
             break;
         }
         Serial.print(F("#"));
