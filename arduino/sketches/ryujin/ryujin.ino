@@ -385,8 +385,8 @@ void setup() {
 #else
   if (digitalRead(PWR) == HIGH || battery() < 1) {
 #endif
-    Ctrl ctrl(w25q);
-    ctrl.exec();
+    Ctrl c(w25q);
+    c.exec();
     /* not reached */
   }
   stat_id = w25q.get();
