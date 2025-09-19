@@ -23,7 +23,7 @@ if [ -n "$PORT" ]; then
 	echo $r
 	if [ "$r" == "OK" ]; then
 		echo -n "BURN ${STAT_CTRL_ID}..."
-		r=$(echo "\$${STAT_CTRL_ID}\#" | python3 ryujin-ctrl.py)
+		r=$(echo "\$${STAT_CTRL_ID}#" | python3 ryujin-ctrl.py)
 		echo $r
 	fi
 else
