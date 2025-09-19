@@ -2,25 +2,5 @@
 FIRMWARE="\"$(cat fw.txt)\""
 FBQN=arduino:samd:mkrnb1500
 
-DEF=-DFIRMWARE=$FIRMWARE
-cflag=0
-for arg in "$@"; do
-  if [ "$arg" = "-c" ]; then
-    cflag=1
-  else
-    DEF="$DEF -D$arg"
-  fi
-done
-
+DEF="-DFIRMWARE=$FIRMWARE -DAPN=\"iot.1nce.net\" -DMI_MINUTE=2 -DLEGACY_BUILT=1"
 arduino-cli compile -b ${FBQN} --build-property="compiler.cpp.extra_flags=$DEF" .
-if [ "$cflag" -ne 0 ]; then
-  exit 0
-fi
-PORT=$(arduino-cli board list | awk "/${FBQN}/"'{print $1}')
-if [ -n "$PORT" ]; then
-  arduino-cli upload -p ${PORT} -b ${FBQN} .
-else
-  echo "no board found" >&2
-fi
-
-echo "q" | picocom -b 57600 "$PORT"
