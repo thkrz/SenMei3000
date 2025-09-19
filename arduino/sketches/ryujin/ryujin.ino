@@ -5,6 +5,7 @@
 
 #include "W25QLOG.h"
 #include "config.h"
+#include "ctrl.h"
 #include "gsm.h"
 
 #define FET 0
@@ -23,7 +24,6 @@ typedef String &(*command)(char);
 float battery();
 bool config();
 bool connect();
-void ctrl();
 void die(uint32_t);
 void disable();
 void disconnect(bool alive = true);
@@ -94,49 +94,6 @@ bool connect() {
   if (!modem.waitForNetwork())
     return false;
   return gprs();
-}
-
-void ctrl() {
-  String s;
-  s.reserve(256);
-
-  Serial.begin(19200);
-  while (!Serial);
-
-  for (;;) {
-    if (Serial.available()) {
-      char c = Serial.read();
-      switch (c) {
-        case 'd':
-          w25q.seek(0);
-          while (w25q.read(s, true))
-            Serial.print(s);
-          break;
-        case 'f':
-          w25q.format();
-          break;
-        case 'i':
-          Serial.print(F("FIRMWARE=" FIRMWARE "\r\n"));
-          Serial.print(F("STAT_CTRL_ID=" STAT_CTRL_ID "\r\n"));
-          Serial.print(F("APN=" APN "\r\n"));
-#if defined(MI_MINUTE)
-          Serial.print(F("MI_MINUTE="));
-          Serial.print(MI_MINUTE);
-#elif defined(MI_HOUR)
-          Serial.print(F("MI_HOUR="));
-          Serial.print(MI_HOUR);
-#endif
-          Serial.print(F("\r\n"));
-#if defined(LEGACY_BUILT) && LEGACY_BUILT == 1
-          Serial.print(F("LEGACY_BUILT=1"));
-#else
-          Serial.print(F("LEGACY_BUILT=0"));
-#endif
-          break;
-      }
-      Serial.print(F("#"));
-    }
-  }
 }
 
 void die(uint32_t p) {
@@ -425,7 +382,8 @@ void setup() {
 #else
   if (digitalRead(PWR) == HIGH || battery() < 1) {
 #endif
-    ctrl();
+    Ctrl ctrl(w25q);
+    ctrl.exec();
     /* not reached */
   }
   w25q.sleep(true);

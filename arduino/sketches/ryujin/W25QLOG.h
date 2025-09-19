@@ -17,11 +17,10 @@ public:
 
   bool append(const String &);
   bool format();
-  bool get(char *, uint16_t);
-  bool put(char *, uint16_t);
+  String &get();
+  bool put(String &);
   bool read(String &, bool);
   void seek(uint32_t);
-  uint16_t size();
   void sleep(bool);
   bool unlink();
 };
