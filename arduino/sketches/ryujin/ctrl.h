@@ -22,6 +22,8 @@ private:
   }
 
   inline void _dump() {
+    String s = "";
+
     _w25q.seek(0);
     while (_w25q.read(s, true))
       Serial.print(s);
@@ -34,8 +36,8 @@ private:
   inline void _info() {
     Serial.print(F("FIRMWARE=" FIRMWARE "\r\n"));
     Serial.print(F("STAT_CTRL_ID="));
-    Serial.print(_w25q.get())
-      Serial.print(F("\r\n"));
+    Serial.print(_w25q.get());
+    Serial.print(F("\r\n"));
     Serial.print(F("APN=" APN "\r\n"));
 #if defined(MI_MINUTE)
     Serial.print(F("MI_MINUTE="));
@@ -53,8 +55,8 @@ private:
   }
 
 public:
-  Ctrl(W25QLOG &w25q) {
-    _w25q = w25q;
+  Ctrl(W25QLOG& w25q)
+    : _w25q(w25q) {
     Serial.begin(115200);
   }
 

@@ -52,7 +52,7 @@ String &W25QLOG::get() {
 }
 
 bool W25QLOG::put(String &s) {
-  if (_falsh.sizeofStr(s) > SECTOR1 - 3)
+  if (_flash.sizeofStr(s) > SECTOR1 - 3)
     return false;
   if (_flash.eraseSector(0))
     return _flash.writeStr(0, s);
