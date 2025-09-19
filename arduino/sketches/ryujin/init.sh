@@ -2,10 +2,6 @@
 FIRMWARE="\"$(cat fw.txt)\""
 FBQN=arduino:samd:mkrnb1500
 
-if [ -z "$1" ]; then
-  exit 1
-fi
-
 STAT_CTRL_ID=$(kdialog --inputbox "STAT_CTRL_ID:" --title "BURN ID")
 if [ -z "$STAT_CTRL_ID" ]; then
   exit 1
