@@ -44,7 +44,7 @@ void schedule();
 void settime();
 bool valid(char);
 bool verify();
-bool wait(bool, uint32_t timeout = MODEM_TIMEOUT);
+bool wait(bool);
 
 RTCZero rtc;
 SDI12 socket(MX, RX, TX);
@@ -354,10 +354,10 @@ bool verify() {
   return client.connect(HOST, PORT);
 }
 
-bool wait(bool off, uint32_t timeout) {
+bool wait(bool off) {
   delay(2000UL);
   uint32_t t0 = millis();
-  while (millis() - t0 < timeout) {
+  while (millis() - t0 < MODEM_TIMEOUT) {
     if (modem.testAT() ^ off)
       return true;
     delay(500UL);

@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (
 
 import arduino
 import progress
+from importlib.resources import files
 
 
 class MainWindow(QMainWindow):
@@ -28,7 +29,7 @@ class MainWindow(QMainWindow):
         self._choose()
 
         self.icon = QIcon()
-        self.icon.addFile(":/Ryujin.png")
+        self.icon.addFile(str(files("__main__") / "Ryujin.png"))
         self.setWindowIcon(self.icon)
 
         self.setWindowTitle(f"{self.sketch.name.upper()} ({self.sketch})")
@@ -69,7 +70,7 @@ class MainWindow(QMainWindow):
 
     def info(self):
         d = {
-            "STAT_CTRL_ID": "ERROR",
+            "STAT_CTRL_ID": "",
             "FIRMWARE": f"-> {self.firmware}",
             "APN": "iot.1nce.net",
             "MI_MINUTE": "15",
@@ -119,10 +120,10 @@ class MainWindow(QMainWindow):
         form.addRow(fwupd)
 
         layout = QHBoxLayout()
-        btn = QPushButton("Erase chip")
+        btn = QPushButton("Clear log")
         btn.clicked.connect(self.chipErase)
         layout.addWidget(btn)
-        btn = QPushButton("Dump chip")
+        btn = QPushButton("Dump log")
         btn.clicked.connect(self.chipDump)
         layout.addWidget(btn)
 
@@ -140,7 +141,7 @@ class MainWindow(QMainWindow):
 
     def chipErase(self):
         def rc(port):
-            r = arduino.send(port, "f", timeout=30.0)
+            r = arduino.send(port, "c", timeout=30.0)
             if r == "ERROR":
                 self._error("Could not erase chip")
 
