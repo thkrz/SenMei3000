@@ -6,7 +6,10 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-STAT_CTRL_ID="$(echo $1 | tr [:lower:] [:upper:])"
+STAT_CTRL_ID=$(kdialog --inputbox "STAT_CTRL_ID:" --title "BURN ID")
+if [ -z "$STAT_CTRL_ID" ]; then
+  exit 1
+fi
 
 DEF="-DFIRMWARE=$FIRMWARE -DAPN=\"iot.1nce.net\" -DMI_MINUTE=15 -DLEGACY_BUILT=1"
 arduino-cli compile -b ${FBQN} --build-property="compiler.cpp.extra_flags=$DEF" .
