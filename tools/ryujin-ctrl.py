@@ -48,20 +48,17 @@ class COM:
 
 if __name__ == "__main__":
     port = "/dev/ttyACM0"
+    if len(sys.argv) > 2:
+        port = sys.argv[1]
 
-    timeout = 3.0
-    argv = iter(sys.argv[1:])
-    for arg in argv:
-        if argv == "-t":
-            timeout = float(next(argv))
+    with COM(port) as com:
+        if sys.stdin.isatty():
+            msg = sys.argv[-1]
         else:
-            msg = arg
-
-    com = COM(port)
-    if not sys.stdin.isatty():
-        msg = sys.stdin.read().strip()
-    if msg:
-        com.write(msg)
-        com.timeout = timeout
-        print(com.read_chunk())
-    com.close()
+            msg = sys.stdin.read().strip()
+        if msg:
+            com.write(msg)
+            try:
+                sys.stdout.write(com.read_chunk())
+            except AssertionError:
+                sys.exit(1)

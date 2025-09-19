@@ -19,10 +19,10 @@ if [ -n "$PORT" ]; then
 	arduino-cli upload -p ${PORT} -b ${FBQN} $SKETCH
 	sleep 5
 	echo -n "FORMAT..."
-	r=$(echo f | python3 ryujin-ctrl.py -t 30)
+	r=$(echo f | python3 ryujin-ctrl.py)
 	echo $r
 	if [ "$r" == "OK" ]; then
-		echo "BURN ${STAT_CTRL_ID}..."
+		echo -n "BURN ${STAT_CTRL_ID}..."
 		r=$(echo "\$${STAT_CTRL_ID}\#" | python3 ryujin-ctrl.py)
 		echo $r
 	fi
