@@ -14,17 +14,18 @@ compile() {
 }
 
 flags() {
-    DEF=-DFIRMWARE=$1
+    def=-DFIRMWARE=$1
+
     read -p "APN [io1.1nce.net]: " apn
-    DEF="-DAPN=${apn:-iot.1nce.net} $DEF"
+    def="-DAPN=${apn:-iot.1nce.net} $def"
 
     read -p "MI_MINUTE [15]: " min
-    DEF="-DMI_MINUTE=${min:-15} $DEF"
+    def="-DMI_MINUTE=${min:-15} $def"
 
     read -p "LEGACY_BUILT [1]: " lgcy
-    DEF="-DLEGACY_BUILT=${lgcy:-1} $DEF"
+    def="-DLEGACY_BUILT=${lgcy:-1} $def"
     
-    echo $DEF
+    echo $def
 }
 
 port() {
@@ -44,7 +45,17 @@ usage() {
     exit 1
 }
 
-case "$1" in
+cmd=$1
+if [ -z "$cmd" ]; then
+    echo "1) init"
+    echo "2) gsm"
+    echo "3) status"
+    echo "4) update"
+    read -p "Select command [status]: " cmd
+    cmd=${cmd:-4}
+fi
+
+case "$cmd" in
 init)
     PORT=$(port)
     sketch=../arduino/sketches/ryujin
@@ -58,7 +69,8 @@ init)
     echo $r
     if [ "$r" = "OK" ]; then
         echo -n "Burn..."
-        r=$(send "\$MAINPRO_01#")
+        read -p "STAT_CTRL_ID []: " sid
+        r=$(send "\$$sid#")
         echo $r
     fi
     ;;
