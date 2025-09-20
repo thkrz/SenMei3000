@@ -7,5 +7,7 @@
 #include <TinyGsmClient.h>
 
 #define MODEM_TIMEOUT 8000L
+#define MODEM_ON false
+#define MODEM_OFF true
 
 #endif /* _GSM_H */
