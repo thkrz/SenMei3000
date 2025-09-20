@@ -17,13 +17,16 @@ TinyGsmClient client(modem);
 bool connect() {
   if (!wait(MODEM_ON) || !modem.init())
     return false;
+  Serial.print("MODEM: ");
+  String s = modem.getModemInfo();
+  Serial.println(s);
   Serial.print("Wait for network...");
-  if (!modem.waitForNetwork()) {
+  if (!modem.waitForNetwork(90000UL)) {
     Serial.println("ERROR");
     return false;
   }
   Serial.println("OK");
-  return gprs();
+  return true;
 }
 
 bool gprs() {
@@ -47,7 +50,7 @@ void pulse(int pin, uint32_t len) {
 }
 
 bool verify() {
-  if (!connect())
+  if (!gprs())
     return false;
 
   Serial.print("Ping...");
@@ -56,6 +59,7 @@ bool verify() {
     return true;
   }
   Serial.println("ERROR");
+  return false;
 }
 
 bool wait(bool off) {
@@ -89,12 +93,17 @@ void setup() {
   Serial.print("Power pulse...");
   pulse(SARA_PWR_ON, 1500UL);
   Serial.println("OK");
+
+  while (!connect()) {
+    Serial.println("Retry in 3s");
+    Serial.println();
+    delay(3000UL);
+  }
 }
 
 void loop() {
-  if (verify()) {
-    Serial.println("Connected.");
-    for (;;)
-      delay(100);
-  }
+  Serial.print("dB: ");
+  int sq = modem.getSignalQuality();
+  Serial.println(sq);
+  delay(5000UL);
 }
